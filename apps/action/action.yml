@@ -1,0 +1,60 @@
+name: 'SlopGuard PR Check'
+description: 'Score PR descriptions and code comments for human oversight. Posts inline annotations on low-quality content.'
+author: 'SlopGuard'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  api_url:
+    description: 'SlopGuard API URL'
+    required: false
+    default: 'https://api.slopguard.dev'
+  min_score:
+    description: 'Minimum oversight score to pass (0-100)'
+    required: false
+    default: '60'
+  fail_on:
+    description: 'Conditions that fail the check (comma-separated: description_slop, rubber_stamp, low_comment_intelligence)'
+    required: false
+    default: 'description_slop'
+  annotate_diff:
+    description: 'Post inline review comments on low-quality sentences'
+    required: false
+    default: 'true'
+  comment_summary:
+    description: 'Post a summary review comment on the PR'
+    required: false
+    default: 'true'
+  domain:
+    description: 'Domain adapter to use for scoring'
+    required: false
+    default: 'code_review'
+  github_token:
+    description: 'GitHub token for posting annotations'
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  score:
+    description: 'The overall oversight score'
+    value: ${{ steps.score.outputs.score }}
+  oversight:
+    description: 'The oversight classification (high, mixed, low)'
+    value: ${{ steps.score.outputs.oversight }}
+  flagged_claims:
+    description: 'JSON array of flagged reasoning claims'
+    value: ${{ steps.score.outputs.flagged_claims }}
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    INPUT_API_URL: ${{ inputs.api_url }}
+    INPUT_MIN_SCORE: ${{ inputs.min_score }}
+    INPUT_FAIL_ON: ${{ inputs.fail_on }}
+    INPUT_ANNOTATE_DIFF: ${{ inputs.annotate_diff }}
+    INPUT_COMMENT_SUMMARY: ${{ inputs.comment_summary }}
+    INPUT_DOMAIN: ${{ inputs.domain }}
+    INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}

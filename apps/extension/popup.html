@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SlopGuard</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="sg-popup">
+    <main>
+      <h1>SlopGuard</h1>
+      <p class="sg-subtitle">Human oversight scoring is active on this page.</p>
+      <section>
+        <h2>Today's Stats</h2>
+        <div id="todayStats"></div>
+      </section>
+      <label>
+        API URL
+        <input id="apiUrl" value="http://localhost:8000" />
+      </label>
+      <button id="save">Save</button>
+      <section>
+        <h2>Recent</h2>
+        <div id="history"></div>
+      </section>
+      <p id="status"></p>
+    </main>
+    <script src="src/popup.js"></script>
+  </body>
+</html>

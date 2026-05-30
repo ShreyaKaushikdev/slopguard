@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "SlopGuard",
+  "description": "Scores web content for human oversight signals.",
+  "version": "0.1.0",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["http://localhost:8000/*", "https://*/*", "http://*/*"],
+  "action": {
+    "default_title": "SlopGuard",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["src/content.js"],
+      "css": ["src/styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+
