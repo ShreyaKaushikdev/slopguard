@@ -1,0 +1,56 @@
+name: SlopGuard PR Gate
+description: Score a pull request description and fail below a configurable threshold.
+inputs:
+  api-url:
+    description: SlopGuard API URL
+    required: false
+    default: http://localhost:8000
+  min-score:
+    description: Minimum acceptable oversight score
+    required: false
+    default: "48"
+  title:
+    description: Pull request title
+    required: true
+  description:
+    description: Pull request body
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        python - <<'PY'
+        import json
+        import os
+        import sys
+        import urllib.request
+
+        api = os.environ["SLOPGUARD_API_URL"].rstrip("/")
+        min_score = float(os.environ["SLOPGUARD_MIN_SCORE"])
+        payload = json.dumps({
+          "title": os.environ["SLOPGUARD_TITLE"],
+          "description": os.environ["SLOPGUARD_DESCRIPTION"],
+          "diff": "",
+          "comments": []
+        }).encode()
+        req = urllib.request.Request(
+          f"{api}/score/pr",
+          data=payload,
+          headers={"Content-Type": "application/json"},
+          method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=20) as response:
+          result = json.loads(response.read())
+        print(f"SlopGuard score: {result['score']} ({result['oversight']})")
+        for reason in result.get("reasons", []):
+          print(f"- {reason}")
+        if result["score"] < min_score:
+          print(f"Score below threshold {min_score}", file=sys.stderr)
+          sys.exit(1)
+        PY
+      env:
+        SLOPGUARD_API_URL: ${{ inputs.api-url }}
+        SLOPGUARD_MIN_SCORE: ${{ inputs.min-score }}
+        SLOPGUARD_TITLE: ${{ inputs.title }}
+        SLOPGUARD_DESCRIPTION: ${{ inputs.description }}

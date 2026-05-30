@@ -1,0 +1,31 @@
+name: SlopGuard PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  slopguard:
+    name: SlopGuard Oversight Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+    steps:
+      - name: Check PR Quality
+        uses: slopguard/pr-check@v1
+        with:
+          min_score: 60
+          fail_on: description_slop
+          annotate_diff: true
+          domain: code_review
+
+      # Optional: use outputs in subsequent steps
+      - name: Report Score
+        if: always()
+        run: |
+          echo "Score: ${{ steps.slopguard.outputs.score }}"
+          echo "Oversight: ${{ steps.slopguard.outputs.oversight }}"
+          echo "Flagged: ${{ steps.slopguard.outputs.flagged_claims }}"
