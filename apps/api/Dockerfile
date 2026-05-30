@@ -1,12 +1,17 @@
-FROM python:3.12-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY apps/api/requirements.txt .
+# Install dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY apps/api/slopguard ./slopguard
+# Copy source
+COPY slopguard ./slopguard
+
+# Copy datasets (optional — falls back gracefully if missing)
 COPY datasets ./datasets
 
 EXPOSE 8000
+
 CMD ["uvicorn", "slopguard.main:app", "--host", "0.0.0.0", "--port", "8000"]
