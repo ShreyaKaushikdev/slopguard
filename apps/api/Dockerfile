@@ -3,13 +3,13 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt .
+COPY apps/api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source
-COPY slopguard ./slopguard
+# Copy source code
+COPY apps/api/slopguard ./slopguard
 
-# Copy datasets (optional — falls back gracefully if missing)
+# Copy datasets (used for evaluation endpoints)
 COPY datasets ./datasets
 
 EXPOSE 8000
