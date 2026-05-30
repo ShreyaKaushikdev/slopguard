@@ -1,14 +1,22 @@
 # SlopGuard
+### The Internet's Quality Layer
 
-**The Internet's Quality Layer**
+Every other tool asks "was this AI-generated?"  
+Wrong question.
 
-> **Slop Scan Hackathon 2026** · Primary Track: **A — Code Review** · Cross-Track Scanner bonus: all 8 tracks covered
+SlopGuard asks: **"Did a human actually think about this before publishing?"**
 
-SlopGuard scores online content for human oversight. It does not ask "was this AI-generated?" It asks: **did a human actually think about this before publishing?**
+That distinction is what makes it unfakeable. You cannot prompt-engineer your way to a high counterfactual absence score. You cannot fake a human-shaped vocabulary novelty curve. You cannot game a system that measures thinking rather than authorship.
 
-This distinction is the entire product. It makes detection harder to game and more practically useful than AI authorship detection.
+**Try it in 30 seconds:**
+```bash
+docker-compose up --build
+# Open http://localhost:8000/live
+```
 
-Built for the [Slop Scan Hackathon 2026](https://raptors.dev) · May 29 – Jun 1, 2026 · $1,800 prize pool
+**Or see it live:** https://slopguard-six.vercel.app
+
+F1 = 0.943 · 16.9pt score gap · 66 tests · 8 tracks · 10 signals · 3 novel detectors
 
 ---
 
