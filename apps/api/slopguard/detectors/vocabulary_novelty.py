@@ -276,6 +276,19 @@ def analyze_vocabulary_novelty(text: str) -> VocabularyNoveltyAnalysis:
             verdict="insufficient_data",
         )
 
+    # Also return neutral for very short texts — curve analysis is unreliable under 6 sentences
+    if len(novelty_curve) < 6:
+        return VocabularyNoveltyAnalysis(
+            curve_variance=0.0,
+            slope=0.0,
+            spike_count=0,
+            entropy=0.0,
+            front_loading=False,
+            sentence_count=len(novelty_curve),
+            human_score=0.5,
+            verdict="insufficient_data",
+        )
+
     curve_variance = compute_variance(novelty_curve)
     slope = compute_linear_slope(novelty_curve)
     spike_count = count_significant_spikes(novelty_curve)

@@ -185,6 +185,46 @@ function SkeletonPanel() {
   );
 }
 
+function TypewriterText({ text, speed = 25, delay = 0 }: { text: string; speed?: number; delay?: number }) {
+  const [displayedText, setDisplayedText] = useState("");
+  const [complete, setComplete] = useState(false);
+  const [started, setStarted] = useState(delay === 0);
+
+  useEffect(() => {
+    if (delay > 0) {
+      const startTimeout = setTimeout(() => {
+        setStarted(true);
+      }, delay);
+      return () => clearTimeout(startTimeout);
+    }
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    let i = 0;
+    setDisplayedText("");
+    setComplete(false);
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        setDisplayedText(text.substring(0, i + 1));
+        i++;
+      } else {
+        setComplete(true);
+        clearInterval(timer);
+      }
+    }, speed);
+    return () => clearInterval(timer);
+  }, [text, speed, started]);
+
+  return (
+    <>
+      {displayedText}
+      {started && <span className={`typewriter-cursor ${complete ? "complete" : ""}`}>_</span>}
+    </>
+  );
+}
+
 function scoreColorClass(score: number): string {
   if (score >= 65) return "score-green";
   if (score >= 40) return "score-yellow";
@@ -197,7 +237,63 @@ function signalBarColorClass(score: number): string {
   return "red";
 }
 
-// ─── Vocabulary Novelty Curve Chart ──────────────────────────────────────────
+// ─── Custom Domain Selector ──────────────────────────────────────────────────
+const DOMAIN_LABELS: Record<string, string> = {
+  general:        "General",
+  code_review:    "Code Review",
+  docs:           "Docs & KBs",
+  hiring:         "Hiring",
+  communications: "Communications",
+  content:        "Content & SEO",
+  academia:       "Academia",
+  marketplace:    "Marketplace",
+  social_news:    "Social & News",
+};
+
+function DomainSelect({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div className="domain-select" ref={ref}>
+      <button
+        type="button"
+        className="domain-select-trigger"
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span>{DOMAIN_LABELS[value] ?? value}</span>
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      {open && (
+        <ul className="domain-select-menu" role="listbox">
+          {domains.map((d) => (
+            <li
+              key={d}
+              role="option"
+              aria-selected={d === value}
+              className={`domain-select-option${d === value ? " selected" : ""}`}
+              onClick={() => { onChange(d); setOpen(false); }}
+            >
+              {DOMAIN_LABELS[d] ?? d}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 // Calls /signals/vocabulary-novelty and renders an inline SVG sparkline.
 // Human pattern: high → declining with spikes. AI pattern: flat line.
 function VocabularyCurveChart({ text }: { text: string }) {
@@ -224,6 +320,22 @@ function VocabularyCurveChart({ text }: { text: string }) {
 
   if (loading) return <p className="muted" style={{ marginTop: 12 }}>Computing vocabulary curve…</p>;
   if (!curve.length || !analysis) return null;
+
+  // Don't show the chart if there aren't enough sentences for a meaningful curve
+  const sentenceCount = curve.length;
+  if (sentenceCount < 6) {
+    return (
+      <div className="vocab-curve-card">
+        <div className="vocab-curve-header">
+          <span>⭐ Vocabulary Novelty Curve</span>
+          <span className="vocab-verdict" style={{ color: "var(--i3)" }}>needs more text</span>
+        </div>
+        <p style={{ fontSize: 12, color: "var(--i3)", marginTop: 4 }}>
+          Requires 6+ sentences for a meaningful curve. This signal is most useful on full PR descriptions, articles, and longer documents.
+        </p>
+      </div>
+    );
+  }
 
   const W = 340, H = 72, pad = 6;
   const max = Math.max(...curve, 0.01);
@@ -414,6 +526,60 @@ const NOVEL_SIGNALS: Record<string, { label: string; badge: string; why: string 
   },
 };
 
+// Human-readable names for standard signals
+const SIGNAL_LABELS: Record<string, string> = {
+  human_delta_score:        "editing artifacts",
+  semantic_uniqueness_proxy: "semantic uniqueness",
+  information_density:      "information density",
+  why_vs_what:              "causal reasoning",
+  template_structure:       "template structure",
+  specificity:              "specificity",
+  evidence_density:         "evidence density",
+};
+
+function renderSignalReason(reason: string) {
+  if (!reason) return null;
+
+  // Check if it's a key=value metrics string
+  if (reason.includes("=")) {
+    const parts = reason.split(/\s+/).filter(Boolean);
+    const kvPairs: Array<{ key: string; val: string }> = [];
+
+    for (const part of parts) {
+      const eqIdx = part.indexOf("=");
+      if (eqIdx > 0) {
+        kvPairs.push({
+          key: part.substring(0, eqIdx).replace(/_/g, " "),
+          val: part.substring(eqIdx + 1)
+        });
+      } else {
+        kvPairs.push({ key: "", val: part });
+      }
+    }
+
+    if (kvPairs.length > 0) {
+      return (
+        <div className="signal-telemetry-grid">
+          {kvPairs.map((pair, idx) => (
+            <div key={idx} className="telemetry-pill">
+              {pair.key ? (
+                <>
+                  <span className="telemetry-key">{pair.key}</span>
+                  <span className="telemetry-val">{pair.val}</span>
+                </>
+              ) : (
+                <span className="telemetry-raw">{pair.val}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      );
+    }
+  }
+
+  return <small className="signal-reason">{reason}</small>;
+}
+
 function SignalBarChart({ signals }: { signals: SignalResult[] }) {
   const novel = signals.filter((s) => s.name in NOVEL_SIGNALS);
   const standard = signals.filter((s) => !(s.name in NOVEL_SIGNALS));
@@ -422,10 +588,16 @@ function SignalBarChart({ signals }: { signals: SignalResult[] }) {
     const meta = isNovel ? NOVEL_SIGNALS[signal.name] : null;
     const pct = Math.round(signal.score * 100);
     const colorClass = signal.score >= 0.65 ? "green" : signal.score >= 0.4 ? "yellow" : "red";
+
+    // Hide low-weight signals that scored neutral and add no information
+    if (!isNovel && signal.weight <= 0.3 && signal.score < 0.1) return null;
+
     return (
-      <div key={signal.name} className={`signal${isNovel ? " signal-novel" : ""}`}>
+      <div key={signal.name} className={`signal${isNovel ? " signal-novel" : ""} signal-${colorClass}`}>
         <div className="signal-row">
-          <span className="signal-name">{meta ? meta.label : signal.name.replace(/_/g, " ")}</span>
+          <span className="signal-name">
+            {meta ? meta.label : (SIGNAL_LABELS[signal.name] ?? signal.name.replace(/_/g, " "))}
+          </span>
           {isNovel && <span className="novel-badge">Novel</span>}
           <span className="signal-pct">{pct}%</span>
         </div>
@@ -433,7 +605,7 @@ function SignalBarChart({ signals }: { signals: SignalResult[] }) {
           <div className={`signal-bar-fill ${colorClass}`} style={{ width: `${pct}%` }} />
         </div>
         {isNovel && meta && <small className="novel-why">{meta.why}</small>}
-        {signal.reason && <small className="signal-reason">{signal.reason}</small>}
+        {renderSignalReason(signal.reason)}
       </div>
     );
   };
@@ -442,7 +614,7 @@ function SignalBarChart({ signals }: { signals: SignalResult[] }) {
     <div className="signals">
       {novel.length > 0 && (
         <div className="novel-signals-section">
-          <div className="novel-signals-header">⭐ Novel Signals — Sharpest Signal Prize</div>
+          <div className="novel-signals-header">⭐ Novel Signals</div>
           <div className="standard-signals-section">
             {novel.map((s) => renderSignal(s, true))}
           </div>
@@ -520,7 +692,35 @@ function SignalList({ result }: { result: ScoreResponse | null }) {
   if (!result) return <p className="muted">Run a score to see oversight signals.</p>;
   return (
     <>
-      <p className={`badge ${result.oversight}`}>{result.summary}</p>
+      <div className={`verdict-card verdict-${result.oversight}`}>
+        <div className="verdict-card-glow" />
+        <div className="verdict-icon">
+          {result.oversight === "high" && (
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M13.333 4L5.999 11.333 2.666 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
+          {result.oversight === "mixed" && (
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
+          {result.oversight === "low" && (
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
+          {result.oversight === "insufficient" && (
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M8 12V8M8 4h.01" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
+        </div>
+        <div className="verdict-content">
+          <span className="verdict-label">Oversight Verdict</span>
+          <h3 className="verdict-title">{result.summary}</h3>
+        </div>
+      </div>
       {result.relative && <RelativeScoreCard relative={result.relative} />}
       <SignalBarChart signals={result.signals} />
       {result.highlights?.length > 0 && (
@@ -567,6 +767,55 @@ export default function Home() {
 
   const activeScore = useMemo(() => result || prResult || repoResult, [result, prResult, repoResult]);
 
+  const targetScore = activeScore ? Math.round(activeScore.score) : null;
+  const [animatedScore, setAnimatedScore] = useState<number | null>(null);
+  const prevTargetRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (targetScore === null) {
+      setAnimatedScore(null);
+      prevTargetRef.current = null;
+      return;
+    }
+
+    if (prevTargetRef.current === null) {
+      setAnimatedScore(targetScore);
+      prevTargetRef.current = targetScore;
+      return;
+    }
+
+    if (prevTargetRef.current === targetScore) {
+      return;
+    }
+
+    const startScore = animatedScore ?? 0;
+    prevTargetRef.current = targetScore;
+
+    let start = performance.now();
+    const duration = 800; // 0.8 seconds
+    const delta = targetScore - startScore;
+
+    let active = true;
+
+    function step() {
+      if (!active) return;
+      const now = performance.now();
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+      setAnimatedScore(Math.round(startScore + delta * ease));
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+
+    requestAnimationFrame(step);
+    return () => {
+      active = false;
+    };
+  }, [targetScore]);
+
   useEffect(() => {
     fetch(`${API_URL}/leaderboard/sites`).then((res) => res.json()).then((data) => setSites(data.items)).catch(() => {});
     fetch(`${API_URL}/leaderboard/repos`).then((res) => res.json()).then((data) => setRepos(data.items)).catch(() => {});
@@ -574,6 +823,7 @@ export default function Home() {
 
   async function scoreText() {
     setLoading("scan");
+    setResult(null);
     setError("");
     try {
       const scored = await postJson("/score/text", { text, domain });
@@ -588,6 +838,7 @@ export default function Home() {
 
   async function scorePr() {
     setLoading("pr");
+    setPrResult(null);
     setError("");
     try {
       const scored = await postJson("/score/pr", { title: prTitle, description: prDescription, diff: prDiff, comments: ["Why cap retries at 3?", "LGTM"] });
@@ -602,25 +853,77 @@ export default function Home() {
 
   async function scoreRepo() {
     setLoading("repo");
+    setRepoResult(null);
     setError("");
     try {
+      // Try to fetch real PRs from GitHub API first
+      const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      let pullRequests: Array<{title: string; description: string; diff: string; comments: string[]}> = [];
+
+      try {
+        const prRes = await fetch(`https://api.github.com/repos/${repoName}/pulls?state=closed&per_page=8&sort=updated`);
+        if (prRes.ok) {
+          const prs = await prRes.json();
+          pullRequests = prs
+            .filter((pr: {title: string; body: string | null}) => pr.title && pr.body && pr.body.length > 20)
+            .slice(0, 6)
+            .map((pr: {title: string; body: string | null; number: number}) => ({
+              title: pr.title,
+              description: (pr.body || "").slice(0, 800),
+              diff: `PR #${pr.number}`,
+              comments: [],
+            }));
+        }
+      } catch {
+        // GitHub API unavailable — fall through to synthetic
+      }
+
+      // Fallback: use varied synthetic PRs that produce different scores
+      if (pullRequests.length === 0) {
+        pullRequests = [
+          {
+            title: "Fix JWT secret exposure in auth middleware",
+            description: `Fixed JWT secret logged on line 47 of auth/middleware.js — appeared in CloudWatch logs. Considered env vars but rejected because pipeline lacks rotation support. Switched to AWS Secrets Manager with 30-day rotation. This breaks if SM API is unavailable — added 5s timeout with cached fallback. Accepted that risk.`,
+            diff: "- logToken(jwt)\n+ // token logging removed",
+            comments: ["Good catch", "Why not env vars?", "LGTM after discussion"],
+          },
+          {
+            title: "Update docs",
+            description: "Updated docs and improved content. This makes the docs better and enhances user experience.",
+            diff: "+ # Setup\n+ This guide explains setup.",
+            comments: ["LGTM"],
+          },
+          {
+            title: "Add Redis caching for user profiles",
+            description: `Added Redis caching for /api/user-profile. Considered Memcached but rejected — need pub/sub for cache invalidation on profile updates. TTL 300s: shorter hammers DB on miss storms, longer risks stale data after password changes. Known gap: no invalidation on admin edits. Added manual flush endpoint for support team.`,
+            diff: "+ cache.set(key, profile, ttl=300)",
+            comments: ["What's the TTL rationale?", "Approved"],
+          },
+          {
+            title: "Refactor authentication module",
+            description: "Refactored the authentication module to improve code quality and maintainability. Various improvements were made to ensure better performance going forward.",
+            diff: "+ // refactored",
+            comments: ["LGTM"],
+          },
+          {
+            title: "Add rate limiting to search API",
+            description: `Rate-limited /api/v2/search after Grafana showed 3 customers sending 400+ rps, spiking p99 from 120ms to 2.8s. Limit: 60 rps/key, 429 + Retry-After. Chose sliding window over token bucket — token bucket allows burst at window boundary. Cluster-wide limit needs Redis counter (+2ms/req); accepted per-instance for now.`,
+            diff: "+ @rate_limit(60)",
+            comments: ["Why 60 rps?", "Makes sense given the data"],
+          },
+          {
+            title: "Update dependencies",
+            description: "Updated various dependencies to their latest versions. This ensures we have the latest security patches and improvements.",
+            diff: "+ fastapi==0.115.0",
+            comments: ["LGTM"],
+          },
+        ];
+      }
+
       setRepoResult(
         await postJson("/score/repo", {
           repo: repoName,
-          pull_requests: [
-            {
-              title: "Improve billing retry behavior",
-              description: prDescription,
-              diff: prDiff,
-              comments: ["Why cap retries at 3?", "LGTM"],
-            },
-            {
-              title: "Update docs",
-              description: "Updated docs and improved content. This makes the docs better.",
-              diff: "+ # Setup\n+ This guide explains setup.",
-              comments: ["LGTM"],
-            },
-          ],
+          pull_requests: pullRequests,
         }),
       );
     } catch (err) {
@@ -720,15 +1023,13 @@ export default function Home() {
             <span className="eyebrow-dot" />
             Slop Scan Hackathon 2026 · Track A — Code Review
           </p>
-          <h1>SlopGuard</h1>
+          <h1><TypewriterText text="SlopGuard" speed={80} /></h1>
           <p className="lede">
-            Scores content for <strong>human oversight quality</strong> — not AI authorship.
-            10 signals including 3 novel detectors nobody else built.
+            <TypewriterText text="Scores content for human oversight quality — not AI authorship. 10 signals including 3 novel detectors nobody else built." speed={20} delay={1000} />
           </p>
           <div className="hero-badges">
             <span className="hero-badge teal">F1 = 0.926 on 453 samples</span>
             <span className="hero-badge blue">10 Universal Signals</span>
-            <span className="hero-badge gold">⭐ Sharpest Signal Prize</span>
           </div>
         </div>
         <div className="scoreBox">
@@ -751,29 +1052,52 @@ export default function Home() {
                 <stop offset="100%" stopColor="#f87171" />
               </linearGradient>
             </defs>
+            {/* Slowly rotating dotted outer guide track */}
+            <circle className="ring-track-dots" cx="50" cy="50" r="48" />
             <circle className="ring-track" cx="50" cy="50" r="45" />
+
+            {/* High-tech scanning arc when waiting or loading */}
+            <circle
+              className={`ring-scan ${loading ? "ring-scan-fast" : ""} ${activeScore ? "ring-scan-hidden" : ""}`}
+              cx="50"
+              cy="50"
+              r="45"
+            />
+
+            {/* Central micro pulsing target dot when waiting */}
+            {!activeScore && (
+              <circle
+                className={`ring-center-dot ${loading ? "ring-center-dot-active" : ""}`}
+                cx="50"
+                cy="50"
+                r="3"
+              />
+            )}
+
             <circle
               className={`ring-fill ${
-                activeScore
-                  ? activeScore.score >= 65 ? "ring-fill-green"
-                  : activeScore.score >= 40 ? "ring-fill-yellow"
+                animatedScore !== null
+                  ? animatedScore >= 65 ? "ring-fill-green"
+                  : animatedScore >= 40 ? "ring-fill-yellow"
                   : "ring-fill-red"
                   : ""
               }`}
               cx="50" cy="50" r="45"
               style={{
-                strokeDashoffset: activeScore
-                  ? 283 - (283 * Math.min(activeScore.score, 100)) / 100
+                strokeDashoffset: animatedScore !== null
+                  ? 283 - (283 * Math.min(animatedScore, 100)) / 100
                   : 283,
               }}
             />
           </svg>
           <div className="scoreBox-inner">
             <span className="scoreBox-label">Score</span>
-            <span className={`scoreBox-number ${activeScore ? scoreColorClass(Math.round(activeScore.score)) : ""}`}>
-              {activeScore ? Math.round(activeScore.score) : "--"}
+            <span className={`scoreBox-number ${animatedScore !== null ? scoreColorClass(animatedScore) : ""}`}>
+              {animatedScore !== null ? animatedScore : "--"}
             </span>
-            <span className="scoreBox-verdict">{activeScore?.oversight ?? "waiting"}</span>
+            <span className={`scoreBox-verdict ${!activeScore ? "waiting" : ""}`}>
+              {activeScore?.oversight ?? (loading ? "scoring" : "waiting")}
+            </span>
           </div>
         </div>
       </section>
@@ -801,24 +1125,40 @@ export default function Home() {
         <section className="workspace">
           <div className="panel">
             <div className="toolbar">
-              <select
+              <DomainSelect
                 value={domain}
-                onChange={(event) => {
-                  setDomain(event.target.value);
-                  setText(demoTexts[event.target.value] || demoTexts.general);
+                onChange={(d) => {
+                  setDomain(d);
+                  setText(demoTexts[d] || demoTexts.general);
                 }}
-              >
-                {domains.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
+              />
               <button onClick={scoreText} disabled={loading === "scan"}>
                 {loading === "scan" ? <span className="spinner-inline"><Spinner /> Scoring…</span> : "Score Text"}
               </button>
             </div>
             <textarea value={text} onChange={(event) => setText(event.target.value)} />
+            <div className="workspace-tracks-header">
+              <span className="tracks-header-dot" />
+              <span>Active Channel Adapters</span>
+            </div>
+            <div className="workspace-tracks">
+              {domains.slice(1).map((item) => (
+                <div
+                  key={item}
+                  className={`workspace-track-card${domain === item ? " active" : ""}`}
+                  onClick={() => {
+                    setDomain(item);
+                    setText(demoTexts[item] || demoTexts.general);
+                  }}
+                >
+                  <div className="track-card-status">
+                    <span className={`status-dot ${domain === item ? "pulsing" : ""}`} />
+                    <span>Adapter Ready</span>
+                  </div>
+                  <strong className="track-card-title">{item.replace(/_/g, " ")}</strong>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="panel">
             <h2>Signal Breakdown</h2>
@@ -886,8 +1226,8 @@ export default function Home() {
       {tab === "repo" && (
         <section className="workspace">
           <div className="panel formGrid">
-            <label>Repository<input value={repoName} onChange={(event) => setRepoName(event.target.value)} /></label>
-            <p className="muted" style={{fontSize:12}}>Uses the current PR demo inputs plus a low-oversight docs PR to generate a repo-level oversight report.</p>
+            <label>Repository<input value={repoName} onChange={(event) => setRepoName(event.target.value)} placeholder="owner/repo e.g. facebook/react" /></label>
+            <p className="muted" style={{fontSize:12}}>Fetches real closed PRs from GitHub if public. Falls back to synthetic PRs showing the score range across different writing quality levels.</p>
             <button onClick={scoreRepo} disabled={loading === "repo"}>
               {loading === "repo" ? <span className="spinner-inline"><Spinner /> Scoring…</span> : "Score Repo"}
             </button>

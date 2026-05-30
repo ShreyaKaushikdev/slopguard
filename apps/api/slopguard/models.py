@@ -80,8 +80,8 @@ class SignalResult(BaseModel):
     strong_claims: list[dict] = Field(default_factory=list)
 
     def model_post_init(self, __context: object) -> None:
-        if self.detail and not self.reason:
-            self.reason = self.detail
+        # Do NOT copy detail into reason — detail is internal debug data,
+        # reason is the human-readable explanation shown in the UI
         if not self.label:
             if self.score >= 0.65:
                 self.label = "strong"

@@ -1604,58 +1604,560 @@ def live_demo_page():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SlopGuard — Live Feed</title>
+<title>SlopGuard — Live Command Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#0d1117;color:#e6edf3;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.5}
-  header{background:#161b22;border-bottom:1px solid #30363d;padding:12px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
-  header h1{font-size:16px;font-weight:700;color:#58a6ff}
-  .badge{display:inline-flex;align-items:center;gap:6px;background:#21262d;border:1px solid #30363d;border-radius:20px;padding:3px 10px;font-size:11px}
-  .dot{width:7px;height:7px;border-radius:50%;background:#3fb950;animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-  .stats-bar{display:flex;gap:20px;padding:10px 20px;background:#161b22;border-bottom:1px solid #30363d;flex-wrap:wrap}
-  .stat{display:flex;flex-direction:column;gap:2px}
-  .stat-label{color:#8b949e;font-size:10px;text-transform:uppercase;letter-spacing:.5px}
-  .stat-value{font-size:18px;font-weight:700;color:#e6edf3}
-  .main{display:grid;grid-template-columns:1fr 320px;gap:0;height:calc(100vh - 90px)}
-  .feed{overflow-y:auto;border-right:1px solid #30363d}
-  .sidebar{overflow-y:auto;background:#0d1117}
-  .item{border-bottom:1px solid #21262d;padding:10px 16px;cursor:pointer;transition:background .1s}
-  .item:hover{background:#161b22}
-  .item-header{display:flex;align-items:center;gap:8px;margin-bottom:4px}
-  .score-badge{font-size:11px;font-weight:700;padding:1px 7px;border-radius:4px;min-width:36px;text-align:center}
-  .score-high{background:#0d4429;color:#3fb950;border:1px solid #238636}
-  .score-mixed{background:#2d2a00;color:#d29922;border:1px solid #9e6a03}
-  .score-low{background:#3d0c0c;color:#f85149;border:1px solid #da3633}
-  .score-insufficient{background:#21262d;color:#8b949e;border:1px solid #30363d}
-  .source-tag{font-size:10px;color:#8b949e;background:#21262d;padding:1px 6px;border-radius:3px}
-  .domain-tag{font-size:10px;color:#79c0ff;background:#0d2149;padding:1px 6px;border-radius:3px}
-  .item-title{font-size:12px;color:#e6edf3;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .item-preview{font-size:11px;color:#8b949e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .item-signal{font-size:10px;color:#f85149;margin-top:3px}
-  .new-item{animation:flash .6s ease-out}
-  @keyframes flash{0%{background:#1c2d3a}100%{background:transparent}}
-  .sidebar-section{padding:12px 14px;border-bottom:1px solid #21262d}
-  .sidebar-title{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#8b949e;margin-bottom:8px}
-  .leaderboard-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:11px}
-  .lb-name{flex:1;color:#e6edf3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .lb-bar-wrap{width:80px;height:6px;background:#21262d;border-radius:3px;overflow:hidden}
-  .lb-bar{height:100%;border-radius:3px;transition:width .5s}
-  .lb-pct{width:32px;text-align:right;color:#8b949e}
-  .sparkline{width:100%;height:40px}
-  .chart-wrap{padding:8px 0}
-  .empty{color:#8b949e;font-size:12px;padding:20px;text-align:center}
-  .filter-bar{display:flex;gap:6px;padding:8px 16px;background:#161b22;border-bottom:1px solid #30363d;flex-wrap:wrap}
-  .filter-btn{font-size:11px;padding:3px 10px;border-radius:4px;border:1px solid #30363d;background:#21262d;color:#8b949e;cursor:pointer;transition:all .1s}
-  .filter-btn.active{border-color:#58a6ff;color:#58a6ff;background:#0d2149}
-  a{color:#58a6ff;text-decoration:none}
-  a:hover{text-decoration:underline}
-  .worst-section{padding:10px 14px;border-bottom:1px solid #21262d}
-  .worst-item{padding:5px 0;border-bottom:1px solid #21262d;font-size:11px}
-  .worst-item:last-child{border-bottom:none}
-  .worst-score{color:#f85149;font-weight:700;margin-right:6px}
-  .worst-title{color:#e6edf3}
-  .worst-why{color:#8b949e;font-size:10px;margin-top:2px}
+  html {
+    color-scheme: dark;
+  }
+
+  :root {
+    --bg: #080c14;
+    --surface: #0e1513;
+    --glass: rgba(15, 23, 42, 0.55);
+    --glass-lite: rgba(15, 23, 42, 0.35);
+    --i1: #dde4e1;
+    --i2: #bacac5;
+    --i3: #859490;
+    --i4: #3c4a46;
+    --b2: rgba(255,255,255,.08);
+    --b3: rgba(255,255,255,.16);
+    --teal: #57f1db;
+    --teal-g: rgba(87,241,219,.25);
+    --blue: #58a6ff;
+    --blue-g: rgba(88,166,255,.20);
+    --gold: #ffac5a;
+    --gold-g: rgba(255,172,90,.20);
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --r-lg: 12px;
+    --r-xl: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: var(--bg);
+    color: var(--i1);
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow: hidden;
+    /* Matrix grid background */
+    background-image:
+      linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Aurora background glow drift */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(ellipse 65% 45% at 20% 10%, rgba(87,241,219,.06) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 50% at 80% 80%, rgba(88,166,255,.05) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 50% 50%, rgba(168,85,247,.04) 0%, transparent 60%);
+    pointer-events: none;
+    animation: auroraDrift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes auroraDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(3%, 2%) scale(1.05); }
+  }
+
+  /* ── Header ──────────────────────────────────────────────────── */
+  header {
+    background: var(--glass-lite);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border-bottom: 1px solid var(--b2);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,.02), 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    background: linear-gradient(90deg, var(--teal), var(--blue), #a855f7, var(--teal));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShimmer 8s linear infinite;
+  }
+
+  @keyframes textShimmer {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--b2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--i2);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,0.02);
+  }
+
+  .badge:hover {
+    border-color: var(--b3);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); }
+  }
+
+  /* ── Stats Bar ───────────────────────────────────────────────── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    padding: 16px 24px;
+    background: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--b2);
+    border-radius: var(--r-lg);
+    padding: 12px 18px;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(24px);
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,.02);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .stat:hover {
+    transform: translateY(-2px);
+    border-color: rgba(87,241,219,0.2);
+    box-shadow: 0 12px 24px -10px rgba(87,241,219,0.1), inset 1px 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .stat-label {
+    color: var(--i3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--teal), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Filter Bar ──────────────────────────────────────────────── */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .filter-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--b2);
+    background: rgba(15, 23, 42, 0.3);
+    color: var(--i3);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: rgba(87,241,219,0.25);
+    color: var(--teal);
+  }
+
+  .filter-btn.active {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: rgba(87,241,219,0.08);
+    box-shadow: 0 0 12px rgba(87,241,219,0.15), inset 1px 1px 0 rgba(255,255,255,0.02);
+  }
+
+  /* ── Main Layout ─────────────────────────────────────────────── */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    height: calc(100vh - 170px);
+    overflow: hidden;
+  }
+
+  .feed {
+    overflow-y: auto;
+    border-right: 1px solid rgba(255,255,255,0.04);
+    padding: 20px 24px;
+  }
+
+  .sidebar {
+    overflow-y: auto;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(8, 12, 20, 0.4);
+  }
+
+  /* ── Feed Item Card ──────────────────────────────────────────── */
+  .item {
+    border: 1px solid var(--b2);
+    background: rgba(14, 21, 31, 0.45);
+    border-radius: var(--r-xl);
+    padding: 16px 20px 16px 24px; /* Left indent for glow line */
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(125deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.01) 30%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .item:hover::after { opacity: 1; }
+
+  .item:hover {
+    background: rgba(18, 29, 44, 0.7);
+    border-color: rgba(87,241,219,.25);
+    transform: perspective(1000px) translateY(-4px) rotateX(2.5deg) rotateY(-1deg);
+    box-shadow: 
+      0 20px 40px -12px rgba(0, 0, 0, 0.6), 
+      0 0 15px rgba(87,241,219,.06), 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* Left accent glowing status bar */
+  .item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--b2);
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+
+  .item.item-high::before {
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+  }
+
+  .item.item-mixed::before {
+    background: var(--yellow);
+    box-shadow: 0 0 10px var(--yellow);
+  }
+
+  .item.item-low::before {
+    background: var(--red);
+    box-shadow: 0 0 10px var(--red);
+  }
+
+  .item:hover::before {
+    width: 6px;
+  }
+
+  .score-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    min-width: 42px;
+    text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+
+  .score-high {
+    background: rgba(63, 185, 80, 0.15);
+    color: var(--green);
+    border: 1px solid rgba(63, 185, 80, 0.3);
+    box-shadow: 0 0 8px rgba(63, 185, 80, 0.2);
+  }
+
+  .score-mixed {
+    background: rgba(210, 153, 34, 0.15);
+    color: var(--yellow);
+    border: 1px solid rgba(210, 153, 34, 0.3);
+    box-shadow: 0 0 8px rgba(210, 153, 34, 0.2);
+  }
+
+  .score-low {
+    background: rgba(248, 81, 73, 0.15);
+    color: var(--red);
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    box-shadow: 0 0 8px rgba(248, 81, 73, 0.2);
+  }
+
+  .score-insufficient {
+    background: var(--glass-lite);
+    color: var(--i3);
+    border: 1px solid var(--b2);
+  }
+
+  .source-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    background: rgba(255, 172, 90, 0.08);
+    border: 1px solid rgba(255, 172, 90, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .domain-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--blue);
+    background: rgba(88, 166, 255, 0.08);
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .item-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .item-preview {
+    font-size: 12px;
+    color: var(--i2);
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+
+  .item-signal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--red);
+    background: rgba(248, 81, 73, 0.06);
+    border: 1px solid rgba(248, 81, 73, 0.15);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    display: inline-block;
+  }
+
+  .new-item { animation: flash .8s cubic-bezier(0.25, 1, 0.5, 1) both; }
+  @keyframes flash {
+    0% { background: rgba(87, 241, 219, 0.15); border-color: rgba(87, 241, 219, 0.5); box-shadow: 0 0 15px rgba(87, 241, 219, 0.3); }
+    100% { background: rgba(14, 21, 31, 0.45); border-color: var(--b2); box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.4); }
+  }
+
+  /* ── Sidebar Sections ────────────────────────────────────────── */
+  .sidebar-section, .worst-section {
+    border: 1px solid var(--b2);
+    background: rgba(14, 21, 31, 0.45);
+    border-radius: var(--r-xl);
+    padding: 18px;
+    box-shadow: 0 8px 25px -10px rgba(0,0,0,0.5), inset 1px 1px 0 rgba(255,255,255,.02);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .sidebar-section:hover, .worst-section:hover {
+    border-color: rgba(255,255,255,.1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  }
+
+  .sidebar-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sidebar-title::before {
+    content: '';
+    width: 3px;
+    height: 12px;
+    background: var(--teal);
+    border-radius: 2px;
+  }
+
+  /* Leaderboard progress bars */
+  .leaderboard-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 11px;
+  }
+
+  .lb-name {
+    flex: 1;
+    color: var(--i2);
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+  }
+
+  .lb-bar-wrap {
+    width: 80px;
+    height: 8px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+  }
+
+  .lb-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width .8s cubic-bezier(.4,0,.2,1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  .lb-pct {
+    width: 36px;
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--i3);
+    font-weight: 600;
+  }
+
+  .chart-wrap { padding: 4px 0; }
+  .sparkline { width: 100%; height: 40px; display: block; filter: drop-shadow(0 0 4px rgba(248,81,73,0.3)); }
+  .empty { color: var(--i3); font-size: 12px; padding: 20px; text-align: center; font-family: 'JetBrains Mono', monospace; }
+
+  /* Worst Now Items */
+  .worst-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 11px;
+  }
+  .worst-item:last-child { border-bottom: none; }
+  
+  .worst-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .worst-score {
+    color: var(--red);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    background: rgba(248, 81, 73, 0.1);
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(248, 81, 73, 0.2);
+  }
+
+  .worst-title {
+    color: var(--i1);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+  }
+
+  .worst-why {
+    color: var(--i3);
+    font-size: 10px;
+    line-height: 1.4;
+    padding-left: 6px;
+    border-left: 2px solid var(--red);
+    margin-top: 4px;
+  }
+
+  /* ── Custom Scrollbar ────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
 </style>
 </head>
 <body>
@@ -1663,8 +2165,8 @@ def live_demo_page():
   <h1>🛡 SlopGuard</h1>
   <div class="badge"><span class="dot"></span> Live Ingestion</div>
   <div class="badge" id="counter">0 scored</div>
-  <div class="badge" id="slop-rate">slop rate: —</div>
-  <div class="badge" id="ipm">— items/min</div>
+  <div class="badge" id="slop-rate">slop: —</div>
+  <div class="badge" id="ipm">—/min</div>
   <div style="margin-left:auto;display:flex;gap:8px">
     <a href="/docs" class="badge">API Docs</a>
     <a href="/live/feed" class="badge">JSON Feed</a>
@@ -1681,7 +2183,7 @@ def live_demo_page():
 </div>
 
 <div class="filter-bar">
-  <span style="color:#8b949e;font-size:11px;align-self:center">Filter:</span>
+  <span style="color:var(--i3);font-size:11px;align-self:center;font-family:'JetBrains Mono',monospace;margin-right:4px">FILTER:</span>
   <button class="filter-btn active" onclick="setFilter('')">All</button>
   <button class="filter-btn" onclick="setFilter('low')">🔴 Slop</button>
   <button class="filter-btn" onclick="setFilter('mixed')">🟡 Mixed</button>
@@ -1703,7 +2205,7 @@ def live_demo_page():
       <div class="chart-wrap">
         <canvas class="sparkline" id="sparkline" width="290" height="40"></canvas>
       </div>
-      <div style="font-size:10px;color:#8b949e;margin-top:4px">Per-minute slop rate (last 60 min)</div>
+      <div style="font-size:10px;color:var(--i3);margin-top:4px;font-family:'JetBrains Mono',monospace">Per-minute slop rate (last 60 min)</div>
     </div>
 
     <div class="sidebar-section">
@@ -1761,19 +2263,32 @@ function renderFeed() {
     return;
   }
 
-  feed.innerHTML = filtered.slice(0, MAX_ITEMS).map((item, idx) => `
-    <div class="item ${idx === 0 ? 'new-item' : ''}" onclick="window.open('${item.url || '#'}','_blank')">
-      <div class="item-header">
-        <span class="score-badge ${scoreClass(item.oversight)}">${item.score.toFixed(1)}</span>
-        <span class="source-tag">${item.source.replace('_',' ')}</span>
-        <span class="domain-tag">${item.domain.replace('_',' ')}</span>
-        <span style="margin-left:auto;color:#8b949e;font-size:10px">${timeAgo(item.timestamp)}</span>
+  feed.innerHTML = filtered.slice(0, MAX_ITEMS).map((item, idx) => {
+    const title = item.title || '';
+    const preview = item.text_preview || '';
+    
+    // Check for repetitive title/preview to keep UI clean and avoid duplication
+    const cleanTitle = title.trim();
+    const cleanPreview = preview.trim();
+    const isRepetitive = cleanPreview.toLowerCase().startsWith(cleanTitle.toLowerCase().slice(0, 30)) || 
+                         cleanTitle.toLowerCase().startsWith(cleanPreview.toLowerCase().slice(0, 30));
+    
+    const showPreview = cleanPreview && !isRepetitive;
+
+    return `
+      <div class="item ${idx === 0 ? 'new-item' : ''} item-${item.oversight}" onclick="window.open('${item.url || '#'}','_blank')">
+        <div class="item-header">
+          <span class="score-badge ${scoreClass(item.oversight)}">${item.score.toFixed(1)}</span>
+          <span class="source-tag">${item.source.replace('_',' ')}</span>
+          <span class="domain-tag">${item.domain.replace('_',' ')}</span>
+          <span style="margin-left:auto;color:var(--i3);font-size:10px;font-family:'JetBrains Mono',monospace">${timeAgo(item.timestamp)}</span>
+        </div>
+        <div class="item-title">${escHtml(cleanTitle || cleanPreview)}</div>
+        ${showPreview ? `<div class="item-preview">${escHtml(cleanPreview)}</div>` : ''}
+        ${item.oversight === 'low' ? `<div class="item-signal">⚠ ${escHtml(item.top_signal || 'low oversight')}</div>` : ''}
       </div>
-      <div class="item-title">${escHtml(item.title || item.text_preview)}</div>
-      <div class="item-preview">${escHtml(item.text_preview)}</div>
-      ${item.oversight === 'low' ? `<div class="item-signal">⚠ ${escHtml(item.top_signal || 'low oversight')}</div>` : ''}
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function escHtml(s) {
@@ -1789,7 +2304,9 @@ function renderLeaderboard(data, containerId, nameKey, valueKey, label) {
     const color = row.slop_pct > 50 ? '#f85149' : row.slop_pct > 25 ? '#d29922' : '#3fb950';
     return `<div class="leaderboard-row">
       <span class="lb-name">${escHtml(row[nameKey].replace('_',' '))}</span>
-      <div class="lb-bar-wrap"><div class="lb-bar" style="width:${pct}%;background:${color}"></div></div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar" style="width:${pct}%; background:linear-gradient(90deg, rgba(255,255,255,0.1), ${color}); box-shadow:0 0 8px ${color}"></div>
+      </div>
       <span class="lb-pct">${row.slop_pct}%</span>
     </div>`;
   }).join('');
@@ -1808,7 +2325,9 @@ function renderSparkline(history) {
 
   ctx.beginPath();
   ctx.strokeStyle = '#f85149';
-  ctx.lineWidth = 1.5;
+  ctx.lineWidth = 2.0;
+  ctx.shadowColor = 'rgba(248, 81, 73, 0.4)';
+  ctx.shadowBlur = 4;
   rates.forEach((r, i) => {
     const x = i * step;
     const y = H - (r / max) * (H - 4) - 2;
@@ -1826,7 +2345,7 @@ function renderSparkline(history) {
   ctx.lineTo((rates.length-1)*step, H);
   ctx.lineTo(0, H);
   ctx.closePath();
-  ctx.fillStyle = 'rgba(248,81,73,0.12)';
+  ctx.fillStyle = 'rgba(248,81,73,0.1)';
   ctx.fill();
 }
 
@@ -1835,9 +2354,11 @@ function renderWorst(items) {
   if (!items || !items.length) { el.innerHTML = '<div class="empty">No data yet</div>'; return; }
   el.innerHTML = items.slice(0,8).map(item => `
     <div class="worst-item">
-      <span class="worst-score">${item.score.toFixed(1)}</span>
-      <span class="worst-title">${escHtml((item.title||item.text_preview||'').slice(0,55))}</span>
-      <div class="worst-why">${escHtml(item.why_flagged||'')}</div>
+      <div class="worst-header">
+        <span class="worst-score">${item.score.toFixed(1)}</span>
+        <span class="worst-title">${escHtml(item.title || item.text_preview)}</span>
+      </div>
+      <div class="worst-why">${escHtml(item.why_flagged || '')}</div>
     </div>
   `).join('');
 }

@@ -244,7 +244,9 @@ def analyze_counterfactual_absence(text: str) -> CounterfactualAnalysis:
     # Check for pure positive framing on complex topics
     is_complex = is_complex_topic(text)
     has_caveats = has_negative_framing(text)
-    pure_positive_complex = is_complex and not has_caveats and total_specific == 0
+    # Only penalize pure positive framing on longer texts — short summaries legitimately omit tradeoffs
+    word_count = len(text.split())
+    pure_positive_complex = is_complex and not has_caveats and total_specific == 0 and word_count >= 80
     
     # Total counterfactuals (specific + generic)
     total_counterfactuals = total_specific + generic_counterfactuals
