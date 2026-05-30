@@ -1,0 +1,522 @@
+[
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the components and improved the implementation. This enhances the user experience and provides a robust solution for the application."
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed bugs and improved performance across the codebase. Refactored several modules to ensure better maintainability and scalability going forward."
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code for better maintainability. This change improves the overall architecture and enhances the developer experience."
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated existing functionality. Made various improvements to enhance the system and ensure a seamless experience for users."
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to improve code quality across multiple modules. This PR addresses various issues and enhances overall system reliability."
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the frontend components and backend services. The changes improve the overall user experience and make the codebase more maintainable."
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Changed auth/session.ts to rotate refresh tokens every 15 minutes because replay risk increased after the mobile login rollout. The migration keeps old tokens valid for 24 hours to avoid forcing active users out during deploy."
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Switched OrderService.calculateTotal() from BigDecimal.HALF_UP to HALF_EVEN rounding because we saw 0.3% revenue drift on 14k invoices last quarter. Added regression test in OrderServiceTest.java covering the 7 edge cases from the accounting audit."
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Replaced the hand-rolled CSV parser in etl/ingest.py with pandas.read_csv because three customer files had mixed encodings (UTF-8 with BOM, Latin-1) that broke row 4,221 in the Acme dataset. Latency went from 8.3s to 2.1s on the 120 MB test file."
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Removed the retry-on-5xx logic in api/client.go after the March incident where a 503 loop consumed 94% of the worker pool for 11 minutes. Now we circuit-break after 3 failures and alert #ops-oncall. Tradeoff: transient blips will surface faster to users, but we avoid cascading outages."
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Added rate limiting to /api/v2/search because the Grafana dashboard showed 3 customers sending 400+ rps, which caused p99 to spike from 120ms to 2.8s. Set limit at 60 rps per API key with a 429 response and Retry-After header."
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Pinned the OpenSSL dependency to 3.1.4 after CVE-2024-0727 was disclosed. The vulnerability allows memory corruption via crafted PKCS12 files. We don't process user-uploaded PKCS12, but pinning prevents transitive exposure through our certificate rotation job."
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "This feature allows users to perform various operations. It provides a comprehensive set of tools that enhance productivity and streamline workflows. The feature is designed to be intuitive and user-friendly."
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The configuration system enables powerful customization. Users can configure settings to meet their needs. The configuration is flexible and supports various use cases to deliver optimal results."
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The API provides endpoints for data management. It offers a robust solution for handling data operations. The API is designed to be scalable and efficient for various applications."
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Authentication is handled seamlessly. The system provides secure access control. Users can manage their credentials through the built-in authentication module which ensures a safe experience."
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The deployment process is straightforward. Follow the steps below to deploy your application. The deployment system supports multiple environments and ensures reliable releases."
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Error handling is a critical aspect of the application. The system handles errors gracefully and provides meaningful feedback. Proper error handling ensures a smooth user experience."
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "To enable rate limiting, add `RATE_LIMIT_RPS=50` to your `.env` file and restart the gateway. The limiter uses a sliding-window counter backed by Redis; if Redis is unavailable, it falls back to in-memory with a 60-second TTL. Example: `curl -H 'X-Api-Key: test' http://localhost:8080/v1/score` should return 429 after 50 requests in one second."
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Step 1: Run `npm run db:migrate` to create the `user_sessions` table. Step 2: Set `SESSION_SECRET` in your environment — the value must be at least 32 characters. Step 3: Restart the server. If you see error TS-4012 in the logs, the secret is too short. See `config/session.ts` lines 14-28 for the validation logic."
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "The webhook payload includes `event_type`, `timestamp_ms`, and `payload`. For `order.completed` events, `payload.total_cents` is an integer (not float) to avoid floating-point rounding. Example payload:\n```json\n{\"event_type\": \"order.completed\", \"timestamp_ms\": 1716422400000, \"payload\": {\"order_id\": \"ORD-9281\", \"total_cents\": 4999}}\n```"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "To add a custom detector, create a new file in `slopguard/detectors/` that exports a function matching `def my_signal(text: str) -> SignalResult`. Register it in `detectors/__init__.py` by appending to the `DOMAIN_REGISTRY` dict. Run `pytest tests/test_custom_detector.py` to verify. Note: weights above 2.0 will be clamped to 2.0 by the scoring engine."
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Known issue: the `created_at` column on `audit_logs` is not indexed. Queries filtering by date range will full-scan on tables larger than ~500k rows. Workaround: add `CREATE INDEX idx_audit_created ON audit_logs(created_at)` before running the reporting job. Fix planned for v2.4."
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "The retry mechanism uses exponential backoff starting at 200ms, doubling up to a cap of 5 seconds, with jitter of ±50ms. After 5 consecutive failures, the circuit breaker opens for 30 seconds. During this window, all requests to that upstream return a cached 503. Monitor via the `/health/dependencies` endpoint."
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am excited to apply for this role at your company. My skills and passion make me a great fit, and I am confident I can contribute to your team with dedication and enthusiasm."
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am passionate about software development and would love to join your team. I am a quick learner with excellent communication skills and a strong work ethic that will benefit your organization."
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I believe I am a great fit for this position. My experience and dedication make me an ideal candidate. I am excited about the opportunity to contribute to your company's success and growth."
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "With my diverse skill set and enthusiasm for innovation, I am confident that I can add value to your team. I look forward to the opportunity to discuss how I can contribute to your company."
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "Dear Hiring Manager, I am writing to express my strong interest in the Software Engineer position. I am a motivated and results-driven professional with a passion for technology and innovation."
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I would welcome the opportunity to bring my expertise to your esteemed organization. Throughout my career, I have demonstrated a commitment to excellence and a proactive approach to problem-solving."
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "At PayFlow I reduced failed invoice retries by 22% by adding queue backoff and merchant-specific retry windows. Your billing infrastructure role maps directly to that work."
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "I noticed Acme's job posting mentions migrating from REST to gRPC. At Cloudline, I led that migration for the notification service — latency dropped from 120ms p99 to 34ms p99 over 6 sprints. I wrote the internal RFC and trained 4 backend engineers on protobuf schema design."
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Your team ships a React Native app with 2M MAU. At Paystack I optimized the React Native bundle from 14 MB to 6.2 MB using lazy loading and code splitting, which improved cold-start time by 41% on mid-range Android devices."
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "I built the ETL pipeline at DataHaus that processes 3.2 TB of clickstream data daily on AWS Glue. The pipeline reduced the analytics team's query wait time from 45 minutes to under 3 minutes. I'm applying because your data engineering role specifically mentions Glue and Redshift, which are my strongest tools."
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "At Carta, I migrated the cap table calculation engine from Ruby to Go, cutting P95 latency from 4.2s to 280ms for portfolios with 500+ shareholders. The migration required handling 14 edge cases in vesting schedule math that the original code handled incorrectly."
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Your posting asks for experience with event-driven architecture. At Shopify I designed the order fulfillment event bus using Kafka with exactly-once semantics, processing 12M events/day across 3 regions. I can share the architecture RFC if useful."
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "I wanted to circle back and provide a comprehensive update regarding the ongoing initiative. We are continuing to make progress and will keep everyone informed as things develop."
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Just a quick update to keep everyone aligned. We're making great progress on multiple fronts and things are moving forward nicely. Will share more details soon."
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Following up on our previous discussion, I wanted to touch base and ensure we're all on the same page regarding the project. Let's plan to sync up next week to discuss further."
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Thank you for the productive meeting. There were many great ideas shared. We will take all suggestions into consideration and follow up with next steps in due course."
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Hope this message finds you well. I wanted to provide a high-level overview of where things stand. The team has been working hard and making steady progress across all workstreams."
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Per our earlier conversation, I wanted to loop back and share some thoughts. I think we should take a holistic approach to this challenge and explore all possible avenues before making a decision."
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Decision: ship the smaller importer on Friday. Owner is Riya. Blocker is the CSV date parser; Amit will patch it by 4 PM and QA will retest the 12 failing rows."
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Action items from the Monday standup: (1) Priya will finish the Stripe webhook handler by Wednesday EOD. (2) Jake will investigate the 504 timeouts on /api/export — root cause is likely the unindexed `created_at` column. (3) Decision: we are dropping IE11 support as of v3.2."
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Blocked: the staging deploy failed because the `payments` schema migration timed out after 120 seconds on the 4 GB table. Owner: Marco. He'll add a `CONCURRENTLY` index and redeploy by 3 PM Thursday. If it fails again, fallback is to run the migration during the Saturday maintenance window."
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Decision from the architecture review: we're switching the notification service from polling to Server-Sent Events. Estimated effort: 2 sprints. Owner: Lena. Next step: Lena will draft the RFC by Friday and share it in #eng-rfc for async feedback. Deadline for feedback: next Tuesday."
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Incident postmortem: the 3-hour outage on May 12 was caused by a DNS TTL misconfiguration. The CNAME record for api.acme.com had a 1-second TTL instead of 300 seconds, which caused Route53 to throttle lookups. Fix: bumped TTL to 60s as a compromise between failover speed and lookup volume."
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Budget decision: we're cutting the DataDog bill from $18k/mo to $11k/mo by dropping custom metrics for staging environments and reducing log retention from 30 days to 7 days. Prod logs stay at 30 days. Owner: Sarah. Timeline: changes go live June 1."
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "In today's digital landscape, businesses must leverage innovative solutions to unlock growth. This article explores the key aspects of success and provides a comprehensive overview of best practices."
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "In an ever-changing world, it is important to stay ahead of the curve. This guide will delve into the various strategies that can help you achieve your goals and reach new heights of success."
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Unlocking the power of data analytics is essential for modern businesses. This comprehensive guide covers everything you need to know about leveraging data to drive results and gain a competitive edge."
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Content marketing plays a crucial role in building brand awareness. By implementing best practices and following proven strategies, organizations can create impactful content that resonates with their audience."
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Artificial intelligence is transforming the way we work and live. In this article, we explore how AI is revolutionizing industries and what it means for the future of business and technology."
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "The ultimate guide to productivity: discover the top strategies that successful people use every day. From time management to goal setting, these proven techniques will help you achieve more."
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "We measured onboarding drop-off across 1,240 trial accounts and found the second workspace invite caused 38% of exits. Removing that step reduced median setup time from 11 minutes to 6 minutes."
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "A/B testing our checkout page over 30 days with 18,400 sessions showed that moving the shipping cost estimate above the fold increased conversion by 4.7 percentage points (from 12.1% to 16.8%). Source: internal Mixpanel dashboard, March 2025 cohort."
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "According to the 2024 Stack Overflow Developer Survey, 62% of professional developers use VS Code as their primary editor, up from 54% in 2022. JetBrains IDEs held steady at 28%. The survey sampled 89,184 respondents from 185 countries."
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Case study: Honeycomb reduced their p99 query latency from 2.4 seconds to 380 ms by switching from Elasticsearch to a custom columnar store. The migration took 9 months and required rewriting their ingest pipeline. CEO Christine Yen noted in a 2024 blog post that the ROI was 'not obvious until month 6.'"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "PostgreSQL 16 introduced incremental backup support, reducing full backup time by 40-60% for databases over 500 GB. In our tests on a 1.2 TB instance, weekly backup windows shrank from 4 hours to 90 minutes. The feature requires wal_level=replica and a base backup taken with pg_basebackup --incremental."
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "We compared 3 CDN providers over 90 days across 12 PoPs. Cloudflare delivered a median TTFB of 42ms vs Fastly at 38ms and AWS CloudFront at 61ms. However, Cloudflare's cache hit ratio was 94% vs Fastly's 87%, making the effective origin load 35% lower. Pricing difference was $420/mo at our traffic level."
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "This groundbreaking research leverages cutting-edge methodologies to provide novel insights. Our findings demonstrate significant results that have the potential to revolutionize the field and open new avenues for exploration."
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "We propose a novel framework that addresses the key challenges in this domain. Our approach outperforms existing methods and achieves state-of-the-art results across all benchmarks, proving its effectiveness."
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "The results clearly show that our method is superior. The innovative approach presented in this paper pushes the boundaries of what is possible and establishes a new paradigm for future research."
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "Our model achieves remarkable performance gains. This breakthrough research has far-reaching implications that will transform the landscape of artificial intelligence and machine learning applications."
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "In this paper, we present a comprehensive analysis of the problem space. Our methodology is rigorous and our results demonstrate the superiority of our approach over existing baselines in all tested scenarios."
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "The proposed system represents a significant advancement in the field. Through extensive experimentation, we have validated the effectiveness of our approach and demonstrated its potential for real-world applications."
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "We evaluated on the MMLU benchmark (Hendrycks et al., 2021) using 5-shot prompting. Our model achieved 78.3% accuracy (95% CI: 77.1–79.5%), compared to 76.1% for the baseline. Limitations: the benchmark over-represents STEM questions, and we did not evaluate on multilingual tasks."
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Following the protocol of Chen et al. (2023), we fine-tuned LLaMA-2-7B on 12,400 instruction-response pairs using LoRA (rank=16, alpha=32). Training ran for 3 epochs on 4×A100 GPUs (40 GB) with a learning rate of 2e-5. The training cost was approximately $180 on AWS. We release the adapter weights at github.com/example/weights."
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "We recruited 142 participants (68 female, 71 male, 3 non-binary; mean age 34.2, SD=8.7) through Prolific. Each participant completed 40 trials in a within-subjects design. We report Cohen's d=0.43 for the primary effect, which we consider a small-to-medium effect size. The p-value was 0.003 (two-tailed t-test, Bonferroni-corrected for 3 comparisons)."
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Our approach may not generalize to low-resource languages, as the training data contained fewer than 500 examples for 14 of the 28 languages tested. Future work should investigate data augmentation strategies such as back-translation (Sennrich et al., 2016). We also note that our human evaluation involved only 3 annotators, yielding a Fleiss' kappa of 0.61."
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Table 3 shows the ablation study results. Removing the attention pooling layer decreased F1 by 3.2 points (from 87.4 to 84.2). Removing the contrastive pre-training step had a larger effect, dropping F1 to 81.6. Both differences were statistically significant (p<0.01, paired bootstrap test, 10k iterations)."
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Ethical considerations: our dataset contains Reddit posts that may include personally identifiable information. We applied the PII detection pipeline of Lukas et al. (2023) and manually reviewed 500 random samples, finding 3 instances of leaked email addresses which were removed. IRB approval was obtained under protocol #2024-0847."
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Amazing product. Great quality and highly recommend. It works perfectly and exceeded my expectations in every way."
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Excellent purchase! This is the best product I have ever bought. It is absolutely perfect and I would recommend it to everyone. Five stars!"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Love it! Great product, fast shipping, exactly as described. A must buy for anyone looking for quality. Highly recommend!"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "This product is outstanding. It exceeded all my expectations. The quality is superb and it works perfectly. I am extremely satisfied with my purchase."
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Absolutely wonderful product! The craftsmanship is impeccable and the attention to detail is remarkable. I could not be happier with this purchase. A truly exceptional product!"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Five stars! This product is everything I hoped for and more. The quality speaks for itself. I have already recommended it to all my friends and family."
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "The XL black hoodie shrank about 2 cm after the first cold wash, but the zipper stayed smooth and the sleeve cuffs did not pill after three weeks."
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Battery lasts about 6 hours with Bluetooth on, not the advertised 10. The noise-canceling is decent for office chatter but doesn't block airplane engine noise. Ear cups start to hurt after 90 minutes — I have a large head (size 7.5 hat)."
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "The 12-inch cast iron skillet weighs 8 lbs. Seasoning was uneven out of the box — I had to re-season twice with flaxseed oil at 450°F. After a month of daily use, eggs slide off without oil. The handle gets extremely hot; you need a silicone grip."
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Ordered the 64 GB model on May 1, arrived May 7. Screen has a visible yellow tint compared to my old phone when both are at 100% brightness. Camera is sharp in daylight but grain is noticeable in indoor shots at ISO 3200+. Returned for a replacement; the second unit had normal color calibration."
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Bought the 10-foot USB-C cable for my standing desk. It charges my MacBook Pro at 96W as advertised. The braided cable is stiff for the first week but softens up. One issue: the right-angle connector blocks the adjacent HDMI port on my CalDigit dock."
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "The mattress took 48 hours to fully expand, not the 24 hours stated. Firmness is a 7/10 — too firm for side sleepers under 150 lbs. After 3 months, there is a visible 1-inch body impression on my side. Used the 100-night trial to return it."
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "You won't believe what they're hiding from us. This shocking revelation exposes the truth that they don't want you to know. Share this everywhere before it gets taken down!"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "BREAKING: This will change everything! The mainstream media won't cover this story. Wake up people! Share this with everyone you know before they delete it!"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "They destroyed the evidence and now they're pretending nothing happened. This is absolutely insane. Copy this and share everywhere — they are trying to silence us!"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "This terrifying truth is being suppressed! The outrage is real and it's time we stood up. You won't believe what they've been doing behind closed doors. Wake up!"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "EXPOSED: The biggest scandal of the year that nobody is talking about! Why is the media silent? Because they are complicit. Share this before it gets censored!"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "This changes EVERYTHING. The corrupt system has been exposed and there is no going back. If this doesn't make you angry, nothing will. Retweet to spread awareness!"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "According to a report published by the Bureau of Labor Statistics on May 15, 2025, the unemployment rate fell to 3.8%, down from 4.1% in April. BLS Commissioner Jay Shambaugh noted that leisure and hospitality added 42,000 jobs, the strongest month since January."
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The city council voted 7-4 to approve the rezoning proposal on Tuesday. Council member Davis opposed it, citing a 2023 traffic study that projected a 14% increase in congestion on Elm Street. Proponents pointed to the developer's commitment to fund a $2.3M traffic signal upgrade."
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Reuters reports that the EU carbon border adjustment mechanism will impose a €45/tonne levy starting January 2026. European Commission spokesperson Miriam García said the measure applies to steel, cement, and aluminum imports. Industry group Eurofer warned it could raise construction costs by 2-3%."
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "A peer-reviewed study in The Lancet (doi:10.1016/S0140-6736(25)00412-8) found that the new RSV vaccine reduced hospitalizations by 62% in adults over 60 during the 2024-25 season. The study followed 28,400 participants across 37 sites. Lead author Dr. Patel noted that efficacy dropped to 41% in immunocompromised patients."
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The NTSB preliminary report on the March 14 derailment identified a fractured rail joint bar as the probable cause. Investigators found that the last inspection of that segment was 11 months prior, exceeding the 6-month interval required under 49 CFR 213.119. The railroad operator has disputed the timeline."
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The Federal Reserve held rates steady at 4.25-4.50% at the June meeting, as expected by 94% of futures traders surveyed by CME FedWatch. Chair Powell cited core PCE inflation at 2.6% and said the committee needs 'more data' before considering cuts. The next decision is scheduled for July 30."
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "This is an important topic that deserves attention. There are many aspects to consider and it is crucial to take a comprehensive approach. By leveraging best practices, we can achieve optimal results."
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "In conclusion, this matter requires careful consideration. It is important to note that various factors play a crucial role. Moving forward, we should explore all avenues to ensure success."
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "The landscape is rapidly evolving and organizations must adapt to stay competitive. By embracing change and fostering innovation, we can navigate the complexities of the modern world."
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "It goes without saying that quality is paramount. In order to deliver exceptional results, we must adopt a holistic approach that takes into account all relevant factors and stakeholders."
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "The 2024 annual report shows revenue of $4.2B, up 11% YoY, but operating margin compressed from 18.3% to 15.7% due to the $340M acquisition of CloudSync. CFO noted on the Q4 call that integration costs should normalize by Q2 2025."
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "I disagree with the proposal to remove the word limit. In my experience editing 200+ submissions, pieces over 3,000 words consistently score lower on reader completion (avg 38% vs 71% for sub-2,000). The exception is technical deep-dives, which hold at 55% regardless of length."
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "The fire destroyed 3 of the 7 server racks in Building C. Recovery took 14 hours because the DR runbook assumed a single-rack failure. Post-incident action: we now replicate to a second AZ with 15-minute RPO instead of the previous 4-hour window."
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "Our contract with Vendor X expires September 30. Their renewal quote is $84k/year, a 40% increase. Alternative: Vendor Y quoted $52k for equivalent SLAs but requires a 6-week migration. Recommendation: start Vendor Y POC now and use the timeline as leverage in the Vendor X negotiation."
+  }
+]

@@ -1,0 +1,127 @@
+{
+  "merged": {
+    "label": "Full Merged Dataset",
+    "total": 453,
+    "errors": 0,
+    "f1": 0.9259,
+    "precision": 0.8865,
+    "recall": 0.969,
+    "accuracy": 0.9558,
+    "avg_slop": 37.7,
+    "avg_reviewed": 51.4,
+    "score_gap": 13.8,
+    "matrix": {
+      "tp": 125,
+      "tn": 308,
+      "fp": 16,
+      "fn": 4
+    },
+    "per_domain": {
+      "academia": {
+        "f1": 1.0,
+        "n": 21,
+        "gap": 13.8
+      },
+      "code_review": {
+        "f1": 0.918,
+        "n": 241,
+        "gap": 13.8
+      },
+      "communications": {
+        "f1": 0.952,
+        "n": 33,
+        "gap": 13.8
+      },
+      "content": {
+        "f1": 0.941,
+        "n": 38,
+        "gap": 13.8
+      },
+      "docs": {
+        "f1": 0.828,
+        "n": 39,
+        "gap": 13.8
+      },
+      "general": {
+        "f1": 1.0,
+        "n": 8,
+        "gap": 13.8
+      },
+      "hiring": {
+        "f1": 0.957,
+        "n": 22,
+        "gap": 13.8
+      },
+      "marketplace": {
+        "f1": 1.0,
+        "n": 20,
+        "gap": 13.8
+      },
+      "social_news": {
+        "f1": 0.875,
+        "n": 31,
+        "gap": 13.8
+      }
+    }
+  },
+  "synthetic_v2": {
+    "label": "Synthetic v2 (novel signal pairs)",
+    "total": 50,
+    "errors": 0,
+    "f1": 0.9362,
+    "precision": 1.0,
+    "recall": 0.88,
+    "accuracy": 0.94,
+    "avg_slop": 38.1,
+    "avg_reviewed": 53.7,
+    "score_gap": 15.6,
+    "matrix": {
+      "tp": 22,
+      "tn": 25,
+      "fp": 0,
+      "fn": 3
+    },
+    "per_domain": {
+      "academia": {
+        "f1": 1.0,
+        "n": 6,
+        "gap": 15.6
+      },
+      "code_review": {
+        "f1": 0.769,
+        "n": 16,
+        "gap": 15.6
+      },
+      "communications": {
+        "f1": 1.0,
+        "n": 4,
+        "gap": 15.6
+      },
+      "content": {
+        "f1": 1.0,
+        "n": 6,
+        "gap": 15.6
+      },
+      "docs": {
+        "f1": 1.0,
+        "n": 6,
+        "gap": 15.6
+      },
+      "hiring": {
+        "f1": 1.0,
+        "n": 4,
+        "gap": 15.6
+      },
+      "marketplace": {
+        "f1": 1.0,
+        "n": 4,
+        "gap": 15.6
+      },
+      "social_news": {
+        "f1": 1.0,
+        "n": 4,
+        "gap": 15.6
+      }
+    }
+  }
+}

@@ -1,0 +1,1574 @@
+[
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the components and improved the implementation. This enhances the user experience and provides a robust solution for the application.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed bugs and improved performance across the codebase. Refactored several modules to ensure better maintainability and scalability going forward.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code for better maintainability. This change improves the overall architecture and enhances the developer experience.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated existing functionality. Made various improvements to enhance the system and ensure a seamless experience for users.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to improve code quality across multiple modules. This PR addresses various issues and enhances overall system reliability.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the frontend components and backend services. The changes improve the overall user experience and make the codebase more maintainable.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Changed auth/session.ts to rotate refresh tokens every 15 minutes because replay risk increased after the mobile login rollout. The migration keeps old tokens valid for 24 hours to avoid forcing active users out during deploy.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Switched OrderService.calculateTotal() from BigDecimal.HALF_UP to HALF_EVEN rounding because we saw 0.3% revenue drift on 14k invoices last quarter. Added regression test in OrderServiceTest.java covering the 7 edge cases from the accounting audit.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Replaced the hand-rolled CSV parser in etl/ingest.py with pandas.read_csv because three customer files had mixed encodings (UTF-8 with BOM, Latin-1) that broke row 4,221 in the Acme dataset. Latency went from 8.3s to 2.1s on the 120 MB test file.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Removed the retry-on-5xx logic in api/client.go after the March incident where a 503 loop consumed 94% of the worker pool for 11 minutes. Now we circuit-break after 3 failures and alert #ops-oncall. Tradeoff: transient blips will surface faster to users, but we avoid cascading outages.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Added rate limiting to /api/v2/search because the Grafana dashboard showed 3 customers sending 400+ rps, which caused p99 to spike from 120ms to 2.8s. Set limit at 60 rps per API key with a 429 response and Retry-After header.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Pinned the OpenSSL dependency to 3.1.4 after CVE-2024-0727 was disclosed. The vulnerability allows memory corruption via crafted PKCS12 files. We don't process user-uploaded PKCS12, but pinning prevents transitive exposure through our certificate rotation job.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "This feature allows users to perform various operations. It provides a comprehensive set of tools that enhance productivity and streamline workflows. The feature is designed to be intuitive and user-friendly.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The configuration system enables powerful customization. Users can configure settings to meet their needs. The configuration is flexible and supports various use cases to deliver optimal results.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The API provides endpoints for data management. It offers a robust solution for handling data operations. The API is designed to be scalable and efficient for various applications.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Authentication is handled seamlessly. The system provides secure access control. Users can manage their credentials through the built-in authentication module which ensures a safe experience.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The deployment process is straightforward. Follow the steps below to deploy your application. The deployment system supports multiple environments and ensures reliable releases.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Error handling is a critical aspect of the application. The system handles errors gracefully and provides meaningful feedback. Proper error handling ensures a smooth user experience.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "To enable rate limiting, add `RATE_LIMIT_RPS=50` to your `.env` file and restart the gateway. The limiter uses a sliding-window counter backed by Redis; if Redis is unavailable, it falls back to in-memory with a 60-second TTL. Example: `curl -H 'X-Api-Key: test' http://localhost:8080/v1/score` should return 429 after 50 requests in one second.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Step 1: Run `npm run db:migrate` to create the `user_sessions` table. Step 2: Set `SESSION_SECRET` in your environment \u2014 the value must be at least 32 characters. Step 3: Restart the server. If you see error TS-4012 in the logs, the secret is too short. See `config/session.ts` lines 14-28 for the validation logic.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "The webhook payload includes `event_type`, `timestamp_ms`, and `payload`. For `order.completed` events, `payload.total_cents` is an integer (not float) to avoid floating-point rounding. Example payload:\n```json\n{\"event_type\": \"order.completed\", \"timestamp_ms\": 1716422400000, \"payload\": {\"order_id\": \"ORD-9281\", \"total_cents\": 4999}}\n```",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "To add a custom detector, create a new file in `slopguard/detectors/` that exports a function matching `def my_signal(text: str) -> SignalResult`. Register it in `detectors/__init__.py` by appending to the `DOMAIN_REGISTRY` dict. Run `pytest tests/test_custom_detector.py` to verify. Note: weights above 2.0 will be clamped to 2.0 by the scoring engine.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Known issue: the `created_at` column on `audit_logs` is not indexed. Queries filtering by date range will full-scan on tables larger than ~500k rows. Workaround: add `CREATE INDEX idx_audit_created ON audit_logs(created_at)` before running the reporting job. Fix planned for v2.4.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "The retry mechanism uses exponential backoff starting at 200ms, doubling up to a cap of 5 seconds, with jitter of \u00b150ms. After 5 consecutive failures, the circuit breaker opens for 30 seconds. During this window, all requests to that upstream return a cached 503. Monitor via the `/health/dependencies` endpoint.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am excited to apply for this role at your company. My skills and passion make me a great fit, and I am confident I can contribute to your team with dedication and enthusiasm.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am passionate about software development and would love to join your team. I am a quick learner with excellent communication skills and a strong work ethic that will benefit your organization.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I believe I am a great fit for this position. My experience and dedication make me an ideal candidate. I am excited about the opportunity to contribute to your company's success and growth.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "With my diverse skill set and enthusiasm for innovation, I am confident that I can add value to your team. I look forward to the opportunity to discuss how I can contribute to your company.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "Dear Hiring Manager, I am writing to express my strong interest in the Software Engineer position. I am a motivated and results-driven professional with a passion for technology and innovation.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I would welcome the opportunity to bring my expertise to your esteemed organization. Throughout my career, I have demonstrated a commitment to excellence and a proactive approach to problem-solving.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "At PayFlow I reduced failed invoice retries by 22% by adding queue backoff and merchant-specific retry windows. Your billing infrastructure role maps directly to that work.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "I noticed Acme's job posting mentions migrating from REST to gRPC. At Cloudline, I led that migration for the notification service \u2014 latency dropped from 120ms p99 to 34ms p99 over 6 sprints. I wrote the internal RFC and trained 4 backend engineers on protobuf schema design.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Your team ships a React Native app with 2M MAU. At Paystack I optimized the React Native bundle from 14 MB to 6.2 MB using lazy loading and code splitting, which improved cold-start time by 41% on mid-range Android devices.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "I built the ETL pipeline at DataHaus that processes 3.2 TB of clickstream data daily on AWS Glue. The pipeline reduced the analytics team's query wait time from 45 minutes to under 3 minutes. I'm applying because your data engineering role specifically mentions Glue and Redshift, which are my strongest tools.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "At Carta, I migrated the cap table calculation engine from Ruby to Go, cutting P95 latency from 4.2s to 280ms for portfolios with 500+ shareholders. The migration required handling 14 edge cases in vesting schedule math that the original code handled incorrectly.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Your posting asks for experience with event-driven architecture. At Shopify I designed the order fulfillment event bus using Kafka with exactly-once semantics, processing 12M events/day across 3 regions. I can share the architecture RFC if useful.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "I wanted to circle back and provide a comprehensive update regarding the ongoing initiative. We are continuing to make progress and will keep everyone informed as things develop.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Just a quick update to keep everyone aligned. We're making great progress on multiple fronts and things are moving forward nicely. Will share more details soon.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Following up on our previous discussion, I wanted to touch base and ensure we're all on the same page regarding the project. Let's plan to sync up next week to discuss further.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Thank you for the productive meeting. There were many great ideas shared. We will take all suggestions into consideration and follow up with next steps in due course.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Hope this message finds you well. I wanted to provide a high-level overview of where things stand. The team has been working hard and making steady progress across all workstreams.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Per our earlier conversation, I wanted to loop back and share some thoughts. I think we should take a holistic approach to this challenge and explore all possible avenues before making a decision.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Decision: ship the smaller importer on Friday. Owner is Riya. Blocker is the CSV date parser; Amit will patch it by 4 PM and QA will retest the 12 failing rows.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Action items from the Monday standup: (1) Priya will finish the Stripe webhook handler by Wednesday EOD. (2) Jake will investigate the 504 timeouts on /api/export \u2014 root cause is likely the unindexed `created_at` column. (3) Decision: we are dropping IE11 support as of v3.2.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Blocked: the staging deploy failed because the `payments` schema migration timed out after 120 seconds on the 4 GB table. Owner: Marco. He'll add a `CONCURRENTLY` index and redeploy by 3 PM Thursday. If it fails again, fallback is to run the migration during the Saturday maintenance window.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Decision from the architecture review: we're switching the notification service from polling to Server-Sent Events. Estimated effort: 2 sprints. Owner: Lena. Next step: Lena will draft the RFC by Friday and share it in #eng-rfc for async feedback. Deadline for feedback: next Tuesday.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Incident postmortem: the 3-hour outage on May 12 was caused by a DNS TTL misconfiguration. The CNAME record for api.acme.com had a 1-second TTL instead of 300 seconds, which caused Route53 to throttle lookups. Fix: bumped TTL to 60s as a compromise between failover speed and lookup volume.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Budget decision: we're cutting the DataDog bill from $18k/mo to $11k/mo by dropping custom metrics for staging environments and reducing log retention from 30 days to 7 days. Prod logs stay at 30 days. Owner: Sarah. Timeline: changes go live June 1.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "In today's digital landscape, businesses must leverage innovative solutions to unlock growth. This article explores the key aspects of success and provides a comprehensive overview of best practices.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "In an ever-changing world, it is important to stay ahead of the curve. This guide will delve into the various strategies that can help you achieve your goals and reach new heights of success.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Unlocking the power of data analytics is essential for modern businesses. This comprehensive guide covers everything you need to know about leveraging data to drive results and gain a competitive edge.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Content marketing plays a crucial role in building brand awareness. By implementing best practices and following proven strategies, organizations can create impactful content that resonates with their audience.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Artificial intelligence is transforming the way we work and live. In this article, we explore how AI is revolutionizing industries and what it means for the future of business and technology.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "The ultimate guide to productivity: discover the top strategies that successful people use every day. From time management to goal setting, these proven techniques will help you achieve more.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "We measured onboarding drop-off across 1,240 trial accounts and found the second workspace invite caused 38% of exits. Removing that step reduced median setup time from 11 minutes to 6 minutes.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "A/B testing our checkout page over 30 days with 18,400 sessions showed that moving the shipping cost estimate above the fold increased conversion by 4.7 percentage points (from 12.1% to 16.8%). Source: internal Mixpanel dashboard, March 2025 cohort.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "According to the 2024 Stack Overflow Developer Survey, 62% of professional developers use VS Code as their primary editor, up from 54% in 2022. JetBrains IDEs held steady at 28%. The survey sampled 89,184 respondents from 185 countries.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Case study: Honeycomb reduced their p99 query latency from 2.4 seconds to 380 ms by switching from Elasticsearch to a custom columnar store. The migration took 9 months and required rewriting their ingest pipeline. CEO Christine Yen noted in a 2024 blog post that the ROI was 'not obvious until month 6.'",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "PostgreSQL 16 introduced incremental backup support, reducing full backup time by 40-60% for databases over 500 GB. In our tests on a 1.2 TB instance, weekly backup windows shrank from 4 hours to 90 minutes. The feature requires wal_level=replica and a base backup taken with pg_basebackup --incremental.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "We compared 3 CDN providers over 90 days across 12 PoPs. Cloudflare delivered a median TTFB of 42ms vs Fastly at 38ms and AWS CloudFront at 61ms. However, Cloudflare's cache hit ratio was 94% vs Fastly's 87%, making the effective origin load 35% lower. Pricing difference was $420/mo at our traffic level.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "This groundbreaking research leverages cutting-edge methodologies to provide novel insights. Our findings demonstrate significant results that have the potential to revolutionize the field and open new avenues for exploration.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "We propose a novel framework that addresses the key challenges in this domain. Our approach outperforms existing methods and achieves state-of-the-art results across all benchmarks, proving its effectiveness.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "The results clearly show that our method is superior. The innovative approach presented in this paper pushes the boundaries of what is possible and establishes a new paradigm for future research.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "Our model achieves remarkable performance gains. This breakthrough research has far-reaching implications that will transform the landscape of artificial intelligence and machine learning applications.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "In this paper, we present a comprehensive analysis of the problem space. Our methodology is rigorous and our results demonstrate the superiority of our approach over existing baselines in all tested scenarios.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "The proposed system represents a significant advancement in the field. Through extensive experimentation, we have validated the effectiveness of our approach and demonstrated its potential for real-world applications.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "We evaluated on the MMLU benchmark (Hendrycks et al., 2021) using 5-shot prompting. Our model achieved 78.3% accuracy (95% CI: 77.1\u201379.5%), compared to 76.1% for the baseline. Limitations: the benchmark over-represents STEM questions, and we did not evaluate on multilingual tasks.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Following the protocol of Chen et al. (2023), we fine-tuned LLaMA-2-7B on 12,400 instruction-response pairs using LoRA (rank=16, alpha=32). Training ran for 3 epochs on 4\u00d7A100 GPUs (40 GB) with a learning rate of 2e-5. The training cost was approximately $180 on AWS. We release the adapter weights at github.com/example/weights.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "We recruited 142 participants (68 female, 71 male, 3 non-binary; mean age 34.2, SD=8.7) through Prolific. Each participant completed 40 trials in a within-subjects design. We report Cohen's d=0.43 for the primary effect, which we consider a small-to-medium effect size. The p-value was 0.003 (two-tailed t-test, Bonferroni-corrected for 3 comparisons).",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Our approach may not generalize to low-resource languages, as the training data contained fewer than 500 examples for 14 of the 28 languages tested. Future work should investigate data augmentation strategies such as back-translation (Sennrich et al., 2016). We also note that our human evaluation involved only 3 annotators, yielding a Fleiss' kappa of 0.61.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Table 3 shows the ablation study results. Removing the attention pooling layer decreased F1 by 3.2 points (from 87.4 to 84.2). Removing the contrastive pre-training step had a larger effect, dropping F1 to 81.6. Both differences were statistically significant (p<0.01, paired bootstrap test, 10k iterations).",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Ethical considerations: our dataset contains Reddit posts that may include personally identifiable information. We applied the PII detection pipeline of Lukas et al. (2023) and manually reviewed 500 random samples, finding 3 instances of leaked email addresses which were removed. IRB approval was obtained under protocol #2024-0847.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Amazing product. Great quality and highly recommend. It works perfectly and exceeded my expectations in every way.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Excellent purchase! This is the best product I have ever bought. It is absolutely perfect and I would recommend it to everyone. Five stars!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Love it! Great product, fast shipping, exactly as described. A must buy for anyone looking for quality. Highly recommend!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "This product is outstanding. It exceeded all my expectations. The quality is superb and it works perfectly. I am extremely satisfied with my purchase.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Absolutely wonderful product! The craftsmanship is impeccable and the attention to detail is remarkable. I could not be happier with this purchase. A truly exceptional product!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Five stars! This product is everything I hoped for and more. The quality speaks for itself. I have already recommended it to all my friends and family.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "The XL black hoodie shrank about 2 cm after the first cold wash, but the zipper stayed smooth and the sleeve cuffs did not pill after three weeks.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Battery lasts about 6 hours with Bluetooth on, not the advertised 10. The noise-canceling is decent for office chatter but doesn't block airplane engine noise. Ear cups start to hurt after 90 minutes \u2014 I have a large head (size 7.5 hat).",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "The 12-inch cast iron skillet weighs 8 lbs. Seasoning was uneven out of the box \u2014 I had to re-season twice with flaxseed oil at 450\u00b0F. After a month of daily use, eggs slide off without oil. The handle gets extremely hot; you need a silicone grip.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Ordered the 64 GB model on May 1, arrived May 7. Screen has a visible yellow tint compared to my old phone when both are at 100% brightness. Camera is sharp in daylight but grain is noticeable in indoor shots at ISO 3200+. Returned for a replacement; the second unit had normal color calibration.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Bought the 10-foot USB-C cable for my standing desk. It charges my MacBook Pro at 96W as advertised. The braided cable is stiff for the first week but softens up. One issue: the right-angle connector blocks the adjacent HDMI port on my CalDigit dock.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "The mattress took 48 hours to fully expand, not the 24 hours stated. Firmness is a 7/10 \u2014 too firm for side sleepers under 150 lbs. After 3 months, there is a visible 1-inch body impression on my side. Used the 100-night trial to return it.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "You won't believe what they're hiding from us. This shocking revelation exposes the truth that they don't want you to know. Share this everywhere before it gets taken down!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "BREAKING: This will change everything! The mainstream media won't cover this story. Wake up people! Share this with everyone you know before they delete it!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "They destroyed the evidence and now they're pretending nothing happened. This is absolutely insane. Copy this and share everywhere \u2014 they are trying to silence us!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "This terrifying truth is being suppressed! The outrage is real and it's time we stood up. You won't believe what they've been doing behind closed doors. Wake up!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "EXPOSED: The biggest scandal of the year that nobody is talking about! Why is the media silent? Because they are complicit. Share this before it gets censored!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "This changes EVERYTHING. The corrupt system has been exposed and there is no going back. If this doesn't make you angry, nothing will. Retweet to spread awareness!",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "According to a report published by the Bureau of Labor Statistics on May 15, 2025, the unemployment rate fell to 3.8%, down from 4.1% in April. BLS Commissioner Jay Shambaugh noted that leisure and hospitality added 42,000 jobs, the strongest month since January.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The city council voted 7-4 to approve the rezoning proposal on Tuesday. Council member Davis opposed it, citing a 2023 traffic study that projected a 14% increase in congestion on Elm Street. Proponents pointed to the developer's commitment to fund a $2.3M traffic signal upgrade.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Reuters reports that the EU carbon border adjustment mechanism will impose a \u20ac45/tonne levy starting January 2026. European Commission spokesperson Miriam Garc\u00eda said the measure applies to steel, cement, and aluminum imports. Industry group Eurofer warned it could raise construction costs by 2-3%.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "A peer-reviewed study in The Lancet (doi:10.1016/S0140-6736(25)00412-8) found that the new RSV vaccine reduced hospitalizations by 62% in adults over 60 during the 2024-25 season. The study followed 28,400 participants across 37 sites. Lead author Dr. Patel noted that efficacy dropped to 41% in immunocompromised patients.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The NTSB preliminary report on the March 14 derailment identified a fractured rail joint bar as the probable cause. Investigators found that the last inspection of that segment was 11 months prior, exceeding the 6-month interval required under 49 CFR 213.119. The railroad operator has disputed the timeline.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The Federal Reserve held rates steady at 4.25-4.50% at the June meeting, as expected by 94% of futures traders surveyed by CME FedWatch. Chair Powell cited core PCE inflation at 2.6% and said the committee needs 'more data' before considering cuts. The next decision is scheduled for July 30.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "This is an important topic that deserves attention. There are many aspects to consider and it is crucial to take a comprehensive approach. By leveraging best practices, we can achieve optimal results.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "In conclusion, this matter requires careful consideration. It is important to note that various factors play a crucial role. Moving forward, we should explore all avenues to ensure success.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "The landscape is rapidly evolving and organizations must adapt to stay competitive. By embracing change and fostering innovation, we can navigate the complexities of the modern world.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "general",
+    "text": "It goes without saying that quality is paramount. In order to deliver exceptional results, we must adopt a holistic approach that takes into account all relevant factors and stakeholders.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "The 2024 annual report shows revenue of $4.2B, up 11% YoY, but operating margin compressed from 18.3% to 15.7% due to the $340M acquisition of CloudSync. CFO noted on the Q4 call that integration costs should normalize by Q2 2025.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "I disagree with the proposal to remove the word limit. In my experience editing 200+ submissions, pieces over 3,000 words consistently score lower on reader completion (avg 38% vs 71% for sub-2,000). The exception is technical deep-dives, which hold at 55% regardless of length.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "The fire destroyed 3 of the 7 server racks in Building C. Recovery took 14 hours because the DR runbook assumed a single-rack failure. Post-incident action: we now replicate to a second AZ with 15-minute RPO instead of the previous 4-hour window.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "reviewed",
+    "domain": "general",
+    "text": "Our contract with Vendor X expires September 30. Their renewal quote is $84k/year, a 40% increase. Alternative: Vendor Y quoted $52k for equivalent SLAs but requires a 6-week migration. Recommendation: start Vendor Y POC now and use the timeline as leverage in the Vendor X negotiation.",
+    "source": "seed_handwritten"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the backend to improve code quality. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored database for better maintainability. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed edge cases and improved performance across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to service. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated database. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the frontend and handler. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved maintainability and fixed problems. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced controller to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code to align with best practices. This comprehensive update improves code quality across modules.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated UI because it needed improvement. The new implementation is more efficient and reliable.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the UI to improve performance. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored backend for better efficiency. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed bugs and improved efficiency across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to module. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated backend. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the controller and UI. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved code quality and fixed errors. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced authentication to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the database to improve code quality. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored backend for better code quality. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed problems and improved maintainability across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated handler. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the frontend and database. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved reliability and fixed bugs. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced database to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated module because it needed improvement. The new implementation is more efficient and reliable.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the database to improve user experience. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored controller for better user experience. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed edge cases and improved maintainability across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the service and controller. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved scalability and fixed edge cases. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the API to improve performance. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored authentication for better efficiency. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed various issues and improved efficiency across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to authentication. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated API. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the handler and handler. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved performance and fixed bugs. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced UI to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the authentication module to improve security. This enhances the overall system reliability and provides a more robust solution for users.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored the codebase for better maintainability. Various improvements were made to ensure scalability and performance going forward.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed bugs and improved the implementation. This change enhances user experience and addresses various issues across multiple components.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated existing functionality. Made comprehensive changes to improve code quality and ensure seamless operation.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved error handling and updated the API. This provides better reliability and ensures a more robust solution for edge cases.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Capped billing retries at 3 because Stripe replayed duplicate webhooks during deploys. Added 10-minute idempotency window. Tested with replay fixtures for HTTP 200, 409, and timeout.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Pinned OpenSSL to 3.1.4 after CVE-2024-0727. We don't process user PKCS12 files but the certificate rotation job has a transitive dependency via libcurl 7.88.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Replaced hand-rolled CSV parser in etl/ingest.py with pandas.read_csv \u2014 3 customer files had mixed encodings (UTF-8 BOM, Latin-1) that broke row 4,221 in the Acme dataset. Latency: 8.3s \u2192 2.1s on 120MB test file.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Removed retry-on-5xx in api/client.go after March incident where 503 loop consumed 94% of worker pool for 11 minutes. Circuit-break after 3 failures, alert #ops-oncall.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Added rate limiting to /api/v2/search: Grafana showed 3 customers sending 400+ rps, spiking p99 from 120ms to 2.8s. Limit: 60 rps/key with 429 + Retry-After header.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "This feature provides comprehensive functionality for users. It is designed to be intuitive and user-friendly, offering a seamless experience across all platforms.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The configuration system enables powerful customization options. Users can configure various settings to meet their specific needs and requirements.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Authentication is handled seamlessly by the system. The built-in security module ensures safe and reliable access control for all users.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The deployment process is straightforward and easy to follow. The system supports multiple environments and ensures reliable, consistent releases.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Error handling is a critical component of the application. The system gracefully handles errors and provides meaningful feedback to enhance user experience.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Run `npm run db:migrate` to create the user_sessions table with 4 indexes (email, token, expires_at, user_id). Takes ~12 minutes on a 50GB PostgreSQL 15 database. If it fails, the transaction rolls back \u2014 no partial state.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Set RATE_LIMIT_RPS=50 in .env and restart the gateway. The limiter uses a sliding-window counter backed by Redis; if Redis is unavailable, falls back to in-memory with 60s TTL. Returns 429 after 50 requests/second.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Known issue: created_at on audit_logs is not indexed. Queries filtering by date range will full-scan on tables larger than ~500k rows. Workaround: CREATE INDEX CONCURRENTLY idx_audit_created ON audit_logs(created_at). Fix planned for v2.4.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "The retry mechanism uses exponential backoff starting at 200ms, doubling to a cap of 5s, with \u00b150ms jitter. After 5 consecutive failures, circuit breaker opens for 30s. Monitor via /health/dependencies.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Step 3: Set SESSION_SECRET in your environment \u2014 must be at least 32 characters. If you see error TS-4012 in logs, the secret is too short. See config/session.ts lines 14-28 for validation logic.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am excited to apply for this role. My passion and dedication make me a great fit, and I am confident I can contribute to your team with enthusiasm and hard work.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am a motivated professional with excellent communication skills and a strong work ethic. I would love to join your team and contribute to your company's success.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "With my diverse skill set and enthusiasm for innovation, I am confident I can add value to your organization. I look forward to discussing how I can contribute.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "Dear Hiring Manager, I am writing to express my strong interest in this position. I am a results-driven professional with a passion for technology and problem-solving.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I believe I am an ideal candidate for this role. My experience and dedication make me well-suited to contribute to your team and help achieve your company's goals.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "I led the migration from Jenkins to GitHub Actions across 8 microservices \u2014 cut CI time from 45min to 12min. Reduced API latency by 40% (200ms to 120ms p95) via Redis caching.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Built the ETL pipeline at DataHaus processing 3.2TB of clickstream data daily on AWS Glue. Reduced analytics query wait from 45 minutes to under 3 minutes. Applying because your role specifically mentions Glue and Redshift.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "At Carta, migrated cap table calculation engine from Ruby to Go \u2014 P95 latency from 4.2s to 280ms for portfolios with 500+ shareholders. Required handling 14 edge cases in vesting schedule math.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Designed the order fulfillment event bus at Shopify using Kafka with exactly-once semantics, processing 12M events/day across 3 regions. Can share the architecture RFC.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "I wanted to circle back and provide a comprehensive update. We are continuing to make progress and will keep everyone informed as things develop going forward.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Following up on our previous discussion to ensure we're all on the same page. Let's plan to sync up next week to discuss further and align on next steps.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Decision: ship the smaller importer on Friday. Owner: Riya. Blocker: CSV date parser. Amit patches by 4 PM, QA retests the 12 failing rows.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Blocked: staging deploy failed \u2014 payments schema migration timed out after 120s on the 4GB table. Owner: Marco. Redeploy by 3 PM Thursday with CONCURRENTLY index. Fallback: Saturday maintenance window.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Budget decision: cutting DataDog from $18k/mo to $11k/mo by dropping custom metrics for staging and reducing log retention from 30 to 7 days. Prod stays at 30 days. Owner: Sarah. Live June 1.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Incident postmortem: 3-hour outage May 12 caused by DNS TTL misconfiguration. CNAME for api.acme.com had 1s TTL instead of 300s, throttling Route53 lookups. Fix: bumped to 60s.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Action items: (1) Priya finishes Stripe webhook handler by Wednesday EOD. (2) Jake investigates 504 timeouts on /api/export \u2014 likely unindexed created_at. (3) Decision: dropping IE11 support in v3.2.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "I was moved to a different team recently. So I have to learn new domain knowledge, new language (moved from C++ to python). My company openly says we should burn tokens, and vibe code, it's only speed that matters. I picked up a new task. I really tried to embrace agentic AI, I had skills written that plan the feature, analyse existing codebase, subagents that guard quality of code, compliance with a spec etc. First problem, this huge system is slow as hell. Secondly, I then have to sift through 3000 lines of code, only to discover, it's all slop, and it shouldn't even be 3000 lines. I feel like I'm also not learning anything. But if I stop burning dollars on cursor, it will negatively impac",
+    "source": "reddit:r/ExperiencedDevs"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "So I make a lot of tools and infra. And have agents go off and iterate and tinker with my harness. I (and sometimes they) tinker so much I sometimes make things, leave them running, and either integrate actively or forget I have them until I audit or check logs.\n\n Through this\u2026 I ran into a tooling pattern recently that feels distinct from the usual categories.\n\nThe other day I opened my terminal and before I typed anything, a local session-start check surfaced drift in a dormant project: a missing consistency test that would have caught documentation/code divergence.\n\nThat doesn\u2019t feel like standard observability. Does it?\n\nI don\u2019t mean:  \n\\-dashboards you remember to check  \n\\-blocking qua",
+    "source": "reddit:r/ExperiencedDevs"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "The [top voted thread on this sub](https://www.reddit.com/r/cscareerquestions/comments/1tohwtd/this_subreddit_is_astroturfed_to_the_point_of/) is a post by an \"experienced dev\" with less than 5 YOE stating confidently that there is nothing more to AI than corporate propaganda and paid astroturfing, and companies like Anthropic and OpenAI have \"miserably failed to acquire mass adoption\", and they are now \"running out of options\" and have to resort to astroturf a bunch of CS students and junior engineers with no purchasing power on a niche subreddit?\n\nDoes this sub no longer live in [objective reality](https://www.wsj.com/tech/ai/mind-blowing-growth-is-about-to-propel-anthropic-into-its-first-",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Text from article [https://www.businessinsider.com/nvidia-ceo-jensen-huang-ai-job-cuts-losses-lazy-narrative-2026-5](https://www.businessinsider.com/nvidia-ceo-jensen-huang-ai-job-cuts-losses-lazy-narrative-2026-5) :\n\nNvidia CEO\u00a0Jensen Huang\u00a0criticized CEOs who blamed\u00a0artificial intelligence\u00a0for layoffs, calling the narrative \"lazy.\"\n\n\"I think the narrative that connects AI to job loss for many of the CEOs that are doing it, it is just too lazy,\" Huang told Singapore broadcaster\u00a0Channel NewsAsia\u00a0in an interview on Monday.\n\n\"AI has just arrived. How is it possible they're already losing jobs?\" he asked.\n\nHuang said it \"doesn't make any sense\" for companies to link layoffs to AI before generat",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "The whole of 2026 I have been working really long hours and have had to cancel plans with family and friends to attend necessary deployments or releases which I am the only available member for. I haven't been able to have weekends off, and have not been compensated with overtime pay and also have not gotten any time in lieue even though they keep dangling that promise in front of me. \n\nI'm exhausted at this point and and considering quitting but I know the market is terrible and I worry I wont be able to get another job anywhere else. Do I just suck it up or will it be better to quit and find a job elsewhere. I'm so busy I dont have time to eat, the longest day I've worked was 21 hours beca",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "I will be graduating in 2026 and have accepted an on-campus offer for an SQL Developer position at a reputable company. Since my long-term career objective is to become a Software Developer, I would like to know if this role will count toward relevant industry experience.\n\u200bIf I decide to transition into software development after two years, how challenging will the shift be? Will recruiters treat me as an entry-level fresher in software development, despite my two years of SQL experience?",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "So, last year, [I posted](https://old.reddit.com/r/sysadmin/comments/1mr06yd/i_applied_for_a_sysadmin_position_im_terrified/) about how a manager at work approached me to apply internally for a sysadmin position. I went through 3 rounds of internal interviews and in the end they went with an external hire because the CIO struck down me as a hire since I didn't have a college degree.\n\nSince then I've been working on getting some more certs (just finished my CCNA!!), and have been having every-other-week meetings with the VP above me. I was given a few projects to manage that I knocked out of the park and completed essentially all on my own, and between the previous manager asking to bring me ",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "This needs more visibility. Microsoft just wasted 6 hours of my life with an untested patch.\n\nI run an Azure Server 2022 RDS host serving a business application. It suddenly started throwing:\n\nsplwow64.exe - Application Error: The application was unable to start correctly (0xc0000142)\n\nAny 32-bit app that touched printing would crash on launch (reproduced it with plain 32-bit Notepad too). 64-bit printing worked fine.\n\nWasted hours chasing the print driver, VC++ redists, SFC/DISM (all clean) \u2014 none of it was the cause.\n\nRoot cause: Process Monitor (filter splwow64.exe) showed the process die with exit status -1073741502 (0xc0000142) immediately after touching:\n\nC:\\\\Windows\\\\WinSxS\\\\amd64\\_mi",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "It looks like VMWare have started releasing their automated process for updating the Secure Boot Certs with this release:\n\nhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/release-notes/esxi-update-and-patch-release-notes/vsphere-esxi-80u3j-release-notes.html\n\nThe KB pages for the Secure Boot Certs have also been updated:\n\nhttps://knowledge.broadcom.com/external/article/423893/secure-boot-certificate-expirations-and.html\n\nhttps://knowledge.broadcom.com/external/article/423893#:~:text=bytes.Length%0A%2045-,SilentPK%20update,-for%20vTPM%20disabled\n\nIt looks like currently the automated process only works for VM's that do not have a vTPM attached (they provide some powershell ",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "My past post: https://www.reddit.com/r/sysadmin/s/drhMqvlhGo\n\nBelow is a long post on my cybersecurity career so far and what I\u2019ve learned since posting my first threads here some years ago. Sorry for the length, but it may help someone!\n\nAbout 6/7 (haha) years ago I posted here about starting out in helpdesk. Two years later I posted again, still in a sysadmin-ish role, climbing the ladder. Well, the ladder kept going. I'm now a cybersecurity engineer with a few years of experience across a lot of different environments. Here's an update for anyone getting into the field or trying to move up.\n\nI went full security about 4-5 years ago. I started as a security analyst after 3-4 years in gener",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "A/B testing checkout over 30 days with 18,400 sessions: moving shipping cost estimate above the fold increased conversion by 4.7pp (12.1% to 16.8%). Source: Mixpanel, March 2025 cohort.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "PostgreSQL 16 incremental backup reduced full backup time by 40-60% for databases over 500GB. On our 1.2TB instance, weekly backup windows shrank from 4 hours to 90 minutes.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Compared 3 CDN providers over 90 days across 12 PoPs. Cloudflare: 42ms median TTFB, 94% cache hit. Fastly: 38ms TTFB, 87% cache hit. CloudFront: 61ms TTFB. Pricing difference: $420/mo at our traffic level.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "CVE-2024-0727 affects OpenSSL 3.x via crafted PKCS12 files. 2.3 million npm packages have a transitive dependency. Patch: upgrade to 3.1.4. Check: openssl version -a.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "We propose a novel framework that addresses key challenges in this domain. Our approach outperforms existing methods and achieves state-of-the-art results across all benchmarks.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "The results clearly show that our method is superior. This innovative approach pushes the boundaries of what is possible and establishes a new paradigm for future research.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "We evaluated on MMLU (Hendrycks et al., 2021) using 5-shot prompting. Our model achieved 78.3% accuracy (95% CI: 77.1-79.5%), vs 76.1% for the baseline. Limitation: benchmark over-represents STEM.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Fine-tuned LLaMA-2-7B on 12,400 instruction-response pairs using LoRA (rank=16, alpha=32). 3 epochs on 4\u00d7A100 40GB GPUs, lr=2e-5. Training cost: ~$180 on AWS. Adapter weights released at github.com/example/weights.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Recruited 142 participants (mean age 34.2, SD=8.7) via Prolific. Within-subjects design, 40 trials each. Cohen's d=0.43 (small-to-medium). p=0.003, two-tailed t-test, Bonferroni-corrected for 3 comparisons.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Table 3 ablation: removing attention pooling decreased F1 by 3.2 points (87.4\u219284.2). Removing contrastive pre-training dropped F1 to 81.6. Both significant (p<0.01, paired bootstrap, 10k iterations).",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Dataset contains Reddit posts with potential PII. Applied Lukas et al. (2023) PII detection pipeline and manually reviewed 500 random samples \u2014 found 3 leaked email addresses, removed. IRB approval: protocol #2024-0847.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Amazing product! Great quality and highly recommend. It works perfectly and exceeded my expectations in every way. Five stars!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Excellent purchase! This is the best product I have ever bought. Absolutely perfect and I would recommend it to everyone without hesitation.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "XL black hoodie shrank ~2cm after first cold wash. Zipper stayed smooth and sleeve cuffs didn't pill after 3 weeks. Runs large \u2014 size down if between sizes.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Battery lasts ~6 hours with Bluetooth on, not the advertised 10. Noise-canceling handles office chatter but not airplane engines. Ear cups hurt after 90 minutes \u2014 I have a large head (size 7.5 hat).",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "12-inch cast iron skillet weighs 8 lbs. Seasoning was uneven out of box \u2014 re-seasoned twice with flaxseed oil at 450\u00b0F. After a month of daily use, eggs slide off without oil. Handle gets extremely hot.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Ordered 64GB model May 1, arrived May 7. Screen has visible yellow tint vs my old phone at 100% brightness. Camera sharp in daylight but grain noticeable in indoor shots at ISO 3200+. Returned for replacement.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "10-foot USB-C cable charges MacBook Pro at 96W as advertised. Braided cable stiff for first week then softens. Issue: right-angle connector blocks adjacent HDMI port on CalDigit dock.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "This changes EVERYTHING. The corrupt system has been exposed. If this doesn't make you angry, nothing will. Retweet to spread awareness!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Bureau of Labor Statistics May 15 report: unemployment fell to 3.8% from 4.1% in April. Commissioner Shambaugh noted leisure and hospitality added 42,000 jobs, strongest month since January.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "City council voted 7-4 to approve rezoning. Council member Davis opposed citing a 2023 traffic study projecting 14% congestion increase on Elm Street. Developer committed to $2.3M traffic signal upgrade.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Reuters: EU carbon border adjustment mechanism imposes \u20ac45/tonne levy starting January 2026 on steel, cement, and aluminum imports. Eurofer warns 2-3% construction cost increase.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Lancet study (doi:10.1016/S0140-6736(25)00412-8): new RSV vaccine reduced hospitalizations by 62% in adults over 60 during 2024-25 season. 28,400 participants, 37 sites. Efficacy drops to 41% in immunocompromised patients.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "NTSB preliminary report on March 14 derailment: fractured rail joint bar probable cause. Last inspection 11 months prior, exceeding 6-month interval required under 49 CFR 213.119. Railroad operator disputes timeline.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "/r/WorldNews Live Thread: Russian Invasion of Ukraine Day 1553, Part 1 (Thread #1700)",
+    "source": "reddit:r/worldnews"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "This CEO announced huge job cuts because of AI. Threats to his family followed",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Star Citizen releases $5000 \u2018concept\u2019 ship as game crosses $1 billion in funding",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Uber burned through its entire 2026 AI budget in four months. Now its COO is questioning whether it's worth it",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "\u2018Lobotomized\u2019: Character.AI Is Showing What AI Enshittification Looks Like",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "RETRACTED: Longitudinal Data From the KETO-CTA Study: Plaque Predicts Plaque, ApoB Does Not\n\nWe wish to inform the [r/science](https://www.reddit.com/r/science/) community of an article submitted to the subreddit that has since been retracted by the journal. The submission garnered broad exposure on [r/science](https://www.reddit.com/r/science/) and significant social media coverage. Per [our rules](https://www.reddit.com/r/science/wiki/rules/#wiki_retractions), the flair on this submission has been updated with \"RETRACTED\". The submission has also been added to our [wiki of retracted submissi",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Climate crisis is accelerating antibiotic resistance across world. Climate change linked to 10% rise in salmonella antibiotic resistance genes between 1940 and 2023. It can influence how bacteria survive, mutate and spread, potentially increasing the exchange of antibiotic resistance genes.",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The ketogenic diet may protect against Alzheimer's, Parkinson's, and Huntington's disease by providing neurons with alternative fuel and reducing neuroinflammation \u2014 but patient adherence and long-term safety remain major barriers to clinical use",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The mediating role of DNA methylation clocks in associations of race, ethnicity, education, income, and occupation with mortality: findings from NHANES 1999-2002",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Announcement: We've Updated The Rules, and April Is Finally Over\n\nAfter [temporarily banning LLM-related content over April](https://www.reddit.com/r/programming/comments/1s9jkzi/announcement_temporary_llm_content_ban/), and [asking you for feedback on that ban](https://www.reddit.com/r/programming/comments/1t4odyl/looking_for_feedback_on_ai_content_in/), we've decided to bring about an end of the temporary, I-can't-believe-it's-still-April ban on AI-related posts.\n\nReplacing the trial rule is a new shiny rule that refers to our new shiny [AI policy](https://www.reddit.com/r/programming/wiki/a",
+    "source": "reddit:r/programming"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "YouTube to automatically label AI-generated videos\n\n<a href=\"https:&#x2F;&#x2F;variety.com&#x2F;2026&#x2F;digital&#x2F;news&#x2F;youtube-ai-video-labels-automatic-detection-1236758865&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;variety.com&#x2F;2026&#x2F;digital&#x2F;news&#x2F;youtube-ai-video-label...</a>",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Show HN: Ktx \u2013 Open-source executable context layer for data agents\n\nHi HN, we\u2019re open-sourcing ktx. It\u2019s an executable context layer that makes agents reliable on your data stack.<p>We built it after going through the experience of building production-grade data agents for dozens of companies. If you\u2019ve also tried building them, or simply tried using Claude Code or Codex on your data warehouse, you\u2019ll know that accuracy is the #1 issue. Agents are great at generating valid SQL, but it\u2019s not always correct SQL.<p>To cite a few examples of \u201cagents gone wrong\u201d:\n- Stale column + hidden business rule: when preparing a board report, a finance analyst asks Claude Code for \u201cARR by customer segment\u201d, it derives ARR from multiple tables (subscriptions, plans, accounts), then groups by accounts.indu",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "News about Raspberry Pi 6 and Microcontroller Development",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Show HN: Open-Source AI Racing Harness\n\nHi I&#x27;m Dan from Elodin, making an open source real-time capable flight software simulation.<p>For AI Grand Prix contestants, the wait for the Round 1 virtual qualifier simulation has been grueling.<p>If you\u2019re competing, check out our simulation harness to tide you over, built to match the published competition constraints and message format. It runs against real Betaflight, which we learned requires at least 1000 sensor samples per second to run real-time correctly.<p>The competition warranted introducing a new feature to generate the camera sensor directly in the simulation loop. Typically people connect to Unreal or similar game engine to create a camera sensor, which works well but is very heavy. For the simple needs of this challenge, creat",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "I'm Getting into Mesh Networks (Meshtastic, MeshCore, and Reticulum)",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Thornton Wilder's Last Play Vanished into Thin Air. Or Did It?\n\n<a href=\"https:&#x2F;&#x2F;archive.ph&#x2F;0g4Eu\" rel=\"nofollow\">https:&#x2F;&#x2F;archive.ph&#x2F;0g4Eu</a>",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Using Tailscale with an OrbStack VM on macOS\n\nHere&#x27;s an example of how to build an Ubuntu VM using OrbStack on macOS and then connect to the VM through Tailscale SSH using an auth key stored in Apple Keychain.<p>For example, I can create a VM on my Mac mini at home that hosts a git repo or even a Forgejo server. A colleague in my Tailnet can then connect to this VM to clone, push or pull source code changes from a coffeeshop or airliner while not exposing the rest of my Mac mini.",
+    "source": "hacker_news"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "The Most Concerning AI Risk of 2026\n\n7000+ dev developers shared their thoughts about AI in the recent State of Web Dev AI survey. ",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Top 7 Featured DEV Posts of the Week\n\nWelcome to this week's Top 7, where the DEV editorial team handpicks their favorite posts from the...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "An LLM API call, in 4 GIFs\n\nThis is the first post of series Building TinyAgent where we are going to build a small agent from...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Should you use Gemma 4 for your Development? A Multiversal Analysis to Determine if Gemma 4 is Right for You!\n\nThis is a submission for the Gemma 4 Challenge: Write About Gemma 4   Disclaimer: This is an...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Recycling made easy: a Polish recycling assistant powered by Gemma 4\n\nThis is a submission for the Gemma 4 Challenge: Build with Gemma 4  I clearly remember this scene: my...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Google Antigravity 1.0 to 2.0/IDE Quick Migration Guide\n\nLike many Google Antigravity users, I was very excited about the Antigravity 2.0 announcement at...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Reviving a 12K+ Star Abandoned Library: toastr-next v3 \ud83c\udf5e\n\nThis is a submission for the GitHub Finish-Up-A-Thon Challenge              What I...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "AI Agents Are Great at 80% of Our Code. The Other 20% Is Why We Still Need Seniors.\n\nWe let AI agents loose on a payment platform. They crushed the boring stuff. Then they silently broke...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "NeuralHats: I Put Edward de Bono\u2019s Six Thinking Hats on Local LLMs Using Gemma 4\n\nThis is a submission for the Gemma 4 Challenge: Build with Gemma 4           What I Built           ...",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Gemma 4 challenge inspired me to build my first app!\n\nThis is a submission for the Gemma 4 Challenge: Write About Gemma 4  It started with a real need....",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Vestige: A Gemma 4 Brain Tracker That Won't Blow Smoke Up Your Ass\n\nAn ADHD brain tracker built on Gemma 4 (E4B + EmbeddingGemma 300M) that observes and never grades. Native audio, multi-lens extraction, on-device after one model download.",
+    "source": "dev_to"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Anyone else feel like there\u2019s a rise in cybersecurity fear mongering lately?\n\nI\u2019ve been working on data/analytics APIs for over a decade. ive gone through SOC2, HIPAA, FedRAMP, you name it, and I\u2019m usually the guy advocating for being more cybersecurity conscience, but lately I feel like I\u2019ve seen more \u201cIt\u2019s so over\u201d security stories that ever before that are all way overblown.\n\nThis one (CVE-2026-48710 / BadHost) is driving me nuts:\n\n[https://arstechnica.com/information-technology/2026/05/millions-of-ai-agents-imperiled-by-critical-vulnerability-in-open-source-package/](https://arstechnica.com/information-technology/2026/05/millions-of-ai-agents-imperiled-by-critical-vulnerability-in-open-s",
+    "source": "reddit"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Mobile roles?\n\nNot seeing many mobile roles anymore. Especially ones that require some experience developing robust end to end systems.   \nMost roles I see are react, slim product layers above LLM.   \nI guess that\u2019s the flavour of the season?   \nThis is in USA (Bay Area)",
+    "source": "reddit"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Do you operate at the level you need to work at normally?\n\nFor example if there's a weekend or a vacation. I need to rev back into gear so I'm able to do and even sometimes understand the work. But after some days away, I am not in gear so to say. Sometimes it takes me a few days of effort for my brain to get the  picture that it's time to rev up and then it revs down again for rest. \n\nSome people seem to operate in their personal life with the same brain functioning as they need for work. Me on the other hand, my brain doesn't do much if not forced. Using it for this type of role is like using Nos in Fast and the furious. The engine can do it but it certainly was not meant for it.",
+    "source": "reddit"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Why is conditional processing of a sorted array faster than of an unsorted array?\n\nIn this C++ code, sorting the data ( before the timed region) makes the primary loop ~6x faster: #include &lt;algorithm&gt; #include &lt;ctime&gt; #include &lt;iostream&gt; int main() { // Generate data const unsigned arraySize = 32768; int data[arraySize]; for (unsigned c = 0; c &lt; arraySize; ++c) data[c] = std::rand() % 256; // !!! With this, the next loop runs faster. std::sort(data, data + arraySize); // Test clock_t start = clock(); long long sum = 0; for (unsigned i = 0; i &lt; 100000; ++i) { for (unsigned c = 0; c &lt; arraySize; ++c) { // Primary loop. if (data[c] &gt;= 128) sum += data[c]; } } doubl",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "How do I undo the most recent local commits in Git?\n\nI accidentally committed the wrong files to Git but haven't pushed the commit to the server yet. How do I undo those commits from the local repository?",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "How do I delete a Git branch locally and remotely?\n\nFailed Attempts to Delete a Remote Branch: $ git branch -d remotes/origin/bugfix error: branch 'remotes/origin/bugfix' not found. $ git branch -d origin/bugfix error: branch 'origin/bugfix' not found. $ git branch -rd origin/bugfix Deleted remote branch origin/bugfix (was 2a14ef7). $ git push Everything up-to-date $ git pull From github.com:gituser/gitproject * [new branch] bugfix -&gt; origin/bugfix Already up-to-date. How do I properly delete the remotes/origin/bugfix branch both locally and remotely?",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "What is the difference between &#39;git pull&#39; and &#39;git fetch&#39;?\n\nWhat are the differences between git pull and git fetch ?",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "What does the &quot;yield&quot; keyword do in Python?\n\nWhat functionality does the yield keyword in Python provide? For example, I'm trying to understand this code 1 : def _get_child_candidates(self, distance, min_dist, max_dist): if self._leftchild and distance - max_dist &lt; self._median: yield self._leftchild if self._rightchild and distance + max_dist &gt;= self._median: yield self._rightchild And this is the caller: result, candidates = [], [self] while candidates: node = candidates.pop() distance = node._get_dist(obj) if distance &lt;= max_dist and distance &gt;= min_dist: result.extend(node._values) candidates.extend(node._get_child_candidates(distance, min_dist, max_dist)) return re",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "How can I remove a specific item from an array in JavaScript?\n\nHow do I remove a specific value from an array? Something like: array.remove(value); Constraints: I have to use core JavaScript. Frameworks are not allowed.",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Which JSON content type do I use?\n\nThere are many &quot;standards&quot; for the JSON content type: application/json application/x-javascript text/javascript text/x-javascript text/x-json Which one do I use, and where? I assume security and browser support issues are a factor. Related: What MIME type if JSON is being returned by a REST API?",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "What is the &#39;--&gt;&#39; operator in C/C++?\n\nAfter reading Hidden Features and Dark Corners of C++/STL on comp.lang.c++.moderated , I was completely surprised that the following snippet compiled and worked in both Visual Studio 2008 and G++ 4.4. I would assume this is also valid C since it works in GCC as well. Here's the code: #include &lt;stdio.h&gt; int main() { int x = 10; while (x --&gt; 0) // x goes to 0 { printf(&quot;%d &quot;, x); } } Output: 9 8 7 6 5 4 3 2 1 0 Where is this defined in the standard, and where has it come from?",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Why does HTML think \u201cchucknorris\u201d is a color?\n\nWhy do certain random strings produce colors when entered as background colors in HTML? For example, bgcolor=&quot;chucknorris&quot; produces a red background : &lt;body bgcolor=\"chucknorris\"&gt; test &lt;/body&gt; Conversely, bgcolor=&quot;chucknorr&quot; produces a yellow background : &lt;body bgcolor=\"chucknorr\"&gt; test &lt;/body&gt; This holds true across various browsers and platforms. What\u2019s going on here?",
+    "source": "stackoverflow"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "GraphQL is a data query and manipulation language that allows specifying what data is to be retrieved or modified. A GraphQL server can process a client query using data from separate sources and present the results in a unified graph. The language is not tied to any specific database or storage engine. There are several open-source runtime engines for GraphQL.",
+    "source": "wikipedia"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "REST is a software architectural style that was created to describe the design and guide the development of the architecture for the World Wide Web. REST defines a set of constraints for how the architecture of a distributed, Internet-scale hypermedia system, such as the Web, should behave. The REST architectural style emphasizes uniform interfaces, independent deployment of components, the scalability of interactions between them, and creating a layered architecture to promote caching to reduce user-perceived latency, enforce security, and encapsulate legacy systems.",
+    "source": "wikipedia"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Redis is an in-memory key\u2013value database, used as a distributed cache and message broker, with optional durability. Because it holds all data in memory and because of its design, Redis offers low-latency reads and writes, making it particularly suitable for use cases that require a cache.",
+    "source": "wikipedia"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "In software engineering, a microservice architecture is an architectural pattern that organizes an application into a collection of loosely coupled, fine-grained services that communicate through lightweight protocols. This pattern allows teams to develop, deploy, and scale services independently, improving modularity, scalability, and adaptability. However, it introduces additional complexity, particularly in managing distributed systems and inter-service communication, making the initial implementation more challenging compared to a monolithic architecture.",
+    "source": "wikipedia"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "DevOps is the integration and automation of software development and information technology operations. DevOps encompasses the tasks necessary for software development and can lead to both shortening development time and improving the development life cycle. According to Neal Ford, DevOps, particularly through continuous delivery, employs the \"bring the pain forward\" principle by tackling tough tasks early, fostering automation, and enabling swift issue detection. Software programmers and architects should use fitness functions to keep their software in check.",
+    "source": "wikipedia"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "PostgreSQL, also known as Postgres, is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance. PostgreSQL features transactions with atomicity, consistency, isolation, durability (ACID) properties, automatically updatable views, materialized views, triggers, foreign keys, and stored procedures.\nIt is supported on all major operating systems, including Windows, Linux, macOS, FreeBSD, and OpenBSD, and handles a range of workloads from single machines to data warehouses, data lakes, or web services with many concurrent users.",
+    "source": "wikipedia"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Agile software development is an umbrella term for approaches to developing software that reflect the values and principles agreed upon by The Agile Alliance, a group of 17 software practitioners, in 2001. As documented in their Manifesto for Agile Software Development, the practitioners value:Individuals and interactions over processes and tools\nWorking software over comprehensive documentation\nCustomer collaboration over contract negotiation\nResponding to change over following a plan",
+    "source": "wikipedia"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "Extracting Cardiorespiratory Symptoms From Clinical Notes Using Open-Weight Large Language Models: Method Development and Validation Study.\n\nThis study aims to develop and validate an interpretable machine learning (ML) model for predicting post-procedural hemorrhage (PH) after ultrasound-guided percutaneous renal biopsy (PRB), aiding perioperative management.",
+    "source": "pubmed"
+  }
+]
