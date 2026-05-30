@@ -1,0 +1,695 @@
+{"text": "therefore we needed to middleware", "label": "why"}
+{"text": "fixed api bug", "label": "what"}
+{"text": "to prevent auth from happening", "label": "why"}
+{"text": "since api led to crashes", "label": "why"}
+{"text": "to avoid api issues in production", "label": "why"}
+{"text": "because profiling showed routerms latency", "label": "why"}
+{"text": "due to parser affecting latency", "label": "why"}
+{"text": "to avoid router issues in production", "label": "why"}
+{"text": "since auth led to errors", "label": "why"}
+{"text": "removed unused validator code", "label": "what"}
+{"text": "since cache led to memory leaks", "label": "why"}
+{"text": "implemented parser feature", "label": "what"}
+{"text": "It could potentially because profiling showed 340ms overhead in the auth middleware", "label": "why"}
+{"text": "because prepared statements are incompatible with PgBouncer transaction mode", "label": "why"}
+{"text": "because api broke when overflow", "label": "why"}
+{"text": "created a new billing service", "label": "what"}
+{"text": "since the cache TTL was too short, causing unnecessary database load", "label": "why"}
+{"text": "therefore we needed to router", "label": "why"}
+{"text": "because router was causing race conditions", "label": "why"}
+{"text": "modified router to handle crashes", "label": "what"}
+{"text": "therefore we needed to parser", "label": "why"}
+{"text": "to avoid validator issues in production", "label": "why"}
+{"text": "added billing functionality", "label": "what"}
+{"text": "implemented middleware feature", "label": "what"}
+{"text": "due to middleware affecting race conditions", "label": "why"}
+{"text": "to avoid middleware issues in production", "label": "why"}
+{"text": "refactored database class", "label": "what"}
+{"text": "since we noticed parser in production", "label": "why"}
+{"text": "to avoid handler issues in production", "label": "why"}
+{"text": "It could potentially to prevent the JWT secret from appearing in CloudWatch logs", "label": "why"}
+{"text": "created a new router service", "label": "what"}
+{"text": "since validator led to timeout", "label": "why"}
+{"text": "since handler led to latency", "label": "why"}
+{"text": "added router functionality", "label": "what"}
+{"text": "since router led to errors", "label": "why"}
+{"text": "because billing was causing crashes", "label": "why"}
+{"text": "created a new billing service", "label": "what"}
+{"text": "fixed router bug", "label": "what"}
+{"text": "therefore we needed to service", "label": "why"}
+{"text": "refactored api class", "label": "what"}
+{"text": "to reduce the number of database round trips from 7 to 1", "label": "why"}
+{"text": "fixed auth bug", "label": "what"}
+{"text": "since service led to timeout", "label": "why"}
+{"text": "since we noticed auth in production", "label": "why"}
+{"text": "added tests for database", "label": "what"}
+{"text": "to avoid cache issues in production", "label": "why"}
+{"text": "to reduce api by race conditions%", "label": "why"}
+{"text": "bumped middleware to version memory leaks", "label": "what"}
+{"text": "because cache was causing duplicates", "label": "why"}
+{"text": "to reduce database by timeout%", "label": "why"}
+{"text": "fixed handler bug", "label": "what"}
+{"text": "since we noticed middleware in production", "label": "why"}
+{"text": "updated the service module", "label": "what"}
+{"text": "In some cases, to reduce the number of database round trips from 7 to 1", "label": "why"}
+{"text": "to avoid auth issues in production", "label": "why"}
+{"text": "to avoid validator issues in production", "label": "why"}
+{"text": "because cache broke when latency", "label": "why"}
+{"text": "to reduce service by timeout%", "label": "why"}
+{"text": "to reduce cache by overflow%", "label": "why"}
+{"text": "It may be worth noting that to control for multiple comparisons using Bonferroni correction", "label": "why"}
+{"text": "implemented auth feature", "label": "what"}
+{"text": "bumped service to version duplicates", "label": "what"}
+{"text": "bumped billing to version race conditions", "label": "what"}
+{"text": "removed unused service code", "label": "what"}
+{"text": "added tests for api", "label": "what"}
+{"text": "It is generally accepted that since the cache TTL was too short, causing unnecessary database load", "label": "why"}
+{"text": "because profiling showed apims latency", "label": "why"}
+{"text": "updated the parser module", "label": "what"}
+{"text": "to prevent api from happening", "label": "why"}
+{"text": "to prevent database from happening", "label": "why"}
+{"text": "because the migration takes 12 minutes on a 50GB database", "label": "why"}
+{"text": "since billing led to memory leaks", "label": "why"}
+{"text": "to prevent auth from happening", "label": "why"}
+{"text": "to prevent auth from happening", "label": "why"}
+{"text": "since the error messages were too generic for support to diagnose issues", "label": "why"}
+{"text": "updated the billing module", "label": "what"}
+{"text": "because profiling showed authms latency", "label": "why"}
+{"text": "to prevent parser from happening", "label": "why"}
+{"text": "because profiling showed apims latency", "label": "why"}
+{"text": "since the session secret must be at least 32 characters", "label": "why"}
+{"text": "In some cases, because the retry mechanism uses exponential backoff starting at 200ms", "label": "why"}
+{"text": "updated the api module", "label": "what"}
+{"text": "added tests for service", "label": "what"}
+{"text": "since database led to crashes", "label": "why"}
+{"text": "fixed validator bug", "label": "what"}
+{"text": "due to cache affecting overflow", "label": "why"}
+{"text": "removed unused database code", "label": "what"}
+{"text": "the API supports JSON and XML formats", "label": "neutral"}
+{"text": "therefore we needed to validator", "label": "why"}
+{"text": "fixed handler bug", "label": "what"}
+{"text": "to reduce router by latency%", "label": "why"}
+{"text": "due to api affecting duplicates", "label": "why"}
+{"text": "because parser was causing latency", "label": "why"}
+{"text": "due to service affecting errors", "label": "why"}
+{"text": "removed unused billing code", "label": "what"}
+{"text": "Depending on your use case, to ensure backward compatibility during the 15-minute deploy window", "label": "why"}
+{"text": "created a new service service", "label": "what"}
+{"text": "due to service affecting crashes", "label": "why"}
+{"text": "added tests for auth", "label": "what"}
+{"text": "created a new api service", "label": "what"}
+{"text": "removed unused parser code", "label": "what"}
+{"text": "refactored parser class", "label": "what"}
+{"text": "since router led to crashes", "label": "why"}
+{"text": "bumped service to version errors", "label": "what"}
+{"text": "because profiling showed servicems latency", "label": "why"}
+{"text": "added router functionality", "label": "what"}
+{"text": "It could potentially since p99 latency spiked from 120ms to 2.8s under load", "label": "why"}
+{"text": "removed unused middleware code", "label": "what"}
+{"text": "In some cases, since the within-subjects design reduces between-participant variance", "label": "why"}
+{"text": "updated the middleware module", "label": "what"}
+{"text": "because database broke when race conditions", "label": "why"}
+{"text": "It could potentially since the old approach didn't handle NULL amounts correctly", "label": "why"}
+{"text": "updated the router module", "label": "what"}
+{"text": "It is generally accepted that since the connection pool exhausted at 400 concurrent users", "label": "why"}
+{"text": "refactored validator class", "label": "what"}
+{"text": "updated the middleware module", "label": "what"}
+{"text": "Some developers believe that to prevent full table scans on the audit_logs table", "label": "why"}
+{"text": "removed unused api code", "label": "what"}
+{"text": "since api led to race conditions", "label": "why"}
+{"text": "to avoid validator issues in production", "label": "why"}
+{"text": "because profiling showed handlerms latency", "label": "why"}
+{"text": "since we noticed parser in production", "label": "why"}
+{"text": "since auth led to crashes", "label": "why"}
+{"text": "because profiling showed cachems latency", "label": "why"}
+{"text": "updated the api module", "label": "what"}
+{"text": "because auth was causing crashes", "label": "why"}
+{"text": "because profiling showed apims latency", "label": "why"}
+{"text": "bumped auth to version memory leaks", "label": "what"}
+{"text": "due to handler affecting latency", "label": "why"}
+{"text": "since we noticed router in production", "label": "why"}
+{"text": "modified billing to handle memory leaks", "label": "what"}
+{"text": "since billing led to overflow", "label": "why"}
+{"text": "since we noticed middleware in production", "label": "why"}
+{"text": "since we noticed middleware in production", "label": "why"}
+{"text": "to reduce service by race conditions%", "label": "why"}
+{"text": "updated the authentication module", "label": "what"}
+{"text": "fixed service bug", "label": "what"}
+{"text": "since we noticed validator in production", "label": "why"}
+{"text": "to avoid service issues in production", "label": "why"}
+{"text": "refactored handler class", "label": "what"}
+{"text": "because the retry mechanism uses exponential backoff starting at 200ms", "label": "why"}
+{"text": "added tests for router", "label": "what"}
+{"text": "created a new handler service", "label": "what"}
+{"text": "updated the handler module", "label": "what"}
+{"text": "modified api to handle crashes", "label": "what"}
+{"text": "because parser was causing overflow", "label": "why"}
+{"text": "implemented validator feature", "label": "what"}
+{"text": "to avoid service issues in production", "label": "why"}
+{"text": "removed unused auth code", "label": "what"}
+{"text": "because profiling showed databasems latency", "label": "why"}
+{"text": "to reduce billing by race conditions%", "label": "why"}
+{"text": "therefore we needed to database", "label": "why"}
+{"text": "to reduce middleware by crashes%", "label": "why"}
+{"text": "the service runs on port 8080 by default", "label": "neutral"}
+{"text": "implemented billing feature", "label": "what"}
+{"text": "because handler broke when errors", "label": "why"}
+{"text": "since we noticed billing in production", "label": "why"}
+{"text": "due to auth affecting duplicates", "label": "why"}
+{"text": "updated the billing module", "label": "what"}
+{"text": "since we noticed cache in production", "label": "why"}
+{"text": "due to handler affecting race conditions", "label": "why"}
+{"text": "removed unused billing code", "label": "what"}
+{"text": "modified handler to handle errors", "label": "what"}
+{"text": "due to middleware affecting latency", "label": "why"}
+{"text": "because middleware broke when memory leaks", "label": "why"}
+{"text": "bumped handler to version timeout", "label": "what"}
+{"text": "therefore we needed to cache", "label": "why"}
+{"text": "updated the handler module", "label": "what"}
+{"text": "created a new service service", "label": "what"}
+{"text": "to avoid parser issues in production", "label": "why"}
+{"text": "modified validator to handle overflow", "label": "what"}
+{"text": "bumped auth to version duplicates", "label": "what"}
+{"text": "implemented api feature", "label": "what"}
+{"text": "implemented PgBouncer connection pooling", "label": "what"}
+{"text": "added tests for router", "label": "what"}
+{"text": "fixed cache bug", "label": "what"}
+{"text": "refactored router class", "label": "what"}
+{"text": "since handler led to errors", "label": "why"}
+{"text": "updated the handler module", "label": "what"}
+{"text": "added tests for parser", "label": "what"}
+{"text": "added tests for router", "label": "what"}
+{"text": "because billing was causing latency", "label": "why"}
+{"text": "since we noticed service in production", "label": "why"}
+{"text": "because billing was causing timeout", "label": "why"}
+{"text": "the repository follows the GitFlow branching strategy", "label": "neutral"}
+{"text": "fixed router bug", "label": "what"}
+{"text": "refactored billing class", "label": "what"}
+{"text": "since we noticed validator in production", "label": "why"}
+{"text": "to prevent auth from happening", "label": "why"}
+{"text": "because the rolling deploy caused 8 minutes of mixed responses", "label": "why"}
+{"text": "because profiling showed routerms latency", "label": "why"}
+{"text": "implemented service feature", "label": "what"}
+{"text": "bumped validator to version duplicates", "label": "what"}
+{"text": "to prevent parser from happening", "label": "why"}
+{"text": "since we noticed billing in production", "label": "why"}
+{"text": "added api functionality", "label": "what"}
+{"text": "since we noticed router in production", "label": "why"}
+{"text": "added parser functionality", "label": "what"}
+{"text": "due to billing affecting race conditions", "label": "why"}
+{"text": "because router was causing memory leaks", "label": "why"}
+{"text": "to avoid api issues in production", "label": "why"}
+{"text": "since we noticed cache in production", "label": "why"}
+{"text": "bumped parser to version errors", "label": "what"}
+{"text": "fixed database bug", "label": "what"}
+{"text": "due to handler affecting duplicates", "label": "why"}
+{"text": "because billing broke when overflow", "label": "why"}
+{"text": "since we noticed billing in production", "label": "why"}
+{"text": "since we noticed validator in production", "label": "why"}
+{"text": "created a new middleware service", "label": "what"}
+{"text": "to avoid database issues in production", "label": "why"}
+{"text": "bumped database to version overflow", "label": "what"}
+{"text": "removed unused parser code", "label": "what"}
+{"text": "to prevent parser from happening", "label": "why"}
+{"text": "to handle the case where Secrets Manager API is unavailable", "label": "why"}
+{"text": "modified handler to handle errors", "label": "what"}
+{"text": "therefore we needed to billing", "label": "why"}
+{"text": "because database broke when duplicates", "label": "why"}
+{"text": "created a new auth service", "label": "what"}
+{"text": "since we noticed billing in production", "label": "why"}
+{"text": "added tests for middleware", "label": "what"}
+{"text": "because handler was causing duplicates", "label": "why"}
+{"text": "modified billing to handle overflow", "label": "what"}
+{"text": "because profiling showed parserms latency", "label": "why"}
+{"text": "because service broke when memory leaks", "label": "why"}
+{"text": "to control for multiple comparisons using Bonferroni correction", "label": "why"}
+{"text": "fixed cache bug", "label": "what"}
+{"text": "therefore we needed to validator", "label": "why"}
+{"text": "created a new database service", "label": "what"}
+{"text": "added router functionality", "label": "what"}
+{"text": "bumped parser to version latency", "label": "what"}
+{"text": "because profiling showed billingms latency", "label": "why"}
+{"text": "refactored validator class", "label": "what"}
+{"text": "the function returns a boolean value", "label": "neutral"}
+{"text": "therefore we needed to cache", "label": "why"}
+{"text": "created a new middleware service", "label": "what"}
+{"text": "since database led to errors", "label": "why"}
+{"text": "because billing broke when race conditions", "label": "why"}
+{"text": "because parser broke when timeout", "label": "why"}
+{"text": "to prevent database from happening", "label": "why"}
+{"text": "updated the database module", "label": "what"}
+{"text": "therefore we needed to api", "label": "why"}
+{"text": "added Redis caching to the user profile endpoint", "label": "what"}
+{"text": "implemented billing feature", "label": "what"}
+{"text": "You might want to consider to handle the case where Secrets Manager API is unavailable", "label": "why"}
+{"text": "therefore we needed to api", "label": "why"}
+{"text": "the test suite includes 47 test cases", "label": "neutral"}
+{"text": "to prevent the JWT secret from appearing in CloudWatch logs", "label": "why"}
+{"text": "since we noticed api in production", "label": "why"}
+{"text": "implemented rate limiting on the search API", "label": "what"}
+{"text": "updated the database module", "label": "what"}
+{"text": "added handler functionality", "label": "what"}
+{"text": "to prevent billing from happening", "label": "why"}
+{"text": "Some developers believe that to avoid the thundering herd problem on cache miss storms", "label": "why"}
+{"text": "added billing functionality", "label": "what"}
+{"text": "since we noticed router in production", "label": "why"}
+{"text": "therefore we needed to router", "label": "why"}
+{"text": "to avoid the thundering herd problem on cache miss storms", "label": "why"}
+{"text": "to prevent full table scans on the audit_logs table", "label": "why"}
+{"text": "modified cache to handle errors", "label": "what"}
+{"text": "fixed validator bug", "label": "what"}
+{"text": "because api was causing crashes", "label": "why"}
+{"text": "therefore we needed to middleware", "label": "why"}
+{"text": "refactored cache class", "label": "what"}
+{"text": "to prevent database from happening", "label": "why"}
+{"text": "because profiling showed 340ms overhead in the auth middleware", "label": "why"}
+{"text": "due to cache affecting duplicates", "label": "why"}
+{"text": "refactored validator class", "label": "what"}
+{"text": "modified database to handle latency", "label": "what"}
+{"text": "because billing was causing duplicates", "label": "why"}
+{"text": "because profiling showed servicems latency", "label": "why"}
+{"text": "since Redis pub/sub is required for cache invalidation on profile updates", "label": "why"}
+{"text": "because profiling showed validatorms latency", "label": "why"}
+{"text": "to avoid api issues in production", "label": "why"}
+{"text": "since the circuit breaker opens after 3 consecutive failures", "label": "why"}
+{"text": "due to handler affecting timeout", "label": "why"}
+{"text": "to reduce validator by crashes%", "label": "why"}
+{"text": "created a new handler service", "label": "what"}
+{"text": "to ensure backward compatibility during the 15-minute deploy window", "label": "why"}
+{"text": "fixed the JWT secret exposure bug", "label": "what"}
+{"text": "refactored handler class", "label": "what"}
+{"text": "refactored handler class", "label": "what"}
+{"text": "since billing led to crashes", "label": "why"}
+{"text": "removed unused handler code", "label": "what"}
+{"text": "updated the api module", "label": "what"}
+{"text": "bumped middleware to version overflow", "label": "what"}
+{"text": "to avoid service issues in production", "label": "why"}
+{"text": "added cache functionality", "label": "what"}
+{"text": "removed unused service code", "label": "what"}
+{"text": "since cache led to timeout", "label": "why"}
+{"text": "refactored parser class", "label": "what"}
+{"text": "because the benchmark over-represents STEM domains", "label": "why"}
+{"text": "since the connection pool exhausted at 400 concurrent users", "label": "why"}
+{"text": "to reduce api by errors%", "label": "why"}
+{"text": "to reduce api by race conditions%", "label": "why"}
+{"text": "modified service to handle timeout", "label": "what"}
+{"text": "refactored validator class", "label": "what"}
+{"text": "implemented validator feature", "label": "what"}
+{"text": "since we noticed service in production", "label": "why"}
+{"text": "added router functionality", "label": "what"}
+{"text": "added a migration guide for version 2.0", "label": "what"}
+{"text": "implemented auth feature", "label": "what"}
+{"text": "modified middleware to handle crashes", "label": "what"}
+{"text": "to prevent service from happening", "label": "why"}
+{"text": "since p99 latency spiked from 120ms to 2.8s under load", "label": "why"}
+{"text": "because service was causing race conditions", "label": "why"}
+{"text": "removed unused billing code", "label": "what"}
+{"text": "bumped router to version latency", "label": "what"}
+{"text": "added api functionality", "label": "what"}
+{"text": "because service was causing errors", "label": "why"}
+{"text": "therefore we needed to handler", "label": "why"}
+{"text": "to reduce validator by timeout%", "label": "why"}
+{"text": "refactored database class", "label": "what"}
+{"text": "It could potentially because the test suite was mocking the database instead of testing real queries", "label": "why"}
+{"text": "therefore we needed to billing", "label": "why"}
+{"text": "Depending on your use case, because the rolling deploy caused 8 minutes of mixed responses", "label": "why"}
+{"text": "to prevent cache from happening", "label": "why"}
+{"text": "because billing broke when duplicates", "label": "why"}
+{"text": "created a new billing service", "label": "what"}
+{"text": "implemented service feature", "label": "what"}
+{"text": "due to router affecting crashes", "label": "why"}
+{"text": "implemented validator feature", "label": "what"}
+{"text": "refactored auth class", "label": "what"}
+{"text": "refactored handler class", "label": "what"}
+{"text": "since billing led to latency", "label": "why"}
+{"text": "removed unused middleware code", "label": "what"}
+{"text": "since the ablation showed a 3.2 point F1 drop without attention pooling", "label": "why"}
+{"text": "updated the validator module", "label": "what"}
+{"text": "migrated the orders table to BIGINT primary keys", "label": "what"}
+{"text": "because profiling showed authms latency", "label": "why"}
+{"text": "fixed router bug", "label": "what"}
+{"text": "removed unused billing code", "label": "what"}
+{"text": "added cache functionality", "label": "what"}
+{"text": "because profiling showed databasems latency", "label": "why"}
+{"text": "because cache broke when crashes", "label": "why"}
+{"text": "bumped api to version timeout", "label": "what"}
+{"text": "since service led to duplicates", "label": "why"}
+{"text": "since we noticed cache in production", "label": "why"}
+{"text": "refactored router class", "label": "what"}
+{"text": "because database was causing overflow", "label": "why"}
+{"text": "added logging to the payment processing module", "label": "what"}
+{"text": "therefore we needed to cache", "label": "why"}
+{"text": "because profiling showed parserms latency", "label": "why"}
+{"text": "because profiling showed databasems latency", "label": "why"}
+{"text": "therefore we needed to service", "label": "why"}
+{"text": "created a new service service", "label": "what"}
+{"text": "implemented middleware feature", "label": "what"}
+{"text": "added tests for cache", "label": "what"}
+{"text": "fixed router bug", "label": "what"}
+{"text": "implemented router feature", "label": "what"}
+{"text": "implemented cache feature", "label": "what"}
+{"text": "because parser was causing duplicates", "label": "why"}
+{"text": "due to middleware affecting timeout", "label": "why"}
+{"text": "since we noticed validator in production", "label": "why"}
+{"text": "removed unused validator code", "label": "what"}
+{"text": "modified cache to handle timeout", "label": "what"}
+{"text": "because handler was causing timeout", "label": "why"}
+{"text": "removed unused middleware code", "label": "what"}
+{"text": "added cache functionality", "label": "what"}
+{"text": "fixed api bug", "label": "what"}
+{"text": "due to api affecting timeout", "label": "why"}
+{"text": "because service was causing duplicates", "label": "why"}
+{"text": "to reduce cache by timeout%", "label": "why"}
+{"text": "fixed parser bug", "label": "what"}
+{"text": "therefore we needed to handler", "label": "why"}
+{"text": "since the old approach didn't handle NULL amounts correctly", "label": "why"}
+{"text": "added tests for api", "label": "what"}
+{"text": "updated the CI pipeline to run on pull requests", "label": "what"}
+{"text": "created a new parser service", "label": "what"}
+{"text": "to reduce middleware by race conditions%", "label": "why"}
+{"text": "since we noticed validator in production", "label": "why"}
+{"text": "created a new api service", "label": "what"}
+{"text": "bumped service to version errors", "label": "what"}
+{"text": "updated the validator module", "label": "what"}
+{"text": "because parser broke when crashes", "label": "why"}
+{"text": "added p95 and p99 latency alerts", "label": "what"}
+{"text": "modified api to handle latency", "label": "what"}
+{"text": "bumped middleware to version race conditions", "label": "what"}
+{"text": "to reduce parser by race conditions%", "label": "why"}
+{"text": "implemented handler feature", "label": "what"}
+{"text": "updated the billing module", "label": "what"}
+{"text": "bumped validator to version latency", "label": "what"}
+{"text": "to avoid billing issues in production", "label": "why"}
+{"text": "created a new router service", "label": "what"}
+{"text": "Your mileage may vary \u2014 because it was causing memory leaks in production", "label": "why"}
+{"text": "refactored cache class", "label": "what"}
+{"text": "refactored middleware class", "label": "what"}
+{"text": "bumped billing to version overflow", "label": "what"}
+{"text": "updated the deployment documentation", "label": "what"}
+{"text": "because router was causing errors", "label": "why"}
+{"text": "because auth was causing memory leaks", "label": "why"}
+{"text": "because profiling showed authms latency", "label": "why"}
+{"text": "to prevent billing from happening", "label": "why"}
+{"text": "because middleware was causing crashes", "label": "why"}
+{"text": "the deployment uses Docker containers", "label": "neutral"}
+{"text": "implemented service feature", "label": "what"}
+{"text": "updated the cache module", "label": "what"}
+{"text": "It may be worth noting that since Redis pub/sub is required for cache invalidation on profile updates", "label": "why"}
+{"text": "modified billing to handle crashes", "label": "what"}
+{"text": "because profiling showed apims latency", "label": "why"}
+{"text": "added tests for cache", "label": "what"}
+{"text": "updated the validator module", "label": "what"}
+{"text": "fixed billing bug", "label": "what"}
+{"text": "It could potentially because the dataset contains potential PII from Reddit posts", "label": "why"}
+{"text": "because profiling showed middlewarems latency", "label": "why"}
+{"text": "to reduce cache by timeout%", "label": "why"}
+{"text": "implemented cache feature", "label": "what"}
+{"text": "created a new validator service", "label": "what"}
+{"text": "to reduce parser by memory leaks%", "label": "why"}
+{"text": "replaced generic 500 responses with structured error codes", "label": "what"}
+{"text": "added tests for router", "label": "what"}
+{"text": "implemented parser feature", "label": "what"}
+{"text": "because billing broke when race conditions", "label": "why"}
+{"text": "therefore we needed to auth", "label": "why"}
+{"text": "to avoid router issues in production", "label": "why"}
+{"text": "updated the billing module", "label": "what"}
+{"text": "fixed router bug", "label": "what"}
+{"text": "implemented billing feature", "label": "what"}
+{"text": "created a new cache service", "label": "what"}
+{"text": "switched from rolling deploys to blue-green deployments", "label": "what"}
+{"text": "therefore we needed to parser", "label": "why"}
+{"text": "added api functionality", "label": "what"}
+{"text": "refactored billing class", "label": "what"}
+{"text": "added tests for service", "label": "what"}
+{"text": "removed unused billing code", "label": "what"}
+{"text": "removed unused validator code", "label": "what"}
+{"text": "created a troubleshooting guide for common errors", "label": "what"}
+{"text": "to reduce handler by crashes%", "label": "why"}
+{"text": "to avoid database issues in production", "label": "why"}
+{"text": "Some developers believe that because the benchmark over-represents STEM domains", "label": "why"}
+{"text": "to prevent database from happening", "label": "why"}
+{"text": "renamed the function to match the new naming convention", "label": "what"}
+{"text": "added tests for api", "label": "what"}
+{"text": "to reduce validator by timeout%", "label": "why"}
+{"text": "bumped database to version race conditions", "label": "what"}
+{"text": "since service led to crashes", "label": "why"}
+{"text": "modified billing to handle crashes", "label": "what"}
+{"text": "therefore we needed to router", "label": "why"}
+{"text": "added api functionality", "label": "what"}
+{"text": "removed unused router code", "label": "what"}
+{"text": "since the within-subjects design reduces between-participant variance", "label": "why"}
+{"text": "to prevent middleware from happening", "label": "why"}
+{"text": "Results may vary, but since the circuit breaker opens after 3 consecutive failures", "label": "why"}
+{"text": "to prevent cache from happening", "label": "why"}
+{"text": "because handler broke when overflow", "label": "why"}
+{"text": "created a new service service", "label": "what"}
+{"text": "added tests for handler", "label": "what"}
+{"text": "modified router to handle memory leaks", "label": "what"}
+{"text": "because cache broke when timeout", "label": "why"}
+{"text": "bumped router to version errors", "label": "what"}
+{"text": "to prevent validator from happening", "label": "why"}
+{"text": "updated the validator module", "label": "what"}
+{"text": "added tests for parser", "label": "what"}
+{"text": "refactored auth class", "label": "what"}
+{"text": "since api led to race conditions", "label": "why"}
+{"text": "therefore we needed to auth", "label": "why"}
+{"text": "therefore we needed to cache", "label": "why"}
+{"text": "modified the configuration to support multiple environments", "label": "what"}
+{"text": "because cache broke when overflow", "label": "why"}
+{"text": "because profiling showed authms latency", "label": "why"}
+{"text": "because profiling showed routerms latency", "label": "why"}
+{"text": "fixed api bug", "label": "what"}
+{"text": "due to middleware affecting crashes", "label": "why"}
+{"text": "added tests for parser", "label": "what"}
+{"text": "since api led to latency", "label": "why"}
+{"text": "because the previous implementation was not thread-safe", "label": "why"}
+{"text": "the database schema includes a users table", "label": "neutral"}
+{"text": "implemented api feature", "label": "what"}
+{"text": "because profiling showed servicems latency", "label": "why"}
+{"text": "added tests for api", "label": "what"}
+{"text": "since we noticed database in production", "label": "why"}
+{"text": "bumped cache to version latency", "label": "what"}
+{"text": "added api functionality", "label": "what"}
+{"text": "fixed billing bug", "label": "what"}
+{"text": "updated the api module", "label": "what"}
+{"text": "removed unused parser code", "label": "what"}
+{"text": "implemented middleware feature", "label": "what"}
+{"text": "modified billing to handle overflow", "label": "what"}
+{"text": "refactored validator class", "label": "what"}
+{"text": "because profiling showed apims latency", "label": "why"}
+{"text": "due to service affecting errors", "label": "why"}
+{"text": "because handler broke when overflow", "label": "why"}
+{"text": "to prevent middleware from happening", "label": "why"}
+{"text": "because service was causing memory leaks", "label": "why"}
+{"text": "because database broke when race conditions", "label": "why"}
+{"text": "to avoid validator issues in production", "label": "why"}
+{"text": "bumped validator to version latency", "label": "what"}
+{"text": "fixed api bug", "label": "what"}
+{"text": "due to auth affecting memory leaks", "label": "why"}
+{"text": "bumped router to version crashes", "label": "what"}
+{"text": "fixed database bug", "label": "what"}
+{"text": "created a new validator service", "label": "what"}
+{"text": "bumped database to version errors", "label": "what"}
+{"text": "implemented middleware feature", "label": "what"}
+{"text": "to avoid database issues in production", "label": "why"}
+{"text": "to avoid service issues in production", "label": "why"}
+{"text": "due to cache affecting timeout", "label": "why"}
+{"text": "therefore we needed to parser", "label": "why"}
+{"text": "because profiling showed parserms latency", "label": "why"}
+{"text": "to avoid parser issues in production", "label": "why"}
+{"text": "because validator broke when race conditions", "label": "why"}
+{"text": "added tests for validator", "label": "what"}
+{"text": "added billing functionality", "label": "what"}
+{"text": "implemented database feature", "label": "what"}
+{"text": "added billing functionality", "label": "what"}
+{"text": "refactored api class", "label": "what"}
+{"text": "Some developers believe that since the session secret must be at least 32 characters", "label": "why"}
+{"text": "modified router to handle crashes", "label": "what"}
+{"text": "added middleware functionality", "label": "what"}
+{"text": "therefore we needed to auth", "label": "why"}
+{"text": "modified service to handle timeout", "label": "what"}
+{"text": "removed unused parser code", "label": "what"}
+{"text": "fixed parser bug", "label": "what"}
+{"text": "fixed handler bug", "label": "what"}
+{"text": "bumped database to version duplicates", "label": "what"}
+{"text": "bumped the dependency to version 3.1.4", "label": "what"}
+{"text": "removed unused service code", "label": "what"}
+{"text": "Results may vary, but because the old implementation didn't handle concurrent writes correctly", "label": "why"}
+{"text": "to avoid middleware issues in production", "label": "why"}
+{"text": "because auth broke when crashes", "label": "why"}
+{"text": "created a new validator service", "label": "what"}
+{"text": "fixed router bug", "label": "what"}
+{"text": "refactored the billing retry logic", "label": "what"}
+{"text": "added database functionality", "label": "what"}
+{"text": "since database led to errors", "label": "why"}
+{"text": "because database broke when duplicates", "label": "why"}
+{"text": "because parser broke when memory leaks", "label": "why"}
+{"text": "fixed api bug", "label": "what"}
+{"text": "fixed parser bug", "label": "what"}
+{"text": "implemented api feature", "label": "what"}
+{"text": "to prevent auth from happening", "label": "why"}
+{"text": "removed the unused import statements", "label": "what"}
+{"text": "to prevent billing from happening", "label": "why"}
+{"text": "to prevent billing from happening", "label": "why"}
+{"text": "therefore we needed to service", "label": "why"}
+{"text": "because profiling showed servicems latency", "label": "why"}
+{"text": "since middleware led to timeout", "label": "why"}
+{"text": "because cache was causing crashes", "label": "why"}
+{"text": "due to middleware affecting crashes", "label": "why"}
+{"text": "since router led to crashes", "label": "why"}
+{"text": "modified database to handle memory leaks", "label": "what"}
+{"text": "to reduce validator by timeout%", "label": "why"}
+{"text": "therefore we needed to router", "label": "why"}
+{"text": "added tests for api", "label": "what"}
+{"text": "modified auth to handle race conditions", "label": "what"}
+{"text": "created a new validator service", "label": "what"}
+{"text": "refactored parser class", "label": "what"}
+{"text": "added unit tests for the new feature", "label": "what"}
+{"text": "to prevent cache from happening", "label": "why"}
+{"text": "to reduce api by race conditions%", "label": "why"}
+{"text": "due to handler affecting overflow", "label": "why"}
+{"text": "modified cache to handle timeout", "label": "what"}
+{"text": "because validator broke when duplicates", "label": "why"}
+{"text": "updated the handler module", "label": "what"}
+{"text": "created a new service for handling webhooks", "label": "what"}
+{"text": "refactored parser class", "label": "what"}
+{"text": "modified auth to handle memory leaks", "label": "what"}
+{"text": "added tests for api", "label": "what"}
+{"text": "because profiling showed middlewarems latency", "label": "why"}
+{"text": "because router was causing race conditions", "label": "why"}
+{"text": "added api functionality", "label": "what"}
+{"text": "the configuration file is located at config/settings.py", "label": "neutral"}
+{"text": "since we noticed router in production", "label": "why"}
+{"text": "fixed parser bug", "label": "what"}
+{"text": "to prevent handler from happening", "label": "why"}
+{"text": "created a new router service", "label": "what"}
+{"text": "It may be worth noting that because the previous implementation was not thread-safe", "label": "why"}
+{"text": "modified api to handle timeout", "label": "what"}
+{"text": "removed unused service code", "label": "what"}
+{"text": "added tests for service", "label": "what"}
+{"text": "added handler functionality", "label": "what"}
+{"text": "updated the middleware module", "label": "what"}
+{"text": "modified validator to handle memory leaks", "label": "what"}
+{"text": "because service broke when crashes", "label": "why"}
+{"text": "updated the changelog with recent changes", "label": "what"}
+{"text": "fixed validator bug", "label": "what"}
+{"text": "Depending on your use case, because prepared statements are incompatible with PgBouncer transaction mode", "label": "why"}
+{"text": "added validator functionality", "label": "what"}
+{"text": "Depending on your use case, since the ablation showed a 3.2 point F1 drop without attention pooling", "label": "why"}
+{"text": "updated the validator module", "label": "what"}
+{"text": "updated the API reference with new endpoints", "label": "what"}
+{"text": "removed unused service code", "label": "what"}
+{"text": "bumped service to version latency", "label": "what"}
+{"text": "implemented billing feature", "label": "what"}
+{"text": "due to billing affecting errors", "label": "why"}
+{"text": "bumped router to version race conditions", "label": "what"}
+{"text": "since we noticed validator in production", "label": "why"}
+{"text": "since router led to memory leaks", "label": "why"}
+{"text": "to prevent validator from happening", "label": "why"}
+{"text": "modified cache to handle race conditions", "label": "what"}
+{"text": "implemented handler feature", "label": "what"}
+{"text": "added tests for database", "label": "what"}
+{"text": "because service was causing memory leaks", "label": "why"}
+{"text": "to reduce router by race conditions%", "label": "why"}
+{"text": "to avoid billing issues in production", "label": "why"}
+{"text": "because profiling showed apims latency", "label": "why"}
+{"text": "since cache led to overflow", "label": "why"}
+{"text": "due to router affecting timeout", "label": "why"}
+{"text": "because database broke when latency", "label": "why"}
+{"text": "therefore we needed to billing", "label": "why"}
+{"text": "Your mileage may vary \u2014 because the UUID primary keys caused 40% index bloat on the orders table", "label": "why"}
+{"text": "because the old implementation didn't handle concurrent writes correctly", "label": "why"}
+{"text": "updated the parser module", "label": "what"}
+{"text": "due to service affecting duplicates", "label": "why"}
+{"text": "because the dataset contains potential PII from Reddit posts", "label": "why"}
+{"text": "because handler broke when overflow", "label": "why"}
+{"text": "refactored billing class", "label": "what"}
+{"text": "implemented service feature", "label": "what"}
+{"text": "created a new service service", "label": "what"}
+{"text": "to avoid router issues in production", "label": "why"}
+{"text": "because service was causing latency", "label": "why"}
+{"text": "added cache functionality", "label": "what"}
+{"text": "to reduce validator by memory leaks%", "label": "why"}
+{"text": "because parser was causing race conditions", "label": "why"}
+{"text": "refactored auth class", "label": "what"}
+{"text": "modified handler to handle memory leaks", "label": "what"}
+{"text": "modified cache to handle duplicates", "label": "what"}
+{"text": "updated the api module", "label": "what"}
+{"text": "added cache functionality", "label": "what"}
+{"text": "implemented parser feature", "label": "what"}
+{"text": "added validator functionality", "label": "what"}
+{"text": "added cache functionality", "label": "what"}
+{"text": "to avoid service issues in production", "label": "why"}
+{"text": "fixed a typo in the error message", "label": "what"}
+{"text": "because it was causing memory leaks in production", "label": "why"}
+{"text": "created a new api service", "label": "what"}
+{"text": "to prevent router from happening", "label": "why"}
+{"text": "Depending on your use case, since the previous version broke when the queue depth exceeded 10k messages", "label": "why"}
+{"text": "this module handles user authentication", "label": "neutral"}
+{"text": "created a new auth service", "label": "what"}
+{"text": "added tests for router", "label": "what"}
+{"text": "because parser broke when timeout", "label": "why"}
+{"text": "removed unused billing code", "label": "what"}
+{"text": "since we noticed router in production", "label": "why"}
+{"text": "to prevent parser from happening", "label": "why"}
+{"text": "to reduce cache by overflow%", "label": "why"}
+{"text": "fixed service bug", "label": "what"}
+{"text": "added auth functionality", "label": "what"}
+{"text": "since we noticed service in production", "label": "why"}
+{"text": "due to billing affecting errors", "label": "why"}
+{"text": "refactored billing class", "label": "what"}
+{"text": "the application requires Python 3.11 or higher", "label": "neutral"}
+{"text": "It may be worth noting that because the migration takes 12 minutes on a 50GB database", "label": "why"}
+{"text": "since service led to memory leaks", "label": "why"}
+{"text": "added configuration examples to the README", "label": "what"}
+{"text": "updated the database module", "label": "what"}
+{"text": "added tests for billing", "label": "what"}
+{"text": "since validator led to overflow", "label": "why"}
+{"text": "therefore we needed to parser", "label": "why"}
+{"text": "because the UUID primary keys caused 40% index bloat on the orders table", "label": "why"}
+{"text": "to reduce middleware by crashes%", "label": "why"}
+{"text": "to reduce parser by timeout%", "label": "why"}
+{"text": "because cache broke when overflow", "label": "why"}
+{"text": "to avoid api issues in production", "label": "why"}
+{"text": "to prevent validator from happening", "label": "why"}
+{"text": "It is generally accepted that since the error messages were too generic for support to diagnose issues", "label": "why"}
+{"text": "because profiling showed parserms latency", "label": "why"}
+{"text": "created a new billing service", "label": "what"}
+{"text": "because the test suite was mocking the database instead of testing real queries", "label": "why"}
+{"text": "bumped service to version timeout", "label": "what"}
+{"text": "modified auth to handle latency", "label": "what"}
+{"text": "created a new parser service", "label": "what"}
+{"text": "modified database to handle memory leaks", "label": "what"}
+{"text": "bumped middleware to version duplicates", "label": "what"}
+{"text": "added billing functionality", "label": "what"}
+{"text": "due to cache affecting duplicates", "label": "why"}
+{"text": "added tests for api", "label": "what"}
+{"text": "to avoid service issues in production", "label": "why"}
+{"text": "because router was causing overflow", "label": "why"}
+{"text": "since we noticed billing in production", "label": "why"}
+{"text": "bumped validator to version duplicates", "label": "what"}
+{"text": "to reduce handler by timeout%", "label": "why"}
+{"text": "because cache was causing overflow", "label": "why"}
+{"text": "due to api affecting timeout", "label": "why"}
+{"text": "implemented handler feature", "label": "what"}
+{"text": "removed unused validator code", "label": "what"}
+{"text": "to prevent database from happening", "label": "why"}
+{"text": "due to service affecting duplicates", "label": "why"}
+{"text": "refactored parser class", "label": "what"}
+{"text": "added tests for service", "label": "what"}
+{"text": "because handler was causing duplicates", "label": "why"}
+{"text": "to reduce service by errors%", "label": "why"}
+{"text": "because handler broke when overflow", "label": "why"}
+{"text": "created a new router service", "label": "what"}
+{"text": "to avoid cache issues in production", "label": "why"}
+{"text": "since the previous version broke when the queue depth exceeded 10k messages", "label": "why"}
+{"text": "added validator functionality", "label": "what"}
+{"text": "removed unused parser code", "label": "what"}
+{"text": "to reduce auth by crashes%", "label": "why"}
+{"text": "updated the database module", "label": "what"}
+{"text": "since validator led to timeout", "label": "why"}
+{"text": "removed unused parser code", "label": "what"}
+{"text": "to reduce middleware by duplicates%", "label": "why"}
+{"text": "removed unused middleware code", "label": "what"}
+{"text": "added tests for service", "label": "what"}
+{"text": "added tests for handler", "label": "what"}

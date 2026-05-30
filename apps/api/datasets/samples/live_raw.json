@@ -1,0 +1,786 @@
+[
+  {
+    "domain": "social_news",
+    "title": "Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue",
+    "text": "Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue",
+    "url": "https://llmgame.scalex.dev",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "US's big bet on quantum computing may not be legal",
+    "text": "US's big bet on quantum computing may not be legal",
+    "url": "https://arstechnica.com/tech-policy/2026/05/uss-big-bet-on-quantum-computing-may-not-be-entirely-legal/",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "YouTube to automatically label AI-generated videos",
+    "text": "YouTube to automatically label AI-generated videos\n\n<a href=\"https:&#x2F;&#x2F;variety.com&#x2F;2026&#x2F;digital&#x2F;news&#x2F;youtube-ai-video-labels-automatic-detection-1236758865&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;variety.com&#x2F;2026&#x2F;digital&#x2F;news&#x2F;youtube-ai-video-label...</a>",
+    "url": "https://blog.youtube/news-and-events/improving-ai-labels-viewers-creators/",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "Show HN: Ktx \u2013 Open-source executable context layer for data agents",
+    "text": "Show HN: Ktx \u2013 Open-source executable context layer for data agents\n\nHi HN, we\u2019re open-sourcing ktx. It\u2019s an executable context layer that makes agents reliable on your data stack.<p>We built it after going through the experience of building production-grade data agents for dozens of companies. If you\u2019ve also tried building them, or simply tried using Claude Code or Codex on your data warehouse, you\u2019ll know that accuracy is the #1 issue. Agents are great at generating valid SQL, but it\u2019s not always correct SQL.<p>To cite a few examples of \u201cagents gone wrong\u201d:\n- Stale column + hidden business rule: when preparing a board report, a finance analyst asks Claude Code for \u201cARR by customer segment\u201d, it derives ARR from multiple tables (subscriptions, plans, accounts), then groups by accounts.indu",
+    "url": "https://github.com/Kaelio/ktx",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "EU fines Temu \u20ac200M for allowing sale of illegal products",
+    "text": "EU fines Temu \u20ac200M for allowing sale of illegal products",
+    "url": "https://www.bbc.co.uk/news/articles/c1k2ydn1rz8o",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "Show HN: Hallucinate \u2013 Massively Multiplayer Online Rave",
+    "text": "Show HN: Hallucinate \u2013 Massively Multiplayer Online Rave\n\n<a href=\"https:&#x2F;&#x2F;github.com&#x2F;stagas&#x2F;hallucinate\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;stagas&#x2F;hallucinate</a>",
+    "url": "https://hallucinate.site",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "News about Raspberry Pi 6 and Microcontroller Development",
+    "text": "News about Raspberry Pi 6 and Microcontroller Development",
+    "url": "https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "Show HN: Open-Source AI Racing Harness",
+    "text": "Show HN: Open-Source AI Racing Harness\n\nHi I&#x27;m Dan from Elodin, making an open source real-time capable flight software simulation.<p>For AI Grand Prix contestants, the wait for the Round 1 virtual qualifier simulation has been grueling.<p>If you\u2019re competing, check out our simulation harness to tide you over, built to match the published competition constraints and message format. It runs against real Betaflight, which we learned requires at least 1000 sensor samples per second to run real-time correctly.<p>The competition warranted introducing a new feature to generate the camera sensor directly in the simulation loop. Typically people connect to Unreal or similar game engine to create a camera sensor, which works well but is very heavy. For the simple needs of this challenge, creat",
+    "url": "https://www.elodin.systems/post/elodin-ai-grand-prix-race-sim-harness",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "Bttf is a command line datetime Swiss army knife",
+    "text": "Bttf is a command line datetime Swiss army knife",
+    "url": "https://github.com/BurntSushi/bttf",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "I'm Getting into Mesh Networks (Meshtastic, MeshCore, and Reticulum)",
+    "text": "I'm Getting into Mesh Networks (Meshtastic, MeshCore, and Reticulum)",
+    "url": "https://www.jonaharagon.com/posts/im-getting-into-mesh-networks-meshtastic-meshcore-and-reticulum/",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "Thornton Wilder's Last Play Vanished into Thin Air. Or Did It?",
+    "text": "Thornton Wilder's Last Play Vanished into Thin Air. Or Did It?\n\n<a href=\"https:&#x2F;&#x2F;archive.ph&#x2F;0g4Eu\" rel=\"nofollow\">https:&#x2F;&#x2F;archive.ph&#x2F;0g4Eu</a>",
+    "url": "https://www.nytimes.com/2026/05/27/theater/thornton-wilder-emporium-last-play.html",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "Creusot helps you prove your Rust code is correct",
+    "text": "Creusot helps you prove your Rust code is correct",
+    "url": "https://github.com/creusot-rs/creusot/tree/master",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "Show HN: TapToyPia",
+    "text": "Show HN: TapToyPia\n\nMy wife started playing Pokopia and told me it&#x27;s the best game she&#x27;s ever played. I watched her play for 10 minutes and thought that a simple demake inspired by Pokopia could be satisfying to play. TapToyPia is the result, playable in your web browser.<p>In TapToyPia, you are an explorer sent on a one-way mission to a new planet. Your mission: build a settlement that can serve as a new home for humanity. While you explore, you discover flora and fauna to help you.<p>The game mechanic is inspired by clicker games and maybe also Minesweeper though that wasn&#x27;t a conscious influence.<p>I tried to build a game that captures the zen of Pokopia&#x27;s world rehabilitation and the building-up-to-greater-complexity of clicker games (such as my favorite, Universal ",
+    "url": "https://memalign.github.io/m/taptoypia/index.html",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "Using Tailscale with an OrbStack VM on macOS",
+    "text": "Using Tailscale with an OrbStack VM on macOS\n\nHere&#x27;s an example of how to build an Ubuntu VM using OrbStack on macOS and then connect to the VM through Tailscale SSH using an auth key stored in Apple Keychain.<p>For example, I can create a VM on my Mac mini at home that hosts a git repo or even a Forgejo server. A colleague in my Tailnet can then connect to this VM to clone, push or pull source code changes from a coffeeshop or airliner while not exposing the rest of my Mac mini.",
+    "url": "https://github.com/highpost/tailscale-macos-vm",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "What Apple and Google are doing to push notifications",
+    "text": "What Apple and Google are doing to push notifications",
+    "url": "https://www.jacquescorbytuech.com/writing/what-apple-and-google-are-doing-your-push-notifications",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "social_news",
+    "title": "Disagreement among frontier LLMs on real-world fact-checks",
+    "text": "Disagreement among frontier LLMs on real-world fact-checks",
+    "url": "https://lenz.io/research/llm-disagreement",
+    "source": "hacker_news"
+  },
+  {
+    "domain": "content",
+    "title": "How we're using Gemini Embeddings to build a smarter, community-driven feed on DEV",
+    "text": "How we're using Gemini Embeddings to build a smarter, community-driven feed on DEV\n\nBig improvements incoming \ud83d\udc4b  Finding the right balance for a feed algorithm is historically really...",
+    "url": "https://dev.to/devteam/how-were-using-gemini-embeddings-to-build-a-smarter-community-driven-feed-on-dev-1b9f",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "How Are Developers Actually Using AI At Work?",
+    "text": "How Are Developers Actually Using AI At Work?\n\nJSNation is coming soon, and besides my talk (I\u2019ll drop the link in the comments so I don\u2019t spam you...",
+    "url": "https://dev.to/sylwia-lask/how-are-developers-actually-using-ai-at-work-4g9c",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "The Most Concerning AI Risk of 2026",
+    "text": "The Most Concerning AI Risk of 2026\n\n7000+ dev developers shared their thoughts about AI in the recent State of Web Dev AI survey. ",
+    "url": "https://dev.to/sachagreif/the-most-concerning-ai-risk-of-2026-3m0d",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "Top 7 Featured DEV Posts of the Week",
+    "text": "Top 7 Featured DEV Posts of the Week\n\nWelcome to this week's Top 7, where the DEV editorial team handpicks their favorite posts from the...",
+    "url": "https://dev.to/devteam/top-7-featured-dev-posts-of-the-week-45na",
+    "source": "dev_to"
+  },
+  {
+    "domain": "docs",
+    "title": "An LLM API call, in 4 GIFs",
+    "text": "An LLM API call, in 4 GIFs\n\nThis is the first post of series Building TinyAgent where we are going to build a small agent from...",
+    "url": "https://dev.to/jasmin/an-llm-api-call-in-4-gifs-33b1",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "What was your win this week!?",
+    "text": "What was your win this week!?\n\n\ud83d\udc4b\ud83d\udc4b\ud83d\udc4b\ud83d\udc4b Looking back on your week -- what was something you're proud of? All wins count -- big or small...",
+    "url": "https://dev.to/devteam/what-was-your-win-this-week-2ohc",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "Should you use Gemma 4 for your Development? A Multiversal Analysis to Determine if Gemma 4 is Right for You!",
+    "text": "Should you use Gemma 4 for your Development? A Multiversal Analysis to Determine if Gemma 4 is Right for You!\n\nThis is a submission for the Gemma 4 Challenge: Write About Gemma 4   Disclaimer: This is an...",
+    "url": "https://dev.to/devengers/should-you-use-gemma-4-for-your-development-a-multiversal-analysis-to-determine-if-gemma-4-is-2iol",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "Recycling made easy: a Polish recycling assistant powered by Gemma 4",
+    "text": "Recycling made easy: a Polish recycling assistant powered by Gemma 4\n\nThis is a submission for the Gemma 4 Challenge: Build with Gemma 4  I clearly remember this scene: my...",
+    "url": "https://dev.to/klaudiagrz/recycling-made-easy-a-polish-recycling-assistant-powered-by-gemma-4-j0a",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "Google Antigravity 1.0 to 2.0/IDE Quick Migration Guide",
+    "text": "Google Antigravity 1.0 to 2.0/IDE Quick Migration Guide\n\nLike many Google Antigravity users, I was very excited about the Antigravity 2.0 announcement at...",
+    "url": "https://dev.to/gde/google-antigravity-10-to-20ide-quick-migration-guide-35p5",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "Reviving a 12K+ Star Abandoned Library: toastr-next v3 \ud83c\udf5e",
+    "text": "Reviving a 12K+ Star Abandoned Library: toastr-next v3 \ud83c\udf5e\n\nThis is a submission for the GitHub Finish-Up-A-Thon Challenge              What I...",
+    "url": "https://dev.to/divyesh5981/reviving-a-12k-star-abandoned-library-toastr-next-v3-25mf",
+    "source": "dev_to"
+  },
+  {
+    "domain": "docs",
+    "title": "Why does AI forget what you said (and how to fix it)",
+    "text": "Why does AI forget what you said (and how to fix it)\n\nI received following comment on my hallucinations blog post.                       Comment on Why...",
+    "url": "https://dev.to/aws/why-does-ai-forget-what-you-said-and-how-to-fix-it-52f6",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "AI Agents Are Great at 80% of Our Code. The Other 20% Is Why We Still Need Seniors.",
+    "text": "AI Agents Are Great at 80% of Our Code. The Other 20% Is Why We Still Need Seniors.\n\nWe let AI agents loose on a payment platform. They crushed the boring stuff. Then they silently broke...",
+    "url": "https://dev.to/mickyarun/ai-agents-are-great-at-80-of-our-code-the-other-20-is-why-we-still-need-seniors-3lh5",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "NeuralHats: I Put Edward de Bono\u2019s Six Thinking Hats on Local LLMs Using Gemma 4",
+    "text": "NeuralHats: I Put Edward de Bono\u2019s Six Thinking Hats on Local LLMs Using Gemma 4\n\nThis is a submission for the Gemma 4 Challenge: Build with Gemma 4           What I Built           ...",
+    "url": "https://dev.to/georgekobaidze/neuralhats-i-put-edward-de-bonos-six-thinking-hats-on-local-llms-using-gemma-4-54mj",
+    "source": "dev_to"
+  },
+  {
+    "domain": "docs",
+    "title": "Gemma 4 challenge inspired me to build my first app!",
+    "text": "Gemma 4 challenge inspired me to build my first app!\n\nThis is a submission for the Gemma 4 Challenge: Write About Gemma 4  It started with a real need....",
+    "url": "https://dev.to/klaudiagrz/gemma-4-challenge-inspired-me-to-build-my-first-app-4m7g",
+    "source": "dev_to"
+  },
+  {
+    "domain": "content",
+    "title": "Vestige: A Gemma 4 Brain Tracker That Won't Blow Smoke Up Your Ass",
+    "text": "Vestige: A Gemma 4 Brain Tracker That Won't Blow Smoke Up Your Ass\n\nAn ADHD brain tracker built on Gemma 4 (E4B + EmbeddingGemma 300M) that observes and never grades. Native audio, multi-lens extraction, on-device after one model download.",
+    "url": "https://dev.to/anchildress1/vestige-a-gemma-4-brain-tracker-that-wont-blow-smoke-up-your-ass-5caf",
+    "source": "dev_to"
+  },
+  {
+    "domain": "code_review",
+    "title": "API doc references are not sorted",
+    "text": "API doc references are not sorted\n\nMethod and properties in API docs are not following any sorting rules, making it hard to find specific references.\n\nhttps://flask.palletsprojects.com/en/stable/api/#flask.Request\n\n<img width=\"245\" height=\"369\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/29390e00-5264-443d-ad4b-41e9f162e128\" />\n\nI failed to find `endpoint` located between top `max_form_parts` and bottom `blueprint`.\n\nExpected alphabetic order for all class attributes.",
+    "url": "https://github.com/pallets/flask/issues/6031",
+    "source": "github_issues"
+  },
+  {
+    "domain": "code_review",
+    "title": "FLASK_DEBUG env variable no longer works as of click 8.4.0",
+    "text": "FLASK_DEBUG env variable no longer works as of click 8.4.0\n\n**Description of bug:**\n\nFLASK_DEBUG=1 was working previously to set flask's debug mode either in a .env/.flaskenv and using python-dotenv OR by manually setting with export FLASK_DEBUG=1. As of today, setting it by env variable no longer works. Flask will still use debug mode using the --debug flag. Downgrading click to 8.3.3 resolves the issue.\n\n**Replicate bug:**\n\n```\npython3 -m venv venv\n. venv/bin/activate\npip install flask\ncat << EOF > app.py\nfrom flask import Flask\napp = Flask(__name__)\n@app.route('/')\ndef index():\n    return 'hello world'\nEOF\nexport FLASK_DEBUG=1\nflask run\n```\n\n**This produces:**\n\nDebug mode: off\n\n```\npip install click==8.3.3\nflask run\n```\n\n**Then produces:**\n\nDebug mode: on\n\n**Environment:**\n\n- Python ver",
+    "url": "https://github.com/pallets/flask/issues/6025",
+    "source": "github_issues"
+  },
+  {
+    "domain": "code_review",
+    "title": "Config.from_file() silently ignores fewer OSError codes than from_pyfile()",
+    "text": "Config.from_file() silently ignores fewer OSError codes than from_pyfile()\n\n## Summary\n\n`Config.from_file()` and `Config.from_pyfile()` behave inconsistently when `silent=True` and an `OSError` is raised.\n\n`from_pyfile()` silences errors for these `errno` codes:\n\n```python\nif silent and e.errno in (errno.ENOENT, errno.EISDIR, errno.ENOTDIR):\n    return False\n```\n\nBut `from_file()` only silences:\n\n```python\nif silent and e.errno in (errno.ENOENT, errno.EISDIR):\n    return False\n```\n\nIt is missing `errno.ENOTDIR`.\n\n## Reproduction\n\n`ENOTDIR` is raised when a path component is a regular file, not a directory. For example, if `/tmp/myconfig` is a regular file and you try to open `/tmp/myconfig/settings.json`, the OS raises `ENOTDIR` (not a directory).\n\n```python\nimport os, tempfile\nfrom flask ",
+    "url": "https://github.com/pallets/flask/issues/6023",
+    "source": "github_issues"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139164 from yongruilin/dv-dependentrequired",
+    "text": "Merge pull request #139164 from yongruilin/dv-dependentrequired\n\nAdd new declarative validation tag +k8s:dependentRequired",
+    "url": "https://github.com/kubernetes/kubernetes/commit/80a11c4be79f5076bf370bc16dfdbc4f54efc0f2",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139017 from johnbelamaric/fix-dra-scoring-bug",
+    "text": "Merge pull request #139017 from johnbelamaric/fix-dra-scoring-bug\n\nFix dra scoring bug with mixed allocated and unallocated claims",
+    "url": "https://github.com/kubernetes/kubernetes/commit/df3164941671a2891c969df67c235716dc195c7f",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139343 from macsko/fix_data_race_in_priorityqueue_update",
+    "text": "Merge pull request #139343 from macsko/fix_data_race_in_priorityqueue_update\n\nFix unlikely data race in PriorityQueue.Update logger",
+    "url": "https://github.com/kubernetes/kubernetes/commit/602860417ec6ddcac997745958dbacf412c73c65",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #138274 from wtravO/wtravo/placement-cycle-state",
+    "text": "Merge pull request #138274 from wtravO/wtravo/placement-cycle-state\n\nAdd PlacementCycleState to WAS scheduler framework",
+    "url": "https://github.com/kubernetes/kubernetes/commit/ae84ac1a164e2b847dba51bb8e985eebea36d5c2",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139021 from hoteye/hoteye-pr-pleg-context",
+    "text": "Merge pull request #139021 from hoteye/hoteye-pr-pleg-context\n\nkubelet: thread context through PLEG relist paths",
+    "url": "https://github.com/kubernetes/kubernetes/commit/f15071f37174baf476617f175898beab3c9b8605",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139316 from hoteye/hoteye-container-id-logger",
+    "text": "Merge pull request #139316 from hoteye/hoteye-container-id-logger\n\nkubelet: pass logger into container ID parsing",
+    "url": "https://github.com/kubernetes/kubernetes/commit/f19af9936b4a07db8adc631ad2f4c2a1a7452f16",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139315 from hoteye/hoteye-pod-startup-latency-logger",
+    "text": "Merge pull request #139315 from hoteye/hoteye-pod-startup-latency-logger\n\nkubelet: pass logger into pod startup latency tracker",
+    "url": "https://github.com/kubernetes/kubernetes/commit/460810e41108973a6774651e61d84151b1621404",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139288 from hoteye/hoteye-image-gc-manager-context-wait",
+    "text": "Merge pull request #139288 from hoteye/hoteye-image-gc-manager-context-wait\n\nkubelet: use contextual wait in image GC manager",
+    "url": "https://github.com/kubernetes/kubernetes/commit/2da9f3b95652c68ecf79218c8875dbc3239de951",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Fix unlikely data race in PriorityQueue.Update logger",
+    "text": "Fix unlikely data race in PriorityQueue.Update logger",
+    "url": "https://github.com/kubernetes/kubernetes/commit/d952a85cb84ccd68fd8660e17a779c061a297a47",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #133859 from oyiz-michael/update-powershell-helper-windows-ltsc2022",
+    "text": "Merge pull request #133859 from oyiz-michael/update-powershell-helper-windows-ltsc2022\n\nUpdate windows/powershell-helper to Windows Server 2022 and PowerShel\u2026",
+    "url": "https://github.com/kubernetes/kubernetes/commit/2cf6f1701e031e6f9e962762265f6da4fae2c85a",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139203 from gnufied/add-e2e-for-deleted-pvc-offline-expansion",
+    "text": "Merge pull request #139203 from gnufied/add-e2e-for-deleted-pvc-offline-expansion\n\nAdd an e2e for offline volume expansion",
+    "url": "https://github.com/kubernetes/kubernetes/commit/e1ed8dd068252fe48e2b53e9590bbb98173f7124",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139333 from yongruilin/dv-guardrails-update-fix",
+    "text": "Merge pull request #139333 from yongruilin/dv-guardrails-update-fix\n\nfix: declare correct error types for +k8s:update guardrail",
+    "url": "https://github.com/kubernetes/kubernetes/commit/8ed0e009c4fd5d5fd218239319f79bc046c362b2",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139190 from Kartavyasonar/doc-configmap-binarydata-env-limitation",
+    "text": "Merge pull request #139190 from Kartavyasonar/doc-configmap-binarydata-env-limitation\n\ndoc: clarify ConfigMap BinaryData not propagated to container env vars",
+    "url": "https://github.com/kubernetes/kubernetes/commit/0be5dabcdf90e7d997b3de06144d8959d0eab7cd",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139317 from hoteye/hoteye-volume-plugin-mgr-logger",
+    "text": "Merge pull request #139317 from hoteye/hoteye-volume-plugin-mgr-logger\n\nkubelet: pass logger into volume plugin manager initialization",
+    "url": "https://github.com/kubernetes/kubernetes/commit/e9a8a5910cace55b6521a49902b3c34d1db7c186",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139295 from hoteye/hoteye-podconfig-seen-sources-logger",
+    "text": "Merge pull request #139295 from hoteye/hoteye-podconfig-seen-sources-logger\n\nkubelet: pass logger into pod config source check",
+    "url": "https://github.com/kubernetes/kubernetes/commit/322eae79b13c4a991b53a24dcd5fd8774c936021",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "address feedback: naming, test op, ratchet coverage, comments",
+    "text": "address feedback: naming, test op, ratchet coverage, comments\n\n- rename triggerSet/dependentSet \u2192 triggerIsSet/dependentIsSet\n- set op explicitly on basic test cases\n- add OtherField and canonical ratchet test\n- expand comment on pointer-target rationale",
+    "url": "https://github.com/kubernetes/kubernetes/commit/526da0050534f7e5937bf77d73c9d3bac022d6db",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Merge pull request #139199 from marosset/windows-skip-memory-backed-emptydir-conromance",
+    "text": "Merge pull request #139199 from marosset/windows-skip-memory-backed-emptydir-conromance\n\nSkip memory backed emptyDir e2e tests on Windows",
+    "url": "https://github.com/kubernetes/kubernetes/commit/c2fb6b8dec10b6b711f8204ae67b8a602eff50d6",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "validation-gen: declare correct error types for +k8s:update",
+    "text": "validation-gen: declare correct error types for +k8s:update\n\nThe generator declared every +k8s:update error as field.Invalid at the\nfield path, but the runtime emits field.Forbidden at index/key paths\nfor NoAddItem and NoRemoveItem. Declarative-validation coverage tests\nfail on fields using these constraints with uncovered-rule errors.\n\nPromote FunctionGen.Emits to a slice so a single call can declare\nmultiple (ErrorType, PathFragment) tuples, and have the update validator\ndeclare the actual emissions for each constraint.",
+    "url": "https://github.com/kubernetes/kubernetes/commit/ad255befbc5f192daa7d7bd68054f4a802b14feb",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "doc: clarify ConfigMap BinaryData not propagated to container env vars",
+    "text": "doc: clarify ConfigMap BinaryData not propagated to container env vars",
+    "url": "https://github.com/kubernetes/kubernetes/commit/be38e73900fdb0a1128e83d41ed11d483284b538",
+    "source": "github_commits"
+  },
+  {
+    "domain": "code_review",
+    "title": "Fix g.Expect with framework.ExpectNoError",
+    "text": "Fix g.Expect with framework.ExpectNoError",
+    "url": "https://github.com/kubernetes/kubernetes/commit/3884c64fbeca99a1789e141faf7698ec7247808d",
+    "source": "github_commits"
+  },
+  {
+    "domain": "communications",
+    "title": "Ask Experienced Devs Weekly Thread: A weekly thread for inexperienced developers to ask experienced ones",
+    "text": "Ask Experienced Devs Weekly Thread: A weekly thread for inexperienced developers to ask experienced ones\n\nA thread for Developers and IT folks with less experience to ask more experienced souls questions about the industry.\n\n&amp;#x200B;\n\nPlease keep top level comments limited to Inexperienced Devs. Most rules do not apply, but keep it civil. Being a jerk will not be tolerated.\n\n&amp;#x200B;\n\n**Inexperienced Devs should refrain from answering other Inexperienced Devs' questions.**",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tmsggv/ask_experienced_devs_weekly_thread_a_weekly/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "4 YOE, is it normal for orgs to heavily reward crisis management?",
+    "text": "4 YOE, is it normal for orgs to heavily reward crisis management?\n\nWriting this on mobile, sorry in advance for the formatting issues)\n\nWe have monthly all-hands meetings for my group, and part of the meet involves our group supervisor detailing accomplishments and merits that colleagues have achieved during that time period.\n\nThis is fine by me, but I've noticed a particular trend that bugs me. A lot of kudos are pretty standard (well-received deliverable, being a team player, etc.), but a big trend among others is that they seem to be related to overwork or having to deal with a last-minute ad-hoc request from a stakeholder.\n\nPersonally, I'm not sure if I find it healthy to normalize the \"",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tq8599/4_yoe_is_it_normal_for_orgs_to_heavily_reward/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "For all of you who are posting layoff posts, this is your thread.",
+    "text": "For all of you who are posting layoff posts, this is your thread.\n\nI feel like an asshole deleting posts of people in violation of Rule 3 when they post about being laid off.  I am not a cruel heartless bastard kicking you when you are down. So this is your thread where I say I see you, I was in your shoes not too long ago, and this too shall pass. Post here for support.",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpq597/for_all_of_you_who_are_posting_layoff_posts_this/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "In long term, what matters more: where you work or what you work on?",
+    "text": "In long term, what matters more: where you work or what you work on?\n\nFor people further along in their careers, how much has company brand mattered compared to the actual work you did?\n\nI\u2019m nearing 8 YOE and don\u2019t currently have FAANG experience. I\u2019m trying to understand whether that brand signal meaningfully changes future opportunities, or whether scope, impact, and technical depth matter more once you\u2019re past the early-career stage.\n\nI haven\u2019t had problems landing interviews at big tech (landed an offer with one except I\u2019m being downlevelled) but is that not going to not necessarily be the case as I grow older? Trying to understand what industry values. Because if you talk about impact, ",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tptmvi/in_long_term_what_matters_more_where_you_work_or/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Today I announced that I won't be reviewing AI generated PRs at company meeting",
+    "text": "Today I announced that I won't be reviewing AI generated PRs at company meeting\n\nI was reviewing PRs from data scientists (python developers) for the web service. The data scientists were using Claude Code to generate changes to the web site (rails/vue) and send PRs to the web developers. I made a decision that I no longer want to review this code, since it's AI generated and people who generate it do not understand it. The reason is that I find it very easy for me to miss issues during such PR reviews, because the AI generated code looks good and plausible, so it will lead to bugs and security issues.\n\nToday we had a company-wide meeting, and during my turn I explained the issue and announc",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1towli9/today_i_announced_that_i_wont_be_reviewing_ai/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Is this becoming a common trend or has it always been this way.",
+    "text": "Is this becoming a common trend or has it always been this way.\n\nI was let go from my position yesterday due to performance reasons.  I was asked to join a project to help get it across the finish line. However, in the last two weeks, I made mistakes and put a release into jeopardy.  This was my first major mistake at the company.  That obviously resulted in me having a bad 1:1 with my manager.  I admitted that I fucked up and came prepared with how I was going to calibrate and bounce back from there.\n\nWe both agreed.  The next day, a meeting popped up on my calendar for yesterday 930, I felt uneasy about it, but to calm my nerves, I asked my manager how I should best prepare for the meeting",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpb2r4/is_this_becoming_a_common_trend_or_has_it_always/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Is anyone actually running lean base images in production? how much did it help your CVE count?",
+    "text": "Is anyone actually running lean base images in production? how much did it help your CVE count?\n\nBeen going through our container scan reports and the vast majority of our CVEs are coming from the base image, not our application code. Packages we dont even use, stuff like shells, package managers, random libraries that came bundled with the distro.\n\nThe obvious answer is use a smaller base image or go distroless. But in practice, how much did it actually reduce your CVE count? Most importantly, did the lack of a shell and package manager become a pain when debugging? We are at the crossroads trying to decide whether the security win is worth the operational tradeoff.",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpo0yt/is_anyone_actually_running_lean_base_images_in/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Anyone else feel like there\u2019s a rise in cybersecurity fear mongering lately?",
+    "text": "Anyone else feel like there\u2019s a rise in cybersecurity fear mongering lately?\n\nI\u2019ve been working on data/analytics APIs for over a decade. ive gone through SOC2, HIPAA, FedRAMP, you name it, and I\u2019m usually the guy advocating for being more cybersecurity conscience, but lately I feel like I\u2019ve seen more \u201cIt\u2019s so over\u201d security stories that ever before that are all way overblown.\n\nThis one (CVE-2026-48710 / BadHost) is driving me nuts:\n\n[https://arstechnica.com/information-technology/2026/05/millions-of-ai-agents-imperiled-by-critical-vulnerability-in-open-source-package/](https://arstechnica.com/information-technology/2026/05/millions-of-ai-agents-imperiled-by-critical-vulnerability-in-open-s",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpsbm9/anyone_else_feel_like_theres_a_rise_in/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "How do you manage a relationship with a manager who isn't reading or interpreting anything you're saying through messages?",
+    "text": "How do you manage a relationship with a manager who isn't reading or interpreting anything you're saying through messages?\n\nHi all,\n\nI'm at my wit's end here. Just had to hop off a call at 730 PM (!) because my manager refused to read anything I wrote and demanded a call.\n\nTLDR: I needed a manager to fill out a form for a deployment. I tried it on my own and got an authorization failure. Makes sense.\n\nI communicated this with my manager, sent screenshots of the form, a link to the form, how to open the form, the environments to target in the form, and a ticket number that I had created. \n\nHe responds with \"call?\" and has another senior engineer (who's familiar with this process) to join.\n\nSo",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpmsao/how_do_you_manage_a_relationship_with_a_manager/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Worried I made a bad move for my career through reversing my internal transfer",
+    "text": "Worried I made a bad move for my career through reversing my internal transfer\n\nI recently transferred (2 weeks ago) from an infra/tech focused team working on a greenfield project on the API management space to a larger, mature payments enterprise app team. On my old team, I liked the fast-paced 0\u21921 environment, ownership opportunities, and close collaboration with product/design, but I felt limited by my lack of experience on more established products and was worried the work lacked strong measurable impact for future interviews. It was an interesting team culture especially for what\u2019s normally expected in banking.\n\nAfter moving to the new team, I quickly realized I dislike the rigid enter",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tq987w/worried_i_made_a_bad_move_for_my_career_through/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "AI impacts the quality of my work severely.",
+    "text": "AI impacts the quality of my work severely.\n\nI was moved to a different team recently. So I have to learn new domain knowledge, new language (moved from C++ to python). My company openly says we should burn tokens, and vibe code, it's only speed that matters. I picked up a new task. I really tried to embrace agentic AI, I had skills written that plan the feature, analyse existing codebase, subagents that guard quality of code, compliance with a spec etc. First problem, this huge system is slow as hell. Secondly, I then have to sift through 3000 lines of code, only to discover, it's all slop, and it shouldn't even be 3000 lines. I feel like I'm also not learning anything. But if I stop burnin",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1toznia/ai_impacts_the_quality_of_my_work_severely/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "How to survive a dysfunctional and dying organization as a medior dev?",
+    "text": "How to survive a dysfunctional and dying organization as a medior dev?\n\nThe obvious answer would be \"leave ASAP\", I guess, but (1) I do like (most) of the people here, (2) I'm in Europe and have 2 calendar months mandatory notice, (3)... I'm a bit at a loss what to do career-wise.\n\nSo, this company is not doing well. We have a bad track record of taking on way too many projects, and after trimming down a lot this year, it's still too many. We're heavily understaffed and have no hiring budget. But the biggest problem is: our current product was architected and designed by a relatively small amount of people with short communication lines, and this company never learned how to scale and how to",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpbgr4/how_to_survive_a_dysfunctional_and_dying/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "If you have integrated payment systems: what was harder than expected?",
+    "text": "If you have integrated payment systems: what was harder than expected?\n\nFor others who have integrated with payment processors/gateways/APIs \u2014 what has actually been the hardest part in practice?\n\nA few things I\u2019d love to understand from people who\u2019ve done it:\n\nWhat ended up being more painful than expected?\n\nWhat breaks most often in production?\n\nWhich providers had the best/worst docs or developer experience and why?\n\nHow much operational/support burden exists after launch?\n\nWhat kinds of edge cases surprised you?\n\nWhat differentiates a \u201cgood\u201d payments integration from a painful one?\n\nNot recruiting or selling anything.",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpcskv/if_you_have_integrated_payment_systems_what_was/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Mobile roles?",
+    "text": "Mobile roles?\n\nNot seeing many mobile roles anymore. Especially ones that require some experience developing robust end to end systems.   \nMost roles I see are react, slim product layers above LLM.   \nI guess that\u2019s the flavour of the season?   \nThis is in USA (Bay Area)",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tp94b6/mobile_roles/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Backlog grooming in AI assisted world",
+    "text": "Backlog grooming in AI assisted world\n\nHow has your teams backlog grooming process changed as AI adoption has increased in your team?\n\nWe have never gotten super detailed on our backlog. Its not uncommon for us to just have a title on some items. Maybe we get a bulleted list. Our team has a ton of product knowledge and the average tenure at the company is 10+ years.\n\nSome parts of our org spend tons of time grooming features and pbi's to spec out everything and we are getting pulled more in that direction. Are you guys moving towards more documentation or less before implementation now that implementation / change may take less time than writing out all the requirements?",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tp70xu/backlog_grooming_in_ai_assisted_world/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "10 YOE SWE considering move to AI governance/strategy role",
+    "text": "10 YOE SWE considering move to AI governance/strategy role\n\nCurrently an engineer at a large company dealing with poor/toxic leadership, constant manufactured urgency, and AI mandates that make no sense getting shoved down from above. I\u2019m feeling really burnt out with the engineering culture and not optimistic about the direction things are heading at all.\n\nAn internal opportunity came up to lead AI strategy/GRC team. This would be non-engineering, more cross-functional, and more senior leadership exposure. It seems like a space that is growing fast as companies figure out their AI policies.\n\nHas anyone made a similar transition? Is it realistic to return after a few years away or does stepp",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tp6g2z/10_yoe_swe_considering_move_to_ai/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "How is T4 less pressure than T5? (in the context of faang and faang adjacent companies)",
+    "text": "How is T4 less pressure than T5? (in the context of faang and faang adjacent companies)\n\nI\u2019ve run into a couple folks who wanted to be hired as T4 (mid level) instead of T5 (senior) and I don\u2019t get it.\n\nCan someone help me understand concretely what additional pressure you feel as a T5?\n\nI feel like T4s have as much work as T5s but just get less credit and less pay.\n\nAnd as a T5 there\u2019s more opportunity to demonstrate your worth with bigger scope, assigned mentees, visibility, headcount for your projects, etc.",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpxz12/how_is_t4_less_pressure_than_t5_in_the_context_of/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Do you operate at the level you need to work at normally?",
+    "text": "Do you operate at the level you need to work at normally?\n\nFor example if there's a weekend or a vacation. I need to rev back into gear so I'm able to do and even sometimes understand the work. But after some days away, I am not in gear so to say. Sometimes it takes me a few days of effort for my brain to get the  picture that it's time to rev up and then it revs down again for rest. \n\nSome people seem to operate in their personal life with the same brain functioning as they need for work. Me on the other hand, my brain doesn't do much if not forced. Using it for this type of role is like using Nos in Fast and the furious. The engine can do it but it certainly was not meant for it.",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tocyx0/do_you_operate_at_the_level_you_need_to_work_at/",
+    "source": "reddit"
+  },
+  {
+    "domain": "communications",
+    "title": "Sick of rewriting Python prototypes in C++. Any sane C++ web frameworks?",
+    "text": "Sick of rewriting Python prototypes in C++. Any sane C++ web frameworks?\n\nThis is a constant architectural headache. We have these IO-bound microservices. We start by slapping them together with FastAPI or Flask just to validate a POC. Then the load grows, Python inevitably starts to choke, and we spend weeks porting everything to C++ using stuff like Boost.Asio or Pistache\n\nHow are you guys handling this? Does a C++ framework even exist where you can throw together a CRUD app with a DB in a day without drowning in miles of boilerplate and callback hell?",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1to5tis/sick_of_rewriting_python_prototypes_in_c_any_sane/",
+    "source": "reddit"
+  },
+  {
+    "domain": "docs",
+    "title": "Why is conditional processing of a sorted array faster than of an unsorted array?",
+    "text": "Why is conditional processing of a sorted array faster than of an unsorted array?\n\nIn this C++ code, sorting the data ( before the timed region) makes the primary loop ~6x faster: #include &lt;algorithm&gt; #include &lt;ctime&gt; #include &lt;iostream&gt; int main() { // Generate data const unsigned arraySize = 32768; int data[arraySize]; for (unsigned c = 0; c &lt; arraySize; ++c) data[c] = std::rand() % 256; // !!! With this, the next loop runs faster. std::sort(data, data + arraySize); // Test clock_t start = clock(); long long sum = 0; for (unsigned i = 0; i &lt; 100000; ++i) { for (unsigned c = 0; c &lt; arraySize; ++c) { // Primary loop. if (data[c] &gt;= 128) sum += data[c]; } } doubl",
+    "url": "https://stackoverflow.com/questions/11227809/why-is-conditional-processing-of-a-sorted-array-faster-than-of-an-unsorted-array",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "How do I undo the most recent local commits in Git?",
+    "text": "How do I undo the most recent local commits in Git?\n\nI accidentally committed the wrong files to Git but haven't pushed the commit to the server yet. How do I undo those commits from the local repository?",
+    "url": "https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "How do I delete a Git branch locally and remotely?",
+    "text": "How do I delete a Git branch locally and remotely?\n\nFailed Attempts to Delete a Remote Branch: $ git branch -d remotes/origin/bugfix error: branch 'remotes/origin/bugfix' not found. $ git branch -d origin/bugfix error: branch 'origin/bugfix' not found. $ git branch -rd origin/bugfix Deleted remote branch origin/bugfix (was 2a14ef7). $ git push Everything up-to-date $ git pull From github.com:gituser/gitproject * [new branch] bugfix -&gt; origin/bugfix Already up-to-date. How do I properly delete the remotes/origin/bugfix branch both locally and remotely?",
+    "url": "https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "What is the difference between &#39;git pull&#39; and &#39;git fetch&#39;?",
+    "text": "What is the difference between &#39;git pull&#39; and &#39;git fetch&#39;?\n\nWhat are the differences between git pull and git fetch ?",
+    "url": "https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "What does the &quot;yield&quot; keyword do in Python?",
+    "text": "What does the &quot;yield&quot; keyword do in Python?\n\nWhat functionality does the yield keyword in Python provide? For example, I'm trying to understand this code 1 : def _get_child_candidates(self, distance, min_dist, max_dist): if self._leftchild and distance - max_dist &lt; self._median: yield self._leftchild if self._rightchild and distance + max_dist &gt;= self._median: yield self._rightchild And this is the caller: result, candidates = [], [self] while candidates: node = candidates.pop() distance = node._get_dist(obj) if distance &lt;= max_dist and distance &gt;= min_dist: result.extend(node._values) candidates.extend(node._get_child_candidates(distance, min_dist, max_dist)) return re",
+    "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "How can I remove a specific item from an array in JavaScript?",
+    "text": "How can I remove a specific item from an array in JavaScript?\n\nHow do I remove a specific value from an array? Something like: array.remove(value); Constraints: I have to use core JavaScript. Frameworks are not allowed.",
+    "url": "https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "How can I rename a local Git branch?",
+    "text": "How can I rename a local Git branch?\n\nHow can I rename a local branch which has not yet been pushed to a remote repository? Related: Rename master branch for both local and remote Git repositories How do I rename both a Git local and remote branch name?",
+    "url": "https://stackoverflow.com/questions/6591213/how-can-i-rename-a-local-git-branch",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "Which JSON content type do I use?",
+    "text": "Which JSON content type do I use?\n\nThere are many &quot;standards&quot; for the JSON content type: application/json application/x-javascript text/javascript text/x-javascript text/x-json Which one do I use, and where? I assume security and browser support issues are a factor. Related: What MIME type if JSON is being returned by a REST API?",
+    "url": "https://stackoverflow.com/questions/477816/which-json-content-type-do-i-use",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "How do I undo &#39;git add&#39; before commit?",
+    "text": "How do I undo &#39;git add&#39; before commit?\n\nI mistakenly added files to Git using the command: git add myfile.txt I have not yet run git commit . How do I undo this so that these changes will not be included in the commit?",
+    "url": "https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "What is the &#39;--&gt;&#39; operator in C/C++?",
+    "text": "What is the &#39;--&gt;&#39; operator in C/C++?\n\nAfter reading Hidden Features and Dark Corners of C++/STL on comp.lang.c++.moderated , I was completely surprised that the following snippet compiled and worked in both Visual Studio 2008 and G++ 4.4. I would assume this is also valid C since it works in GCC as well. Here's the code: #include &lt;stdio.h&gt; int main() { int x = 10; while (x --&gt; 0) // x goes to 0 { printf(&quot;%d &quot;, x); } } Output: 9 8 7 6 5 4 3 2 1 0 Where is this defined in the standard, and where has it come from?",
+    "url": "https://stackoverflow.com/questions/1642028/what-is-the-operator-in-c-c",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "How do I force &quot;git pull&quot; to overwrite local files?",
+    "text": "How do I force &quot;git pull&quot; to overwrite local files?\n\nHow do I force an overwrite of local files on a git pull ? My local repository contains a file of the same filename as on the server. error: Untracked working tree file 'example.txt' would be overwritten by merge",
+    "url": "https://stackoverflow.com/questions/1125968/how-do-i-force-git-pull-to-overwrite-local-files",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "Can comments be used in JSON?",
+    "text": "Can comments be used in JSON?\n\nCan I use comments inside a JSON file? If so, how?",
+    "url": "https://stackoverflow.com/questions/244777/can-comments-be-used-in-json",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "What and where are the stack and heap?",
+    "text": "What and where are the stack and heap?\n\nWhat are the stack and heap? Where are they located physically in a computer's memory? To what extent are they controlled by the OS or language run-time? What is their scope? What determines their sizes? What makes one faster?",
+    "url": "https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "Why does HTML think \u201cchucknorris\u201d is a color?",
+    "text": "Why does HTML think \u201cchucknorris\u201d is a color?\n\nWhy do certain random strings produce colors when entered as background colors in HTML? For example, bgcolor=&quot;chucknorris&quot; produces a red background : &lt;body bgcolor=\"chucknorris\"&gt; test &lt;/body&gt; Conversely, bgcolor=&quot;chucknorr&quot; produces a yellow background : &lt;body bgcolor=\"chucknorr\"&gt; test &lt;/body&gt; This holds true across various browsers and platforms. What\u2019s going on here?",
+    "url": "https://stackoverflow.com/questions/8318911/why-does-html-think-chucknorris-is-a-color",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "docs",
+    "title": "How can I check out a remote Git branch?",
+    "text": "How can I check out a remote Git branch?\n\nHow do I check out the remote test branch? I can see it with git branch -r . I tried: git checkout test , which does nothing git checkout origin/test gives * (no branch)",
+    "url": "https://stackoverflow.com/questions/1783405/how-can-i-check-out-a-remote-git-branch",
+    "source": "stackoverflow"
+  },
+  {
+    "domain": "content",
+    "title": "GraphQL",
+    "text": "GraphQL is a data query and manipulation language that allows specifying what data is to be retrieved or modified. A GraphQL server can process a client query using data from separate sources and present the results in a unified graph. The language is not tied to any specific database or storage engine. There are several open-source runtime engines for GraphQL.",
+    "url": "https://en.wikipedia.org/wiki/GraphQL",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Continuous integration",
+    "text": "Continuous integration (CI) is the practice of integrating source code changes frequently and ensuring that the integrated codebase is in a workable state. Typically, developers merge changes to an integration branch, and an automated system builds and tests the software system. \nOften, the automated process runs on each commit or runs on a schedule such as once a day. Grady Booch first proposed the term CI in 1991, although he did not advocate integrating multiple times a day, but later, CI came to include that aspect.",
+    "url": "https://en.wikipedia.org/wiki/Continuous_integration",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Python (programming language)",
+    "text": "Python is a high-level, general-purpose programming language that emphasizes code readability, simplicity, and ease-of-writing with the use of significant indentation, \"plain English\" naming, an extensive (\"batteries-included\") standard library, and garbage collection. Python supports multiple programming paradigms but with an emphasis on object-oriented programming and dynamic typing.",
+    "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Test-driven development",
+    "text": "Test-driven development (TDD) is a way of writing code that involves writing an automated unit-level test case that fails, then writing just enough code to make the test pass, then refactoring both the test code and the production code, then repeating with another new test case.",
+    "url": "https://en.wikipedia.org/wiki/Test-driven_development",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Kubernetes",
+    "text": "Kubernetes, also known as K8s, is an open-source container orchestration system for automating software deployment, scaling, and management. Originally designed by Google, the project is now maintained by a worldwide community of contributors, and the trademark is held by the Cloud Native Computing Foundation.",
+    "url": "https://en.wikipedia.org/wiki/Kubernetes",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "REST",
+    "text": "REST is a software architectural style that was created to describe the design and guide the development of the architecture for the World Wide Web. REST defines a set of constraints for how the architecture of a distributed, Internet-scale hypermedia system, such as the Web, should behave. The REST architectural style emphasizes uniform interfaces, independent deployment of components, the scalability of interactions between them, and creating a layered architecture to promote caching to reduce user-perceived latency, enforce security, and encapsulate legacy systems.",
+    "url": "https://en.wikipedia.org/wiki/REST",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Redis",
+    "text": "Redis is an in-memory key\u2013value database, used as a distributed cache and message broker, with optional durability. Because it holds all data in memory and because of its design, Redis offers low-latency reads and writes, making it particularly suitable for use cases that require a cache.",
+    "url": "https://en.wikipedia.org/wiki/Redis",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Machine learning",
+    "text": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without being explicitly programmed. Advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance.",
+    "url": "https://en.wikipedia.org/wiki/Machine_learning",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Artificial intelligence",
+    "text": "Artificial intelligence (AI) is the capability of computational systems to perform tasks typically associated with human intelligence, such as learning, reasoning, problem-solving, perception, and decision-making. It is a field of research in engineering, mathematics and computer science that develops and studies methods and software that enable machines to perceive their environment and use learning and intelligence to take actions that maximize their chances of achieving defined goals.",
+    "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Microservices",
+    "text": "In software engineering, a microservice architecture is an architectural pattern that organizes an application into a collection of loosely coupled, fine-grained services that communicate through lightweight protocols. This pattern allows teams to develop, deploy, and scale services independently, improving modularity, scalability, and adaptability. However, it introduces additional complexity, particularly in managing distributed systems and inter-service communication, making the initial implementation more challenging compared to a monolithic architecture.",
+    "url": "https://en.wikipedia.org/wiki/Microservices",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "DevOps",
+    "text": "DevOps is the integration and automation of software development and information technology operations. DevOps encompasses the tasks necessary for software development and can lead to both shortening development time and improving the development life cycle. According to Neal Ford, DevOps, particularly through continuous delivery, employs the \"bring the pain forward\" principle by tackling tough tasks early, fostering automation, and enabling swift issue detection. Software programmers and architects should use fitness functions to keep their software in check.",
+    "url": "https://en.wikipedia.org/wiki/DevOps",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "PostgreSQL",
+    "text": "PostgreSQL, also known as Postgres, is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance. PostgreSQL features transactions with atomicity, consistency, isolation, durability (ACID) properties, automatically updatable views, materialized views, triggers, foreign keys, and stored procedures.\nIt is supported on all major operating systems, including Windows, Linux, macOS, FreeBSD, and OpenBSD, and handles a range of workloads from single machines to data warehouses, data lakes, or web services with many concurrent users.",
+    "url": "https://en.wikipedia.org/wiki/PostgreSQL",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Agile software development",
+    "text": "Agile software development is an umbrella term for approaches to developing software that reflect the values and principles agreed upon by The Agile Alliance, a group of 17 software practitioners, in 2001. As documented in their Manifesto for Agile Software Development, the practitioners value:Individuals and interactions over processes and tools\nWorking software over comprehensive documentation\nCustomer collaboration over contract negotiation\nResponding to change over following a plan",
+    "url": "https://en.wikipedia.org/wiki/Agile_software_development",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "content",
+    "title": "Docker (software)",
+    "text": "Docker is a set of products that uses operating system-level virtualization to deliver software in packages called containers. Docker automates the deployment of applications within lightweight containers, enabling them to run consistently across different computing environments.",
+    "url": "https://en.wikipedia.org/wiki/Docker_(software)",
+    "source": "wikipedia"
+  },
+  {
+    "domain": "academia",
+    "title": "Enhancing resolution and image quality in musculoskeletal MRI using deep learning reconstruction.",
+    "text": "Enhancing resolution and image quality in musculoskeletal MRI using deep learning reconstruction.\n\nDeep learning-based noise reduction enhances image quality, overcoming the tradeoff among acquisition time, spatial resolution, and signal-to-noise ratio (SNR). We implemented deep learning reconstruction (DLR) into a 1.5-T musculoskeletal (MSK) magnetic resonance imaging (MRI) protocol to improve image quality without compromising SNR.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42207458/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Predicting late radiation-associated neurocognitive and endocrine toxicity in patients with brain tumors.",
+    "text": "Predicting late radiation-associated neurocognitive and endocrine toxicity in patients with brain tumors.\n\nWe retrospectively analyzed 39 MRI examinations performed on a 1.5-T scanner using standard-resolution (SR) sequences and sequences with higher resolution reconstructed with DLR (HR-DLR). Exams of the knees, shoulders, ankles, and hips were evaluated. The included sequences were: three-dimensional T2-weighted fast advanced spin-echo; T1-weighted and proton density-weighted fast spin-echo. One expert reader and two junior readers in agreement evaluated the visibility of various structures using a 5-point Likert scale in a blind manner. A fourth reader estimated the SNR and contrast-to-noise ratio (CNR) in bone and muscle. A mixed model was used to compare HR-DLR versus SR measures. The",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42207360/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Interpretable machine learning model for predicting hemorrhage following ultrasound-guided percutaneous renal biopsy: a multicenter study.",
+    "text": "Interpretable machine learning model for predicting hemorrhage following ultrasound-guided percutaneous renal biopsy: a multicenter study.\n\nThe HR-DLR sequences globally had a smaller pixel size and shorter acquisition time. A good inter-reader agreement was obtained for SR sequences (0.613 &#x2264; &#x3c4;&#x2009;&#x2264;&#x2009;0.788) and even higher levels of agreement for HR-DLR sequences (0.682 &#x2264; &#x3c4;&#x2009;&#x2264;&#x2009;0.961). All the structures had higher or similar Likert scores in HR-DLR sequences (p&#x2009;&lt;&#x2009;0.001), regardless of joint and sequence contrast. Apparent SNR and CNR of HR-DLR and SR were similar.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42207295/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Automated identification of MRI series using a hierarchical modular machine-learning pipeline.",
+    "text": "Automated identification of MRI series using a hierarchical modular machine-learning pipeline.\n\nIncorporating DLR into 1.5-T MSK MRI protocols enhances resolution and maintains SNR and CNR, improving MSK structure visualization.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42207236/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Adaptive Fast-Slow Large Language Model Framework for Multidimensional Classification of Prenatal Ultrasound Reports: Comparative Study.",
+    "text": "Adaptive Fast-Slow Large Language Model Framework for Multidimensional Classification of Prenatal Ultrasound Reports: Comparative Study.\n\nThis study demonstrated the effectiveness of deep learning reconstruction in improving the efficiency of 1.5-T musculoskeletal MRI exams. Despite shorter acquisition times, the visibility of key MSK structures was consistently rated as superior or similar in higher-resolution images with DLR.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42207158/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Fully Automated Quantification of Functional Small Airway Disease at Inspiratory and Expiratory Chest CT Using Deep Learning.",
+    "text": "Fully Automated Quantification of Functional Small Airway Disease at Inspiratory and Expiratory Chest CT Using Deep Learning.\n\nMRI is one of the primary diagnostic tools for evaluating MSK injuries and disorders. Deep learning reconstruction (DLR) implemented in a 1.5-T MSK protocol improved resolution, still preserving SNR and CNR. Higher scores were assigned by different raters to the DLR images, showing image quality improvement.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42206980/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Learning ordinal representation across MRI sequences for liver fibrosis staging.",
+    "text": "Learning ordinal representation across MRI sequences for liver fibrosis staging.\n\nNeurocognitive and endocrine dysfunction are potential complications of cranial irradiation. However, risk factors are poorly understood, impeding accurate prognostication and exploration of potential preventive interventions. The objective of this study was to evaluate the prognostic value of various vascular and genotypic risk factors for the development of radiation-related toxicities.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42206568/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Matrix-Boosted Electrochemiluminescence Biosensor for Ultrasensitive Exosome Detection and Automated Phenotype Discrimination.",
+    "text": "Matrix-Boosted Electrochemiluminescence Biosensor for Ultrasensitive Exosome Detection and Automated Phenotype Discrimination.\n\nThis single-institution retrospective cohort study included patients with metastatic and malignant primary brain tumors who received cranial irradiation as part of their initial tumor-directed therapy. Demographic and treatment characteristics were collected, as well as putative vascular and genotypic risk factors. Univariate, multivariate, and machine-learning analyses were performed using five pre-specified measures of radiation-related toxicity. The primary outcome was change in mini-mental status exam (MMSE).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42206473/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Deep survival learning for prognosis prediction in non-metastatic castration-resistant prostate cancer.",
+    "text": "Deep survival learning for prognosis prediction in non-metastatic castration-resistant prostate cancer.\n\nEighty patients (53% male, mean age 55.7, 53% primary and 44% metastatic brain tumors) were included. Elevated homocysteine and ApOE4 genotype were the strongest predictors of MMSE decline in the multivariate model (OR 3.96 [6.5-200, p&#x2009;&lt;&#x2009;0.001 and 2.85 [1.92-27.6], p&#x2009;=&#x2009;0.004). Elevated homocysteine was associated white matter change on MRI and both physician and patient assessment. ApoE4 allele was associated with new endocrine deficiency, and physician assessment. An online nomogram provides risk predictions for each of the five late toxicity outcomes: ( https://afranklin22.shinyapps.io/PRMMSERadiationRiskFactors/ ) CONCLUSION: Two pre-treatment laborator",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42206427/",
+    "source": "pubmed"
+  },
+  {
+    "domain": "academia",
+    "title": "Extracting Cardiorespiratory Symptoms From Clinical Notes Using Open-Weight Large Language Models: Method Development and Validation Study.",
+    "text": "Extracting Cardiorespiratory Symptoms From Clinical Notes Using Open-Weight Large Language Models: Method Development and Validation Study.\n\nThis study aims to develop and validate an interpretable machine learning (ML) model for predicting post-procedural hemorrhage (PH) after ultrasound-guided percutaneous renal biopsy (PRB), aiding perioperative management.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42206405/",
+    "source": "pubmed"
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "text": "You might want to consider using Redis for caching, depending on your use case. It could potentially improve performance in some scenarios, though results may vary. Some developers believe it's better than Memcached, but others prefer different solutions. Your mileage may vary. It depends on your specific requirements.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Don't use Memcached for new projects. Redis does everything Memcached does plus pub/sub, Lua scripting, and sorted sets. We migrated in 2023 and haven't looked back. Use Redis. The only reason to pick Memcached is if you're already running it and the migration cost isn't worth it.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "There are various database options available, each with their own advantages and disadvantages. PostgreSQL may be suitable for some use cases, while MySQL might work better in others. It is generally accepted that the choice depends on your specific needs. Consulting with your team to evaluate the tradeoffs would be advisable.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Use PostgreSQL. MySQL's default transaction isolation is READ COMMITTED which causes phantom reads \u2014 we hit this in production on the orders table. PostgreSQL defaults to READ COMMITTED too but its MVCC implementation is cleaner. If you need full-text search, Postgres has it built in. Don't use MySQL for new projects.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Authentication is an important aspect of application security. There are various approaches that could potentially work, depending on your requirements. JWT tokens may be suitable in some cases, while session-based auth might be more appropriate in others. It is worth noting that security considerations should be carefully evaluated.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Use session tokens stored in httpOnly cookies, not JWTs in localStorage. JWTs in localStorage are readable by any JavaScript on the page \u2014 one XSS vulnerability and every user token is compromised. Sessions with Redis backing give you instant revocation. JWTs are stateless which sounds good until you need to log someone out immediately.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "There are multiple deployment strategies that teams might consider. Blue-green deployments could potentially reduce downtime in some scenarios. Canary releases might be more suitable for certain use cases. The best approach may vary depending on your infrastructure.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Use canary releases, not blue-green, for stateful services. Blue-green requires you to run two full production environments simultaneously \u2014 that's 2x cost. Canary lets you route 5% of traffic to the new version, watch error rates for 10 minutes, then promote. We've caught 3 regressions this way in the last year that would have been full outages.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Code review practices can vary significantly across teams. Some developers prefer detailed reviews while others may find them time-consuming. There are various factors to consider when establishing review processes. It depends on your team's specific needs and culture.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Require at least one approval from someone who didn't write the code. No exceptions. We tried 'optional review for small changes' for 3 months \u2014 it produced 4 production bugs that a second pair of eyes would have caught. The overhead is 15 minutes per PR. The cost of a production incident is 4 hours minimum.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Testing strategies can vary depending on the project. Unit tests might be beneficial in some cases, while integration tests could be more appropriate in others. Some teams prefer TDD while others find it less suitable. Results may vary.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Write integration tests, not unit tests, for database code. Unit tests with mocked database calls test your mock, not your SQL. We had 100% unit test coverage on the billing module and still shipped a query that returned wrong results on NULL amounts. Integration tests against a real Postgres instance caught it in 2 minutes.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Logging is an important consideration for production systems. There are various logging frameworks available that might suit different needs. Structured logging could potentially be beneficial in some scenarios. The appropriate approach depends on your requirements.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Use structured JSON logging from day one. We spent 3 days parsing unstructured logs after the March incident because grep couldn't correlate request IDs across services. JSON logs with request_id, user_id, and duration fields let you write a CloudWatch Insights query in 30 seconds. The migration cost from printf-style logging is a week.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "API design is a complex topic with many considerations. RESTful APIs may be suitable for some use cases while GraphQL might work better in others. Various factors should be considered when making this decision. It is generally advisable to consult with your team and evaluate the specific requirements.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Use REST for public APIs, GraphQL for internal product APIs. REST is simpler to cache, document, and version. GraphQL is better when clients need flexible queries \u2014 our mobile app was making 7 REST calls per screen, GraphQL reduced it to 1. Don't use GraphQL for a public API \u2014 the introspection endpoint is a security liability.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_epistemic"
+  },
+  {
+    "text": "Added Redis caching to improve performance. The system now stores frequently accessed data in memory, reducing database load. Performance is improved and users will experience faster response times. The implementation follows best practices for caching.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Added Redis caching for the user profile endpoint. Considered Memcached but rejected it because we need pub/sub for cache invalidation when profiles update. TTL set to 300s \u2014 shorter would hammer the DB on cache miss storms, longer risks showing stale data after password changes. Known limitation: cache doesn't invalidate on admin edits. Accepted that risk, added a manual flush endpoint for the support team.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Implemented JWT authentication to secure the API. The system now validates tokens on each request. Security is improved and users can authenticate safely. The implementation follows industry best practices.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Fixed JWT secret exposure in auth/middleware.js \u2014 previous implementation logged the full token on line 47, appearing in CloudWatch logs. Considered environment variables but rejected that because our pipeline doesn't support secret rotation. Switched to AWS Secrets Manager with 30-day rotation. This breaks if Secrets Manager API is unavailable \u2014 added 5s timeout with fallback to cached credentials. Edge case: if cache is empty AND Secrets Manager is down, auth fails. Accepted that risk.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Migrated the database to improve performance and scalability. The new schema is more efficient and better organized. Query performance is improved across the board. The migration was completed successfully.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Migrated orders table from UUID primary keys to BIGINT GENERATED ALWAYS AS IDENTITY. UUID PKs caused 40% index bloat on the 12M-row table \u2014 measured via pg_stat_user_tables. Considered keeping UUIDs with a separate surrogate key but rejected it: double the index size. Migration ran in 3 hours with zero downtime using pg_repack. Known limitation: external systems using UUID references need a mapping table for 90 days.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Implemented rate limiting to protect the API from abuse. The system now limits requests per user. This improves reliability and prevents overload. The implementation is robust and scalable.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Added rate limiting to /api/v2/search after Grafana showed 3 customers sending 400+ rps, spiking p99 from 120ms to 2.8s. Limit: 60 rps/key with 429 + Retry-After header. Considered token bucket vs sliding window \u2014 chose sliding window because token bucket allows burst spikes at window boundaries. Limitation: limits are per-instance, not cluster-wide. Under 10 instances, a determined client can send 600 rps total. Accepted that risk \u2014 cluster-wide Redis counter adds 2ms per request.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Improved error handling throughout the application. The system now handles errors more gracefully and provides better feedback to users. Reliability is improved. The implementation follows best practices.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Replaced generic 500 responses with structured error codes after support spent 2 hours on a ticket that turned out to be a missing required field. Now returns {code: 'MISSING_FIELD', field: 'billing_address', message: '...'}. Considered using HTTP 422 vs 400 \u2014 chose 400 because our iOS client treats 422 as network error. Known gap: validation errors on nested objects don't include the path (e.g., 'items[2].price' not 'price'). Fix in next sprint.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Updated the deployment process to improve reliability. The new process is more streamlined and reduces downtime. Deployments are now faster and more consistent. The implementation follows DevOps best practices.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Switched from rolling deploys to blue-green after the March 14 incident where a bad deploy caused 8 minutes of mixed responses (old and new code serving simultaneously). Blue-green costs 2x EC2 during deploy window (~15 min, ~$0.40 per deploy). Considered canary releases but rejected them \u2014 our session store isn't compatible with mixed versions. Limitation: database migrations must be backward-compatible with the old version for the 15-minute overlap window.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Added monitoring to improve system observability. The system now tracks key metrics and alerts on issues. This improves reliability and helps the team respond faster. The implementation provides comprehensive visibility.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Added p95/p99 latency alerts after we missed a 3x slowdown for 4 hours because average latency looked fine (fast requests masked slow ones). Thresholds: p95 > 500ms pages on-call, p99 > 2s pages the whole team. Considered percentile vs average \u2014 average is useless for latency. Known limitation: alerts fire on deploy spikes. Added 5-minute suppression window after deploys. This means we're blind for 5 minutes post-deploy \u2014 accepted that risk.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Implemented connection pooling to improve database performance. The system now reuses connections efficiently. This reduces overhead and improves throughput. The implementation is optimized for production use.",
+    "label": "slop",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  },
+  {
+    "text": "Added PgBouncer connection pooling after the payments service exhausted Postgres's 100-connection limit at 400 concurrent users \u2014 measured via pg_stat_activity. Considered increasing max_connections but rejected it: each Postgres connection uses ~5MB RAM, 500 connections = 2.5GB just for connection overhead. PgBouncer in transaction mode reduced connections from 400 to 12. Limitation: transaction-mode pooling breaks prepared statements \u2014 had to disable them in the ORM config.",
+    "label": "reviewed",
+    "domain": "code_review",
+    "source": "training_counterfactual"
+  }
+]

@@ -1,0 +1,80 @@
+[project]
+name = "slopguard"
+version = "0.2.0"
+description = "Human oversight scoring for low-effort AI slop. Score PRs, docs, reviews, and more."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [
+  {name = "SlopGuard"}
+]
+keywords = ["slop", "ai-detection", "quality", "oversight", "pr-review", "content-scoring", "human-oversight"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+  "fastapi>=0.115.0,<1.0.0",
+  "uvicorn[standard]>=0.30.0,<1.0.0",
+  "pydantic>=2.10.0,<3.0.0"
+]
+
+[project.optional-dependencies]
+ml = [
+  "sentence-transformers>=2.2.0",
+  "transformers>=4.36.0",
+  "faiss-cpu>=1.7.0",
+  "networkx>=3.0",
+  "tree-sitter>=0.20.0",
+  "tree-sitter-python>=0.20.0",
+  "tree-sitter-javascript>=0.20.0",
+  "tree-sitter-typescript>=0.20.0",
+]
+gpu = [
+  "faiss-gpu>=1.7.0",
+]
+telemetry = [
+  "supabase>=2.0.0",
+]
+datasets = [
+  "datasets>=2.0.0",
+]
+dev = [
+  "pytest>=7.0.0",
+  "ruff>=0.1.0",
+]
+all = [
+  "sentence-transformers>=2.2.0",
+  "transformers>=4.36.0",
+  "faiss-cpu>=1.7.0",
+  "networkx>=3.0",
+  "datasets>=2.0.0",
+]
+
+[project.scripts]
+slopguard = "slopguard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/slopguard/slopguard"
+Documentation = "https://github.com/slopguard/slopguard#readme"
+Repository = "https://github.com/slopguard/slopguard"
+Issues = "https://github.com/slopguard/slopguard/issues"
+"Live Demo" = "http://localhost:8000/live"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

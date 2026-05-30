@@ -1,0 +1,1268 @@
+[
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Refs #35870, Refs #35514 -- Fixed a couple of issues for deprecation notices in 6.1 docs.\n\n#### Trac ticket number\r\n<!-- Replace XXXXX with the corresponding Trac ticket number. -->\r\n<!-- Or delete the line and write \"N/A - typo\" for typo fixes. -->\r\n\r\nticket-35870, ticket-35514\r\n\r\n#### Branch description\r\nBased on the contributing guide, specific Django versions should not be used outside a `versionadded` or `versionchanged` block. Even inside a block, it's often redundant to do so as these annotations render as \"New in Django A.B:\" and \"Changed in Django A.B\", respectively.\r\n\r\nThis also applies to `deprecated` which renders as \"Deprecated since version A.B\".\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [X] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [X] This PR follows the [contribution guidelines",
+    "source": "github:django/django",
+    "pr_number": 21362
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37116 -- explained why a code is useful with a ValidationError in the doc.\n\n#### Trac ticket number\r\n\r\nticket-37116\r\n\r\n#### Branch description\r\n\r\nThis is just a doc enhancement proposal because I was teaching a new dev about ValidationError and the doc tells to add a code to a ValidationError but don't tells why\r\n\r\nMy new dev colleague asked why a code was useful and I thought my explanation could be usefull to others\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n- [X] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [X] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [X] This PR **does not** disclose a security vulnerability (see [vulnerability reporting](https://docs.djangoproject.com/en/stable/internals/security/)).\r\n- [X] This PR targets the `main` br",
+    "source": "github:django/django",
+    "pr_number": 21346
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37117 -- Used ModelAdmin.get_queryset() for change form actions.\n\n#### Trac ticket number\r\n<!-- Replace XXXXX with the corresponding Trac ticket number. -->\r\n<!-- Or delete the line and write \"N/A - typo\" for typo fixes. -->\r\n\r\nticket-37117\r\n\r\n#### Branch description\r\nWork for ticket-12090 and subsequent ticket-37105 used `_default_manager` instead of `ModelAdmin.get_queryset()` for the change form actions, creating an inconsistency with the change list path where a customized `get_queryset()` (adding annotations, stricter or looser filtering, etc.) is relevant to the action's behavior.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [ ] **No AI tools were used** in preparing this PR.\r\n- [X] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\nClaude was used to investigate a security report which led to this discovery.\r\n\r\n#### Checklist\r\n- [X] This PR follows the [contributi",
+    "source": "github:django/django",
+    "pr_number": 21344
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37116 -- explained why a code is useful with a ValidationError in the doc\n\n#### Trac ticket number\r\n\r\nticket-37116\r\n\r\n#### Branch description\r\n\r\nThis is just a doc enhancement proposal because I was teaching a new dev about ValidationError and the doc tells to add a code to a ValidationError but don't tells why\r\n\r\nMy new dev colleague asked why a code was useful and I thought my explanation could be usefull to others\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n- [X] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [X] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [X] This PR **does not** disclose a security vulnerability (see [vulnerability reporting](https://docs.djangoproject.com/en/stable/internals/security/)).\r\n- [X] This PR targets the `main` bra",
+    "source": "github:django/django",
+    "pr_number": 21343
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #24213 -- Implemented RFC 2231 \u00a74.1 parameter continuation in parse_header_parameters()\n\n#### Trac ticket number\r\n\r\nticket-24213\r\n\r\n#### Branch description\r\n\r\nImplements RFC 2231 \u00a74.1 parameter continuation in `parse_header_parameters()`.\r\n\r\nRFC 2231 \u00a74 (single encoded parameter) has been supported since #24209 was fixed in 2015.\r\n\u00a74.1 \u2014 splitting a long parameter value across multiple numbered segments \u2014 was noted as\r\nmissing in the same PR and has been open since:\r\n\r\n```\r\nContent-Type: application/x-stuff;\r\n    title*0*=us-ascii'en'This%20is%20even%20more%20;\r\n    title*1*=%2A%2A%2Afun%2A%2A%2A%20;\r\n    title*2=\"isn't it!\"\r\n```\r\n\r\n**Background**\r\n\r\n#35440 (merged Mar 2025, PR #18424) attempted to close this gap by replacing the custom\r\n`_parseparam` loop with `email.message.Message.get_params()`, which handles \u00a74.1 natively\r\nvia `decode_params`. It was reverted in #36520 (Sep 2025) due to a **5x performance\r\nregression** on the common no-params path (`text/plain`), caused by th",
+    "source": "github:django/django",
+    "pr_number": 21334
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #36947 -- Avoided column alteration for db_comment-only changes.\n\n#### Trac ticket number\r\nticket-36947\r\n\r\n#### Branch description\r\nThis branch introduces support for standalone `COMMENT ON COLUMN` statements on PostgreSQL and Oracle when only a column comment changes. This avoids unnecessary `ALTER COLUMN` operations, reducing lock severity (`SHARE UPDATE EXCLUSIVE` instead of `ACCESS EXCLUSIVE`) and preventing migration failures involving `GeneratedField`s or columns backed by database views, while preserving the existing fallback behavior for other backends.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [ ] **No AI tools were used** in preparing this PR.\r\n- [x] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n> Used GPT-5.5 for initial test structure and code review. All code was reviewed, tested, and verified manually.\r\n\r\n#### Checklist\r\n- [x] This PR follows the [co",
+    "source": "github:django/django",
+    "pr_number": 21331
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #35818 -- Used last suffix only when generating alternative fil\u2026\n\n\u2026enames.\r\n\r\n#### Trac ticket number\r\nticket-35818\r\n\r\n#### Branch description\r\nFixes a SuspiciousFileOperation raised when saving a file whose name contains multiple dots and whose length exceeds the FileField's max_length. The bug was introduced in Django 5.1 when extension detection was changed to use all suffixes (e.g. .is.a.very.long.txt for this.is.a.very.long.txt), leaving almost nothing in file_root for truncation to work with. This fix uses only the last suffix (e.g. .txt) as the extension when generating alternative filenames, keeping intermediate dots as part of the stem.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n- [x] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [x] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [x] This PR **",
+    "source": "github:django/django",
+    "pr_number": 21326
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37104 -- Updated migration timestamps to use localized time when USE_TZ is True.\n\n#### Trac ticket number\r\n\r\nticket-37104\r\n\r\n#### Branch description\r\nUpdated Django\u2019s migration auto-generation utilities to format both migration filenames and generated file header timestamps using template_localtime(). When USE_TZ is enabled, this ensures migration timestamps correctly respect the active/default TIME_ZONE setting instead of defaulting to UTC or system local time, while falling back to naive local datetimes when USE_TZ is disabled.\r\n\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [ ] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [ ] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [ ] This PR **does n",
+    "source": "github:django/django",
+    "pr_number": 21323
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #14974 -- Added pluggable translation backend support.\n\n#### Trac ticket number\n\nticket-14974\n\n#### Branch description\n\nAdds a public `TRANSLATION_BACKEND` setting and a `BaseTranslationBackend`\nextension point so projects can ship translations from sources other than\ngettext `.mo` files (e.g. a database row, a remote service, a\npseudo-localization filter) without monkey-patching `trans_real`.\n\nThe existing gettext and null code paths remain the implementation of\nrecord and are wrapped by the new `GettextBackend` / `NullBackend`\nclasses; behavior and performance for the default setup are unchanged.\n`USE_I18N = False` still forces the null backend regardless of\n`TRANSLATION_BACKEND`, preserving the existing optimization.\n\nThe private-state leaks previously reached into by `django.test.signals`,\n`django.utils.translation.reloader`, `django.views.i18n`, and\n`django.core.checks.translation` are now routed through backend hooks\n(`clear_translations_cache`, `clear_active_language`, `re",
+    "source": "github:django/django",
+    "pr_number": 21322
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #36864 - Add support for module and submodule loading in import_string\n\n#### Trac ticket number\r\n<!-- Replace XXXXX with the corresponding Trac ticket number. -->\r\n<!-- Or delete the line and write \"N/A - typo\" for typo fixes. -->\r\n\r\nticket-36864\r\n\r\n#### Branch description\r\nAdds support for importing modules from the `utils.module_loading.import_string` function.\r\n\r\nIt may be worth noting that the signature for `cached_import` has changed to only take a module path and load it, rather than also attempting the `getattr` call as well since it seems that all of the caching functionality was centered around module loading. This function does not appear in the documentation, so I believe it is not public.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [x] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [",
+    "source": "github:django/django",
+    "pr_number": 21314
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-149879: Fix test_strptime on Cygwin\n\nSkip my_MM and or_IN locales on multiple tests, since the tests fail on Cygwin.\r\n\r\n<!--\r\nThanks for your contribution!\r\nPlease read this comment in its entirety. It's quite important.\r\n\r\n# Pull Request title\r\n\r\nIt should be in the following format:\r\n\r\n```\r\ngh-NNNNNN: Summary of the changes made\r\n```\r\n\r\nWhere: gh-NNNNNN refers to the GitHub issue number.\r\n\r\nMost PRs will require an issue number. Trivial changes, like fixing a typo, do not need an issue.\r\n\r\n# Backport Pull Request title\r\n\r\nIf this is a backport PR (PR made against branches other than `main`),\r\nplease ensure that the PR title is in the following format:\r\n\r\n```\r\n[X.Y] <title from the original PR> (GH-NNNNNN)\r\n```\r\n\r\nWhere: [X.Y] is the branch name, for example: [3.13].\r\n\r\nGH-NNNNNN refers to the PR number from `main`.\r\n\r\n-->\r\n\n\n<!-- gh-issue-number: gh-149879 -->\n* Issue: gh-149879\n<!-- /gh-issue-number -->",
+    "source": "github:python/cpython",
+    "pr_number": 150438
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-150389: Make perf profiler tests resilient\n\nKeep perf test output independent from user perf configuration and debuginfod, reduce DWARF sample loss, and retry captures only when expected Python symbols are missing.\r\n\r\nDo not fail profiler assertions solely because perf script writes to stderr.\r\n\r\nCloses gh-150395.\r\n\r\n<!--\r\nThanks for your contribution!\r\nPlease read this comment in its entirety. It's quite important.\r\n\r\n# Pull Request title\r\n\r\nIt should be in the following format:\r\n\r\n```\r\ngh-NNNNNN: Summary of the changes made\r\n```\r\n\r\nWhere: gh-NNNNNN refers to the GitHub issue number.\r\n\r\nMost PRs will require an issue number. Trivial changes, like fixing a typo, do not need an issue.\r\n\r\n# Backport Pull Request title\r\n\r\nIf this is a backport PR (PR made against branches other than `main`),\r\nplease ensure that the PR title is in the following format:\r\n\r\n```\r\n[X.Y] <title from the original PR> (GH-NNNNNN)\r\n```\r\n\r\nWhere: [X.Y] is the branch name, for example: [3.13].\r\n\r\nGH-NNNNNN refers",
+    "source": "github:python/cpython",
+    "pr_number": 150437
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-149879: Fix test_ftplib on Cygwin\n\nSkip test_abort() since MSG_OOB doesn't work properly on Cygwin. The server gets b'\\n' and then b'ABOR\\r', instead of getting b'ABOR\\r\\n'.\r\n\r\n<!--\r\nThanks for your contribution!\r\nPlease read this comment in its entirety. It's quite important.\r\n\r\n# Pull Request title\r\n\r\nIt should be in the following format:\r\n\r\n```\r\ngh-NNNNNN: Summary of the changes made\r\n```\r\n\r\nWhere: gh-NNNNNN refers to the GitHub issue number.\r\n\r\nMost PRs will require an issue number. Trivial changes, like fixing a typo, do not need an issue.\r\n\r\n# Backport Pull Request title\r\n\r\nIf this is a backport PR (PR made against branches other than `main`),\r\nplease ensure that the PR title is in the following format:\r\n\r\n```\r\n[X.Y] <title from the original PR> (GH-NNNNNN)\r\n```\r\n\r\nWhere: [X.Y] is the branch name, for example: [3.13].\r\n\r\nGH-NNNNNN refers to the PR number from `main`.\r\n\r\n-->\r\n\n\n<!-- gh-issue-number: gh-149879 -->\n* Issue: gh-149879\n<!-- /gh-issue-number -->",
+    "source": "github:python/cpython",
+    "pr_number": 150431
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-150427: Remove unused `__linecnt` attribute from `_sitebuiltins`\n\n`_sitebuiltins._Printer.__setup` creates an instance attribute, `__linecnt`, which is unused:\r\n```\r\ncpython % git grep __linecnt\r\nLib/_sitebuiltins.py:        self.__linecnt = len(self.__lines)\r\n```\r\n\r\nThis _could_ be used by `_sitebuiltins._Printer.__repr__` in lieu of `len(self.__lines)`:\r\n```\r\n        self.__setup()\r\n        if len(self.__lines) <= self.MAXLINES:\r\n            return \"\\n\".join(self.__lines)\r\n```\r\n\r\nBut because `len(self.__lines)` is only referenced as such, we can remove `__linecnt` instead.\r\n\r\nThis was introduced in d1252395bd697b2f2b2f461c1078fda22ab739b1 but also unused then.\r\n\r\nThere is no behavior change, and all tests pass.\n\n<!-- gh-issue-number: gh-150427 -->\n* Issue: gh-150427\n<!-- /gh-issue-number -->",
+    "source": "github:python/cpython",
+    "pr_number": 150428
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-150424: Widen JIT int fast paths to full int64 range\n\nFixes gh-150424.\r\n\r\nThis widens the JIT `int` fast paths from the compact-only range to the full `int64_t` range, and fixes follow-up correctness issues resulting from this for non-compact exact ints and 15-bit builds.\r\n\r\nChanges:\r\n- widen JIT integer add/subtract/multiply fast paths to operate across the full `int64_t` range\r\n- relax guards from compact-only exact ints to exact ints that fit in `int64_t`\r\n- add fast extraction/support code for non-compact exact ints in the widened range\r\n- keep specialized in-place mutation compact-only and fall back safely for non-compact inputs\r\n- handle widened integer comparisons without compact-only assumptions\r\n- construct widened arithmetic results with `PyLong_FromInt64()` so 15-bit builds do not narrow through `stwodigits`\r\n- add regression coverage for widened operations, non-compact exact ints, boundary cases, and overflow fallback\r\n- add benchmark scripts for measuring widened JIT in",
+    "source": "github:python/cpython",
+    "pr_number": 150425
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-149879: Skip test_venv on Cygwin\n\nSkip test_venv tests for now since the feature is broken on Cygwin.\r\n\r\n<!--\r\nThanks for your contribution!\r\nPlease read this comment in its entirety. It's quite important.\r\n\r\n# Pull Request title\r\n\r\nIt should be in the following format:\r\n\r\n```\r\ngh-NNNNNN: Summary of the changes made\r\n```\r\n\r\nWhere: gh-NNNNNN refers to the GitHub issue number.\r\n\r\nMost PRs will require an issue number. Trivial changes, like fixing a typo, do not need an issue.\r\n\r\n# Backport Pull Request title\r\n\r\nIf this is a backport PR (PR made against branches other than `main`),\r\nplease ensure that the PR title is in the following format:\r\n\r\n```\r\n[X.Y] <title from the original PR> (GH-NNNNNN)\r\n```\r\n\r\nWhere: [X.Y] is the branch name, for example: [3.13].\r\n\r\nGH-NNNNNN refers to the PR number from `main`.\r\n\r\n-->\r\n\n\n<!-- gh-issue-number: gh-149879 -->\n* Issue: gh-149879\n<!-- /gh-issue-number -->",
+    "source": "github:python/cpython",
+    "pr_number": 150418
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-149879: Fix test_asyncio on Cygwin\n\nSkip tests on UNIX sockets since they hang on Cygwin.\r\n\r\n<!--\r\nThanks for your contribution!\r\nPlease read this comment in its entirety. It's quite important.\r\n\r\n# Pull Request title\r\n\r\nIt should be in the following format:\r\n\r\n```\r\ngh-NNNNNN: Summary of the changes made\r\n```\r\n\r\nWhere: gh-NNNNNN refers to the GitHub issue number.\r\n\r\nMost PRs will require an issue number. Trivial changes, like fixing a typo, do not need an issue.\r\n\r\n# Backport Pull Request title\r\n\r\nIf this is a backport PR (PR made against branches other than `main`),\r\nplease ensure that the PR title is in the following format:\r\n\r\n```\r\n[X.Y] <title from the original PR> (GH-NNNNNN)\r\n```\r\n\r\nWhere: [X.Y] is the branch name, for example: [3.13].\r\n\r\nGH-NNNNNN refers to the PR number from `main`.\r\n\r\n-->\r\n\n\n<!-- gh-issue-number: gh-149879 -->\n* Issue: gh-149879\n<!-- /gh-issue-number -->",
+    "source": "github:python/cpython",
+    "pr_number": 150416
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-150387: Fix hang in test_run_failed_script_live on slow buildbots\n\nThe test relied on the failing script (``1/0``) crashing fast enough that fewer than ``MIN_SAMPLES_FOR_TUI`` (200) samples were collected, which would trigger the early-return path in ``sample.sample_live`` and bypass the TUI input loop. On slow buildbots (ASan, TraceRefs, NoGIL) the interpreter takes long enough to bootstrap and reach the ``1/0`` that the profiler easily collects >=200 samples, pushing execution into the ``while collector.running:`` loop. Because the mock only queued a final ``q`` keystroke when ``n_times >= 500`` (and the failed-script test used ``n_times=200``), nothing ever set ``running`` to ``False`` and the test hung until the regrtest timeout.\r\n\r\nAlways queue the final ``q`` so the live TUI loop exits regardless of how many samples were collected.\r\n\r\n<!--\r\nThanks for your contribution!\r\nPlease read this comment in its entirety. It's quite important.\r\n\r\n# Pull Request title\r\n\r\nIt should be in ",
+    "source": "github:python/cpython",
+    "pr_number": 150405
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-84352: Raise `PermissionError` when importing inaccessible packages\n\nRaise `PermissionError` when importing inaccessible packages due to insufficient permission,\r\ninstead of importing an empty package and raising `AttributeError`.\n\n<!-- gh-issue-number: gh-84352 -->\n* Issue: gh-84352\n<!-- /gh-issue-number -->",
+    "source": "github:python/cpython",
+    "pr_number": 150390
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "gh-149800: Fix macOS universal2 build of perf trampoline\n\nAddress failing JIT CI, see https://github.com/python/cpython/actions/runs/26343871355/job/77550446716?pr=150324\r\n\r\n\r\nClaude analysis:\r\n\r\nAfter splitting the perf trampoline into per-architecture .S files in #149894, PY_CORE_CFLAGS still carries `-arch arm64 -arch x86_64` on universal2 builds, so each per-arch object becomes a fat Mach-O whose wrong-arch slice is empty (thanks to the `#ifdef` guards in the sources). `lipo -create` then refused to merge two fat inputs sharing both architectures:\r\n\r\n    fatal error: lipo: Python/asm_trampoline_aarch64.o and\r\n    Python/asm_trampoline_x86_64.o have the same architectures (x86_64)\r\n    and can't be in the same fat output file\r\n\r\nExtract the matching slice from each per-arch object with `lipo -thin` before recombining into `asm_trampoline_universal2.o`.\r\n\r\nThe PR #149894 passed because it did not trigger jit builds.\r\n\r\nMarking as DO-NOT-MERGE until someone can verify the above is cor",
+    "source": "github:python/cpython",
+    "pr_number": 150365
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "compiletest: Simplify `//@ needs-asm-mnemonic: ret` to just `//@ needs-asm-ret`\n\n- Simplification of https://github.com/rust-lang/rust/pull/155692.\r\n---\r\n\r\nThe `needs-asm-mnemonic` directive was very general, but in practice was only being used for `ret`. There are very few other mnemonics that it could plausibly be useful for (e.g. `nop`), because any instruction that requires arguments is probably going to be non-portable.\r\n\r\nThis PR replaces `needs-asm-mnemonic` with a simpler `needs-asm-ret` directive that uses the same machinery as other simple needs directives.\r\n\r\nIf we happend to need more mnemonics in the future, we can just add more simple directives as appropriate (e.g. `needs-asm-nop`).",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156901
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "ref_prop: do not collapse a mutable reborrow onto a multi-borrowed place\n\nFixes rust-lang/rust#132898.\n\n### The bug\n\n`ReferencePropagation` rewrites the mutable two-phase repro from the issue as follows (current master, MIR opt-level 2):\n\n```\n  _3 = &mut (_1.0: u64);\n- _2 = &raw mut (*_3);\n  _5 = &mut _1;\n- (*_2) = const 42_u64;\n+ (*_3) = const 42_u64;\n```\n\nThat partial collapse is fine, but the pass goes further when `_2`'s direct uses are absent \u2014 collapsing `*_3` onto the direct place `_1.0`, so the raw reborrow becomes `_2 = &raw mut _1.0` (or, equivalently after replacement of all `*_3`, the write becomes `(_1.0) = const 42`). This shortens `_2`'s provenance from `_1 \u2192 _3 \u2192 _2` to `_1 \u2192 _2`, which races the independent `_5 = &mut _1` (a 2-phase borrow created for the `add` call), and introduces Stacked Borrows UB into code that was sound without the optimisation. miri confirms this on current nightly.\n\n@RalfJung's analysis in the issue identified the cause: the pass's \"uniqueness\"",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156896
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Revert \"Allow `global_asm!` in statement positions\"\n\nThis reverts commit 450cdb550130dfaab2c29500d5e1b4d0093f7b09.\r\n\r\nBased on discussion in [#t-lang > insta-stable &#96;global_asm!&#96; as inner items](https://rust-lang.zulipchat.com/#narrow/channel/213817-t-lang/topic/insta-stable.20.60global_asm.21.60.20as.20inner.20items/with/597411711), https://github.com/rust-lang/rust/pull/156582 should not have been merged without FCP.\r\n\r\nWe've also since found a bug in the implementation (or really, an assumption in the existing code that the PR invalidates), so to re-land this\r\n\r\n- new behavior should be behind a feature gate\r\n- the fix in https://github.com/rust-lang/rust/pull/156855#issuecomment-4529335602 should be included (and reviewed by someone familiar with `rustc_resolve`)\r\n\r\nThen we keep it unstable for a bit, and see if the fuzzer finds anything else. Nothing here is particularly controversial I think, but we need to do our due diligence. \r\n\r\nr? @ghost",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156884
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Rollup of 6 pull requests\n\nSuccessful merges:\n\n - rust-lang/rust#156769 (Use print instead of po in debuginfo path test)\n - rust-lang/rust#156784 (Fix reborrow_info early return skipping field validation)\n - rust-lang/rust#156827 (float_literal_f32_fallback: Don't suggest invalid code)\n - rust-lang/rust#156828 (Add unstable Share trait)\n - rust-lang/rust#156830 (Add `#[doc(alias = \"phi\")]` for float `GOLDEN_RATIO` constants)\n - rust-lang/rust#156860 (Fix Pieter-Louis Schoeman mailmap entry)\n\n<!-- homu-ignore:start -->\nr? @ghost\n\n[Create a similar rollup](https://bors.rust-lang.org/queue/rust?prs=156769,156784,156827,156828,156830,156860)\n<!-- homu-ignore:end -->",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156870
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Suppress garbled suggestions from strict provenance lints in macros\n\nThe strict provenance lints (`lossy_provenance_casts`, `fuzzy_provenance_casts`) build suggestions using span arithmetic (`shrink_to_lo()`, `shrink_to_hi()`, `.to()`). When the cast sits inside a macro, those span operations produce broken output like `$e as ).addr()` because the spans don't map cleanly back to source text.\n\nThe fix wraps suggestion fields in `Option` and checks `can_be_used_for_suggestions()` before constructing them. The lint itself still fires, you just don't get the garbled suggestion. Same approach already used in `op.rs` and `static_mut_refs.rs` in this crate.\n\n### What changed\n\n- `errors.rs`: `sugg` fields in `LossyProvenanceInt2Ptr` and `LossyProvenancePtr2Int` are now `Option<...>`\n- `cast.rs`: suggestion construction in both `lossy_provenance_ptr2int_lint` and `fuzzy_provenance_int2ptr_lint` is guarded behind `can_be_used_for_suggestions()`\n- New regression test confirms both lints fire on c",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156861
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Re-add call site inlining attributes\n\nIt is very odd that we are blindly setting the call site attributes to the same as the definition, because I think the point of the call site attributes is to differentiate between calls. Probably worth looking into later, but for now I think we should just be undoing the change we made by mistake.\r\n\r\nThis fixes the accidental regression from https://github.com/rust-lang/rust/pull/156242",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156849
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Extend macOS deployment target mismatch filter to cover dylib and new ld formats\n\n<!-- homu-ignore:start -->\n*[View all comments](https://triagebot.infra.rust-lang.org/gh-comments/rust-lang/rust/pull/156814)*\n<!-- homu-ignore:end -->\n\nThe `deployment_mismatch` filter in `report_linker_output` only matched the old ld64 format for object files. With linker-messages promoted to warn-by-default in rust-lang/rust#153968, unfiltered deployment target warnings from dylibs and the new Apple linker (ld_prime) now surface as noise for users who never set `MACOSX_DEPLOYMENT_TARGET`.\r\n\r\nFixes rust-lang/rust#156714.\r\n\r\nAt present, the filter works only covered the specific format:\r\n\r\n`ld: warning: object file (...) was built for newer 'macOS' version (...) than being linked (...)`\r\n\r\nThis was fine because linker-messages was `Allow-by-default` \u2014 nobody saw the other formats anyway. Then rust-lang/rust#153968 promoted it to Warn, and the gaps became visible.\r\n\r\nBroadens the filter to cover all known",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156814
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix bootstrap coverage skip handling\n\nFixes rust-lang/rust#156799\n\n### What changed\n\nThis updates bootstrap coverage test selection so suite-level skips for `tests/coverage` also suppress the `coverage-map` and `coverage-run` mode aliases.\n\nThe direct mode skips still behave independently:\n\n- `--skip=coverage-map` skips only `coverage-map`\n- `--skip=coverage-run` skips only `coverage-run`\n\n### Why\n\n`tests/coverage` is represented as two compiletest modes, exposed through the `coverage-map` and `coverage-run` aliases. When default test paths select those aliases, central skip handling does not know that suite-level skips such as `--skip=coverage`, `--skip=tests/coverage`, or `--skip=tests` should apply to both modes.\n\nThis keeps the special handling local to `Coverage::make_run`, where the coverage aliases are already expanded and filtered.\n\n### Tests\n\n- `git diff --check`\n- `cargo test --manifest-path src/bootstrap/Cargo.toml core::builder::tests::test_test_coverage`\n- `cargo test --ma",
+    "source": "github:rust-lang/rust",
+    "pr_number": 156800
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Cluster master can trigger failover on shutdown.\n\nbest replica (closest to master by repl_ack_off), sends a forced failover command via the replication link, and marks itself as slave,fail before exiting. The promoted replica takes over slots immediately instead of waiting for cluster-node-timeout.\r\n\r\nrefs: #14559\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **High Risk**\n> Changes cluster shutdown, forced failover, slot ownership, and replication-fed CLUSTER commands\u2014core availability and consistency paths.\n> \n> **Overview**\n> Adds **`SHUTDOWN FAILOVER`** (and config **`shutdown-on-signal failover`**) so a **cluster primary** can hand off leadership during a controlled exit instead of leaving the shard masterless until **`cluster-node-timeout`**.\n> \n> On shutdown with the flag, **`clusterAutoFailoverOnShutdown`** picks the replica with the largest **`repl_ack_off`** (matched to cluster nodes by port/IP), pushes **`CLUSTER FAILOVER FORCE REPLICAID <id>`** through **`replicationFeedSlaves`",
+    "source": "github:redis/redis",
+    "pr_number": 15267
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Optimize listpack integer lookup for sets (lpFindInteger)\n\n## Summary\n\nThis PR implements `lpFindInteger()` \u2014 a direct integer search API for listpack \u2014 and wires it into the set type implementation (`setTypeAddAux`, `setTypeIsMemberAux`, `setTypeRemove`).\n\nIt directly addresses the explicit TODO that has been in the code for a long time:\n\n```c\n/* This came in as integer so we can avoid parsing it again.\n * TODO: Create and use lpFindInteger; don't go via string. */\n```\n\n### Motivation & Impact\n\nWhen a SET uses the compact `OBJ_ENCODING_LISTPACK` representation (the default for small sets), integer members (very common: IDs, counters, tags, etc.) were incurring unnecessary string conversion round-trips on every `SADD` / `SREM` / `SISMEMBER` (and related commands):\n\n1. Caller does `string2ll(\"123\", ...)` \u2192 `llval`\n2. To call `lpFind()` we had to emit the decimal string again\n3. Inside `lpFind` / `lpFindCmp` we would `lpStringToInt64()` the search string back to an integer for comparison",
+    "source": "github:redis/redis",
+    "pr_number": 15266
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix CROSSSLOT error in rebalance when --user is used without -a\n\n## Summary\n\nWhen `redis-cli --cluster rebalance` is invoked with `--user <username>` but without `-a <password>`, the MIGRATE command constructed by redis-cli contains an extra unfilled argv slot that gets serialized as an empty string. The server interprets this empty string as a key with slot 0, triggering a CROSSSLOT error when it conflicts with the actual keys' slot.\n\n## Root Cause\n\nIn `src/redis-cli.c`, function `clusterManagerMigrateKeysInReply`:\n\n```c\nint c = (replace ? 8 : 7);\nif (config.conn_info.auth) c += 2;\nif (config.conn_info.user) c += 1;    // BUG: adds 1 for user even when auth is NULL\nsize_t argc = c + reply->elements;\n```\n\nWhen `config.conn_info.user` is set but `config.conn_info.auth` is NULL, `c` is incremented by 1 for the user parameter. However, the argv filling logic later only sets the user inside the `if (config.conn_info.auth)` block (using AUTH2 with both user and password). This mismatch caus",
+    "source": "github:redis/redis",
+    "pr_number": 15261
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Update DataType Modules to v8.8.0\n\n## Summary\n\nBumps `MODULE_VERSION` for RedisBloom, RedisJSON, and RedisTimeSeries from `v8.7.91` to `v8.8.0`.\n\n| Module          | From    | To     |\n|-----------------|---------|--------|\n| RedisBloom      | v8.7.91 | v8.8.0 |\n| RedisJSON       | v8.7.91 | v8.8.0 |\n| RedisTimeSeries | v8.7.91 | v8.8.0 |\n\n## Module changes (v8.7.91 \u2192 v8.8.0)\n\n### RedisBloom ([v8.7.91...v8.8.0](https://github.com/RedisBloom/RedisBloom/compare/v8.7.91...v8.8.0))\n- MOD-15418 \u2014 fix load rdb mem leak ([#1007](https://github.com/RedisBloom/RedisBloom/pull/1007))\n- Revert \"fix redis version\" ([#1010](https://github.com/RedisBloom/RedisBloom/pull/1010))\n- bump version to v8.8.0\n\n### RedisJSON ([v8.7.91...v8.8.0](https://github.com/RedisJSON/RedisJSON/compare/v8.7.91...v8.8.0))\n- Revert \"fix redis version\" ([#1597](https://github.com/RedisJSON/RedisJSON/pull/1597))\n- bump version v8.8.0\n\n### RedisTimeSeries ([v8.7.91...v8.8.0](https://github.com/RedisTimeSeries/RedisTimeSeries",
+    "source": "github:redis/redis",
+    "pr_number": 15238
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Update RediSearch module to v8.8.0\n\nUpdates the bundled RediSearch module version used by the Redis 8.8 branch from `v8.7.91` to `v8.8.0`.\n\nThis picks up the tagged RediSearch 8.8.0 release for Redis module builds.\n\nValidation:\n- Checked the diff is limited to `modules/redisearch/Makefile`.\n- Ran `git diff --check`.\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Low risk change that only updates the pinned RediSearch module tag; main risk is any upstream behavior/build differences introduced by the new release.\n> \n> **Overview**\n> Updates the bundled RediSearch module build to use release `v8.8.0` instead of `v8.7.91` by bumping `MODULE_VERSION` in `modules/redisearch/Makefile`.\n> \n> <sup>Reviewed by [Cursor Bugbot](https://cursor.com/bugbot) for commit 945fe96915f8fea64a8005c6545086822c343e90. Bugbot is set up for automated code reviews on this repo. Configure [here](https://www.cursor.com/dashboard/bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+    "source": "github:redis/redis",
+    "pr_number": 15228
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Set default for INLINE_LSE_ATOMICS to 0 for compatibility across architectures\n\nEnsure backward compatibility and consistent behavior across different architectures by explicitly setting the default value.\r\n\r\nFixes #15175\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Low risk: build-time default change only, affecting module compilation behavior on ARM; functional code paths are unchanged but incorrect overrides could impact ARM runtime compatibility/perf.\n> \n> **Overview**\n> Makes `modules/redisearch/Makefile` explicitly default `INLINE_LSE_ATOMICS` to `0` and exports it, with comments explaining that enabling it improves performance on Armv8.1+ (e.g., Graviton2/3/4) but can cause `SIGILL` on older ARM cores.\n> \n> This standardizes the build output for RediSearch across architectures while keeping the optimization as an opt-in flag.\n> \n> <sup>Reviewed by [Cursor Bugbot](https://cursor.com/bugbot) for commit 3a35aa1e18c6a2797b72658be8a25fbba91b4cec. Bugbot is set up for auto",
+    "source": "github:redis/redis",
+    "pr_number": 15212
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "RED-196433 remove unused post release workflow\n\n<!-- CURSOR_SUMMARY -->\n> [!NOTE]\n> **Low Risk**\n> Low risk because it only deletes an unused CI workflow and does not affect product code or runtime behavior.\n> \n> **Overview**\n> This PR deletes the `.github/workflows/post-release-automation.yml` GitHub Actions workflow that ran on `release.published` to extract release info, build and checksum a tarball, upload it as an artifact, and publish a job summary.\n> \n> <sup>Reviewed by [Cursor Bugbot](https://cursor.com/bugbot) for commit 8721bf33254a0c503c1466d0bb0d55c196a4cd0b. Bugbot is set up for automated code reviews on this repo. Configure [here](https://www.cursor.com/dashboard/bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+    "source": "github:redis/redis",
+    "pr_number": 15206
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Backport CI fix commits 8.2\n\nBackport the following CI fix commits from unstable to 8.2:\r\n\r\na760d17 2025-11-12 Fix FreeBSD daily runs (#14532) (skaslev)\r\n3bcacd8 2025-12-09 Upgrade GitHub Actions macOS runner (#14613) (vitahlin)\r\n154fdce 2026-01-07 Test tcp deadlock fixes (#14667) (antirez)\r\n280dab0 2026-02-25 Fix implicit conversion warning in timeout.c for newer Clang versions (#14811) (vitahlin)\r\na6a27f5 2026-03-30 Test tcp deadlock fixes (#14946) (sundb)\r\n\r\n<!-- CURSOR_SUMMARY -->\r\n---\r\n\r\n> [!NOTE]\r\n> **Low Risk**\r\n> Mostly CI/workflow and test harness adjustments; the only production change is a narrow cast tweak in `getTimeoutFromObjectOrReply`, so functional risk is low but CI behavior may change due to runner updates.\r\n> \r\n> **Overview**\r\n> Backports several CI stability fixes: updates `daily.yml` to run macOS builds on newer GitHub runners, runs the FreeBSD job from `ubuntu-latest` with a newer `cross-platform-actions/action`, and tweaks the FreeBSD package install step.\r\n> \r\n",
+    "source": "github:redis/redis",
+    "pr_number": 15194
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Add slowlog entry truncation limits configs\n\nAdd configurations for `SLOWLOG_ENTRY_MAX_ARGC` and `SLOWLOG_ENTRY_MAX_STRING` values which are currently hardcoded in code.\r\n\r\nTwo new configurations:\r\n* `slowlog-entry-max-argc` - maximum number of command arguments kept in a slowlog entry. Default: 32\r\n* `slowlog-entry-max-string-len` - maximum length of a command argument in a slowlog entry. Default: 128\r\n\r\nUseful for better diagnostics of slow commands with numerous and long arguments.\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Medium Risk**\n> Medium risk because it changes how slowlog entries are stored and truncated at runtime via new config knobs, which can affect diagnostics and memory usage if misconfigured.\n> \n> **Overview**\n> Adds two runtime configs, `slowlog-entry-max-argc` and `slowlog-entry-max-string-len`, to control how many arguments and how many bytes per argument are retained in each slowlog entry (defaults match the previous hard-coded limits).\n> \n> Updates slowlog ent",
+    "source": "github:redis/redis",
+    "pr_number": 15182
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix integer overflow in cluster bus PUBLISH and MODULE message length validation\n\n## Summary\n\nAdd overflow checks for attacker-controlled `uint32_t` length fields in `clusterProcessPacket()` before adding them to `explen` (`uint32_t`). Without these checks, crafted PUBLISH/PUBLISHSHARD and MODULE cluster bus messages can wrap `explen` to a small value, bypassing the `totlen != explen` validation and causing heap out-of-bounds reads or OOM aborts in the processing path.\n\n## Problem\n\nIn `clusterProcessPacket()`, the expected packet length for PUBLISH and MODULE messages is computed by summing struct overhead with variable-length fields read from the packet header via `ntohl()`:\n\n```c\n// PUBLISH (line 2841-2846)\nexplen += sizeof(clusterMsgDataPublish) - 8 +\n    ntohl(hdr->data.publish.msg.channel_len) +\n    ntohl(hdr->data.publish.msg.message_len);\n\n// MODULE (line 2855-2858)\nexplen += sizeof(clusterMsgModule) - 3 + ntohl(hdr->data.module.msg.len);\n```\n\nBoth `channel_len + message_len` (P",
+    "source": "github:redis/redis",
+    "pr_number": 15180
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Update SECURITY.md\n\nThis PR will be imported into Gerrit with the title and first\r\ncomment (this text) used to generate the subject and body of\r\nthe Gerrit change.\r\n\r\n**Please ensure you adhere to every item in this list.**\r\n\r\nMore info can be found at https://github.com/golang/go/wiki/CommitMessage\r\n\r\n+ The PR title is formatted as follows: `net/http: frob the quux before blarfing`\r\n  + The package name goes before the colon\r\n  + The part after the colon uses the verb tense + phrase that completes the blank in,\r\n    \"This change modifies Go to ___________\"\r\n  + Lowercase verb after the colon\r\n  + No trailing period\r\n  + Keep the title as short as possible. ideally under 76 characters or shorter\r\n+ No Markdown\r\n+ The first PR comment (this one) is wrapped at 76 characters, unless it's\r\n  really needed (ASCII art, table, or long link)\r\n+ If there is a corresponding issue, add either `Fixes #1234` or `Updates #1234`\r\n  (the latter if this is not a complete fix) to this comment\r\n+ If refe",
+    "source": "github:golang/go",
+    "pr_number": 79662
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Create radio\n\nThis PR will be imported into Gerrit with the title and first\r\ncomment (this text) used to generate the subject and body of\r\nthe Gerrit change.\r\n\r\n**Please ensure you adhere to every item in this list.**\r\n\r\nMore info can be found at https://github.com/golang/go/wiki/CommitMessage\r\n\r\n+ The PR title is formatted as follows: `net/http: frob the quux before blarfing`\r\n  + The package name goes before the colon\r\n  + The part after the colon uses the verb tense + phrase that completes the blank in,\r\n    \"This change modifies Go to ___________\"\r\n  + Lowercase verb after the colon\r\n  + No trailing period\r\n  + Keep the title as short as possible. ideally under 76 characters or shorter\r\n+ No Markdown\r\n+ The first PR comment (this one) is wrapped at 76 characters, unless it's\r\n  really needed (ASCII art, table, or long link)\r\n+ If there is a corresponding issue, add either `Fixes #1234` or `Updates #1234`\r\n  (the latter if this is not a complete fix) to this comment\r\n+ If referring ",
+    "source": "github:golang/go",
+    "pr_number": 79661
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Y9\n\nThis PR will be imported into Gerrit with the title and first\r\ncomment (this text) used to generate the subject and body of\r\nthe Gerrit change.\r\n\r\n**Please ensure you adhere to every item in this list.**\r\n\r\nMore info can be found at https://github.com/golang/go/wiki/CommitMessage\r\n\r\n+ The PR title is formatted as follows: `net/http: frob the quux before blarfing`\r\n  + The package name goes before the colon\r\n  + The part after the colon uses the verb tense + phrase that completes the blank in,\r\n    \"This change modifies Go to ___________\"\r\n  + Lowercase verb after the colon\r\n  + No trailing period\r\n  + Keep the title as short as possible. ideally under 76 characters or shorter\r\n+ No Markdown\r\n+ The first PR comment (this one) is wrapped at 76 characters, unless it's\r\n  really needed (ASCII art, table, or long link)\r\n+ If there is a corresponding issue, add either `Fixes #1234` or `Updates #1234`\r\n  (the latter if this is not a complete fix) to this comment\r\n+ If referring to a repo ",
+    "source": "github:golang/go",
+    "pr_number": 79637
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "go/build: support language-specific `go:build` comment prefixes for non-Go files\n\n## The Problem\r\n\r\nGo and MATLAB **cannot coexist in the same directory** \u2014 at all.\r\n\r\nMATLAB source files use the `.m` extension. Go's build system also recognises `.m` as Objective-C. The moment you place a `.m` file next to a `go.mod`, the toolchain reads it, fails to parse it as valid Go/ObjC source, and either errors out or silently misclassifies the file. Two completely unrelated tools, in the same filesystem directory, and they are fundamentally incompatible with each other.\r\n\r\nThe standard escape hatch for situations like this is `//go:build ignore`. It was designed exactly for this purpose: to tell the Go toolchain *\"don't touch this file\"*. It works beautifully for `.go` files. It works for `.c` files. It works for `.s` files.\r\n\r\n**It does not work for MATLAB.**\r\n\r\nBecause `//` is not a comment in MATLAB. Adding `//go:build ignore` to the top of a `.m` file makes Go happy and breaks MATLAB. You c",
+    "source": "github:golang/go",
+    "pr_number": 79534
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "cmd/internal/obj/x86: shorten MOVQ r64, imm32 for positive immediates\n\nThe ymovq ytab listed {Zilo_m, argList{Ys32, Yrl}} (sign-extended C7\r\nform, 7 bytes) ahead of {Ziq_rp, argList{Yi64, Yrl}}. Since oclass\r\nreturns Ys32 for any positive int that fits in s32, every such MOVQ\r\nto register matched the 7-byte form even though Ziq_rp already picks\r\nthe optimal 5/7/10-byte encoding based on the value.\r\n\r\nDrop the Ys32 entry so all MOVQ immediate-to-register routes through\r\nZiq_rp, which emits:\r\n  - B8+rd imm32        (5 bytes) when v fits in u32 (implicit zero-ext)\r\n  - 48 C7 /0 imm32     (7 bytes) when v is negative s32 (sign-extends)\r\n  - 48 B8+rd imm64    (10 bytes) otherwise\r\n\r\nAdd amd64enc test cases covering the positive-imm32 path, including\r\nthe 0x80000000 boundary where the sign- and zero-extended forms differ.\r\n\r\nThe sigreturn__sigaction trampoline in sys_linux_amd64.s previously\r\nrelied on the 7-byte encoding of \"MOVQ \\$SYS_rt_sigreturn, AX\" because\r\ngdb and libgcc recognize the",
+    "source": "github:golang/go",
+    "pr_number": 79445
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "G\n\nThis PR will be imported into Gerrit with the title and first\r\ncomment (this text) used to generate the subject and body of\r\nthe Gerrit change.\r\n\r\n**Please ensure you adhere to every item in this list.**\r\n\r\nMore info can be found at https://github.com/golang/go/wiki/CommitMessage\r\n\r\n+ The PR title is formatted as follows: `net/http: frob the quux before blarfing`\r\n  + The package name goes before the colon\r\n  + The part after the colon uses the verb tense + phrase that completes the blank in,\r\n    \"This change modifies Go to ___________\"\r\n  + Lowercase verb after the colon\r\n  + No trailing period\r\n  + Keep the title as short as possible. ideally under 76 characters or shorter\r\n+ No Markdown\r\n+ The first PR comment (this one) is wrapped at 76 characters, unless it's\r\n  really needed (ASCII art, table, or long link)\r\n+ If there is a corresponding issue, add either `Fixes #1234` or `Updates #1234`\r\n  (the latter if this is not a complete fix) to this comment\r\n+ If referring to a repo o",
+    "source": "github:golang/go",
+    "pr_number": 79433
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "crypto/x509: use %w for error wrapping in parser\n\nUse the %w verb instead of %s in the fmt.Errorf call in\nparseRDNSequence so that callers can use errors.Is and\nerrors.As on the underlying parsing error.\n\nUpdates #30322",
+    "source": "github:golang/go",
+    "pr_number": 79311
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "crypto/tls: use %w for error wrapping in ECH\n\nUse the %w verb instead of %s in fmt.Errorf calls in\nprocessECHClientHello so that callers can use errors.Is\nand errors.As on the wrapped errors.\n\nUpdates #30322",
+    "source": "github:golang/go",
+    "pr_number": 79308
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Bug report UUID rand error\n\nThis PR will be imported into Gerrit with the title and first\r\ncomment (this text) used to generate the subject and body of\r\nthe Gerrit change.\r\n\r\n**Please ensure you adhere to every item in this list.**\r\n\r\nMore info can be found at https://github.com/golang/go/wiki/CommitMessage\r\n\r\n+ The PR title is formatted as follows: `net/http: frob the quux before blarfing`\r\n  + The package name goes before the colon\r\n  + The part after the colon uses the verb tense + phrase that completes the blank in,\r\n    \"This change modifies Go to ___________\"\r\n  + Lowercase verb after the colon\r\n  + No trailing period\r\n  + Keep the title as short as possible. ideally under 76 characters or shorter\r\n+ No Markdown\r\n+ The first PR comment (this one) is wrapped at 76 characters, unless it's\r\n  really needed (ASCII art, table, or long link)\r\n+ If there is a corresponding issue, add either `Fixes #1234` or `Updates #1234`\r\n  (the latter if this is not a complete fix) to this comment\r\n+",
+    "source": "github:golang/go",
+    "pr_number": 79131
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "uuid: document unchecked error in NewV4 and NewV7\n\nFound and documented a bug where NewV4() and NewV7() ignore errors returned by crypto/rand.Read(). This can lead to UUIDs with insufficient randomness in rare failure scenarios.\r\n\r\nThe bug report includes:\r\n- Detailed problem description and impact analysis\r\n- Affected code locations with line numbers\r\n- Three proposed fix options with pros/cons\r\n- Comparison with other language implementations\r\n- Testing recommendations\r\n\r\nWhile crypto/rand.Read() failures are rare, ignoring errors violates Go's error handling principles and could have security implications for applications relying on UUID unpredictability.\r\n\r\nRecommended fix: Add error checking with panic, consistent with the existing MustParse() pattern in the uuid package.\r\n\r\nThis PR will be imported into Gerrit with the title and first\r\ncomment (this text) used to generate the subject and body of\r\nthe Gerrit change.\r\n\r\n**Please ensure you adhere to every item in this list.**\r\n\r\nMo",
+    "source": "github:golang/go",
+    "pr_number": 79061
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "batch/job: Fix scheduling directives mutation for not-yet-started suspended Jobs\n\n#### What type of PR is this?\n\n/kind bug\n/kind regression\n\n#### What this PR does / why we need it:\n\nWhen the `MutableSchedulingDirectivesForSuspendedJobs` feature gate is enabled (Beta in 1.36), modifications to scheduling directives on a suspended Job are rejected if the `JobSuspended=True` condition hasn't been set yet by the job controller. This breaks external controllers like MultiKueue that inject scheduling directives immediately after creating a suspended Job.\n\nThe fix preserves the `notStarted` path as an OR condition alongside the `JobSuspended` condition check, so that suspended Jobs that have never started can still have their scheduling directives mutated \u2014 matching pre-1.36 behavior.\n\n#### Which issue(s) this PR is related to:\n\nFixes #139281\n\n#### Special notes for your reviewer:\n\nThe one-line fix is in `pkg/registry/batch/job/strategy.go`. The condition changes from:\n\n```go\nsuspended && ba",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139287
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "validation-gen: fix +default on nilable fields with non-primitive types\n\n<!--  Thanks for sending a pull request!  Here are some tips for you:\r\n\r\n1. If this is your first time, please read our contributor guidelines: https://git.k8s.io/community/contributors/guide/first-contribution.md#your-first-contribution and developer guide https://git.k8s.io/community/contributors/devel/development.md#development-guide\r\n2. Please label this pull request according to what type of issue you are addressing, especially if this is a release targeted pull request. For reference on required PR/issue labels, read here:\r\nhttps://git.k8s.io/community/contributors/devel/sig-release/release.md#issuepr-kind-label\r\n3. Ensure you have added or ran the appropriate tests for your PR: https://git.k8s.io/community/contributors/devel/sig-testing/testing.md\r\n4. If you want *faster* PR reviews, read how: https://git.k8s.io/community/contributors/guide/pull-requests.md#best-practices-for-faster-reviews\r\n5. If the PR is",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139227
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "KEP-4427: Remove RelaxedDNSSearchValidation feature gate\n\n#### What type of PR is this?\r\n\r\n/kind cleanup\r\n\r\n#### What this PR does / why we need it:\r\n\r\nIt's now 3 releases since the RelaxedDNSSearchValidation feature gate went GA, it can now be removed.\r\n\r\n#### Which issue(s) this PR is related to:\r\nKEP: https://github.com/kubernetes/enhancements/issues/4427\r\n\r\n#### Special notes for your reviewer:\r\n\r\n#### Does this PR introduce a user-facing change?\r\n<!--\r\nIf no, just write \"NONE\" in the release-note block below.\r\nIf yes, a release note is required:\r\nEnter your extended release note in the block below. If the PR requires additional action from users switching to the new release, include the string \"action required\".\r\n\r\nFor more information on release notes see: https://git.k8s.io/community/contributors/guide/release-notes.md\r\n-->\r\n```release-note\r\nRemove RelaxedDNSSearchValidation feature gate\r\n```\r\n\r\n#### Additional documentation e.g., KEPs (Kubernetes Enhancement Proposals), usage d",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139217
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Lock deprecated DeclarativeValidationTakeover to default in 1.37\n\n<!--  Thanks for sending a pull request!  Here are some tips for you:\r\n\r\n1. If this is your first time, please read our contributor guidelines: https://git.k8s.io/community/contributors/guide/first-contribution.md#your-first-contribution and developer guide https://git.k8s.io/community/contributors/devel/development.md#development-guide\r\n2. Please label this pull request according to what type of issue you are addressing, especially if this is a release targeted pull request. For reference on required PR/issue labels, read here:\r\nhttps://git.k8s.io/community/contributors/devel/sig-release/release.md#issuepr-kind-label\r\n3. Ensure you have added or ran the appropriate tests for your PR: https://git.k8s.io/community/contributors/devel/sig-testing/testing.md\r\n4. If you want *faster* PR reviews, read how: https://git.k8s.io/community/contributors/guide/pull-requests.md#best-practices-for-faster-reviews\r\n5. If the PR is unfini",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139212
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "e2e_node: avoid polluting e2e_node command line with helper packages\n\n#### What type of PR is this?\r\n\r\n/kind cleanup\r\n\r\n#### What this PR does / why we need it:\r\n\r\ne2e_node.test depends on test/e2e_node/builder and test/e2e_node/remote because test/e2e_node/services uses some small helper functions from those two packages. But e2e_node.test itself never builds any Go binaries, nor does it run remote testing - that functionality is provided by the separate test/e2e_node/runner commands!\r\n\r\nTherefore these two packages should not put their command line flags into flag.CommandLine because then they show up in the command line of e2e_node test unnecessarily.\r\n\r\nThis change removes the following flags from the e2e_node.test command line:\r\n\r\n    diff -r before/e2e_node after/e2e_node\r\n    7,8d6\r\n    <       --build-only                                                 If true, build e2e_node_test.tar.gz and exit.\r\n    <       --cleanup                                                    If tru",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139184
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "kubelet: thread logger through boot time lookup\n\n#### What type of PR is this?\n\n/kind cleanup\n\n#### What this PR does / why we need it:\n\nPasses a logger into `GetBootTime` so the Linux fallback path no longer creates a local `context.TODO()` only to derive a logger.\n\nThis keeps boot time lookup behavior unchanged and updates the node startup latency tracker constructor to accept a logger instead of a context, matching contextual logging migration guidelines.\n\n#### Which issue(s) this PR fixes:\n\nPart of #130069\n\n#### Special notes for your reviewer:\n\n/cc @bart0sh\n\n#### Does this PR introduce a user-facing change?\n\n```release-note\nNONE\n```",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139183
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Restore ability to plumb binary data through envvar values\n\n#### What type of PR is this?\r\n\r\n/kind bug\r\n/kind regression\r\n\r\n#### What this PR does / why we need it:\r\n\r\nRestores pre-1.34 ability to use Secret API objects with binary data as container env values\r\n\r\n#### Which issue(s) this PR is related to:\r\n\r\nhttps://github.com/kubernetes/kubernetes/issues/139132\r\n\r\n#### Special notes for your reviewer:\r\n\r\nThis changes the cri-api value field from `string` to `bytes`. This encodes identically on the wire, but removes the requirement that the value be valid utf-8. That requirement was not enforced in practice prior to 1.34, due to the use of gogo protobuf to encode on the kubelet side and decode on the container runtime side.\r\n\r\nThis does not yet ripple out type changes in kubelet packages to make this field a []byte, since we likely will backport this to 1.34+.\r\n\r\nA follow-up should make the value fields `[]byte` to clarify non-utf8 data is possible.\r\n\r\n#### Does this PR introduce a use",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139168
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix case where preemptor may be stuck in unschedulable queue\n\n<!--  Thanks for sending a pull request!  Here are some tips for you:\r\n\r\n1. If this is your first time, please read our contributor guidelines: https://git.k8s.io/community/contributors/guide/first-contribution.md#your-first-contribution and developer guide https://git.k8s.io/community/contributors/devel/development.md#development-guide\r\n2. Please label this pull request according to what type of issue you are addressing, especially if this is a release targeted pull request. For reference on required PR/issue labels, read here:\r\nhttps://git.k8s.io/community/contributors/devel/sig-release/release.md#issuepr-kind-label\r\n3. Ensure you have added or ran the appropriate tests for your PR: https://git.k8s.io/community/contributors/devel/sig-testing/testing.md\r\n4. If you want *faster* PR reviews, read how: https://git.k8s.io/community/contributors/guide/pull-requests.md#best-practices-for-faster-reviews\r\n5. If the PR is unfinished",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139162
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Ensure that podGroupAlgorithmResult contains result for all pods from podGroup\n\n\r\n\r\n<!--  Thanks for sending a pull request!  Here are some tips for you:\r\n\r\n1. If this is your first time, please read our contributor guidelines: https://git.k8s.io/community/contributors/guide/first-contribution.md#your-first-contribution and developer guide https://git.k8s.io/community/contributors/devel/development.md#development-guide\r\n2. Please label this pull request according to what type of issue you are addressing, especially if this is a release targeted pull request. For reference on required PR/issue labels, read here:\r\nhttps://git.k8s.io/community/contributors/devel/sig-release/release.md#issuepr-kind-label\r\n3. Ensure you have added or ran the appropriate tests for your PR: https://git.k8s.io/community/contributors/devel/sig-testing/testing.md\r\n4. If you want *faster* PR reviews, read how: https://git.k8s.io/community/contributors/guide/pull-requests.md#best-practices-for-faster-reviews\r\n5. I",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139130
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "scheduler: always activate preemptor after async preemption\n\n#### What type of PR is this?\r\n/kind flake\r\n\r\n#### What this PR does / why we need it:\r\n\r\n```\r\ngo test -c ./test/integration/scheduler/preemption -o /tmp/preemption-master.test\r\n\r\nstress \\\r\n  -p 1 \\\r\n  -failfast \\\r\n  -count 50 \\\r\n  -timeout 3m \\\r\n  -o /tmp/master-asyncpreemption-subtest-stress \\\r\n  /tmp/preemption-master.test \\\r\n  -test.run '^TestAsyncPreemption/Lower_priority_Pod_can_select_the_same_place_where_the_higher_priority_Pod_is_preempting_if_the_node_is_big_enough \\(Async_API_calls_enabled:_true\\)$' \\\r\n  -test.timeout=2m\r\n```\r\nI can reproduce it like this. 1/21 running.\r\n\r\n```\r\ngo test -v ./test/integration/scheduler/preemption -run 'TestAsyncPreemption/Lower_priority_Pod_can_select_the_same_place_where_the_higher_priority_Pod_is_preempting_if_the_node_is_big_enough' -count=3 -timeout 20m\r\n```\r\n\r\n```\r\nstress \\\r\n  -p 1 \\\r\n  -count 100 \\\r\n  -timeout 4m \\\r\n  -o /tmp/asyncpreemption-stress \\\r\n  /tmp/preemption.test \\\r\n",
+    "source": "github:kubernetes/kubernetes",
+    "pr_number": 139127
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix narrowing of destructured discriminated union parameters with defaults\n\nFixes #50139 \u2014 first PR here, happy to adjust style/scope as needed.\r\n\r\n`src/compiler/checker.ts` had two predicates that skipped narrowing for destructured bindings with defaults:\r\n\r\n- `getCandidateDiscriminantPropertyAccess`\r\n- `getNarrowedTypeOfSymbol`\r\n\r\nBoth guarded with `!declaration.initializer`. Removed that clause from both. Narrowing now works through defaulted bindings.\r\n\r\nDeclaration-time assignability of the default is checked by a separate pipeline, so foreign-type defaults still error at the binding.\r\n\r\nRegression test added. `npx hereby runtests` shows no existing baselines change.\r\n\r\n---\r\n\r\n* [x] There is an associated issue in the `Backlog` milestone (#50139)\r\n* [x] Code is up-to-date with the `main` branch\r\n* [x] You've successfully run `hereby runtests` locally\r\n* [x] There are new or updated unit tests validating the change",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63505
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "lib: fix misleading `maxLength` param on string pad* methods\n\n<!--\r\nThank you for submitting a pull request!\r\n\r\nPlease verify that:\r\n* [ ] There is an associated issue in the `Backlog` milestone (**required**)\r\n* [ ] Code is up-to-date with the `main` branch\r\n* [ ] You've successfully run `hereby runtests` locally\r\n* [ ] There are new or updated unit tests validating the change\r\n\r\nRefer to CONTRIBUTING.MD for more details.\r\n  https://github.com/Microsoft/TypeScript/blob/main/CONTRIBUTING.md\r\n\r\n** Please don't send typo fixes! **\r\nPlease don't send a PR solely for the purpose of fixing a typo, unless that\r\ntypo truly hurts understanding of the text. Each PR represents work for the\r\nmaintainers, and that work should provide commensurate value.\r\n\r\nIf you're interested in sending a PR, the issue tracker has many issues marked `help wanted`.\r\n-->\r\n\r\nFixes #63503\r\n\r\n- Rename the `maxLength` parameter for `String.padStart` and `String.padEnd` to `targetLength`, which matches the MDN documenta",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63504
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix(lib): add missing article in Set#size JSDoc\n\nThis is an independent contribution made in good faith by an individual contributor.\n\n## Summary\n\nFixes a minor grammar issue in `lib.es2015.collection.d.ts` where the JSDoc comment for `Set#size` is missing the definite article, producing ungrammatical text.\n\n## Root Cause\n\nThe `@returns` annotation for `Set#size` reads:\n> the number of (unique) elements in Set.\n\nThis is missing \"the\" before \"Set\", making it grammatically incorrect.\n\n## Fix\n\nAdded the missing definite article:\n> the number of (unique) elements in the Set.\n\n## Testing\n\nThis is a comment-only change to a type definition file. No runtime behavior is affected. The change aligns with the existing style used in other `@returns` tags within the same interface.\n\nCloses #63480",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63495
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix(lib): add missing JSDoc to ReadonlySet and fix Set#size grammar\n\nCloses #63480, closes #63481.\n\nTwo small documentation fixes in `src/lib/es2015.collection.d.ts`, both tagged Help Wanted.\n\n**Grammar fix (#63480):** `Set#size` JSDoc said \"the number of (unique) elements in Set\" \u2014 missing \"the\" before \"Set\". Changed to match `Map#size` and the rest of the file.\n\n**Missing JSDoc (#63481):** `ReadonlySet` had no documentation on `forEach`, `has`, or `size`, while `Set<T>` has full JSDoc on every member. Added the three missing blocks using the same text as `Set<T>`. The callback type reference changes from `Set<T>` to `ReadonlySet<T>`.\n\n`ReadonlyMap` has the same gap, but that's a separate issue. Stayed minimal here.\n\n**Checklist:**\n- [x] There is an associated issue in the `Backlog` milestone\n- [x] Code is up-to-date with the `main` branch\n- [x] ~~`hereby runtests`~~ \u2014 doc-only change (JSDoc comments only); no types or signatures changed, no baselines affected\n- [ ] New or updated uni",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63488
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix: correct diagnostic code 6910\n\nFixes #61971\n\nThis corrects the diagnostic code for the `module` option message from `69010` to `6910`, matching its position between `6909` and `6911`.\n\nVerification:\n- Parsed `src/compiler/diagnosticMessages.json` with Node, checked diagnostic codes are unique, and confirmed the target message now uses code `6910`.",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63479
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Improve label reference diagnostics\n\nFixes #30408.\n\nThis updates break/continue grammar checking so a labeled jump that references a label declared later in the same function scope reports a targeted diagnostic instead of the generic function-boundary error. The new error includes a related span pointing at the label declaration.\n\nThe test coverage also keeps the existing behavior for missing, non-enclosing, and cross-function labels.\n\nValidation:\n- `npx -p node@22 -c './node_modules/.bin/hereby runtests --tests=labelReferenceDiagnostics'`\\n- `npx -p node@22 -c 'npm run build:compiler'`",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63472
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix implement-interface codefix for invalid interface types\n\nFixes #63465\r\n\r\nThis updates the implement-interface codefix so it is not offered when the implemented interface reference or required member types are already semantically invalid.\r\n\r\nThe existing fourslash coverage already documented these cases as undesirable, but still expected the fix to be available. This PR updates those tests to assert that no codefix is offered for:\r\n\r\n- invalid type argument instantiation\r\n- unresolved member type symbols\r\n\r\nValidation:\r\n\r\n- `npx.cmd hereby runtests --tests=tests/cases/fourslash/codeFixClassImplementInterfaceTypeParamInstantiateError.ts --light=false`\r\n- `npx.cmd hereby runtests --tests=tests/cases/fourslash/codeFixClassImplementInterfaceUndeclaredSymbol.ts --light=false`\r\n- `npx.cmd hereby runtests --tests=tests/cases/fourslash/codeFixClassImplementInterfaceTypeParamInstantiateNumber.ts --light=false`\r\n- `git diff --check`",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63466
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix(parser): reject 'new super()' syntax with error TS2824\n\n## Overview\r\nFixes #63451 - TypeScript incorrectly allows `new super()` in static contexts, which is invalid JavaScript syntax and causes runtime errors.\r\n\r\n## Changes\r\n- Added validation in `parseNewExpressionOrNewDotTarget` to detect `new` followed by `super` keyword\r\n- Added diagnostic message TS2824: `'super' cannot be used with 'new' keyword`\r\n- Added test case `tests/cases/compiler/newSuperError.ts`\r\n\r\n## Files Changed\r\n| File | Change |\r\n|------|--------|\r\n| `src/compiler/parser.ts` | Added validation check |\r\n| `src/compiler/diagnosticMessages.json` | Added error message with code 2824 |\r\n| `tests/cases/compiler/newSuperError.ts` | Added test case |",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63464
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Bump the github-actions group across 1 directory with 5 updates\n\nBumps the github-actions group with 5 updates in the / directory:\n\n| Package | From | To |\n| --- | --- | --- |\n| [actions/setup-node](https://github.com/actions/setup-node) | `6.3.0` | `6.4.0` |\n| [actions/upload-artifact](https://github.com/actions/upload-artifact) | `7.0.0` | `7.0.1` |\n| [actions/cache](https://github.com/actions/cache) | `5.0.4` | `5.0.5` |\n| [github/codeql-action](https://github.com/github/codeql-action) | `4.35.1` | `4.35.3` |\n| [actions/github-script](https://github.com/actions/github-script) | `8.0.0` | `9.0.0` |\n\n\nUpdates `actions/setup-node` from 6.3.0 to 6.4.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/actions/setup-node/releases\">actions/setup-node's releases</a>.</em></p>\n<blockquote>\n<h2>v6.4.0</h2>\n<h2>What's Changed</h2>\n<h3>Dependency updates:</h3>\n<ul>\n<li>Upgrade <a href=\"https://github.com/actions\"><code>@\u200bactions</code></a> dependencies b",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63443
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix(completions): sort JSDoc @param suggestions by declaration order\n\n## What this change intends to do\n\nFixes #20183\n\nWhen triggering completions after `@param` in a JSDoc comment, all parameter suggestions had the same `sortText: \"11\"` (`SortText.LocationPriority`), causing them to sort **alphabetically** rather than in **declaration order**.\n\n```ts\n/**\n * @param |\n */\nfunction foo(z, a) {}\n// Before fix: [\"a\", \"z\"]  (alphabetical \u2014 wrong)\n// After fix:  [\"z\", \"a\"]  (declaration order \u2014 correct)\n```\n\n## Fix\n\nExpose the parameter index from the `mapDefined` callback and encode the declaration position into the sort key:\n\n```diff\n-return mapDefined(func.parameters, param => {\n+return mapDefined(func.parameters, (param, paramIndex) => {\n     ...\n+    const sortText = (SortText.LocationPriority + String(paramIndex).padStart(4, \"0\")) as SortText;\n     return {\n         ...\n-        sortText: SortText.LocationPriority,\n+        sortText,\n     };\n });\n```\n\nThis produces sort keys `\"110000\"`",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63439
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Update deps\n\nThis is largely moot, but, good to get dependabot and npm audit off our backs",
+    "source": "github:microsoft/TypeScript",
+    "pr_number": 63296
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[Fizz] Fix crash when capturing the callsite of a stalled use() of a Flight chunk that was rejected in the meantime\n\n`ensureSuspendableThenableStateDEV` patches `then` in fulfilled thenables to avoid triggering a custom thenable's `then` in an unexpected state. However, we weren't doing the same for rejected thenables.\r\n\r\nThis affected `ReactPromise`, the type used for thenables passed from server to client. if a `ReactPromise` passed to `use` was pending during the render but became rejected between the abort and `pushSuspendedCallSiteOnComponentStack`, then `ReactPromise#then` would crash. (see the added test for a reprouction)\r\nThis is because we were putting the ReactPromise into an invalid state: a `PendingChunk` expects to have a `value: null | Array<...>`, but we were deleting `value` altogether, and tgus hitting `TypeError: can't access property \"push\" of undefined` here:\r\nhttps://github.com/facebook/react/blob/75b0945b18f4a60c80c931fd8067d9c715957879/packages/react-client/src/",
+    "source": "github:facebook/react",
+    "pr_number": 36544
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[compiler] Fix incorrect closure outlining for factory-function components\n\n## Summary\n\nWhen the outermost function being compiled is nested inside another function (factory/HOC, `infer` mode), `HIRBuilder` resolves identifiers against `parentFunction.scope.parent` \u2014 the enclosing function's scope, not the program scope. The enclosing scope's locals are mis-tagged as `ModuleLocal`, and `outlineFunctions` sees `context.length === 0` and hoists the inner closure to module scope, where the captured name is undefined at runtime.\n\nThis PR adds a guard in `outlineFunctions`: a function is not outlined if its body contains a `LoadGlobal(ModuleLocal)` whose name does not resolve at the program scope.\n\nFixes #34901\n\n## Alternative considered\n\nA more principled fix is to correct the misclassification in `HIRBuilder.resolveIdentifier` / `isContextIdentifier` by using `scope.getProgramParent()` instead of `scope.parent`. That change alone is semantically correct but exposes a deeper structural gap",
+    "source": "github:facebook/react",
+    "pr_number": 36538
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[rust-compiler] Skip empty optional ScopeInfo maps on serialize\n\n`bash compiler/scripts/test-babel-ast.sh` runs three sub-tests in\norder: `round_trip_all_fixtures`, `scope_info_round_trip`, and\n`scope_resolution_rename`. The first and third are green after the\nearlier slices in this stack, but the middle one fails 1780/1780\nwith diffs of the shape:\n\n    --- compiler/<fixture>.json ---\n    Round-trip mismatch:\n    +   \"nodeIdToScope\": {},\n\nThis was previously masked because the round-trip failure earlier in\nthe script tripped `set -e` and the scope-info test never ran. With\nround-trip green, it now surfaces a pre-existing serialization\nmismatch in `ScopeInfo`.\n\nRoot cause: the Babel-side fixture producer in\n`compiler/scripts/babel-ast-to-json.mjs::collectScopeInfo` emits only\nfive keys per `.scope.json` file \u2014 `scopes`, `bindings`,\n`nodeToScope`, `referenceToBinding`, and `programScope`. It never\nwrites `nodeIdToScope`, `refNodeIdToBinding`, or `nodeToScopeEnd`.\n\nThe Rust `ScopeInfo` st",
+    "source": "github:facebook/react",
+    "pr_number": 36520
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[rust-compiler] Skip lone-surrogate fixture in round-trip tests\n\nThe fixture `__tests__/fixtures/compiler/lone-surrogate-string-values.js`\ncontains string literals with unpaired UTF-16 surrogates like\n`\"\\uD83E\"`. `JSON.stringify` in `babel-ast-to-json.mjs` emits those\nas literal `\\uD83E` escape sequences in the generated JSON, and\n`serde_json` cannot materialize them into Rust `String` (or\n`serde_json::Value::String`) because Rust strings are strict UTF-8\nand a lone high surrogate is not a valid Unicode scalar value.\n\nThe result is a JSON deserialization error at the AST-loading step,\nwhich currently fails both `round_trip_all_fixtures` (in tests/\nround_trip.rs) and `scope_resolution_rename` (in tests/\nscope_resolution.rs) \u2014 both tests walk the same `.json` fixture\nset and call `serde_json::from_str` to load the AST.\n\nThe principled fix is a WTF-8 string representation for\nstring-bearing AST fields (`StringLiteral.value`, `JSXText.value`,\n`BaseNode.extra`), plus a custom JSON deseriali",
+    "source": "github:facebook/react",
+    "pr_number": 36519
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Add comprehensive ViewTransition component unit tests\n\n## Summary\n\nAdd three new test files with comprehensive unit tests for the `<ViewTransition>` component, covering areas that currently lack test coverage.\n\nThe existing test coverage is minimal (6 tests in `ReactDOMViewTransition-test.js`, 4 in `ReactDOMFizzViewTransition-test.js`, 1 in `ViewTransitionReactServer-test.js`) relative to the 35KB+ of source code in `ReactFiberCommitViewTransitions.js` and `ReactFiberViewTransitionComponent.js`.\n\n## New Test Files\n\n### `ReactDOMViewTransitionName-test.js` (9 tests)\n- Renders children without a wrapper element\n- Uses explicit name prop when provided\n- Generates auto name when name is not provided\n- Generates auto name when name is `'auto'`\n- Preserves auto name across re-renders\n- Supports multiple ViewTransitions as siblings\n- Supports nested ViewTransitions\n- Handles conditional rendering inside ViewTransition\n- Handles ViewTransition mounting and unmounting\n\n### `ReactDOMViewTransiti",
+    "source": "github:facebook/react",
+    "pr_number": 36515
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix typos: duplicate words and misspellings in comments\n\n## Summary\n\nFix duplicate words and misspellings in source code comments across multiple packages.\n\n## Changes\n\n| File | Fix |\n|------|-----|\n| `ReactFiberSuspenseContext.js` | `by by` \u2192 `by` (2 occurrences) |\n| `ReactFlightClient.js` | `We we` \u2192 `We` |\n| `ReactFiberConfigDOM.js` | `we we` \u2192 `we` |\n| `ReactFiberLane.js` | `beacuse` \u2192 `because` |\n| `ReactFiberReconciler.js` | `was was` \u2192 `what was` |\n| `preprocessData.js` | `curent` \u2192 `current` |\n\n## How did you test this change?\n\nThese are comment-only changes with no functional impact.",
+    "source": "github:facebook/react",
+    "pr_number": 36514
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[rust-compiler] Apply compiler renames to SWC module after conversion\n\nThe React Compiler's `RenameVariables` pass records identifier renames\nin `CompileResult::Success.renames` as `Vec<BindingRenameInfo>` with\n`{original, renamed, declaration_start}`. It does not rewrite the AST\nitself; the frontend has to apply them. The Babel adapter does this\nvia `applyRenames` + `scope.rename()` in `BabelPlugin.ts:206-234`.\nThe SWC frontend was discarding the field via `..` in the\n`CompileResult::Success` destructure, so inner-shadowing renames like\n`ref \u2192 ref_0` never made it into the emitted output.\n\nAdd `apply_renames.rs` with a single pass that mirrors the Babel\nsemantics:\n\n1. Re-run `build_scope_info` on the post-compile SWC module to get a\n   binding table and `reference_to_binding` keyed by source position.\n2. Match `BindingRenameInfo` entries to bindings by `declaration_start`\n   and `name`, producing the set of `BindingId`s to rename.\n3. Walk `reference_to_binding` to collect every positi",
+    "source": "github:facebook/react",
+    "pr_number": 36509
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[rust-compiler] Treat redeclared functions as one binding in SWC scope info\n\n`convert_scope.rs::visit_fn_decl` allocated a fresh `BindingId` for\nevery `function x()` declaration. Babel and OXC collapse same-named\nfunction declarations in the same hoist scope into one binding, with\nthe second declaration registered as a `constantViolations` reference\n(reassignment) rather than a new binding.\n\nFor `function-declaration-redeclare.js` the SWC variant emitted\n`const x_0 = t0; return x_0;` because the compiler saw two distinct\nbindings and renamed one. Babel's output is `let x; ... x = t0;\nreturn x;` because there is one binding that gets reassigned.\n\nIn `visit_fn_decl`, check whether the hoist scope already has a\nbinding for the name. If yes, record the redeclaration's ident\nposition in a new `redeclaration_refs` map and skip adding a fresh\nbinding. `build_scope_info` overlays this map onto\n`reference_to_binding` so the second function's ident resolves to the\nfirst binding's `BindingId`.\n\nF",
+    "source": "github:facebook/react",
+    "pr_number": 36508
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[rust-compiler] Emit loc.column/index as UTF-16 code units in SWC frontend\n\nAfter the cluster-1 BytePos shift, `ConvertCtx::position()` emitted\n`loc.column` and `loc.index` as 0-based UTF-8 byte offsets. Babel emits\nthem as 0-based UTF-16 code unit offsets (matching JS string indexing).\nFor files containing any character above U+FFFF (e.g. an emoji like\n\ud83d\udd34 U+1F534), the two diverge by +2 per such character because the\nchar is 4 bytes in UTF-8 but 2 code units in UTF-16.\n\nPrecompute a `utf16_offsets: Vec<u32>` table in `ConvertCtx::new`\nthat maps each source byte index to its 0-based UTF-16 code unit\noffset. `position()` then looks up `index` directly and computes\n`column` as `index - utf16_index_of_line_start`. O(1) per call; the\ntable costs ~4\u00d7 the source length in memory, which is bounded for\nfixture/file inputs.\n\nConsidered an alternative that walks the source line on each\n`position()` call to count UTF-16 code units. More memory-frugal but\nO(line length) per call. The precomputed ta",
+    "source": "github:facebook/react",
+    "pr_number": 36507
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "[rust-compiler] Preserve TS type on SWC cast-wrapper expressions\n\n`convert_expression` had the same stub pattern for `TsAs`, `TsSatisfies`,\nand `TsTypeAssertion` as `convert_binding_ident`: each set\n`type_annotation: Box::new(Null)`, dropping the actual type so the\nreverse converter emitted `as any` instead of `as Status`.\n\nApply the existing `convert_ts_type_to_json` helper at those three\ncall sites, with the same `unwrap_or(Null)` fallback for unhandled\nshapes.\n\nFixes 2 e2e parity fixtures:\n- ts-as-expression-default-value.tsx (`\"pending\" as Status`)\n- ts-instantiation-default-param.tsx (`\"hi\" as T`)\n\n`ts-non-null-expression-default-value.tsx` is still blocked: it uses\n`ReadonlyMap<string, string>` as a binding-type annotation, which my\nprior commit (cc1ba1e1) rejects via the `type_params.is_none()` guard\nbecause the reverse converter doesn't deserialize type params either.\nSupporting generics in both directions is a separate, larger change.\n\nTest plan:\n- bash compiler/scripts/test-e",
+    "source": "github:facebook/react",
+    "pr_number": 36506
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "AI junk\n\n## Fix: `ssl` import moved out of `TYPE_CHECKING` block\n\n### Problem\n`from flask.cli import CertParamType` raises `NameError: name 'ssl' is not defined` because `ssl` is only imported under `TYPE_CHECKING`, but referenced in the class signature:\n```python\nclass CertParamType(click.ParamType[str | os.PathLike[str] | ssl.SSLContext]):\n```\n\n### Root Cause\nEven with `from __future__ import annotations`, `click.ParamType` is not subscriptable. The subscript causes eager evaluation of the type arguments at class definition time.\n\n### Fix\n1. Move `import ssl` out of the `if t.TYPE_CHECKING:` block to the top-level imports\n2. Remove subscript from `click.ParamType[...]` since ParamType is not generic\n\n### Verification\n- All 491 tests pass\n- `from flask import Flask` imports without error",
+    "source": "github:pallets/flask",
+    "pr_number": 6037
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "edited 'a' to 'an' before 'SQL'\n\nSince 'SQL' makes a vowel sound, it should be 'an' instead of 'a'.",
+    "source": "github:pallets/flask",
+    "pr_number": 6036
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix FLASK_DEBUG env var ignored with click 8.4.0\n\n## Summary\n\nFixes #6025.\n\n- In click 8.4.0, `ctx.get_parameter_source()` returns `None` during eager callbacks instead of `ParameterSource.DEFAULT`\n- The guard in `_set_debug` only skipped for `source is not None`, so when `source=None` (click 8.4.0), the callback proceeded to overwrite `FLASK_DEBUG=1` with `\"0\"`\n- Changed `if source is not None and source in (...)` \u2192 `if source is None or source in (...)` to treat `None` the same as `DEFAULT`\n\n## Changes\n\n- `src/flask/cli.py`: 1-line fix in `_set_debug` guard condition\n- `tests/test_cli.py`: Regression test that sets `FLASK_DEBUG=1` env var and verifies it isn't overwritten when `--debug` isn't explicitly passed\n\n## Test plan\n\n- [x] Added `test_flaskgroup_debug_env` regression test\n- [x] Verified the fix matches the root cause analysis in #6025\n- [x] `_set_app` callback does not have this issue (it checks `value is None`, not parameter source)\n\n\ud83e\udd16 Generated with [Claude Code](https://cl",
+    "source": "github:pallets/flask",
+    "pr_number": 6028
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Docs: Enhance deployment guides, tutorial warnings and API examples\n\nThis PR introduces quality-of-life and safety improvements across the documentation.\r\n\r\nI have separated these changes into seperate commits for easier review:\r\n\r\nGunicorn: Added examples for `gunicorn.conf.py`, background process management, and a note about using `ProxyFix`.\r\nTutorial (Database): Added a warning that `init-db` drops existing tables to prevent accidental data loss for beginners.\r\nTutorial (Deploy): Added a security warning advising users to exclude `config.py` from version control to protect `SECRET_KEY`.\r\nAPI (Signals): Modernized the code examples to use the idiomatic `@signal.connect_via(app)` decorator pattern instead of manual `.connect()` calls.\r\n\r\n(Note: No tests, `CHANGES.rst` entries or `.. versionchanged::` directives were added as this is strictly a documentation update to existing features.)",
+    "source": "github:pallets/flask",
+    "pr_number": 6027
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix: silence ENOTDIR in Config.from_file() to match from_pyfile()\n\n## What\n\n`Config.from_file()` was missing `errno.ENOTDIR` from its silent error check, making it behave inconsistently with `Config.from_pyfile()`.\n\n**Before (from_file):**\n```python\nif silent and e.errno in (errno.ENOENT, errno.EISDIR):\n    return False\n```\n\n**After (from_file):**\n```python\nif silent and e.errno in (errno.ENOENT, errno.EISDIR, errno.ENOTDIR):\n    return False\n```\n\n`from_pyfile()` has always included `errno.ENOTDIR` in this check.\n\n## Why it matters\n\n`ENOTDIR` is raised when a path component in the given filename is a regular file rather than a directory (e.g. trying to open `/some/file/config.json` where `/some/file` is a regular file). With `silent=True`, callers expect all \"file not accessible\" errors to be swallowed and `False` returned. The missing code caused an unexpected `OSError` to bubble up instead.\n\nFixes #6023",
+    "source": "github:pallets/flask",
+    "pr_number": 6024
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "docs: update Flask-MongoEngine link to maintainers' canonical URL\n\nThe link in `docs/patterns/mongoengine.rst` to `https://flask-mongoengine.readthedocs.io` returns HTTP 403 \u2014 that subdomain no longer hosts Flask-MongoEngine's documentation.\n\nThe [Flask-MongoEngine README](https://github.com/MongoEngine/flask-mongoengine#usage-and-api-documentation) directs readers to `docs.mongoengine.org/projects/flask-mongoengine/`. Following the Sphinx-on-Read-the-Docs convention, the canonical working URL is:\n\n```\nhttps://docs.mongoengine.org/projects/flask-mongoengine/en/latest/\n```\n\nThis PR updates the link in `docs/patterns/mongoengine.rst` accordingly.\n\n### Note on verification\n\nIf you `curl` the new URL you'll see a 403 too \u2014 `docs.mongoengine.org` uses a Cloudflare-style JavaScript challenge, so non-browser clients get blocked. A real browser passes the challenge and loads the docs normally.\n\n### Differs from #5384 / #5385\n\nThose PRs proposed redirecting the link to a third-party fork of Fla",
+    "source": "github:pallets/flask",
+    "pr_number": 6019
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "feat(cli): add --json flag to flask routes command\n\n## Summary\n\n- Adds a `--json` flag to `flask routes` that outputs the route table as a JSON array instead of the text table\n- Each entry has `endpoint`, `methods` (sorted list), and `rule`; subdomain apps also emit `subdomain`, host-matching apps emit `host`\n- `HEAD` and `OPTIONS` are filtered unless `--all-methods` is also passed; empty apps produce `[]`\n- The `--sort` flag is honoured in JSON mode (`match` preserves natural `iter_rules()` order)\n- Fully backwards-compatible \u2014 all existing `flask routes` invocations are unaffected\n\n## Test plan\n\n- [ ] `test_json_output` \u2014 basic shape: keys `endpoint`, `methods`, `rule` present; methods is a list\n- [ ] `test_json_no_routes` \u2014 empty app returns `[]`\n- [ ] `test_json_excludes_head_options_by_default` \u2014 HEAD/OPTIONS absent without `--all-methods`\n- [ ] `test_json_all_methods` \u2014 HEAD/OPTIONS present with `--all-methods`\n- [ ] `test_json_with_subdomain` \u2014 `subdomain` key present and correc",
+    "source": "github:pallets/flask",
+    "pr_number": 6003
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "\u2728 Quality: Celery task result endpoint crashes on task failure\n\n## \u2728 Code Quality\n\n### Problem\nWhen a Celery task fails, `result.ready()` evaluates to `True` but `result.successful()` is `False`. \nCalling `result.get()` without `propagate=False` on a failed task will re-raise the task's exception, causing the Flask endpoint to crash with a 500 Internal Server Error instead of returning the task's failed status. \nAdditionally, if `result.result` is an Exception object, returning it directly in the dictionary will cause a `TypeError` during JSON serialization.\n\n\n**Severity**: `medium`\n**File**: `examples/celery/src/task_app/views.py`\n\n### Solution\nWhen a Celery task fails, `result.ready()` evaluates to `True` but `result.successful()` is `False`. \nCalling `result.get()` without `propagate=False` on a failed task will re-raise the task's exception, causing the Flask endpoint to crash with a 500 Internal Server Error instead of returning the task's failed status. \nAdditionally, if `result.",
+    "source": "github:pallets/flask",
+    "pr_number": 5966
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Handle missing secret key during session save\n\nI noticed a real crash path in session saving: `SecureCookieSessionInterface.save_session` called `dumps()` on `get_signing_serializer(app)` without checking whether the serializer existed.\n\nI validated the behavior locally with a minimal reproduction where a session object was present, then `app.secret_key` became falsy before save. In that flow, Flask raised an internal `AttributeError` (`'NoneType' object has no attribute 'dumps'`) instead of the normal session configuration error.\n\nThen I fixed the code in a streamlined way:\n\n- I added a guard in `save_session` to handle a missing serializer explicitly.\n- I raised the same user-facing `RuntimeError` message Flask already uses for missing secret key session failures.\n- I removed the `type: ignore[union-attr]` usage by handling the union properly.\n- I deduplicated the error message by using a shared constant for both `NullSession` and `save_session`.\n\nAfter that, I added a focused regres",
+    "source": "github:pallets/flask",
+    "pr_number": 5964
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "remove unicode host test\n\nThis test is invalid, the `Host` header cannot contain non-ASCII. It was added in https://github.com/pallets/flask/pull/2994. It appears there was some confusion over Python 2/3 handling of strings, rather than testing this because it was a valid `Host` header.\r\n\r\ncloses #5961",
+    "source": "github:pallets/flask",
+    "pr_number": 5962
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "FIX: Add RFC 7230 header validation to reject pseudo-headers (fix #6167)\n\n## Summary\nThis PR adds proper header name validation according to RFC 7230 to address Issue #6167 (`InvalidHeader` exception for `:method` header).\n\n## Previous Context\nI sincerely apologize for the previous low-quality submissions (including #7476, #7477, #7478, #7479). Those were quickly closed because they were superficial (adding tests only) and did not address the actual issue. I understand this behavior is not acceptable and I am working to improve.\n\n## Root Cause\n`requests` does not validate header names against RFC 7230. The field-name rule disallows:\n1. Pseudo-headers starting with `:` (like `:method`, `:path` from HTTP/2)\n2. Control characters (ASCII < 32 except HTAB)\n\n## Proposed Changes\n1. **New file**: `requests/validators.py`\n   - `is_valid_header_name()`: Implements RFC 7230 validation\n   - `validate_headers()`: Raises `ValueError` for invalid headers\n   - `sanitize_headers()`: Removes invalid hea",
+    "source": "github:psf/requests",
+    "pr_number": 7489
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "FIX: Add header validation to reject invalid headers (fix #6167)\n\n## Summary\nFix for Issue #6167: `InvalidHeader` exception when trying to add a \":method\" header field.\n\n## Root Cause\nRequests does not validate header names before sending. RFC 7230 disallows field names starting with `:` (pseudo-headers from HTTP/2) and control characters.\n\n## Proposed Changes\n1. **New file**: `requests/validators.py`\n   - `is_valid_header_name()`: Checks for pseudo-headers (`:method`, `:path`) and control characters\n   - `validate_headers()`: Raises `ValueError` for invalid headers\n   - `sanitize_headers()`: Removes invalid headers from dict\n\n2. **Suggested integration** (to be added in `requests/utils.py` or `requests/sessions.py`):\n   ```python\n   from requests.validators import validate_headers\n   \n   def prepare_headers(headers, ...):\n       if headers:\n           validate_headers(headers)  # Add this line\n           ...\n   ```\n\n3. **Tests**: `tests/test_validators.py` with 5 test functions\n\n## Ve",
+    "source": "github:psf/requests",
+    "pr_number": 7488
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "FIX: no_proxy env ignored on 302 redirect (fix #3296)\n\n## Summary\nFix `no_proxy` environment variable being ignored on 302 redirects in `requests`.\n\n## Root Cause\nIn `resolve_proxies()` function in `utils.py`, when `should_bypass_proxies()` returns `True` (URL matches `no_proxy`), the code skipped setting new proxy but **returned the original `proxies` dict with proxy settings**.\n\nThis meant that after a 302 redirect to a `no_proxy` domain, the original proxy was still being used.\n\n## Proposed Changes\n- In `resolve_proxies()`: return empty dict `{}` when `should_bypass_proxies()` is `True`\n- Previously: returned `new_proxies` (copy of original proxies) even when URL matched `no_proxy`\n- Now: correctly returns empty dict to bypass proxy\n\n## Verification\n- \u2705 All 3 new tests pass\n- \u2705 `no_proxy` bypass works correctly after redirects\n- \u2705 Existing proxy behavior preserved for non-`no_proxy` URLs\n\nFixes #3296.",
+    "source": "github:psf/requests",
+    "pr_number": 7487
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix double-decoding of percent-encoded IPv6 zone IDs\n\n## Summary\n- Fixes #6808\n- After `urllib3.util.parse_url` decodes `%25` \u2192 `%` in IPv6 zone IDs, re-encodes the bare `%` back to `%25` in `prepare_url` before `requote_uri` can double-decode it\n- Without this fix, `http://[fe80::a%2553]` (zone ID \"53\") gets corrupted to `fe80::aS` and raises `ValueError`\n\n## Root cause chain\n1. Input: `http://[fe80::be0f:a7ff:fe00:2929%2553]` \u2014 zone ID is `53`\n2. `parse_url` decodes `%25` \u2192 `%`, yielding `%53`\n3. `requote_uri` \u2192 `unquote_unreserved` decodes `%53` \u2192 `S` (unreserved char)\n4. `ipaddress.ip_address(\"fe80::...S\")` raises `ValueError`\n\n## Test plan\n- [x] New parametrized test: `%2553` zone ID no longer raises ValueError\n- [x] New parametrized test: `%25eth0` zone ID continues working\n- [ ] Existing test suite passes\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+    "source": "github:psf/requests",
+    "pr_number": 7485
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix escaped quotes being stripped from cookie values\n\n## Summary\n- Fixes #6890\n- Removes the broken `replace('\\\"', \"\")` logic in `RequestsCookieJar.set_cookie()` that stripped all escaped quotes from cookie values\n- The code was intended to clean up quoted cookie values but instead corrupted legitimate data (e.g., `\"159\\\"687\"` became `\"159687\"`)\n\n## Root cause\n```python\n# Before (cookies.py lines 349-356):\nif (\n    hasattr(cookie.value, \"startswith\")\n    and cookie.value.startswith('\"')\n    and cookie.value.endswith('\"')\n):\n    cookie.value = cookie.value.replace('\\\\\"', \"\")  # BUG: destroys escaped quotes\n```\n\nThe underlying `http.cookiejar.CookieJar` handles cookie values correctly without this mangling. While RFC 6265 says cookie values shouldn't contain escaped characters, many real-world servers use them, and clients should preserve values verbatim.\n\n## Test plan\n- [x] `\"159\\\"687\"` round-trips correctly through `set_cookie`\n- [ ] Existing test suite passes\n\n\ud83e\udd16 Generated with [Claude",
+    "source": "github:psf/requests",
+    "pr_number": 7484
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix incorrect Content-Length with io.StringIO body\n\n## Summary\n- Fixes #6917\n- Adds an early-return branch in `super_len()` for `io.StringIO` that reads the content, encodes to UTF-8, and measures byte length\n- Previously, `super_len` used `seek`/`tell` for StringIO, which returns character count \u2014 wrong for multi-byte UTF-8 characters (e.g., \"\ud83d\udca9\" is 1 char but 4 bytes)\n- This mirrors the existing fix for bare `str` from #6586\n\n## Example\n```python\ndata = io.StringIO(\"\ud83d\udca9\")\n# Before: Content-Length: 1 (character count)\n# After:  Content-Length: 4 (UTF-8 byte count)\n```\n\n## Test plan\n- [x] All 16 existing `TestSuperLen` tests pass\n- [x] Verified correct byte counts for ASCII, emoji, mixed strings, and partially-read streams\n- [x] Stream position is preserved after measurement\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+    "source": "github:psf/requests",
+    "pr_number": 7483
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix digest auth uri field dropping semicolons in URL path\n\n## Summary\n- Fixes #6990\n- Replaces `urlparse` with `urlsplit` in `HTTPDigestAuth.build_digest_header()`\n- `urlparse` treats `;` as a path-parameter delimiter (RFC 1808), stripping everything after the first semicolon into `.params` \u2014 this corrupts the digest `uri` field. `urlsplit` preserves the full path including semicolons.\n\n## Example\nURL: `/releases/uuid1;uuid2?fmt=json`\n- **Before:** `uri=\"/releases/uuid1?fmt=json\"` (uuid2 lost)\n- **After:** `uri=\"/releases/uuid1;uuid2?fmt=json\"` (correct)\n\n## Test plan\n- [x] Verified the reproduction case from the issue produces the correct `uri` field\n- [ ] Existing test suite passes\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+    "source": "github:psf/requests",
+    "pr_number": 7482
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix mypy false positives for json= parameter\n\n## Summary\n- Fixes #7443\n- Replaces recursive `Sequence[\"JsonType\"]` / `Mapping[str, \"JsonType\"]` with `list[Any]` / `dict[str, Any]` in the `JsonType` alias\n- mypy cannot prove that `dict[str, str]` satisfies `Mapping[str, JsonType]` when `JsonType` is a recursive union \u2014 pyright and ty handle this fine, but mypy (the most popular checker) emits false positives when users assign JSON dicts to intermediate variables\n\n## Rationale\nThe new definition still prevents obviously wrong types (bytes, file handles, etc.) from being passed as `json=`, while accepting any `dict[str, ...]` or `list[...]` \u2014 mirroring what `json.dumps()` accepts at runtime. This matches the pragmatic approach discussed in the issue thread.\n\n## Test plan\n- [x] Verify the reproduction case from the issue no longer triggers mypy errors\n- [x] Confirm pyright and ty continue to pass\n- [ ] Existing test suite passes (no runtime behavior change)\n\n\ud83e\udd16 Generated with [Claude Code](",
+    "source": "github:psf/requests",
+    "pr_number": 7481
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix request cookies set to None\n\nFixes #2716.\n\nMethod-level cookies with `None` values are meant to remove matching session cookies for that request. They were being converted into Cookie objects before the session merge, which could produce headers like `foo; baz=qux`. This keeps dict cookie handling at the merge point so `None` can remove the inherited cookie while normal request-level cookie overrides still work.\n\nTests run:\n- `python -m pytest tests/test_requests.py::TestRequests::test_request_cookie_none_removes_session_cookie -q`\n- `python -m pytest tests/test_requests.py::TestRequests::test_request_cookie_none_removes_session_cookie tests/test_requests.py::TestRequests::test_request_cookie_overrides_session_cookie tests/test_requests.py::TestRequests::test_request_cookies_not_persisted tests/test_requests.py::TestRequests::test_param_cookiejar_works tests/test_requests.py::TestRequests::test_generic_cookiejar_works -q`\n- `python -m pytest tests/test_requests.py -k cookie -q`\n- `",
+    "source": "github:psf/requests",
+    "pr_number": 7468
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix: broaden JsonType to accept Sequence[Any] and Mapping[str, Any]\n\n## Problem\n\nThe `JsonType` alias in `_types.py` uses a recursive definition:\n\n```python\nJsonType: TypeAlias = (\n    None | bool | int | float | str\n    | Sequence[\"JsonType\"]\n    | Mapping[str, \"JsonType\"]\n)\n```\n\nThis causes mypy to reject valid JSON arguments. For example:\n\n```python\ndef fn(d: dict[str, str]) -> None:\n    j = {\"foo\": d, \"bar\": \"hi\"}\n    requests.post(\"https://example.com\", json=j)  # error\n```\n\nmypy reports:\n```\nArgument \"json\" to \"post\" has incompatible type \"dict[str, Collection[str]]\"; expected \"JsonType\"\nArgument \"json\" to \"post\" has incompatible type \"dict[str, object]\"; expected \"JsonType\"\n```\n\nThe root cause is that mypy cannot resolve the recursive constraint \u2014 `Collection[str]` is not `Sequence[JsonType]` (wrong abstract base), and mypy's structural check on the recursive union fails for non-literal types passed via variables.\n\n## Fix\n\nReplace the recursive inner types with `Any`:\n\n```python",
+    "source": "github:psf/requests",
+    "pr_number": 7467
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "build(deps): Bump pytest-rerunfailures from 16.1 to 16.2 in /testing/plugins_integration\n\nBumps [pytest-rerunfailures](https://github.com/pytest-dev/pytest-rerunfailures) from 16.1 to 16.2.\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/pytest-dev/pytest-rerunfailures/blob/master/CHANGES.rst\">pytest-rerunfailures's changelog</a>.</em></p>\n<blockquote>\n<h2>16.2 (2026-05-13)</h2>\n<p>Breaking changes\n++++++++++++++++</p>\n<ul>\n<li>Drop support for pytest 8.0. Minimum pytest version is now 8.1.</li>\n</ul>\n<p>Features\n++++++++</p>\n<ul>\n<li>Add support for pytest 9.0.</li>\n</ul>\n<p>Bug fixes\n+++++++++</p>\n<ul>\n<li>\n<p>Fix missing teardown for session and module scoped fixtures when fixture teardown fails.\nFixes <code>[#314](https://github.com/pytest-dev/pytest-rerunfailures/issues/314) &lt;https://github.com/pytest-dev/pytest-rerunfailures/issues/314&gt;</code>_.</p>\n</li>\n<li>\n<p>Clear fixture finalizers when removing cached results from failed fixture",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14517
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "build(deps): Bump twisted from 25.5.0 to 26.4.0 in /testing/plugins_integration\n\nBumps [twisted](https://github.com/twisted/twisted) from 25.5.0 to 26.4.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/twisted/twisted/releases\">twisted's releases</a>.</em></p>\n<blockquote>\n<h1>Twisted 26.4.0 (2026-05-11)</h1>\n<p>This is the last release with support for Python 3.9.</p>\n<h2>Security</h2>\n<ul>\n<li>twisted.names was fix for Denial of Service (DoS) attack via resource exhaustion during DNS name decompression.\nReported and fixed by Tomas Illuminati Balbin CVE-2026-42304 (<a href=\"https://redirect.github.com/twisted/twisted/issues/12626\">#12626</a>)</li>\n</ul>\n<h2>Features</h2>\n<ul>\n<li>twisted.internet.ssl.CertificateOptions has a new constructor argument, contextForServerName, which takes a callback that will get invoked when a client sends a server name indication, with the sent servername, and returns a new OpenSSL.SSL.Context that the connect",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14516
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix: use node= instead of deprecated nodeid= in unittest skip fixture\n\n## Summary\n\n`main` is red on every platform since #14210 landed. The PR was written in February against the old `_register_fixture(nodeid=...)` API, but commit 121d7a42a deprecated that path yesterday in favor of `node=`. The PR was approved before that refactor and never re-rebased, so the regression landed unseen \u2014 its own CI run was cancelled by the doc-PR merges that immediately followed.\n\n## Root cause\n\n`_register_unittest_skip_fixture` registers an autouse fixture with `nodeid=self.nodeid`, which now hits the legacy string-baseid path. That path scopes the fixture by string prefix and mis-attributes it relative to subclasses of a `@unittest.skip`-decorated class \u2014 so the skip fixture never preempts the inherited `setUp` / `setUpClass`, and tests that should report `1 skipped` instead error out.\n\nThree existing tests are broken on every Python/OS:\n\n- `test_setup_inheritance_skipping[test_setup_skip.py-1 skipped",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14505
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Improve assertion diffs for mapping objects\n\n<!--\r\nThanks for submitting a PR, your contribution is really appreciated!\r\n\r\nHere is a quick checklist that should be present in PRs.\r\n\r\n- [ ] Include documentation when adding new features.\r\n- [ ] Include new tests or update existing tests when applicable.\r\n- [X] Allow maintainers to push and squash when merging my commits. Please uncheck this if you prefer to squash the commits yourself.\r\n\r\nIf this change fixes an issue, please:\r\n\r\n- [ ] Add text like ``closes #XYZW`` to the PR description and/or commits (where ``XYZW`` is the issue number). See the [github docs](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) for more information.\r\n\r\n> [!IMPORTANT]\r\n> **Unsupervised agentic contributions are not accepted**. See our [AI/LLM-Assisted Contributions Policy](https://github.com/pytest-dev/pytest/blob/main/CONTRIBUTING.rst#aillm-assisted-contri",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14504
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "docs: link the current pytest-xdist newhooks.py from the hooks how-to\n\n## Summary\n\nCloses #14465.\n\nThe how-to page for declaring new hooks points readers at `newhooks.py` in `pytest-xdist` as a real-world example, but the link is pinned to a 2017-era commit (`974bd566`) under the old `xdist/` layout. xdist has since moved its hooks under `src/xdist/`, so following the link lands on an outdated snapshot rather than the file readers will see if they open the repository today.\n\nThis PR repoints the link at `master/src/xdist/newhooks.py`. The current file shows the same idea (declaring new hook specs) but matches what the project ships today, including the explicit `@pytest.hookspec` markers the issue mentioned.\n\nI kept the PR narrow to the link change and a changelog entry, per the reporter's question in the issue. Happy to follow up with a separate PR if the maintainers want the how-to to also recommend `@hookspec` and `@hookimpl` more explicitly.\n\n## Test plan\n\n- [x] Confirmed the new U",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14503
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix junitxml count for teardown errors\n\nFixes #3850\n\n## Summary\n- correct the JUnit XML `tests` count when a test passes during call but fails during teardown\n- assert in `run_and_parse` that the testsuite `tests` attribute matches the emitted `<testcase>` nodes\n- keep call-failure plus teardown-error as separate testcase nodes, while the pass-plus-teardown-error path stays one testcase node\n- add a changelog entry\n\n## Tests\n- `.venv/bin/python -m pytest testing/test_junitxml.py -q`\n- `.venv/bin/pre-commit run --color never --files src/_pytest/junitxml.py testing/test_junitxml.py changelog/3850.bugfix.rst`\n- `git diff --check`\n\nAI assistance was used while iterating on the patch and tests. I reviewed the change and can explain it.",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14501
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix supplementary plane character escaping in bin_xml_escape\n\nThis is an independent contribution made outside of any organized event or competition.\n\n## Summary\n\nThe `bin_xml_escape` function in `src/_pytest/junitxml.py` incorrectly escapes all supplementary plane Unicode characters (U+10000 through U+10FFFF) in JUnit XML output. This affects all emoji, CJK Extension B-F characters, mathematical symbols, and musical symbols used in test names.\n\n## Root Cause\n\nThe regex on line 59 used `\\u10000-\\u10ffff` to specify the supplementary plane range. In Python, `\\u` only accepts exactly 4 hex digits, so:\n\n- `\\u10000` parses as `\\u1000` (Myanmar letter KA) followed by literal `0`\n- `\\u10ffff` parses as `\\u10ff` (Georgian letter) followed by literal `ff`\n\nThis means the regex entirely fails to include the supplementary plane in the set of valid XML characters, causing all 1,048,576 supplementary plane codepoints to be incorrectly escaped.\n\nThe regression was introduced in commit 1653c49b1b wh",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14497
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix JUnit XML escaping for supplementary Unicode\n\nFixes #14483.\n\n## Summary\n\n- Use an 8-digit Unicode escape for the XML supplementary-plane range in `bin_xml_escape`.\n- Restore regression coverage for valid XML boundary code points, including U+10000, emoji, and U+10FFFF.\n- Add the changelog entry and AUTHORS entry requested by the PR template.\n\nThe previous static regex used `\u10000-\u10ffff`, but Python `\\u` escapes consume only four hex digits. That left supplementary-plane characters outside the valid XML character range and caused valid emoji/CJK extension characters to be escaped as `#x...`.\n\n## Validation\n\n- `.venv/bin/python -m pytest testing/test_junitxml.py::test_invalid_xml_escape -q` -> 1 passed\n- `.venv/bin/python -m pytest testing/test_junitxml.py -q` -> 135 passed, 2 skipped\n- `uvx ruff@0.15.12 check src/_pytest/junitxml.py testing/test_junitxml.py`\n- `uvx ruff@0.15.12 format --check src/_pytest/junitxml.py testing/test_junitxml.py`\n- `uvx --from mypy==2.0.0 --with iniconfig>=1.",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14491
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix JUnit XML escaping for supplementary Unicode\n\n## Summary\n\n- Correct the JUnit XML illegal-character regex so the XML-valid supplementary-plane range uses Python `\\U00010000-\\U0010ffff` escapes.\n- Expand `bin_xml_escape` coverage for XML-valid edge characters, including emoji and U+10FFFF.\n- Add a towncrier bugfix fragment for issue #14483.\n\nFixes #14483.\n\n## Validation\n\n- `uv run --extra dev pytest testing/test_junitxml.py -q`\n- `uv run --with ruff ruff check src/_pytest/junitxml.py testing/test_junitxml.py`\n- `uv run --with ruff ruff format --check src/_pytest/junitxml.py testing/test_junitxml.py`\n- `git diff --check`\n- `uv run python - <<PY ...` behavior probe preserving `test_\ud83d\ude00_passes` and `test_\ud840\udc00`",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14489
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "raises: Fix KeyError when caplog handler is missing\n\n# Summary\r\nCloses #14436\r\n\r\nRaise a descriptive `RuntimeError` instead of an opaque `KeyError` when accessing `caplog.handler` before it has been initialised.\r\n\r\n## Problem\r\n\r\nAccessing `caplog.handler` when the handler has not been set up raised a confusing `KeyError` with a raw `StashKey` object address:\r\n\r\n\r\nThis gives users no useful information about what went wrong.\r\n\r\n## Solution\r\n\r\nModified `LogCaptureFixture.handler` to use `.get()` on the stash and raise a descriptive `RuntimeError` if the handler is `None`:\r\n\r\n```python\r\n@property\r\ndef handler(self) -> LogCaptureHandler:\r\n    \"\"\"Get the logging handler used by the fixture.\"\"\"\r\n    handler = self._item.stash.get(caplog_handler_key, None)\r\n    if handler is None:\r\n        raise RuntimeError(\"caplog handler was not initialized for this test item\")\r\n    return handler\r\n```\r\n\r\n## Test Cases\r\n\r\nTest that accessing caplog.handler after manually removing it from the stash raises a",
+    "source": "github:pytest-dev/pytest",
+    "pr_number": 14488
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Validate apt_repository one-line components\n\n##### SUMMARY\nFixes #85715\n\nThe apt_repository parser accepted one-line sources that only had type, URI, and suite. Those entries are malformed for apt because they are missing a component, and the module would write them before crashing during cache parsing.\n\nThis validates that deb/deb-src source lines include a component, including lines with bracketed options, so malformed input fails before any source file is written.\n\n##### ISSUE TYPE\n- Bugfix Pull Request\n\n##### COMPONENT NAME\napt_repository\n\n##### ADDITIONAL INFORMATION\nValidation:\n- `python3 -m py_compile lib/ansible/modules/apt_repository.py`\n- `PYTHONPATH=lib python3 - <<'PY' ...` helper smoke test for source component parsing\n- `git diff --check`",
+    "source": "github:ansible/ansible",
+    "pr_number": 86975
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "facts: classify UnionTech OS Server as RedHat os_family\n\n##### SUMMARY\n\nFixes #86957.\n\nUOS Server is RPM-based (built on openAnolis or openEuler) but the existing ``Uos`` branch in ``parse_distribution_file_Debian`` (#77275) classifies it as ``Debian``, so ``ansible_os_family == 'RedHat'`` tasks are skipped.\n\nThis PR adds ``parse_distribution_file_UnionTech``, gated on ``PLATFORM_ID=\"platform:uel*\"`` in ``/etc/os-release`` \u2014 a marker present on every UOS Server image but never on Desktop. Resulting facts:\n\n```\nansible_distribution         = \"UnionTech\"\nansible_distribution_release = \"kongzi\"  # A version (openAnolis-based)\n                            or \"fuyu\"    # E version (openEuler-based)\nansible_os_family            = \"RedHat\"\n```\n\nUOS Desktop (Debian-based, no ``PLATFORM_ID``) is unchanged \u2014 addressing the backward-compat concern that closed #79290.\n\n###### Why ``UnionTech`` (not ``Anolis OS`` / ``openEuler``)\n\nSame precedent as Rocky/AlmaLinux (RHEL rebuilds \u2192 own brand) and ope",
+    "source": "github:ansible/ansible",
+    "pr_number": 86959
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "git: remove redundant error checking\n\n##### SUMMARY\r\n\r\nI am getting this error message when `git submodule fetch` fails:\r\n\r\n```console\r\nTASK [ansible : git clone ansible] *********************************************************************************\r\n[ERROR]: Task failed: Module failed:\r\n<redacted git CLI output>\r\n\r\nOrigin: /Users/simonleary/unity/unity-ansible-gitlab/roles/ansible/tasks/main.yml:28:3\r\n\r\n26 # - ansible.builtin.import_tasks: bitwarden.yml\r\n27\r\n28 - name: git clone ansible\r\n     ^ column 3\r\n\r\nTraceback (most recent call last):\r\n  File \"<stdin>\", line 266, in <module>\r\n  File \"<stdin>\", line 260, in _ansiballz_main\r\n  File \"<stdin>\", line 140, in invoke_module\r\n  File \"/tmp/ansible_ansible.builtin.git_payload_w9r64qbn/ansible_ansible.builtin.git_payload.zip/ansible/module_utils/_internal/_ansiballz/_loader.py\", line 35, in run_module\r\n    _run_module(\r\n  File \"/tmp/ansible_ansible.builtin.git_payload_w9r64qbn/ansible_ansible.builtin.git_payload.zip/ansible/module_utils",
+    "source": "github:ansible/ansible",
+    "pr_number": 86937
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Deprecate is_module parameter\n\n##### SUMMARY\n\n* Use plugin_type=module instead of is_module=True\n\nSigned-off-by: Abhijeet Kasurde <Akasurde@redhat.com>\n\n##### ISSUE TYPE\n- Bugfix Pull Request\n\n\n\n\n##### COMPONENT NAME\nchangelogs/fragments/doc_string_dep.yml\nlib/ansible/cli/console.py\nlib/ansible/cli/doc.py\nlib/ansible/utils/plugin_docs.py\ntest/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/main.py\ntest/sanity/code-smell/deprecated-config.py",
+    "source": "github:ansible/ansible",
+    "pr_number": 86931
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix: ansible-pull short hostname/group collision and checkout ignores\u2026\n\nFixes #86854\r\n\r\nTwo bugs in `PullCLI.run()` inside `lib/ansible/cli/pull.py`:\r\n\r\n**Bug 1 \u2014 Short hostname collides with inventory group names**\r\n\r\nThe auto-limit was built like this:\r\n`hostnames = ','.join(set([host, node, host.split('.')[0], node.split('.')[0]]))`\r\n\r\nThis added bare short hostnames (e.g. `rancid` from `rancid.myweb.sk`) \r\nto `--limit`. Since Ansible resolves `--limit` tokens as both hostnames \r\nAND group names, a machine whose short hostname matched a group name would \r\nrun tasks on every host in that group \u2014 silently, with no warning. The \r\nreporter spent several days debugging this.\r\n\r\nFix: only use FQDNs in the auto-limit. The short hostname adds nothing \r\nwhen the FQDN already uniquely identifies the host.\r\n\r\n**Bug 2 \u2014 Checkout step ignores explicit `--limit`**\r\n\r\nEven when the user explicitly passed `--limit rancid.myweb.sk`, the \r\ncheckout command always used the auto-generated `limit_opts` ",
+    "source": "github:ansible/ansible",
+    "pr_number": 86928
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix cli: pager_pipe() accepts optional pager arg (closes #86898)\n\n## Fixes #86898 \u2014 ansible-vault view TypeError when PAGER env var is unset\n\n**Bug:** When running `ansible-vault view` with `PAGER` env variable empty/unset, `CLI.pager()` calls `pager_pipe(text, 'less')` passing two arguments, but `pager_pipe()` only accepted one parameter \u2014 causing:\n```\nTypeError: CLI.pager_pipe() takes 1 positional argument but 2 were given\n```\n\n**Fix:** Added optional `pager` parameter to `pager_pipe()`. When called with two args from `pager()`, it now correctly uses the passed pager instead of only CLI.PAGER.\n\n**Files changed:** `lib/ansible/cli/__init__.py` (+5 lines, -3 lines)",
+    "source": "github:ansible/ansible",
+    "pr_number": 86899
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "undefect playbook/role: dedupe dependency vars via set (O(D\u00b2) \u2192 O(D))\n\n**playbook/role: dedupe dependency vars via set (O(D\u00b2) \u2192 O(D))**\r\n\r\n# Body\r\n\r\n##### SUMMARY\r\n\r\n`Role.get_vars()` dedupes transitive dependencies with `seen = []` and `dep not in seen`, which is O(D\u00b2) over D transitive deps. For enterprise playbooks with deeply nested roles (D=100+) that's measurable CPU cost on every play.\r\n\r\nSwitch `seen` to a `set` \u2014 O(D).\r\n\r\nSide effect: `Role` defines `__eq__` (at `lib/ansible/playbook/role/__init__.py:202`) without a matching `__hash__`, which implicitly makes instances unhashable (a naive `seen = set()` swap raises `TypeError: unhashable type: 'Role'`). This PR adds `__hash__` hashing `(name, path)` \u2014 a stable subset of the fields `_get_hash_dict()` compares for equality \u2014 so any two roles that are equal share the same hash, preserving the `eq`/`hash` contract. Hash collisions on differing params/when/tags fall through to `__eq__` and resolve correctly.\r\n\r\n##### ISSUE TYPE\r\n\r\n",
+    "source": "github:ansible/ansible",
+    "pr_number": 86895
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "SSH connection plugin: add ssh_askpass_command for dynamic credential and MFA handling\n\n##### SUMMARY\r\n\r\nThis PR introduces a new SSH connection plugin option, ssh_askpass_command, which allows users to supply a custom command to dynamically provide authentication credentials (passwords and/or MFA tokens) via SSH_ASKPASS.\r\n\r\nThe command is executed on the controller and its output is passed to the SSH client whenever an authentication prompt is encountered.\r\n\r\n##### ISSUE TYPE\r\n\r\n- Feature Pull Request\r\n\r\n##### Details\r\nCurrently, the SSH connection plugin relies on:\r\n- sshpass for password authentication, or\r\n- static credentials provided via variables\r\n\r\nThese approaches have limitations:\r\n\r\n- sshpass does not support multi-factor authentication (MFA)\r\n- static credentials cannot handle dynamic or time-based tokens (e.g. TOTP)\r\n- integration with external secret managers or authentication providers is difficult\r\n\r\nThis makes it hard to use Ansible in environments with modern authenti",
+    "source": "github:ansible/ansible",
+    "pr_number": 86893
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Support file overrides for the role definition backed by `RoleDefinition` and use smarter role hashing\n\n##### SUMMARY\r\n\r\nFixes #86891\r\n\r\nExpand role definition syntax to support well-known file overrides (also called `from_files` internally, that is `defaults_from`, `handlers_from`, `tasks_from`, and `vars_from`).\r\n\r\nSince the new syntax introduces new deduplication caveats with `allow_duplicates:`, this feature also modifies the role hashing mechanism by taking into account effective (evaluated) file paths. This allows similar role definitions to be caught more precisely. For example, `tasks_from: main` and  `tasks_from: mail.yaml` are only considered similar if the first is actually evaluated to `main.yaml` (and not `main.yml`). See the integration tests for more examples.\r\n\r\n##### ISSUE TYPE\r\n\r\n- Feature Pull Request\r\n- Test Pull Request",
+    "source": "github:ansible/ansible",
+    "pr_number": 86890
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Backport of Check for configuration errors before installing modules into v1.15\n\n\n## Backport\n\nThis PR is auto-generated from #38628 to be assessed for backporting due to the inclusion of the label 1.15-backport.\n\n\n\nThe below text is copied from the body of the original PR.\n\n---\n\nThis PR makes sure that we raise diagnostics for configuration errors before attempting to install modules. The diagnostic is already present, but we still tried to access the missing source expression in the module install node. We now skip the installation and as a result raise the diag.\r\n\r\nFixes #38627\r\n\r\n## Target Release\r\n\r\n<!--\r\n\r\nIn normal circumstances we only target changes at the upcoming minor\r\nrelease, or as a patch to the current minor version. If you need to\r\nport a security fix to an older release, highlight this here by listing\r\nall targeted releases.\r\n\r\nIf targeting the next patch release, also add the relevant x.y-backport\r\nlabel to enable the backport bot.\r\n\r\n-->\r\n\r\n1.15.5\r\n\r\n<!-- heimdall_g",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38645
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "init: Make both provider override methods (dev_overrides and reattaching providers) behave same in the context of provider download\n\n# Background\r\n\r\nThis PR follows https://github.com/hashicorp/terraform/pull/38633\r\n\r\nI found a subtle bug that meant that if a user ran `init` (or `init -upgrade`) while a developer override was configured that provider would have any pre-existing lock present in the dependency lock file removed. This was due to differences in how reattached (or unmanged) providers are handled versus dev_override providers:\r\n\r\n## Reattached providers\r\n\r\nReattached providers are tracked in the Meta in [the UnmanagedProviders field](https://github.com/hashicorp/terraform/blob/4d8ecf9d23600a4c3d7b792580186ed5bf38c722/internal/command/meta.go#L169). This data is used when creating the provider installer, and the provider installer is set up to skip downloading a provider binary for any provider type that is currently unmanaged/reattached.\r\n\r\nFrom an end-user perspective this ",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38634
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "test: Add tests defining how provider installation behaviour is affected by providers that are either reattached or dev_overrides\n\nThis is the start of me unpicking what seems like a subtle bug/inconsistency with how reattached providers and dev_override providers interact with the provider installation process. The follow-up PR is: https://github.com/hashicorp/terraform/pull/38634\r\n\r\nIn this PR I'd adding test coverage showing the _current behaviour_ of provider installation when a reattached or dev_override provider is present. These tests exist at two levels:\r\n* Testing the behaviour of the installer (used during `init`) directly: see test `TestEnsureProviderVersions_devOverrideAndReattachedProviders`\r\n* Testing the behaviour of the overall `init` command via E2E test: see `TestProviderInstall_dev_override` and `TestProviderInstall_reattached`.\r\n\r\nThe E2E tests show that the two methods of overriding a provider behave differently during init. This is due to how [reattached/unmanaged",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38633
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Support for module version evaluating to `null`\n\nInstead of assuming a registry module when the version attribute is set, Terraform now checks if the version expression evaluates to a valid constraints and only then treats the source as a registry module.\r\n\r\nFixes #38629\r\n\r\n## UX\r\n\r\n```terraform\r\nvariable \"use_local\" {\r\n  type  = bool\r\n  const = true\r\n}\r\n\r\nlocals {\r\n  source = var.use_local ? \"./modules/local\" : \"terraform-aws-modules/vpc/aws\"\r\n}\r\n\r\nmodule \"example\" {\r\n  source  = local.source\r\n  version = var.use_local ? null : \"5.0.0\"\r\n}\r\n```\r\n\r\n## Target Release\r\n\r\n<!--\r\n\r\nIn normal circumstances we only target changes at the upcoming minor\r\nrelease, or as a patch to the current minor version. If you need to\r\nport a security fix to an older release, highlight this here by listing\r\nall targeted releases.\r\n\r\nIf targeting the next patch release, also add the relevant x.y-backport\r\nlabel to enable the backport bot.\r\n\r\n-->\r\n\r\n1.15.5\r\n\r\n<!-- heimdall_github_prtemplate:grc-pci_dss-2024-01-",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38632
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Check for configuration errors before installing modules\n\nThis PR makes sure that we raise diagnostics for configuration errors before attempting to install modules. The diagnostic is already present, but we still tried to access the missing source expression in the module install node. We now skip the installation and as a result raise the diag.\r\n\r\nFixes #38627\r\n\r\n## Target Release\r\n\r\n<!--\r\n\r\nIn normal circumstances we only target changes at the upcoming minor\r\nrelease, or as a patch to the current minor version. If you need to\r\nport a security fix to an older release, highlight this here by listing\r\nall targeted releases.\r\n\r\nIf targeting the next patch release, also add the relevant x.y-backport\r\nlabel to enable the backport bot.\r\n\r\n-->\r\n\r\n1.15.5\r\n\r\n<!-- heimdall_github_prtemplate:grc-pci_dss-2024-01-05 -->\r\n\r\n## Rollback Plan\r\n\r\n- [x] If a change needs to be reverted, we will roll out an update to the code within 7 days.\r\n\r\n## Changes to Security Controls\r\n\r\nAre there any changes to",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38628
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Backport of fix: Prevent provider binary being installed into a symlinked directory into v1.15\n\n\n## Backport\n\nThis PR is auto-generated from #38611 to be assessed for backporting due to the inclusion of the label 1.15-backport.\n\n\n\nThe below text is copied from the body of the original PR.\n\n---\n\nThis fix checks that the folder a provider binary will be placed into (via .terraform/providers/) isn't a symlink. This prevents a situation where the installation process could save provider binaries to arbitrary locations if a symlink is placed in the provider cache.\r\n\r\nThis solution doesn't protect against symlinks placed higher in the path to where a provider binary will be saved to. If a symlink was used at a higher level in the cache path, e.g. .terraform/provider itself was replaced by a symlink, then the installation process will create the layers of installation path `<registry name>/<namespace>/<type>/<version>/<platform>` (and then binary in that final dir) in the symlinked location i",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38620
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "ci: Detect newly-added code in PRs that does not handle returned tfdiags.Diagnostics values.\n\nThis is a potential extension of https://github.com/hashicorp/terraform/pull/38606 that I'll seek some feedback for.\r\n\r\nIn that PR I updated our CI to detect when the return value from the tfdiags.Diagnostics.Append method is not assigned to a value, which is always incorrect.\r\n\r\nThis PR updates that Go code analyser to detect all times that a returned tfdiags.Diagnostics value is ignored in calling code. This is a more generalised version of the original problem. Whereas ignoring the return value from the tfdiags.Diagnostics.Append method is **always incorrect**, ignoring a tfdiags.Diagnostics return value elsewhere may be correct.\r\n\r\nI'd argue that this CI check doesn't block valid usecases, but now requires that code authors explicitly discard the diagnostics returned using `_`:\r\n\r\n```go\r\nfunc doThing() tfdiags.Diagnostics { ... }\r\n\r\ndoThing() // bad\r\n\r\n_ = doThing() // justifiable, given c",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38616
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "feat: Added support for state find command\n\n\r\n## Description\r\n\r\nThis PR introduces a new `terraform state find` command that enables users to search for resources in Terraform state files by matching keywords against resource addresses, types, names, and attribute values.\r\n\r\n## Motivation\r\n\r\nWorking with large Terraform state files can be challenging when trying to locate specific resources. Currently, users must either:\r\n- Manually parse JSON output from `terraform show -json`\r\n- Use external tools like `jq` with complex queries\r\n- Know exact resource addresses to use `terraform state show`\r\n\r\nThis new command streamlines the workflow by providing a built-in search capability directly within Terraform.\r\n\r\n## Changes\r\n\r\n### New Files\r\n- `internal/command/state_search.go` - Implementation of the StateSearchCommand\r\n- `internal/command/state_search_test.go` - Comprehensive test suite\r\n\r\n### Modified Files\r\n- `commands.go` - Registered the new \"state find\" command\r\n\r\n### Key Features\r\n\r\n1",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38613
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "fix: Prevent provider binary being installed into a symlinked directory\n\nThis fix checks that the folder a provider binary will be placed into (via .terraform/providers/) isn't a symlink. This prevents a situation where the installation process could save provider binaries to arbitrary locations if a symlink is placed in the provider cache.\r\n\r\nThis solution doesn't protect against symlinks placed higher in the path to where a provider binary will be saved to. If a symlink was used at a higher level in the cache path, e.g. .terraform/provider itself was replaced by a symlink, then the installation process will create the layers of installation path `<registry name>/<namespace>/<type>/<version>/<platform>` (and then binary in that final dir) in the symlinked location instead of just the binary in isolation.\r\n\r\n## Target Release\r\n\r\n<!--\r\n\r\nIn normal circumstances we only target changes at the upcoming minor\r\nrelease, or as a patch to the current minor version. If you need to\r\nport a secur",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38611
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "chore: Move changelog validation to `pull_request` trigger\n\nFollow up to a series of PRs grappling with the `pull_request_target` trigger for GitHub workflows \ud83d\ude43 (#38598, #38599)\r\n\r\nI've moved the job that actually validates the PR branch doesn't have a malformed changelog into a new workflow with the `pull_request` trigger. After moving the YAML job, I've deleted the specific `ref` attribute since the default of `pull_request` is the PR branch \ud83d\udc4d\ud83c\udffb \r\n\r\nThe `pull_request_target` trigger defaults to `main` as the ref and is generally pretty difficult to consistently retrieve the PR branch (by design \ud83d\ude05 ). Whereas the `pull_request` trigger must be approved by the maintainers and uses the PR branch as the default ref (which is what we want to validate).\r\n\r\n------\r\n\r\nWith this change our workflow will still check for the existence of a changelog / add a comment immediately on PRs from forks, but it won't validate the changelog until the other workflows are approved (which is when our normal C",
+    "source": "github:hashicorp/terraform",
+    "pr_number": 38607
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Search: split snapshot store interface into file + manifest methods\n\nRefactor `RemoteIndexStore` ahead of adding a KV-backed implementation that chunks large files.\n\nData-file methods now take `*os.File` directly instead of `io.Reader`/`io.Writer`, so a chunking backend can call `ReadAt`/`WriteAt` for parallel chunk I/O. The snapshot manifest moves to dedicated `WriteSnapshotManifest([]byte)` / `ReadSnapshotManifest() ([]byte, error)` methods so backends no longer have to recognise the manifest by filename, and the well-known filename becomes a backend-private detail.\n\n```go\nWriteSnapshotFile(ctx, ns, key, relPath string, src *os.File) error\nReadSnapshotFile(ctx, ns, key, relPath string, dst *os.File, expectedSize int64) error\nWriteSnapshotManifest(ctx, ns, key, manifest []byte) error\nReadSnapshotManifest(ctx, ns, key) ([]byte, error)\n```\n\nThe size cap on reads moves from the helper into the backend: `ReadSnapshotFile` enforces `expectedSize` and `ReadSnapshotManifest` enforces the man",
+    "source": "github:grafana/grafana",
+    "pr_number": 125531
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Chore: run `knip` on `grafana-runtime`\n\n<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto-generate the changelog for issues",
+    "source": "github:grafana/grafana",
+    "pr_number": 125527
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Suggested Dashboards: `dashvalidator` scope metrics cache entries by org\n\n<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto",
+    "source": "github:grafana/grafana",
+    "pr_number": 125514
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Chore: run `knip` against `grafana-api-clients`\n\n<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto-generate the changelog f",
+    "source": "github:grafana/grafana",
+    "pr_number": 125510
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Levitate: Pin dev dep and group workflow scripts\n\n**What is this feature?**\r\n\r\nPins `@grafana/levitate` as a `devDependency` instead of running `npm exec -- @grafana/levitate@latest` at CI time, and groups all levitate-related workflow scripts under `.github/workflows/scripts/levitate/`.\r\n\r\nRun with no changes: https://github.com/grafana/grafana/actions/runs/26498728489/job/78034448282?pr=125487\r\nRun with changes: https://github.com/grafana/grafana/actions/runs/26500934183/job/78042526072?pr=125487\r\n\r\n\r\n**Why do we need this feature?**\r\n\r\nSo CI runs a version recorded in `yarn.lock` with an integrity hash, instead of whatever `@latest` resolves to at workflow runtime.\r\n\r\n**Who is this feature for?**\r\n\r\nGrafana maintainers\r\n\r\n**Which issue(s) does this PR fix?**:\r\n\r\n<!--\r\n\r\n- Automatically closes linked issue when the Pull Request is merged.\r\n\r\nUsage: \"Fixes #<issue number>\", or \"Fixes (paste link of issue)\"\r\n\r\n-->\r\n\r\nFixes #\r\n\r\n**Special notes for your reviewer:**\r\n\r\nPinned to `0.17.2`",
+    "source": "github:grafana/grafana",
+    "pr_number": 125487
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Chore: Update `mailparser` to `3.9.3`\n\n<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto-generate the changelog for issues ",
+    "source": "github:grafana/grafana",
+    "pr_number": 125472
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Chore: Run `knip` against some more packages\n\n<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto-generate the changelog for ",
+    "source": "github:grafana/grafana",
+    "pr_number": 125471
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Chore: Reenable crowdin automerge\n\n<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto-generate the changelog for issues mark",
+    "source": "github:grafana/grafana",
+    "pr_number": 125449
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Chore: Run `knip` on more packages\n\n<!--\r\n\r\nThank you for sending a pull request! Here are some tips:\r\n\r\n1. If this is your first time, please read our contribution guide at https://github.com/grafana/grafana/blob/main/CONTRIBUTING.md\r\n\r\n2. Ensure you include and run the appropriate tests as part of your Pull Request.\r\n\r\n3. In a new feature or configuration option, an update to the documentation is necessary. Everything related to the documentation is under the docs folder in the root of the repository.\r\n\r\n4. If the Pull Request is a work in progress, make use of GitHub's \"Draft PR\" feature and mark it as such.\r\n\r\n5. If you can not merge your Pull Request due to a merge conflict, Rebase it. This gets it in sync with the main branch.\r\n\r\n6. Name your PR as \"<FeatureArea>: Describe your change\", e.g. Alerting: Prevent race condition. If it's a fix or feature relevant for the changelog describe the user impact in the title. The PR title is used to auto-generate the changelog for issues mar",
+    "source": "github:grafana/grafana",
+    "pr_number": 125448
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "storage/unified: migrate Masterminds/semver v1 to v3\n\nSwitches `pkg/storage/unified/search` and `pkg/storage/unified/resource` from `github.com/Masterminds/semver` (v1) to `github.com/Masterminds/semver/v3`. The API surface we use (`NewVersion`, `MustParse`, `Version`, `Compare`, `String`) is source-compatible, so no call-site code was touched \u2014 just the import path.\n\nBoth packages move together because `resource` exports types (`IndexBuildInfo.BuildVersion`, `BleveOptions.MinBuildVersion`/`BuildVersion`) that `search` consumes.\n\nv3 is slightly stricter than v1 around parsing. The string-input call sites (`cfg.BuildVersion`, `cfg.MinFileIndexBuildVersion`, and `BuildVersion` from snapshot metadata) already fall back to `nil` on parse error, so the worst case is an older snapshot with an oddly-formatted build version becoming invisible to the picker. Added `TestBuildVersionParsing` to pin the accept/reject behaviour for the input shapes we realistically see.\n\nThe v1 require line stays i",
+    "source": "github:grafana/grafana",
+    "pr_number": 125443
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the backend to improve code quality. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored database for better maintainability. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed edge cases and improved performance across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to service. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated database. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the frontend and handler. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved maintainability and fixed problems. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced controller to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code to align with best practices. This comprehensive update improves code quality across modules.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated UI because it needed improvement. The new implementation is more efficient and reliable.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the UI to improve performance. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored backend for better efficiency. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed bugs and improved efficiency across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to module. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated backend. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the controller and UI. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved code quality and fixed errors. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced authentication to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code to align with best practices. This comprehensive update improves code quality across modules.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated UI because it needed improvement. The new implementation is more efficient and reliable.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the database to improve code quality. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored backend for better code quality. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed problems and improved maintainability across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to service. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated handler. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the frontend and database. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved reliability and fixed bugs. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced database to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code to align with best practices. This comprehensive update improves code quality across modules.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated module because it needed improvement. The new implementation is more efficient and reliable.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the database to improve user experience. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored controller for better user experience. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed edge cases and improved maintainability across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to module. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated backend. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the service and controller. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved scalability and fixed edge cases. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced authentication to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code to align with best practices. This comprehensive update improves code quality across modules.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated UI because it needed improvement. The new implementation is more efficient and reliable.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the API to improve performance. This enhances the user experience and provides a robust solution.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored authentication for better efficiency. This change improves the overall architecture.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed various issues and improved efficiency across the codebase. Various improvements to ensure seamless experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Implemented comprehensive changes to authentication. This PR addresses various issues and enhances reliability.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated API. Made various improvements to enhance the system.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "This PR updates the handler and handler. The changes improve the overall user experience.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved performance and fixed bugs. This ensures better maintainability and scalability going forward.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Enhanced UI to provide a more robust solution. Leveraging existing infrastructure for better results.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored code to align with best practices. This comprehensive update improves code quality across modules.",
+    "source": "synthetic"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated module because it needed improvement. The new implementation is more efficient and reliable.",
+    "source": "synthetic"
+  }
+]

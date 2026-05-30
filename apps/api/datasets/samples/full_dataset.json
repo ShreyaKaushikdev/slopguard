@@ -1,0 +1,686 @@
+[
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Updated the authentication module to improve security. This enhances the overall system reliability and provides a more robust solution for users.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Refactored the codebase for better maintainability. Various improvements were made to ensure scalability and performance going forward.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Fixed bugs and improved the implementation. This change enhances user experience and addresses various issues across multiple components.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Added new features and updated existing functionality. Made comprehensive changes to improve code quality and ensure seamless operation.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "code_review",
+    "text": "Improved error handling and updated the API. This provides better reliability and ensures a more robust solution for edge cases.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Capped billing retries at 3 because Stripe replayed duplicate webhooks during deploys. Added 10-minute idempotency window. Tested with replay fixtures for HTTP 200, 409, and timeout.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Pinned OpenSSL to 3.1.4 after CVE-2024-0727. We don't process user PKCS12 files but the certificate rotation job has a transitive dependency via libcurl 7.88.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Replaced hand-rolled CSV parser in etl/ingest.py with pandas.read_csv \u2014 3 customer files had mixed encodings (UTF-8 BOM, Latin-1) that broke row 4,221 in the Acme dataset. Latency: 8.3s \u2192 2.1s on 120MB test file.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Removed retry-on-5xx in api/client.go after March incident where 503 loop consumed 94% of worker pool for 11 minutes. Circuit-break after 3 failures, alert #ops-oncall.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Added rate limiting to /api/v2/search: Grafana showed 3 customers sending 400+ rps, spiking p99 from 120ms to 2.8s. Limit: 60 rps/key with 429 + Retry-After header.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Implement 3D point comparison\n\n#### Trac ticket number\r\n<!-- Replace XXXXX with the corresponding Trac ticket number. -->\r\n<!-- Or delete the line and write \"N/A - typo\" for typo fixes. -->\r\n\r\nticket-25342\r\n\r\n#### Branch description\r\nProvide a concise overview of the issue or rationale behind the proposed changes.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [x] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [x] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [x] This PR **does not** disclose a security vulnerability (see [vulnerability reporting](https://docs.djangoproject.com/en/stable/internals/security/)).\r\n- [x] This PR targets the `main` branch. <!-- Backports will be evaluated and done by mergers, when necessary. -->\r\n- [x] The commit message is written in past tense, mentions the ticket number, and ends with a period (see [guidelines](https://docs.djangoproject.com/en/dev/internals/contributi",
+    "source": "github_pr:django/django#21368"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37116 -- Explained why a code is useful with a ValidationError.\n\n#### Trac ticket number\r\nticket-37116\r\n\r\n#### Branch description\r\nFlesh out why a code is useful here.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [x] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [x] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [x] This PR **does not** disclose a security vulnerability (see [vulnerability reporting](https://docs.djangoproject.com/en/stable/internals/security/)).\r\n- [x] This PR targets the `main` branch. <!-- Backports will be evaluated and done by mergers, when necessary. -->\r\n- [x] The commit message is written in past tense, mentions the ticket number, and ends with a period (see [guidelines](https://docs.djangoproject.com/en/dev/internals/contributing/committing-code/#committing-guidelines)).\r\n- [x] I have not requested, and will not request, an automated AI review for this PR. <!-- You ",
+    "source": "github_pr:django/django#21365"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Refs #35870, Refs #35514 -- Fixed a couple of issues for deprecation notices in 6.1 docs.\n\n#### Trac ticket number\r\n<!-- Replace XXXXX with the corresponding Trac ticket number. -->\r\n<!-- Or delete the line and write \"N/A - typo\" for typo fixes. -->\r\n\r\nticket-35870, ticket-35514\r\n\r\n#### Branch description\r\nBased on the contributing guide, specific Django versions should not be used outside a `versionadded` or `versionchanged` block. Even inside a block, it's often redundant to do so as these annotations render as \"New in Django A.B:\" and \"Changed in Django A.B\", respectively.\r\n\r\nThis also applies to `deprecated` which renders as \"Deprecated since version A.B\".\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [X] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [X] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [X] This PR **does not** disclose a security vulnerability (see [vulnerability reporting](https:",
+    "source": "github_pr:django/django#21362"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Corrected indentation in topics/http/shortcuts.txt.\n\n#### Trac ticket number\r\n\r\nN/A - typo\r\n\r\n#### Branch description\r\nBefore:\r\n\r\n<img width=\"1530\" height=\"444\" alt=\"image\" src=\"https://github.com/user-attachments/assets/ac397fe6-c178-4920-a06c-d97ecc38d69a\" />\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [x] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.",
+    "source": "github_pr:django/django#21351"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37118 -- Added variable support to the {% now %} template tag\n\n#### Trac ticket number\r\nticket-37118\r\n\r\n#### Branch description\r\nThis PR implements the accepted feature from [new-features#115](https://github.com/django/new-features/issues/115) to allow dynamic formatting in the `{% now %}` tag.\r\n\r\nPreviously, the `now` tag relied on a hardcoded string slice (`[1:-1]`) to strip quotes, which prevented passing context variables and caused silent, malformed output when quotes were missing. \r\n\r\nBy migrating to `parser.compile_filter()`, the tag now natively supports resolving template variables dynamically from the context. It correctly preserves the existing behavior for hardcoded strings and handles the `as` assignment syntax properly.\r\n\r\n**Changes:**\r\n- Updated `def now()` to use `parser.compile_filter()`.\r\n- Updated `NowNode.render()` to `resolve()` the format object.\r\n- Added tests for context variable resolution and variable assignment (`as` syntax).\r\n- Updated the tag's docstring to document variable usage.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n- [ ] **No AI tools were used** in preparing this PR.\r\n- [x] **If AI tools were used**, I have disclosed which ones, and f",
+    "source": "github_pr:django/django#21349"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Removed hardcoded Site pks.\n\n[`runtests.py` sets `SITE_ID=1`](https://github.com/django/django/blob/a53e02af6d7a07d0367b534f7107a0e2a37e3d34/tests/runtests.py#L226). For MongoDB, this is changed to `settings.SITE_ID = ObjectId(\"000000000000000000000001\")`.",
+    "source": "github_pr:django/django#21347"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37116 -- explained why a code is useful with a ValidationError in the doc.\n\n#### Trac ticket number\r\n\r\nticket-37116\r\n\r\n#### Branch description\r\n\r\nThis is just a doc enhancement proposal because I was teaching a new dev about ValidationError and the doc tells to add a code to a ValidationError but don't tells why\r\n\r\nMy new dev colleague asked why a code was useful and I thought my explanation could be usefull to others\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n- [X] **No AI tools were used** in preparing this PR.\r\n- [ ] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\n#### Checklist\r\n- [X] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [X] This PR **does not** disclose a security vulnerability (see [vulnerability reporting](https://docs.djangoproject.com/en/stable/internals/security/)).\r\n- [X] This PR targets the `main` branch. <!-- Backports will be evaluated and done by mergers, when necessary. -->\r\n- [X] The commit message is written in past tense, mentions the ticket number, and ends with a period (see [guidelines]",
+    "source": "github_pr:django/django#21346"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #37117 -- Used ModelAdmin.get_queryset() for change form actions.\n\n#### Trac ticket number\r\n<!-- Replace XXXXX with the corresponding Trac ticket number. -->\r\n<!-- Or delete the line and write \"N/A - typo\" for typo fixes. -->\r\n\r\nticket-37117\r\n\r\n#### Branch description\r\nWork for ticket-12090 and subsequent ticket-37105 used `_default_manager` instead of `ModelAdmin.get_queryset()` for the change form actions, creating an inconsistency with the change list path where a customized `get_queryset()` (adding annotations, stricter or looser filtering, etc.) is relevant to the action's behavior.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Please select exactly ONE of the following: -->\r\n- [ ] **No AI tools were used** in preparing this PR.\r\n- [X] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n\r\nClaude was used to investigate a security report which led to this discovery.\r\n\r\n#### Checklist\r\n- [X] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [X] This PR **does not** disclose a security vulnerability (see [vulnerability repo",
+    "source": "github_pr:django/django#21344"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Pre-edits for 6.1a1.\n\nModeled on https://github.com/django/django/pull/19049",
+    "source": "github_pr:django/django#21336"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fixed #24213 -- Implemented RFC 2231 \u00a74.1 parameter continuation in parse_header_parameters()\n\n#### Trac ticket number\r\n\r\nticket-24213\r\n\r\n#### Branch description\r\n\r\nImplements RFC 2231 \u00a74.1 parameter continuation in `parse_header_parameters()`.\r\n\r\nRFC 2231 \u00a74 (single encoded parameter) has been supported since #24209 was fixed in 2015.\r\n\u00a74.1 \u2014 splitting a long parameter value across multiple numbered segments \u2014 was noted as\r\nmissing in the same PR and has been open since:\r\n\r\n```\r\nContent-Type: application/x-stuff;\r\n    title*0*=us-ascii'en'This%20is%20even%20more%20;\r\n    title*1*=%2A%2A%2Afun%2A%2A%2A%20;\r\n    title*2=\"isn't it!\"\r\n```\r\n\r\n**Background**\r\n\r\n#35440 (merged Mar 2025, PR #18424) attempted to close this gap by replacing the custom\r\n`_parseparam` loop with `email.message.Message.get_params()`, which handles \u00a74.1 natively\r\nvia `decode_params`. It was reverted in #36520 (Sep 2025) due to a **5x performance\r\nregression** on the common no-params path (`text/plain`), caused by the overhead of\r\ninstantiating `Message` and calling `get_params()` on every request.\r\n\r\n**This approach**\r\n\r\nInstead of delegating to stdlib, \u00a74.1 is implemented as a lightweight second pass on top\r\nof",
+    "source": "github_pr:django/django#21334"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "This feature provides comprehensive functionality for users. It is designed to be intuitive and user-friendly, offering a seamless experience across all platforms.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The configuration system enables powerful customization options. Users can configure various settings to meet their specific needs and requirements.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Authentication is handled seamlessly by the system. The built-in security module ensures safe and reliable access control for all users.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "The deployment process is straightforward and easy to follow. The system supports multiple environments and ensures reliable, consistent releases.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Error handling is a critical component of the application. The system gracefully handles errors and provides meaningful feedback to enhance user experience.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "Design Principles\n\n* Have an extremely simple setup process with a minimal learning curve.\n* Manage machines quickly and in parallel.\n* Avoid custom-agents and additional open ports, be agentless by\n  leveraging the existing SSH daemon.\n* Describe infrastructure in a language that is both machine and human\n  friendly.\n* Focus on security and easy auditability/review/rewriting of content.\n* Manage new remote machines instantly, without bootstrapping any\n  software.\n* Allow module development in any dynamic language, not just Python.\n* Be usable as non-root.\n* Be the easiest IT automation system to use, ever.",
+    "source": "github_readme:ansible/ansible"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Run `npm run db:migrate` to create the user_sessions table with 4 indexes (email, token, expires_at, user_id). Takes ~12 minutes on a 50GB PostgreSQL 15 database. If it fails, the transaction rolls back \u2014 no partial state.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Set RATE_LIMIT_RPS=50 in .env and restart the gateway. The limiter uses a sliding-window counter backed by Redis; if Redis is unavailable, falls back to in-memory with 60s TTL. Returns 429 after 50 requests/second.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Known issue: created_at on audit_logs is not indexed. Queries filtering by date range will full-scan on tables larger than ~500k rows. Workaround: CREATE INDEX CONCURRENTLY idx_audit_created ON audit_logs(created_at). Fix planned for v2.4.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "The retry mechanism uses exponential backoff starting at 200ms, doubling to a cap of 5s, with \u00b150ms jitter. After 5 consecutive failures, circuit breaker opens for 30s. Monitor via /health/dependencies.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Step 3: Set SESSION_SECRET in your environment \u2014 must be at least 32 characters. If you see error TS-4012 in logs, the secret is too short. See config/session.ts lines 14-28 for validation logic.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "save this as app.py\nfrom flask import Flask\n\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef hello():\n    return \"Hello, World!\"\n```\n\n```\n$ flask run\n  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)\n```",
+    "source": "github_readme:pallets/flask"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Cloning the repository\n\nWhen cloning the Requests repository, you may need to add the `-c\nfetch.fsck.badTimezone=ignore` flag to avoid an error about a bad commit timestamp (see\n[this issue](https://github.com/psf/requests/issues/2690) for more background):\n\n```shell\ngit clone -c fetch.fsck.badTimezone=ignore https://github.com/psf/requests.git\n```\n\nYou can also apply this setting to your global Git config:\n\n```shell\ngit config --global fetch.fsck.badTimezone ignore\n```\n\n---\n\n[![Kenneth Reitz](https://raw.githubusercontent.com/psf/requests/main/ext/kr.png)](https://kennethreitz.org) [![Python Software Foundation](https://raw.githubusercontent.com/psf/requests/main/ext/psf.png)](https://www.python.org/psf)",
+    "source": "github_readme:psf/requests"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Authors\n\nAnsible was created by [Michael DeHaan](https://github.com/mpdehaan)\nand has contributions from over 5000 users (and growing). Thanks everyone!\n\nThis project is substantially coded by humans.\n\n[Ansible](https://www.ansible.com) is sponsored by [Red Hat, Inc.](https://www.redhat.com)",
+    "source": "github_readme:ansible/ansible"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am excited to apply for this role. My passion and dedication make me a great fit, and I am confident I can contribute to your team with enthusiasm and hard work.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I am a motivated professional with excellent communication skills and a strong work ethic. I would love to join your team and contribute to your company's success.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "With my diverse skill set and enthusiasm for innovation, I am confident I can add value to your organization. I look forward to discussing how I can contribute.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "Dear Hiring Manager, I am writing to express my strong interest in this position. I am a results-driven professional with a passion for technology and problem-solving.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "hiring",
+    "text": "I believe I am an ideal candidate for this role. My experience and dedication make me well-suited to contribute to your team and help achieve your company's goals.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "At PayFlow I reduced failed invoice retries by 22% by adding queue backoff and merchant-specific retry windows. Your billing infrastructure role maps directly to that work.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "I led the migration from Jenkins to GitHub Actions across 8 microservices \u2014 cut CI time from 45min to 12min. Reduced API latency by 40% (200ms to 120ms p95) via Redis caching.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Built the ETL pipeline at DataHaus processing 3.2TB of clickstream data daily on AWS Glue. Reduced analytics query wait from 45 minutes to under 3 minutes. Applying because your role specifically mentions Glue and Redshift.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "At Carta, migrated cap table calculation engine from Ruby to Go \u2014 P95 latency from 4.2s to 280ms for portfolios with 500+ shareholders. Required handling 14 edge cases in vesting schedule math.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "hiring",
+    "text": "Designed the order fulfillment event bus at Shopify using Kafka with exactly-once semantics, processing 12M events/day across 3 regions. Can share the architecture RFC.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "I wanted to circle back and provide a comprehensive update. We are continuing to make progress and will keep everyone informed as things develop going forward.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Just a quick update to keep everyone aligned. We're making great progress on multiple fronts and things are moving forward nicely. Will share more details soon.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Following up on our previous discussion to ensure we're all on the same page. Let's plan to sync up next week to discuss further and align on next steps.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Thank you for the productive meeting. There were many great ideas shared. We will take all suggestions into consideration and follow up with next steps in due course.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Per our earlier conversation, I wanted to loop back and share some thoughts. I think we should take a holistic approach and explore all possible avenues before deciding.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Decision: ship the smaller importer on Friday. Owner: Riya. Blocker: CSV date parser. Amit patches by 4 PM, QA retests the 12 failing rows.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Blocked: staging deploy failed \u2014 payments schema migration timed out after 120s on the 4GB table. Owner: Marco. Redeploy by 3 PM Thursday with CONCURRENTLY index. Fallback: Saturday maintenance window.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Budget decision: cutting DataDog from $18k/mo to $11k/mo by dropping custom metrics for staging and reducing log retention from 30 to 7 days. Prod stays at 30 days. Owner: Sarah. Live June 1.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Incident postmortem: 3-hour outage May 12 caused by DNS TTL misconfiguration. CNAME for api.acme.com had 1s TTL instead of 300s, throttling Route53 lookups. Fix: bumped to 60s.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Action items: (1) Priya finishes Stripe webhook handler by Wednesday EOD. (2) Jake investigates 504 timeouts on /api/export \u2014 likely unindexed created_at. (3) Decision: dropping IE11 support in v3.2.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "I was moved to a different team recently. So I have to learn new domain knowledge, new language (moved from C++ to python). My company openly says we should burn tokens, and vibe code, it's only speed that matters. I picked up a new task. I really tried to embrace agentic AI, I had skills written that plan the feature, analyse existing codebase, subagents that guard quality of code, compliance with a spec etc. First problem, this huge system is slow as hell. Secondly, I then have to sift through 3000 lines of code, only to discover, it's all slop, and it shouldn't even be 3000 lines. I feel like I'm also not learning anything. But if I stop burning dollars on cursor, it will negatively impac",
+    "source": "reddit:r/ExperiencedDevs"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "So I make a lot of tools and infra. And have agents go off and iterate and tinker with my harness. I (and sometimes they) tinker so much I sometimes make things, leave them running, and either integrate actively or forget I have them until I audit or check logs.\n\n Through this\u2026 I ran into a tooling pattern recently that feels distinct from the usual categories.\n\nThe other day I opened my terminal and before I typed anything, a local session-start check surfaced drift in a dormant project: a missing consistency test that would have caught documentation/code divergence.\n\nThat doesn\u2019t feel like standard observability. Does it?\n\nI don\u2019t mean:  \n\\-dashboards you remember to check  \n\\-blocking qua",
+    "source": "reddit:r/ExperiencedDevs"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "The [top voted thread on this sub](https://www.reddit.com/r/cscareerquestions/comments/1tohwtd/this_subreddit_is_astroturfed_to_the_point_of/) is a post by an \"experienced dev\" with less than 5 YOE stating confidently that there is nothing more to AI than corporate propaganda and paid astroturfing, and companies like Anthropic and OpenAI have \"miserably failed to acquire mass adoption\", and they are now \"running out of options\" and have to resort to astroturf a bunch of CS students and junior engineers with no purchasing power on a niche subreddit?\n\nDoes this sub no longer live in [objective reality](https://www.wsj.com/tech/ai/mind-blowing-growth-is-about-to-propel-anthropic-into-its-first-",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Text from article [https://www.businessinsider.com/nvidia-ceo-jensen-huang-ai-job-cuts-losses-lazy-narrative-2026-5](https://www.businessinsider.com/nvidia-ceo-jensen-huang-ai-job-cuts-losses-lazy-narrative-2026-5) :\n\nNvidia CEO\u00a0Jensen Huang\u00a0criticized CEOs who blamed\u00a0artificial intelligence\u00a0for layoffs, calling the narrative \"lazy.\"\n\n\"I think the narrative that connects AI to job loss for many of the CEOs that are doing it, it is just too lazy,\" Huang told Singapore broadcaster\u00a0Channel NewsAsia\u00a0in an interview on Monday.\n\n\"AI has just arrived. How is it possible they're already losing jobs?\" he asked.\n\nHuang said it \"doesn't make any sense\" for companies to link layoffs to AI before generat",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "The whole of 2026 I have been working really long hours and have had to cancel plans with family and friends to attend necessary deployments or releases which I am the only available member for. I haven't been able to have weekends off, and have not been compensated with overtime pay and also have not gotten any time in lieue even though they keep dangling that promise in front of me. \n\nI'm exhausted at this point and and considering quitting but I know the market is terrible and I worry I wont be able to get another job anywhere else. Do I just suck it up or will it be better to quit and find a job elsewhere. I'm so busy I dont have time to eat, the longest day I've worked was 21 hours beca",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "I will be graduating in 2026 and have accepted an on-campus offer for an SQL Developer position at a reputable company. Since my long-term career objective is to become a Software Developer, I would like to know if this role will count toward relevant industry experience.\n\u200bIf I decide to transition into software development after two years, how challenging will the shift be? Will recruiters treat me as an entry-level fresher in software development, despite my two years of SQL experience?",
+    "source": "reddit:r/cscareerquestions"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "So, last year, [I posted](https://old.reddit.com/r/sysadmin/comments/1mr06yd/i_applied_for_a_sysadmin_position_im_terrified/) about how a manager at work approached me to apply internally for a sysadmin position. I went through 3 rounds of internal interviews and in the end they went with an external hire because the CIO struck down me as a hire since I didn't have a college degree.\n\nSince then I've been working on getting some more certs (just finished my CCNA!!), and have been having every-other-week meetings with the VP above me. I was given a few projects to manage that I knocked out of the park and completed essentially all on my own, and between the previous manager asking to bring me ",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "This needs more visibility. Microsoft just wasted 6 hours of my life with an untested patch.\n\nI run an Azure Server 2022 RDS host serving a business application. It suddenly started throwing:\n\nsplwow64.exe - Application Error: The application was unable to start correctly (0xc0000142)\n\nAny 32-bit app that touched printing would crash on launch (reproduced it with plain 32-bit Notepad too). 64-bit printing worked fine.\n\nWasted hours chasing the print driver, VC++ redists, SFC/DISM (all clean) \u2014 none of it was the cause.\n\nRoot cause: Process Monitor (filter splwow64.exe) showed the process die with exit status -1073741502 (0xc0000142) immediately after touching:\n\nC:\\\\Windows\\\\WinSxS\\\\amd64\\_mi",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "It looks like VMWare have started releasing their automated process for updating the Secure Boot Certs with this release:\n\nhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/release-notes/esxi-update-and-patch-release-notes/vsphere-esxi-80u3j-release-notes.html\n\nThe KB pages for the Secure Boot Certs have also been updated:\n\nhttps://knowledge.broadcom.com/external/article/423893/secure-boot-certificate-expirations-and.html\n\nhttps://knowledge.broadcom.com/external/article/423893#:~:text=bytes.Length%0A%2045-,SilentPK%20update,-for%20vTPM%20disabled\n\nIt looks like currently the automated process only works for VM's that do not have a vTPM attached (they provide some powershell ",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "My past post: https://www.reddit.com/r/sysadmin/s/drhMqvlhGo\n\nBelow is a long post on my cybersecurity career so far and what I\u2019ve learned since posting my first threads here some years ago. Sorry for the length, but it may help someone!\n\nAbout 6/7 (haha) years ago I posted here about starting out in helpdesk. Two years later I posted again, still in a sysadmin-ish role, climbing the ladder. Well, the ladder kept going. I'm now a cybersecurity engineer with a few years of experience across a lot of different environments. Here's an update for anyone getting into the field or trying to move up.\n\nI went full security about 4-5 years ago. I started as a security analyst after 3-4 years in gener",
+    "source": "reddit:r/sysadmin"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "In today's digital landscape, businesses must leverage innovative solutions to unlock growth. This comprehensive guide explores key aspects of success and best practices.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Artificial intelligence is transforming the way we work and live. In this article, we explore how AI is revolutionizing industries and what it means for the future.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Content marketing plays a crucial role in building brand awareness. By implementing best practices, organizations can create impactful content that resonates with their audience.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "The ultimate guide to productivity: discover the top strategies that successful people use every day. These proven techniques will help you achieve more and reach new heights.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "Unlocking the power of data analytics is essential for modern businesses. This comprehensive guide covers everything you need to know about leveraging data to drive results.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "We measured onboarding drop-off across 1,240 trial accounts and found the second workspace invite caused 38% of exits. Removing that step reduced median setup time from 11 to 6 minutes.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "A/B testing checkout over 30 days with 18,400 sessions: moving shipping cost estimate above the fold increased conversion by 4.7pp (12.1% to 16.8%). Source: Mixpanel, March 2025 cohort.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "PostgreSQL 16 incremental backup reduced full backup time by 40-60% for databases over 500GB. On our 1.2TB instance, weekly backup windows shrank from 4 hours to 90 minutes.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Compared 3 CDN providers over 90 days across 12 PoPs. Cloudflare: 42ms median TTFB, 94% cache hit. Fastly: 38ms TTFB, 87% cache hit. CloudFront: 61ms TTFB. Pricing difference: $420/mo at our traffic level.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "CVE-2024-0727 affects OpenSSL 3.x via crafted PKCS12 files. 2.3 million npm packages have a transitive dependency. Patch: upgrade to 3.1.4. Check: openssl version -a.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "This groundbreaking research leverages cutting-edge methodologies to provide novel insights. Our findings demonstrate significant results that have the potential to revolutionize the field.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "We propose a novel framework that addresses key challenges in this domain. Our approach outperforms existing methods and achieves state-of-the-art results across all benchmarks.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "The results clearly show that our method is superior. This innovative approach pushes the boundaries of what is possible and establishes a new paradigm for future research.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "Our model achieves remarkable performance gains. This breakthrough research has far-reaching implications that will transform the landscape of artificial intelligence.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "In this paper, we present a comprehensive analysis of the problem space. Our methodology is rigorous and demonstrates the superiority of our approach over existing baselines.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "We evaluated on MMLU (Hendrycks et al., 2021) using 5-shot prompting. Our model achieved 78.3% accuracy (95% CI: 77.1-79.5%), vs 76.1% for the baseline. Limitation: benchmark over-represents STEM.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Fine-tuned LLaMA-2-7B on 12,400 instruction-response pairs using LoRA (rank=16, alpha=32). 3 epochs on 4\u00d7A100 40GB GPUs, lr=2e-5. Training cost: ~$180 on AWS. Adapter weights released at github.com/example/weights.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Recruited 142 participants (mean age 34.2, SD=8.7) via Prolific. Within-subjects design, 40 trials each. Cohen's d=0.43 (small-to-medium). p=0.003, two-tailed t-test, Bonferroni-corrected for 3 comparisons.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Table 3 ablation: removing attention pooling decreased F1 by 3.2 points (87.4\u219284.2). Removing contrastive pre-training dropped F1 to 81.6. Both significant (p<0.01, paired bootstrap, 10k iterations).",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "academia",
+    "text": "Dataset contains Reddit posts with potential PII. Applied Lukas et al. (2023) PII detection pipeline and manually reviewed 500 random samples \u2014 found 3 leaked email addresses, removed. IRB approval: protocol #2024-0847.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Amazing product! Great quality and highly recommend. It works perfectly and exceeded my expectations in every way. Five stars!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Excellent purchase! This is the best product I have ever bought. Absolutely perfect and I would recommend it to everyone without hesitation.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Love it! Great product, fast shipping, exactly as described. A must buy for anyone looking for quality. Highly recommend to all!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "This product is outstanding. It exceeded all my expectations. The quality is superb and it works perfectly. Extremely satisfied with my purchase.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "marketplace",
+    "text": "Five stars! This product is everything I hoped for and more. The quality speaks for itself. Already recommended it to all my friends and family.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "XL black hoodie shrank ~2cm after first cold wash. Zipper stayed smooth and sleeve cuffs didn't pill after 3 weeks. Runs large \u2014 size down if between sizes.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Battery lasts ~6 hours with Bluetooth on, not the advertised 10. Noise-canceling handles office chatter but not airplane engines. Ear cups hurt after 90 minutes \u2014 I have a large head (size 7.5 hat).",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "12-inch cast iron skillet weighs 8 lbs. Seasoning was uneven out of box \u2014 re-seasoned twice with flaxseed oil at 450\u00b0F. After a month of daily use, eggs slide off without oil. Handle gets extremely hot.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "Ordered 64GB model May 1, arrived May 7. Screen has visible yellow tint vs my old phone at 100% brightness. Camera sharp in daylight but grain noticeable in indoor shots at ISO 3200+. Returned for replacement.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "marketplace",
+    "text": "10-foot USB-C cable charges MacBook Pro at 96W as advertised. Braided cable stiff for first week then softens. Issue: right-angle connector blocks adjacent HDMI port on CalDigit dock.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "You won't believe what they're hiding from us. This shocking revelation exposes the truth they don't want you to know. Share everywhere before it gets taken down!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "BREAKING: This will change everything! The mainstream media won't cover this story. Wake up people! Share before they delete it!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "They destroyed the evidence and now they're pretending nothing happened. This is absolutely insane. Copy and share everywhere \u2014 they are trying to silence us!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "EXPOSED: The biggest scandal of the year that nobody is talking about! Why is the media silent? Because they are complicit. Share before it gets censored!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "slop",
+    "domain": "social_news",
+    "text": "This changes EVERYTHING. The corrupt system has been exposed. If this doesn't make you angry, nothing will. Retweet to spread awareness!",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Bureau of Labor Statistics May 15 report: unemployment fell to 3.8% from 4.1% in April. Commissioner Shambaugh noted leisure and hospitality added 42,000 jobs, strongest month since January.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "City council voted 7-4 to approve rezoning. Council member Davis opposed citing a 2023 traffic study projecting 14% congestion increase on Elm Street. Developer committed to $2.3M traffic signal upgrade.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Reuters: EU carbon border adjustment mechanism imposes \u20ac45/tonne levy starting January 2026 on steel, cement, and aluminum imports. Eurofer warns 2-3% construction cost increase.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Lancet study (doi:10.1016/S0140-6736(25)00412-8): new RSV vaccine reduced hospitalizations by 62% in adults over 60 during 2024-25 season. 28,400 participants, 37 sites. Efficacy drops to 41% in immunocompromised patients.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "NTSB preliminary report on March 14 derailment: fractured rail joint bar probable cause. Last inspection 11 months prior, exceeding 6-month interval required under 49 CFR 213.119. Railroad operator disputes timeline.",
+    "source": "synthetic_curated"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "/r/WorldNews Live Thread: Russian Invasion of Ukraine Day 1553, Part 1 (Thread #1700)",
+    "source": "reddit:r/worldnews"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "This CEO announced huge job cuts because of AI. Threats to his family followed",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Star Citizen releases $5000 \u2018concept\u2019 ship as game crosses $1 billion in funding",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Uber burned through its entire 2026 AI budget in four months. Now its COO is questioning whether it's worth it",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "\u2018Lobotomized\u2019: Character.AI Is Showing What AI Enshittification Looks Like",
+    "source": "reddit:r/technology"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "RETRACTED: Longitudinal Data From the KETO-CTA Study: Plaque Predicts Plaque, ApoB Does Not\n\nWe wish to inform the [r/science](https://www.reddit.com/r/science/) community of an article submitted to the subreddit that has since been retracted by the journal. The submission garnered broad exposure on [r/science](https://www.reddit.com/r/science/) and significant social media coverage. Per [our rules](https://www.reddit.com/r/science/wiki/rules/#wiki_retractions), the flair on this submission has been updated with \"RETRACTED\". The submission has also been added to our [wiki of retracted submissi",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Climate crisis is accelerating antibiotic resistance across world. Climate change linked to 10% rise in salmonella antibiotic resistance genes between 1940 and 2023. It can influence how bacteria survive, mutate and spread, potentially increasing the exchange of antibiotic resistance genes.",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The ketogenic diet may protect against Alzheimer's, Parkinson's, and Huntington's disease by providing neurons with alternative fuel and reducing neuroinflammation \u2014 but patient adherence and long-term safety remain major barriers to clinical use",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "The mediating role of DNA methylation clocks in associations of race, ethnicity, education, income, and occupation with mortality: findings from NHANES 1999-2002",
+    "source": "reddit:r/science"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Announcement: We've Updated The Rules, and April Is Finally Over\n\nAfter [temporarily banning LLM-related content over April](https://www.reddit.com/r/programming/comments/1s9jkzi/announcement_temporary_llm_content_ban/), and [asking you for feedback on that ban](https://www.reddit.com/r/programming/comments/1t4odyl/looking_for_feedback_on_ai_content_in/), we've decided to bring about an end of the temporary, I-can't-believe-it's-still-April ban on AI-related posts.\n\nReplacing the trial rule is a new shiny rule that refers to our new shiny [AI policy](https://www.reddit.com/r/programming/wiki/a",
+    "source": "reddit:r/programming"
+  }
+]

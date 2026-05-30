@@ -1,0 +1,612 @@
+[
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue",
+    "source": "hacker_news",
+    "score": 55.4,
+    "oversight": "mixed",
+    "url": "https://llmgame.scalex.dev",
+    "title": "Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "YouTube to automatically label AI-generated videos\n\n<a href=\"https:&#x2F;&#x2F;variety.com&#x2F;2026&#x2F;digital&#x2F;news&#x2F;youtube-ai-video-labels-automatic-detection-1236758865&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;variety.com&#x2F;2026&#x2F;digital&#x2F;news&#x2F;youtube-ai-video-label...</a>",
+    "source": "hacker_news",
+    "score": 69.5,
+    "oversight": "high",
+    "url": "https://blog.youtube/news-and-events/improving-ai-labels-viewers-creators/",
+    "title": "YouTube to automatically label AI-generated videos"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Show HN: Ktx \u2013 Open-source executable context layer for data agents\n\nHi HN, we\u2019re open-sourcing ktx. It\u2019s an executable context layer that makes agents reliable on your data stack.<p>We built it after going through the experience of building production-grade data agents for dozens of companies. If you\u2019ve also tried building them, or simply tried using Claude Code or Codex on your data warehouse, you\u2019ll know that accuracy is the #1 issue. Agents are great at generating valid SQL, but it\u2019s not always correct SQL.<p>To cite a few examples of \u201cagents gone wrong\u201d:\n- Stale column + hidden business rule: when preparing a board report, a finance analyst asks Claude Code for \u201cARR by customer segment\u201d, it derives ARR from multiple tables (subscriptions, plans, accounts), then groups by accounts.indu",
+    "source": "hacker_news",
+    "score": 54.1,
+    "oversight": "mixed",
+    "url": "https://github.com/Kaelio/ktx",
+    "title": "Show HN: Ktx \u2013 Open-source executable context layer for data agents"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "News about Raspberry Pi 6 and Microcontroller Development",
+    "source": "hacker_news",
+    "score": 62.2,
+    "oversight": "mixed",
+    "url": "https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/",
+    "title": "News about Raspberry Pi 6 and Microcontroller Development"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Show HN: Open-Source AI Racing Harness\n\nHi I&#x27;m Dan from Elodin, making an open source real-time capable flight software simulation.<p>For AI Grand Prix contestants, the wait for the Round 1 virtual qualifier simulation has been grueling.<p>If you\u2019re competing, check out our simulation harness to tide you over, built to match the published competition constraints and message format. It runs against real Betaflight, which we learned requires at least 1000 sensor samples per second to run real-time correctly.<p>The competition warranted introducing a new feature to generate the camera sensor directly in the simulation loop. Typically people connect to Unreal or similar game engine to create a camera sensor, which works well but is very heavy. For the simple needs of this challenge, creat",
+    "source": "hacker_news",
+    "score": 63.4,
+    "oversight": "high",
+    "url": "https://www.elodin.systems/post/elodin-ai-grand-prix-race-sim-harness",
+    "title": "Show HN: Open-Source AI Racing Harness"
+  },
+  {
+    "label": "reviewed",
+    "domain": "social_news",
+    "text": "I'm Getting into Mesh Networks (Meshtastic, MeshCore, and Reticulum)",
+    "source": "hacker_news",
+    "score": 62.1,
+    "oversight": "mixed",
+    "url": "https://www.jonaharagon.com/posts/im-getting-into-mesh-networks-meshtastic-meshcore-and-reticulum/",
+    "title": "I'm Getting into Mesh Networks (Meshtastic, MeshCore, and Reticulum)"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Thornton Wilder's Last Play Vanished into Thin Air. Or Did It?\n\n<a href=\"https:&#x2F;&#x2F;archive.ph&#x2F;0g4Eu\" rel=\"nofollow\">https:&#x2F;&#x2F;archive.ph&#x2F;0g4Eu</a>",
+    "source": "hacker_news",
+    "score": 59.9,
+    "oversight": "mixed",
+    "url": "https://www.nytimes.com/2026/05/27/theater/thornton-wilder-emporium-last-play.html",
+    "title": "Thornton Wilder's Last Play Vanished into Thin Air. Or Did It?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Using Tailscale with an OrbStack VM on macOS\n\nHere&#x27;s an example of how to build an Ubuntu VM using OrbStack on macOS and then connect to the VM through Tailscale SSH using an auth key stored in Apple Keychain.<p>For example, I can create a VM on my Mac mini at home that hosts a git repo or even a Forgejo server. A colleague in my Tailnet can then connect to this VM to clone, push or pull source code changes from a coffeeshop or airliner while not exposing the rest of my Mac mini.",
+    "source": "hacker_news",
+    "score": 56.7,
+    "oversight": "mixed",
+    "url": "https://github.com/highpost/tailscale-macos-vm",
+    "title": "Using Tailscale with an OrbStack VM on macOS"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "The Most Concerning AI Risk of 2026\n\n7000+ dev developers shared their thoughts about AI in the recent State of Web Dev AI survey. ",
+    "source": "dev_to",
+    "score": 72.7,
+    "oversight": "high",
+    "url": "https://dev.to/sachagreif/the-most-concerning-ai-risk-of-2026-3m0d",
+    "title": "The Most Concerning AI Risk of 2026"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Top 7 Featured DEV Posts of the Week\n\nWelcome to this week's Top 7, where the DEV editorial team handpicks their favorite posts from the...",
+    "source": "dev_to",
+    "score": 70.8,
+    "oversight": "high",
+    "url": "https://dev.to/devteam/top-7-featured-dev-posts-of-the-week-45na",
+    "title": "Top 7 Featured DEV Posts of the Week"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "An LLM API call, in 4 GIFs\n\nThis is the first post of series Building TinyAgent where we are going to build a small agent from...",
+    "source": "dev_to",
+    "score": 67.3,
+    "oversight": "high",
+    "url": "https://dev.to/jasmin/an-llm-api-call-in-4-gifs-33b1",
+    "title": "An LLM API call, in 4 GIFs"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Should you use Gemma 4 for your Development? A Multiversal Analysis to Determine if Gemma 4 is Right for You!\n\nThis is a submission for the Gemma 4 Challenge: Write About Gemma 4   Disclaimer: This is an...",
+    "source": "dev_to",
+    "score": 61.9,
+    "oversight": "mixed",
+    "url": "https://dev.to/devengers/should-you-use-gemma-4-for-your-development-a-multiversal-analysis-to-determine-if-gemma-4-is-2iol",
+    "title": "Should you use Gemma 4 for your Development? A Multiversal Analysis to Determine if Gemma 4 is Right for You!"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Recycling made easy: a Polish recycling assistant powered by Gemma 4\n\nThis is a submission for the Gemma 4 Challenge: Build with Gemma 4  I clearly remember this scene: my...",
+    "source": "dev_to",
+    "score": 69.5,
+    "oversight": "high",
+    "url": "https://dev.to/klaudiagrz/recycling-made-easy-a-polish-recycling-assistant-powered-by-gemma-4-j0a",
+    "title": "Recycling made easy: a Polish recycling assistant powered by Gemma 4"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Google Antigravity 1.0 to 2.0/IDE Quick Migration Guide\n\nLike many Google Antigravity users, I was very excited about the Antigravity 2.0 announcement at...",
+    "source": "dev_to",
+    "score": 71.8,
+    "oversight": "high",
+    "url": "https://dev.to/gde/google-antigravity-10-to-20ide-quick-migration-guide-35p5",
+    "title": "Google Antigravity 1.0 to 2.0/IDE Quick Migration Guide"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Reviving a 12K+ Star Abandoned Library: toastr-next v3 \ud83c\udf5e\n\nThis is a submission for the GitHub Finish-Up-A-Thon Challenge              What I...",
+    "source": "dev_to",
+    "score": 71.4,
+    "oversight": "high",
+    "url": "https://dev.to/divyesh5981/reviving-a-12k-star-abandoned-library-toastr-next-v3-25mf",
+    "title": "Reviving a 12K+ Star Abandoned Library: toastr-next v3 \ud83c\udf5e"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "AI Agents Are Great at 80% of Our Code. The Other 20% Is Why We Still Need Seniors.\n\nWe let AI agents loose on a payment platform. They crushed the boring stuff. Then they silently broke...",
+    "source": "dev_to",
+    "score": 63.3,
+    "oversight": "high",
+    "url": "https://dev.to/mickyarun/ai-agents-are-great-at-80-of-our-code-the-other-20-is-why-we-still-need-seniors-3lh5",
+    "title": "AI Agents Are Great at 80% of Our Code. The Other 20% Is Why We Still Need Seniors."
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "NeuralHats: I Put Edward de Bono\u2019s Six Thinking Hats on Local LLMs Using Gemma 4\n\nThis is a submission for the Gemma 4 Challenge: Build with Gemma 4           What I Built           ...",
+    "source": "dev_to",
+    "score": 71.8,
+    "oversight": "high",
+    "url": "https://dev.to/georgekobaidze/neuralhats-i-put-edward-de-bonos-six-thinking-hats-on-local-llms-using-gemma-4-54mj",
+    "title": "NeuralHats: I Put Edward de Bono\u2019s Six Thinking Hats on Local LLMs Using Gemma 4"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Gemma 4 challenge inspired me to build my first app!\n\nThis is a submission for the Gemma 4 Challenge: Write About Gemma 4  It started with a real need....",
+    "source": "dev_to",
+    "score": 67.1,
+    "oversight": "high",
+    "url": "https://dev.to/klaudiagrz/gemma-4-challenge-inspired-me-to-build-my-first-app-4m7g",
+    "title": "Gemma 4 challenge inspired me to build my first app!"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Vestige: A Gemma 4 Brain Tracker That Won't Blow Smoke Up Your Ass\n\nAn ADHD brain tracker built on Gemma 4 (E4B + EmbeddingGemma 300M) that observes and never grades. Native audio, multi-lens extraction, on-device after one model download.",
+    "source": "dev_to",
+    "score": 54.7,
+    "oversight": "mixed",
+    "url": "https://dev.to/anchildress1/vestige-a-gemma-4-brain-tracker-that-wont-blow-smoke-up-your-ass-5caf",
+    "title": "Vestige: A Gemma 4 Brain Tracker That Won't Blow Smoke Up Your Ass"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "API doc references are not sorted\n\nMethod and properties in API docs are not following any sorting rules, making it hard to find specific references.\n\nhttps://flask.palletsprojects.com/en/stable/api/#flask.Request\n\n<img width=\"245\" height=\"369\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/29390e00-5264-443d-ad4b-41e9f162e128\" />\n\nI failed to find `endpoint` located between top `max_form_parts` and bottom `blueprint`.\n\nExpected alphabetic order for all class attributes.",
+    "source": "github_issues",
+    "score": 54.2,
+    "oversight": "mixed",
+    "url": "https://github.com/pallets/flask/issues/6031",
+    "title": "API doc references are not sorted"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Config.from_file() silently ignores fewer OSError codes than from_pyfile()\n\n## Summary\n\n`Config.from_file()` and `Config.from_pyfile()` behave inconsistently when `silent=True` and an `OSError` is raised.\n\n`from_pyfile()` silences errors for these `errno` codes:\n\n```python\nif silent and e.errno in (errno.ENOENT, errno.EISDIR, errno.ENOTDIR):\n    return False\n```\n\nBut `from_file()` only silences:\n\n```python\nif silent and e.errno in (errno.ENOENT, errno.EISDIR):\n    return False\n```\n\nIt is missing `errno.ENOTDIR`.\n\n## Reproduction\n\n`ENOTDIR` is raised when a path component is a regular file, not a directory. For example, if `/tmp/myconfig` is a regular file and you try to open `/tmp/myconfig/settings.json`, the OS raises `ENOTDIR` (not a directory).\n\n```python\nimport os, tempfile\nfrom flask ",
+    "source": "github_issues",
+    "score": 55.9,
+    "oversight": "mixed",
+    "url": "https://github.com/pallets/flask/issues/6023",
+    "title": "Config.from_file() silently ignores fewer OSError codes than from_pyfile()"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139164 from yongruilin/dv-dependentrequired\n\nAdd new declarative validation tag +k8s:dependentRequired",
+    "source": "github_commits",
+    "score": 56.9,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/80a11c4be79f5076bf370bc16dfdbc4f54efc0f2",
+    "title": "Merge pull request #139164 from yongruilin/dv-dependentrequired"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139017 from johnbelamaric/fix-dra-scoring-bug\n\nFix dra scoring bug with mixed allocated and unallocated claims",
+    "source": "github_commits",
+    "score": 59.6,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/df3164941671a2891c969df67c235716dc195c7f",
+    "title": "Merge pull request #139017 from johnbelamaric/fix-dra-scoring-bug"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139343 from macsko/fix_data_race_in_priorityqueue_update\n\nFix unlikely data race in PriorityQueue.Update logger",
+    "source": "github_commits",
+    "score": 59.2,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/602860417ec6ddcac997745958dbacf412c73c65",
+    "title": "Merge pull request #139343 from macsko/fix_data_race_in_priorityqueue_update"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #138274 from wtravO/wtravo/placement-cycle-state\n\nAdd PlacementCycleState to WAS scheduler framework",
+    "source": "github_commits",
+    "score": 56.3,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/ae84ac1a164e2b847dba51bb8e985eebea36d5c2",
+    "title": "Merge pull request #138274 from wtravO/wtravo/placement-cycle-state"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139021 from hoteye/hoteye-pr-pleg-context\n\nkubelet: thread context through PLEG relist paths",
+    "source": "github_commits",
+    "score": 57.2,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/f15071f37174baf476617f175898beab3c9b8605",
+    "title": "Merge pull request #139021 from hoteye/hoteye-pr-pleg-context"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139316 from hoteye/hoteye-container-id-logger\n\nkubelet: pass logger into container ID parsing",
+    "source": "github_commits",
+    "score": 57.2,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/f19af9936b4a07db8adc631ad2f4c2a1a7452f16",
+    "title": "Merge pull request #139316 from hoteye/hoteye-container-id-logger"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139315 from hoteye/hoteye-pod-startup-latency-logger\n\nkubelet: pass logger into pod startup latency tracker",
+    "source": "github_commits",
+    "score": 57.5,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/460810e41108973a6774651e61d84151b1621404",
+    "title": "Merge pull request #139315 from hoteye/hoteye-pod-startup-latency-logger"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139288 from hoteye/hoteye-image-gc-manager-context-wait\n\nkubelet: use contextual wait in image GC manager",
+    "source": "github_commits",
+    "score": 57.3,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/2da9f3b95652c68ecf79218c8875dbc3239de951",
+    "title": "Merge pull request #139288 from hoteye/hoteye-image-gc-manager-context-wait"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix unlikely data race in PriorityQueue.Update logger",
+    "source": "github_commits",
+    "score": 58.5,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/d952a85cb84ccd68fd8660e17a779c061a297a47",
+    "title": "Fix unlikely data race in PriorityQueue.Update logger"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #133859 from oyiz-michael/update-powershell-helper-windows-ltsc2022\n\nUpdate windows/powershell-helper to Windows Server 2022 and PowerShel\u2026",
+    "source": "github_commits",
+    "score": 57.1,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/2cf6f1701e031e6f9e962762265f6da4fae2c85a",
+    "title": "Merge pull request #133859 from oyiz-michael/update-powershell-helper-windows-ltsc2022"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139203 from gnufied/add-e2e-for-deleted-pvc-offline-expansion\n\nAdd an e2e for offline volume expansion",
+    "source": "github_commits",
+    "score": 56.3,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/e1ed8dd068252fe48e2b53e9590bbb98173f7124",
+    "title": "Merge pull request #139203 from gnufied/add-e2e-for-deleted-pvc-offline-expansion"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139333 from yongruilin/dv-guardrails-update-fix\n\nfix: declare correct error types for +k8s:update guardrail",
+    "source": "github_commits",
+    "score": 59.8,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/8ed0e009c4fd5d5fd218239319f79bc046c362b2",
+    "title": "Merge pull request #139333 from yongruilin/dv-guardrails-update-fix"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139190 from Kartavyasonar/doc-configmap-binarydata-env-limitation\n\ndoc: clarify ConfigMap BinaryData not propagated to container env vars",
+    "source": "github_commits",
+    "score": 57.4,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/0be5dabcdf90e7d997b3de06144d8959d0eab7cd",
+    "title": "Merge pull request #139190 from Kartavyasonar/doc-configmap-binarydata-env-limitation"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139317 from hoteye/hoteye-volume-plugin-mgr-logger\n\nkubelet: pass logger into volume plugin manager initialization",
+    "source": "github_commits",
+    "score": 57.2,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/e9a8a5910cace55b6521a49902b3c34d1db7c186",
+    "title": "Merge pull request #139317 from hoteye/hoteye-volume-plugin-mgr-logger"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139295 from hoteye/hoteye-podconfig-seen-sources-logger\n\nkubelet: pass logger into pod config source check",
+    "source": "github_commits",
+    "score": 57.2,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/322eae79b13c4a991b53a24dcd5fd8774c936021",
+    "title": "Merge pull request #139295 from hoteye/hoteye-podconfig-seen-sources-logger"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "address feedback: naming, test op, ratchet coverage, comments\n\n- rename triggerSet/dependentSet \u2192 triggerIsSet/dependentIsSet\n- set op explicitly on basic test cases\n- add OtherField and canonical ratchet test\n- expand comment on pointer-target rationale",
+    "source": "github_commits",
+    "score": 58.1,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/526da0050534f7e5937bf77d73c9d3bac022d6db",
+    "title": "address feedback: naming, test op, ratchet coverage, comments"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Merge pull request #139199 from marosset/windows-skip-memory-backed-emptydir-conromance\n\nSkip memory backed emptyDir e2e tests on Windows",
+    "source": "github_commits",
+    "score": 57.6,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/c2fb6b8dec10b6b711f8204ae67b8a602eff50d6",
+    "title": "Merge pull request #139199 from marosset/windows-skip-memory-backed-emptydir-conromance"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "validation-gen: declare correct error types for +k8s:update\n\nThe generator declared every +k8s:update error as field.Invalid at the\nfield path, but the runtime emits field.Forbidden at index/key paths\nfor NoAddItem and NoRemoveItem. Declarative-validation coverage tests\nfail on fields using these constraints with uncovered-rule errors.\n\nPromote FunctionGen.Emits to a slice so a single call can declare\nmultiple (ErrorType, PathFragment) tuples, and have the update validator\ndeclare the actual emissions for each constraint.",
+    "source": "github_commits",
+    "score": 55.6,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/ad255befbc5f192daa7d7bd68054f4a802b14feb",
+    "title": "validation-gen: declare correct error types for +k8s:update"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "doc: clarify ConfigMap BinaryData not propagated to container env vars",
+    "source": "github_commits",
+    "score": 57.0,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/be38e73900fdb0a1128e83d41ed11d483284b538",
+    "title": "doc: clarify ConfigMap BinaryData not propagated to container env vars"
+  },
+  {
+    "label": "reviewed",
+    "domain": "code_review",
+    "text": "Fix g.Expect with framework.ExpectNoError",
+    "source": "github_commits",
+    "score": 58.5,
+    "oversight": "mixed",
+    "url": "https://github.com/kubernetes/kubernetes/commit/3884c64fbeca99a1789e141faf7698ec7247808d",
+    "title": "Fix g.Expect with framework.ExpectNoError"
+  },
+  {
+    "label": "reviewed",
+    "domain": "communications",
+    "text": "Anyone else feel like there\u2019s a rise in cybersecurity fear mongering lately?\n\nI\u2019ve been working on data/analytics APIs for over a decade. ive gone through SOC2, HIPAA, FedRAMP, you name it, and I\u2019m usually the guy advocating for being more cybersecurity conscience, but lately I feel like I\u2019ve seen more \u201cIt\u2019s so over\u201d security stories that ever before that are all way overblown.\n\nThis one (CVE-2026-48710 / BadHost) is driving me nuts:\n\n[https://arstechnica.com/information-technology/2026/05/millions-of-ai-agents-imperiled-by-critical-vulnerability-in-open-source-package/](https://arstechnica.com/information-technology/2026/05/millions-of-ai-agents-imperiled-by-critical-vulnerability-in-open-s",
+    "source": "reddit",
+    "score": 51.0,
+    "oversight": "mixed",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tpsbm9/anyone_else_feel_like_theres_a_rise_in/",
+    "title": "Anyone else feel like there\u2019s a rise in cybersecurity fear mongering lately?"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Mobile roles?\n\nNot seeing many mobile roles anymore. Especially ones that require some experience developing robust end to end systems.   \nMost roles I see are react, slim product layers above LLM.   \nI guess that\u2019s the flavour of the season?   \nThis is in USA (Bay Area)",
+    "source": "reddit",
+    "score": 37.2,
+    "oversight": "low",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tp94b6/mobile_roles/",
+    "title": "Mobile roles?"
+  },
+  {
+    "label": "slop",
+    "domain": "communications",
+    "text": "Do you operate at the level you need to work at normally?\n\nFor example if there's a weekend or a vacation. I need to rev back into gear so I'm able to do and even sometimes understand the work. But after some days away, I am not in gear so to say. Sometimes it takes me a few days of effort for my brain to get the  picture that it's time to rev up and then it revs down again for rest. \n\nSome people seem to operate in their personal life with the same brain functioning as they need for work. Me on the other hand, my brain doesn't do much if not forced. Using it for this type of role is like using Nos in Fast and the furious. The engine can do it but it certainly was not meant for it.",
+    "source": "reddit",
+    "score": 39.9,
+    "oversight": "low",
+    "url": "https://reddit.com/r/ExperiencedDevs/comments/1tocyx0/do_you_operate_at_the_level_you_need_to_work_at/",
+    "title": "Do you operate at the level you need to work at normally?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Why is conditional processing of a sorted array faster than of an unsorted array?\n\nIn this C++ code, sorting the data ( before the timed region) makes the primary loop ~6x faster: #include &lt;algorithm&gt; #include &lt;ctime&gt; #include &lt;iostream&gt; int main() { // Generate data const unsigned arraySize = 32768; int data[arraySize]; for (unsigned c = 0; c &lt; arraySize; ++c) data[c] = std::rand() % 256; // !!! With this, the next loop runs faster. std::sort(data, data + arraySize); // Test clock_t start = clock(); long long sum = 0; for (unsigned i = 0; i &lt; 100000; ++i) { for (unsigned c = 0; c &lt; arraySize; ++c) { // Primary loop. if (data[c] &gt;= 128) sum += data[c]; } } doubl",
+    "source": "stackoverflow",
+    "score": 63.5,
+    "oversight": "high",
+    "url": "https://stackoverflow.com/questions/11227809/why-is-conditional-processing-of-a-sorted-array-faster-than-of-an-unsorted-array",
+    "title": "Why is conditional processing of a sorted array faster than of an unsorted array?"
+  },
+  {
+    "label": "slop",
+    "domain": "docs",
+    "text": "How do I undo the most recent local commits in Git?\n\nI accidentally committed the wrong files to Git but haven't pushed the commit to the server yet. How do I undo those commits from the local repository?",
+    "source": "stackoverflow",
+    "score": 46.8,
+    "oversight": "low",
+    "url": "https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git",
+    "title": "How do I undo the most recent local commits in Git?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "How do I delete a Git branch locally and remotely?\n\nFailed Attempts to Delete a Remote Branch: $ git branch -d remotes/origin/bugfix error: branch 'remotes/origin/bugfix' not found. $ git branch -d origin/bugfix error: branch 'origin/bugfix' not found. $ git branch -rd origin/bugfix Deleted remote branch origin/bugfix (was 2a14ef7). $ git push Everything up-to-date $ git pull From github.com:gituser/gitproject * [new branch] bugfix -&gt; origin/bugfix Already up-to-date. How do I properly delete the remotes/origin/bugfix branch both locally and remotely?",
+    "source": "stackoverflow",
+    "score": 61.1,
+    "oversight": "mixed",
+    "url": "https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely",
+    "title": "How do I delete a Git branch locally and remotely?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "What is the difference between &#39;git pull&#39; and &#39;git fetch&#39;?\n\nWhat are the differences between git pull and git fetch ?",
+    "source": "stackoverflow",
+    "score": 58.1,
+    "oversight": "mixed",
+    "url": "https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch",
+    "title": "What is the difference between &#39;git pull&#39; and &#39;git fetch&#39;?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "What does the &quot;yield&quot; keyword do in Python?\n\nWhat functionality does the yield keyword in Python provide? For example, I'm trying to understand this code 1 : def _get_child_candidates(self, distance, min_dist, max_dist): if self._leftchild and distance - max_dist &lt; self._median: yield self._leftchild if self._rightchild and distance + max_dist &gt;= self._median: yield self._rightchild And this is the caller: result, candidates = [], [self] while candidates: node = candidates.pop() distance = node._get_dist(obj) if distance &lt;= max_dist and distance &gt;= min_dist: result.extend(node._values) candidates.extend(node._get_child_candidates(distance, min_dist, max_dist)) return re",
+    "source": "stackoverflow",
+    "score": 66.2,
+    "oversight": "high",
+    "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+    "title": "What does the &quot;yield&quot; keyword do in Python?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "How can I remove a specific item from an array in JavaScript?\n\nHow do I remove a specific value from an array? Something like: array.remove(value); Constraints: I have to use core JavaScript. Frameworks are not allowed.",
+    "source": "stackoverflow",
+    "score": 61.8,
+    "oversight": "mixed",
+    "url": "https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript",
+    "title": "How can I remove a specific item from an array in JavaScript?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Which JSON content type do I use?\n\nThere are many &quot;standards&quot; for the JSON content type: application/json application/x-javascript text/javascript text/x-javascript text/x-json Which one do I use, and where? I assume security and browser support issues are a factor. Related: What MIME type if JSON is being returned by a REST API?",
+    "source": "stackoverflow",
+    "score": 61.3,
+    "oversight": "mixed",
+    "url": "https://stackoverflow.com/questions/477816/which-json-content-type-do-i-use",
+    "title": "Which JSON content type do I use?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "What is the &#39;--&gt;&#39; operator in C/C++?\n\nAfter reading Hidden Features and Dark Corners of C++/STL on comp.lang.c++.moderated , I was completely surprised that the following snippet compiled and worked in both Visual Studio 2008 and G++ 4.4. I would assume this is also valid C since it works in GCC as well. Here's the code: #include &lt;stdio.h&gt; int main() { int x = 10; while (x --&gt; 0) // x goes to 0 { printf(&quot;%d &quot;, x); } } Output: 9 8 7 6 5 4 3 2 1 0 Where is this defined in the standard, and where has it come from?",
+    "source": "stackoverflow",
+    "score": 68.8,
+    "oversight": "high",
+    "url": "https://stackoverflow.com/questions/1642028/what-is-the-operator-in-c-c",
+    "title": "What is the &#39;--&gt;&#39; operator in C/C++?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "docs",
+    "text": "Why does HTML think \u201cchucknorris\u201d is a color?\n\nWhy do certain random strings produce colors when entered as background colors in HTML? For example, bgcolor=&quot;chucknorris&quot; produces a red background : &lt;body bgcolor=\"chucknorris\"&gt; test &lt;/body&gt; Conversely, bgcolor=&quot;chucknorr&quot; produces a yellow background : &lt;body bgcolor=\"chucknorr\"&gt; test &lt;/body&gt; This holds true across various browsers and platforms. What\u2019s going on here?",
+    "source": "stackoverflow",
+    "score": 62.0,
+    "oversight": "mixed",
+    "url": "https://stackoverflow.com/questions/8318911/why-does-html-think-chucknorris-is-a-color",
+    "title": "Why does HTML think \u201cchucknorris\u201d is a color?"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "GraphQL is a data query and manipulation language that allows specifying what data is to be retrieved or modified. A GraphQL server can process a client query using data from separate sources and present the results in a unified graph. The language is not tied to any specific database or storage engine. There are several open-source runtime engines for GraphQL.",
+    "source": "wikipedia",
+    "score": 62.5,
+    "oversight": "mixed",
+    "url": "https://en.wikipedia.org/wiki/GraphQL",
+    "title": "GraphQL"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "REST is a software architectural style that was created to describe the design and guide the development of the architecture for the World Wide Web. REST defines a set of constraints for how the architecture of a distributed, Internet-scale hypermedia system, such as the Web, should behave. The REST architectural style emphasizes uniform interfaces, independent deployment of components, the scalability of interactions between them, and creating a layered architecture to promote caching to reduce user-perceived latency, enforce security, and encapsulate legacy systems.",
+    "source": "wikipedia",
+    "score": 36.6,
+    "oversight": "low",
+    "url": "https://en.wikipedia.org/wiki/REST",
+    "title": "REST"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Redis is an in-memory key\u2013value database, used as a distributed cache and message broker, with optional durability. Because it holds all data in memory and because of its design, Redis offers low-latency reads and writes, making it particularly suitable for use cases that require a cache.",
+    "source": "wikipedia",
+    "score": 65.4,
+    "oversight": "high",
+    "url": "https://en.wikipedia.org/wiki/Redis",
+    "title": "Redis"
+  },
+  {
+    "label": "slop",
+    "domain": "content",
+    "text": "In software engineering, a microservice architecture is an architectural pattern that organizes an application into a collection of loosely coupled, fine-grained services that communicate through lightweight protocols. This pattern allows teams to develop, deploy, and scale services independently, improving modularity, scalability, and adaptability. However, it introduces additional complexity, particularly in managing distributed systems and inter-service communication, making the initial implementation more challenging compared to a monolithic architecture.",
+    "source": "wikipedia",
+    "score": 42.7,
+    "oversight": "low",
+    "url": "https://en.wikipedia.org/wiki/Microservices",
+    "title": "Microservices"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "DevOps is the integration and automation of software development and information technology operations. DevOps encompasses the tasks necessary for software development and can lead to both shortening development time and improving the development life cycle. According to Neal Ford, DevOps, particularly through continuous delivery, employs the \"bring the pain forward\" principle by tackling tough tasks early, fostering automation, and enabling swift issue detection. Software programmers and architects should use fitness functions to keep their software in check.",
+    "source": "wikipedia",
+    "score": 53.9,
+    "oversight": "mixed",
+    "url": "https://en.wikipedia.org/wiki/DevOps",
+    "title": "DevOps"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "PostgreSQL, also known as Postgres, is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance. PostgreSQL features transactions with atomicity, consistency, isolation, durability (ACID) properties, automatically updatable views, materialized views, triggers, foreign keys, and stored procedures.\nIt is supported on all major operating systems, including Windows, Linux, macOS, FreeBSD, and OpenBSD, and handles a range of workloads from single machines to data warehouses, data lakes, or web services with many concurrent users.",
+    "source": "wikipedia",
+    "score": 63.8,
+    "oversight": "high",
+    "url": "https://en.wikipedia.org/wiki/PostgreSQL",
+    "title": "PostgreSQL"
+  },
+  {
+    "label": "reviewed",
+    "domain": "content",
+    "text": "Agile software development is an umbrella term for approaches to developing software that reflect the values and principles agreed upon by The Agile Alliance, a group of 17 software practitioners, in 2001. As documented in their Manifesto for Agile Software Development, the practitioners value:Individuals and interactions over processes and tools\nWorking software over comprehensive documentation\nCustomer collaboration over contract negotiation\nResponding to change over following a plan",
+    "source": "wikipedia",
+    "score": 57.3,
+    "oversight": "mixed",
+    "url": "https://en.wikipedia.org/wiki/Agile_software_development",
+    "title": "Agile software development"
+  },
+  {
+    "label": "slop",
+    "domain": "academia",
+    "text": "Extracting Cardiorespiratory Symptoms From Clinical Notes Using Open-Weight Large Language Models: Method Development and Validation Study.\n\nThis study aims to develop and validate an interpretable machine learning (ML) model for predicting post-procedural hemorrhage (PH) after ultrasound-guided percutaneous renal biopsy (PRB), aiding perioperative management.",
+    "source": "pubmed",
+    "score": 41.1,
+    "oversight": "low",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42206405/",
+    "title": "Extracting Cardiorespiratory Symptoms From Clinical Notes Using Open-Weight Large Language Models: Method Development and Validation Study."
+  }
+]
