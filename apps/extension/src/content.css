@@ -1,0 +1,126 @@
+/* Injected Content Script Styles for SlopGuard */
+.sg-wrap {
+  display: inline-block !important;
+  margin: 8px 0 !important;
+  position: relative !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  z-index: 99999 !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.sg-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 6px 12px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  outline: none !important;
+}
+
+.sg-badge:hover {
+  transform: translateY(-1px) scale(1.05) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.sg-panel {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  width: 280px !important;
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3) !important;
+  z-index: 100000 !important;
+  text-align: left !important;
+  color: #f1f5f9 !important;
+}
+
+.sg-panel-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 8px !important;
+}
+
+.sg-panel-header strong {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #f8fafc !important;
+}
+
+.sg-panel-score {
+  font-size: 11px !important;
+  color: #94a3b8 !important;
+}
+
+.sg-panel-meta {
+  display: flex !important;
+  gap: 8px !important;
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 12px !important;
+}
+
+.sg-panel-domain {
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+}
+
+.sg-signal-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+.sg-signal-row {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.sg-signal-info {
+  display: flex !important;
+  justify-content: space-between !important;
+  font-size: 10px !important;
+  color: #e2e8f0 !important;
+}
+
+.sg-signal-bar {
+  height: 4px !important;
+  border-radius: 2px !important;
+  background: #1e293b !important;
+  overflow: hidden !important;
+}
+
+.sg-signal-label {
+  font-size: 9px !important;
+  color: #64748b !important;
+}
+
+.sg-dashboard-link {
+  display: block !important;
+  text-align: center !important;
+  font-size: 11px !important;
+  color: #38bdf8 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  margin-top: 8px !important;
+}
+
+.sg-dashboard-link:hover {
+  text-decoration: underline !important;
+}

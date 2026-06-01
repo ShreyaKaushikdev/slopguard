@@ -24,9 +24,7 @@ function candidateBlocks(onlyNew = false) {
     "article",
     "[data-testid='review']",
     "[data-testid='tweetText']",
-    ".feed-shared-update-v2",
-    "main",
-    "section"
+    ".feed-shared-update-v2"
   ];
   const seen = new Set();
   const blocks = [];
@@ -200,21 +198,22 @@ async function scorePr(pr) {
 
 async function run(onlyNew = false) {
   const domain = guessDomain();
+  const isGithubPr = location.hostname.includes("github.com") && /\/pull\/\d+/.test(location.pathname);
 
-  if (!onlyNew) {
+  if (isGithubPr) {
     const pr = githubPrInfo();
-    if (pr) {
+    if (pr && pr.node.dataset.slopguardScored !== "true") {
       try {
         const result = await scorePr(pr);
         if (result) {
           attachBadge(pr.node, result);
           await recordScore(result, "code_review");
         }
-        return;
       } catch (error) {
         console.debug("SlopGuard PR scoring skipped", error);
       }
     }
+    return;
   }
 
   for (const block of candidateBlocks(onlyNew)) {
