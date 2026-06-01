@@ -1034,7 +1034,7 @@ export default function DashboardPage() {
       <div className="site-nav-links">
         <a className="site-nav-link" href="/docs">Docs</a>
         <a className="site-nav-link" href="/api-reference">API</a>
-        <a className="site-nav-link" href="http://localhost:8000/live" target="_blank" rel="noreferrer">Live Feed</a>
+        <a className="site-nav-link" href="#live-feed" onClick={(e) => { e.preventDefault(); document.getElementById('live-feed')?.scrollIntoView({ behavior: 'smooth' }); }}>Live Feed</a>
         {user ? (
           <div className="site-nav-user" style={{ display: "flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.05)", padding: "4px 12px", borderRadius: "100px", border: "1px solid rgba(255,255,255,0.1)" }}>
             <img src={user.avatar_url} alt={user.login} style={{ width: "20px", height: "20px", borderRadius: "50%" }} />
@@ -1485,7 +1485,9 @@ export default function DashboardPage() {
         ))}
       </section>
 
-      <LiveFeedWidget />
+      <div id="live-feed">
+        <LiveFeedWidget />
+      </div>
     </main>
     </>
   );
