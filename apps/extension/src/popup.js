@@ -54,9 +54,11 @@ chrome.storage.local.get({ slopguardHistory: [] }, ({ slopguardHistory }) => {
   const target = document.getElementById("history");
   target.innerHTML = slopguardHistory.slice(0, 5).map((item) => `
     <div class="sg-history-item">
-      <strong>${Math.round(item.score)} / ${item.oversight}</strong>
-      <span>${item.domain}</span>
-      <small>${item.title || item.url}</small>
+      <div class="history-score">${Math.round(item.score)}</div>
+      <div class="history-details">
+        <span class="history-domain">${item.domain} &mdash; ${item.oversight}</span>
+        <span class="history-title">${item.title || item.url}</span>
+      </div>
     </div>
-  `).join("") || "<p>No scores yet.</p>";
+  `).join("") || "<p style='font-size:11px; color:#859490'>No scores yet.</p>";
 });

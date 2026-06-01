@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Text Analysis Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050d1a;
+            --card-bg: rgba(5, 20, 45, 0.85);
+            --accent-cyan: #00ffc8;
+            --accent-teal: #00b4d8;
+            --text-muted: rgba(255, 255, 255, 0.35);
+            --text-bright: #ffffff;
+            --border-glow: rgba(0, 255, 200, 0.15);
+            --font-main: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-bright);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Grid Background */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 200, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 200, 0.05) 1px, transparent 1px);
+            z-index: -1;
+            animation: pulse-grid 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse-grid {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Glassmorphism Card */
+        .panel-container {
+            width: 90%;
+            max-width: 1000px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 0 40px rgba(0, 255, 200, 0.05);
+            animation: fade-up 0.5s ease-out forwards;
+            position: relative;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Top Controls: Tabs, Dropdown, Toggle */
+        .top-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Tab Bar */
+        .tab-bar {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.2s ease;
+            user-select: none;
+            padding-bottom: 4px;
+        }
+
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .tab:hover {
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        .tab:hover::after {
+            opacity: 1;
+        }
+
+        .tab.active {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
+        }
+
+        /* Sliding indicator for active tab */
+        .tab-indicator {
+            position: absolute;
+            bottom: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+            transition: left 0.3s ease, width 0.3s ease;
+            z-index: 2;
+        }
+
+        /* Right Controls Group */
+        .right-controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            background: rgba(5, 20, 45, 0.5);
+            border: 1px solid rgba(0, 255, 200, 0.2);
+            color: var(--text-bright);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-btn:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 255, 200, 0.05);
+            box-shadow: 0 0 12px rgba(0, 255, 200, 0.3);
+        }
+
+        .chevron {
+            transition: transform 0.2s ease;
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+        }
+
+        .dropdown.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Score / Text Toggle */
+        .toggle-container {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .toggle-pill {
+            padding: 0.4rem 1rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-muted);
+            border: 1px solid transparent;
+        }
+
+        .toggle-pill.active {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 255, 200, 0.4);
+        }
+
+        .toggle-pill:not(.active):hover {
+            border-color: var(--accent-cyan);
+            color: var(--text-bright);
+        }
+
+        /* Textarea Area */
+        .textarea-wrapper {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid transparent;
+            border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+            border-right: 1px solid rgba(0, 255, 200, 0.1);
+            color: var(--text-bright);
+            padding: 1.5rem;
+            font-size: 1rem;
+            resize: none;
+            outline: none;
+            transition: all 0.2s ease;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            border-color: rgba(0, 255, 200, 0.4);
+            box-shadow: inset 0 0 0 1px rgba(0, 255, 200, 0.1),
+                        0 0 0 1px rgba(0, 255, 200, 0.4), 
+                        0 0 20px rgba(0, 255, 200, 0.08);
+            caret-color: var(--accent-cyan);
+        }
+
+        textarea::placeholder {
+            color: rgba(0, 255, 200, 0.3);
+        }
+
+        /* Custom Resize Handle (Decorative, since resize: none) */
+        .resize-handle {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 12px;
+            height: 12px;
+            pointer-events: none;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 2px,
+                var(--accent-cyan) 2px,
+                var(--accent-cyan) 3px
+            );
+            opacity: 0.5;
+        }
+
+        /* Scanning Line Animation */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+            opacity: 0.04;
+            pointer-events: none;
+            animation: scan 6s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+
+    <div class="panel-container">
+        
+        <div class="top-controls">
+            <div class="tab-bar" id="tab-bar">
+                <div class="tab-indicator" id="tab-indicator"></div>
+                <div class="tab active" onclick="setActiveTab(this)">Scan</div>
+                <div class="tab" onclick="setActiveTab(this)">PR Review</div>
+                <div class="tab" onclick="setActiveTab(this)">Repo</div>
+                <div class="tab" onclick="setActiveTab(this)">Batch</div>
+                <div class="tab" onclick="setActiveTab(this)">Citations</div>
+                <div class="tab" onclick="setActiveTab(this)">Personal</div>
+                <div class="tab" onclick="setActiveTab(this)">Metrics</div>
+            </div>
+
+            <div class="right-controls">
+                <div class="dropdown" id="category-dropdown" onclick="toggleDropdown()">
+                    <button class="dropdown-btn">
+                        Social & News
+                        <span class="chevron">▼</span>
+                    </button>
+                </div>
+
+                <div class="toggle-container">
+                    <div class="toggle-pill" onclick="setToggle(this)">Score</div>
+                    <div class="toggle-pill active" onclick="setToggle(this)">Text</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="textarea-wrapper">
+            <div class="scan-line"></div>
+            <textarea placeholder="> Initialize sequence...&#10;> Awaiting input text for analysis..." spellcheck="false"></textarea>
+            <div class="resize-handle"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // Tab functionality
+        function setActiveTab(clickedTab) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            clickedTab.classList.add('active');
+            updateIndicator();
+        }
+
+        function updateIndicator() {
+            const activeTab = document.querySelector('.tab.active');
+            const indicator = document.getElementById('tab-indicator');
+            const tabBar = document.getElementById('tab-bar');
+            if (activeTab && indicator && tabBar) {
+                // Calculate position relative to tab-bar
+                const tabBarRect = tabBar.getBoundingClientRect();
+                const activeTabRect = activeTab.getBoundingClientRect();
+                
+                indicator.style.left = (activeTabRect.left - tabBarRect.left) + 'px';
+                indicator.style.width = activeTabRect.width + 'px';
+            }
+        }
+
+        // Initialize indicator position
+        window.addEventListener('DOMContentLoaded', () => {
+            // Slight delay to ensure fonts are loaded and widths are correct
+            setTimeout(updateIndicator, 100);
+            document.fonts.ready.then(updateIndicator);
+        });
+        window.addEventListener('resize', updateIndicator);
+
+        // Dropdown toggle
+        function toggleDropdown() {
+            const dropdown = document.getElementById('category-dropdown');
+            dropdown.classList.toggle('open');
+        }
+
+        // Toggle functionality
+        function setToggle(clickedPill) {
+            const pills = document.querySelectorAll('.toggle-pill');
+            pills.forEach(pill => pill.classList.remove('active'));
+            clickedPill.classList.add('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('category-dropdown');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -132,12 +132,6 @@ function attachBadge(node, result) {
   node.prepend(wrap);
 }
 
-async function apiUrl() {
-  return new Promise((resolve) => {
-    chrome.storage.sync.get({ apiUrl: "http://localhost:8000" }, ({ apiUrl }) => resolve(apiUrl));
-  });
-}
-
 async function recordScore(result, domain) {
   const event = {
     url: location.href,
@@ -150,16 +144,8 @@ async function recordScore(result, domain) {
     const history = [event, ...slopguardHistory].slice(0, 100);
     chrome.storage.local.set({ slopguardHistory: history });
   });
-  try {
-    const base = await apiUrl();
-    await fetch(`${base}/events/score`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(event)
-    });
-  } catch (error) {
-    console.debug("SlopGuard event recording skipped", error);
-  }
+  
+  chrome.runtime.sendMessage({ type: "RECORD_EVENT", payload: event });
 }
 
 function checkRateLimit() {
@@ -173,19 +159,19 @@ function checkRateLimit() {
 
 async function scoreBlock(block, domain) {
   if (!checkRateLimit()) return null;
-  const base = await apiUrl();
-  const response = await fetch(`${base}/score/text`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text: block.text.slice(0, 6000), domain })
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage(
+      { type: "SCORE_TEXT", payload: { text: block.text.slice(0, 6000), domain } },
+      (response) => {
+        if (response && response.success) resolve(response.data);
+        else reject(new Error(response?.error || "Background script failed"));
+      }
+    );
   });
-  if (!response.ok) throw new Error(`SlopGuard API ${response.status}`);
-  return response.json();
 }
 
 async function scorePr(pr) {
   if (!checkRateLimit()) return null;
-  const base = await apiUrl();
   let diff = "";
   try {
     const diffResponse = await fetch(`${location.origin}${location.pathname}.diff`);
@@ -193,18 +179,23 @@ async function scorePr(pr) {
   } catch (error) {
     console.debug("SlopGuard diff fetch skipped", error);
   }
-  const response = await fetch(`${base}/score/pr`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      title: pr.title,
-      description: pr.description.slice(0, 6000),
-      diff: diff.slice(0, 12000),
-      comments: []
-    })
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage(
+      {
+        type: "SCORE_PR",
+        payload: {
+          title: pr.title,
+          description: pr.description.slice(0, 6000),
+          diff: diff.slice(0, 12000),
+          comments: []
+        }
+      },
+      (response) => {
+        if (response && response.success) resolve(response.data);
+        else reject(new Error(response?.error || "Background script failed"));
+      }
+    );
   });
-  if (!response.ok) throw new Error(`SlopGuard API ${response.status}`);
-  return response.json();
 }
 
 async function run(onlyNew = false) {

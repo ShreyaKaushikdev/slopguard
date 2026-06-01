@@ -172,6 +172,36 @@ def submission_status():
 
 
 
+@app.post("/signals/vocabulary-novelty")
+def vocabulary_novelty_endpoint(request: TextScoreRequest):
+    """Generate visualization data for the vocabulary novelty curve."""
+    from slopguard.detectors.vocabulary_novelty import visualize_novelty_curve
+    return visualize_novelty_curve(request.text)
+
+
+@app.get("/live/stream")
+async def live_stream_endpoint():
+    """SSE endpoint for live ingestion feed."""
+    from slopguard.adapters.live_ingestion import get_live_feed
+    
+    async def event_generator():
+        last_timestamp = 0
+        while True:
+            # Polling the in-memory feed every 2 seconds
+            feed = get_live_feed(limit=10)
+            if feed:
+                new_items = [item for item in feed if item["timestamp"] > last_timestamp]
+                if new_items:
+                    last_timestamp = max(item["timestamp"] for item in new_items)
+                    for item in reversed(new_items):
+                        yield f"data: {json.dumps(item)}\n\n"
+            
+            yield ": heartbeat\n\n"
+            await asyncio.sleep(2)
+            
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
+
+
 @app.post("/score/text")
 def score_text_endpoint(request: TextScoreRequest):
     result = score_text(request.text, request.domain, request.metadata)

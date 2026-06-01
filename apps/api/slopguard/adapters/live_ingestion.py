@@ -66,7 +66,7 @@ _ingestion_stats: dict = {
     "items_per_minute": 0.0,
 }
 _ingestion_lock = threading.Lock()
-_ingestion_thread: threading.Thread | None = None
+_ingestion_task = None
 _stop_event = threading.Event()
 
 
@@ -504,26 +504,25 @@ def _ingestion_loop() -> None:
 
 
 def start_ingestion() -> None:
-    """Start the background ingestion thread. Safe to call multiple times."""
-    global _ingestion_thread
-    if _ingestion_thread and _ingestion_thread.is_alive():
+    """Start the background ingestion task using asyncio."""
+    global _ingestion_task
+    import asyncio
+    
+    if _ingestion_task and not _ingestion_task.done():
         return
+        
     _stop_event.clear()
-    _ingestion_thread = threading.Thread(
-        target=_ingestion_loop,
-        name="slopguard-ingestion",
-        daemon=True,
-    )
-    _ingestion_thread.start()
-
+    loop = asyncio.get_event_loop()
+    
+    # Run the blocking loop in a thread pool managed by asyncio
+    _ingestion_task = loop.run_in_executor(None, _ingestion_loop)
 
 def stop_ingestion() -> None:
-    """Stop the background ingestion thread."""
+    """Stop the background ingestion task."""
     _stop_event.set()
 
-
 def is_running() -> bool:
-    return bool(_ingestion_thread and _ingestion_thread.is_alive())
+    return bool(_ingestion_task and not _ingestion_task.done())
 
 
 # ---------------------------------------------------------------------------
