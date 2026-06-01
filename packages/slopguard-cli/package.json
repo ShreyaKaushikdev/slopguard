@@ -1,0 +1,29 @@
+{
+  "name": "slopguard",
+  "version": "0.1.0",
+  "description": "SlopGuard CLI — Score content for human oversight. Detect low-effort AI slop in PRs, docs, reviews, and more.",
+  "main": "index.js",
+  "bin": {
+    "slopguard": "./bin/slopguard.js"
+  },
+  "scripts": {
+    "test": "echo \"Run: python -m pytest tests/\" && exit 0"
+  },
+  "keywords": [
+    "slop",
+    "ai-detection",
+    "quality",
+    "oversight",
+    "pr-review",
+    "content-scoring"
+  ],
+  "author": "SlopGuard",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slopguard/slopguard"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

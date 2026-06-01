@@ -1,0 +1,16 @@
+{
+  "name": "slopguard",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "web:dev": "npm --workspace @slopguard/web run dev",
+    "web:build": "npm --workspace @slopguard/web run build",
+    "api:dev": "cd apps/api && uvicorn slopguard.main:app --reload --port 8000",
+    "api:test": "cd apps/api && python -m pytest",
+    "api:evaluate": "cd apps/api && python -m slopguard.evaluate",
+    "verify": "npm run web:build && npm run api:test && npm run api:evaluate"
+  }
+}
